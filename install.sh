@@ -12,3 +12,5 @@ export DOTFILES_LOCATION;
 # Install dependencies
 ###
 ./bin/dotfiles install starship
+./bin/dotfiles install vim
+./bin/dotfiles install tmux
