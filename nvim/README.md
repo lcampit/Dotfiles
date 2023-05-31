@@ -82,11 +82,10 @@ Set up in init.lua:
 ## Misc keymaps 
 Set up in mappings.lua:
 - As suggested by [ThePrimeagen](https://youtube.com/@ThePrimeagen): 
-        ```lua
+```lua
     ["<C-u>"] = {"<C-u>zz", "Jump half a page up"} 
     ["<C-d>"] = {"<C-d>zz", "Jump half a page down"}
-
-        ``` 
+``` 
 
 ## Plugins 
 - [vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator)
