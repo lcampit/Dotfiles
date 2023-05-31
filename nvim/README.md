@@ -65,9 +65,6 @@ plugins to be loaded lazily while maintaining high performances
 - **configs** folder containing additional configurations files, will be used to 
 keep the other things nice and tidy
 
-I'll keep this section divided by scope, i.e. language specific settings, utility
-plugins, etc.
-
 ## Installation
 The script provided in this directory will install everything that is listed here.
 I'll try to make the scripts as completed as possible, but there may be cases where
@@ -79,14 +76,109 @@ Set up in chadrc.lua:
 - Theme : catpuccin
 
 Set up in init.lua:
-- vim.opt.colorcolumn = "80" 
-- vim.wo.relativenumber = true
+- vertical column on the 80th character 
+- relative numbers 
 
 ## Misc keymaps 
 Set up in mappings.lua:
 - As suggested by [ThePrimeagen](https://youtube.com/@ThePrimeagen): 
-    - ["<C-u>"] = {"<C-u>zz", "Jump half a page up"} 
-    - ["<C-d>"] = {"<C-d>zz", "Jump half a page down"}
+        ```lua
+    ["<C-u>"] = {"<C-u>zz", "Jump half a page up"} 
+    ["<C-d>"] = {"<C-d>zz", "Jump half a page down"}
+
+        ``` 
 
 ## Plugins 
+- [vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator)
+    - Allows for seamless navigation between nvim and tmux 
+    - I added the following keymaps in mappings.lua:
+        ```lua
+        ["<C-h>"] = {"<cmd> TmuxNavigateLeft<CR>", "Move to window left"}
+        ["<C-l>"] = {"<cmd> TmuxNavigateRight<CR>", "Move to window right"}
+        ["<C-j>"] = {"<cmd> TmuxNavigateDown<CR>", "Move to window down"}
+        ["<C-k>"] = {"<cmd> TmuxNavigateUp<CR>", "Move to window up"}
+
+        ```
+
+- [Mason](https://github.com/williamboman/mason.nvim)
+    - Easily manage LSP, Linters, Formatters and Debuggers installation 
+    - Override its configurations in plugins.lua, ensure installed gopls and 
+    rust-analyzer
+
+- [DAP](https://github.com/mfussenegger/nvim-dap)
+    - Adds debugging feature to nvim 
+    - Loads its own custom mappings on init
+
+- [DAP-GO](https://github.com/leoluz/nvim-dap-go)
+    - DAP plugin specifically for go 
+    - Customized with its own keymaps
+    - Requires [Delve](https://github.com/go-delve/delve/tree/master/Documentation/installation) to be installed and present in PATH. 
+    Make sure to have go and go bin folders in your PATH 
+
+- [Gopher](https://github.com/olexsmir/gopher.nvim)
+    - A minimalistic Go plugin with a couple of utility commands
+    - Set up to automatically install dependencies when loaded 
+
+- [vim-crystal](https://github.com/vim-crystal/vim-crystal)
+    - Nvim language support for the crystal programming language 
+
+- [rust.nvim](https://github.com/rust-lang/rust.vim)
+    - Official rust plugin for nvim
+    - Make sure to install rustc, cargo and have CARGO\_HOME, RUST\_HOME 
+    environment variables set 
+
+- [rust-tools](https://github.com/simrat39/rust-tools.nvim)
+    - Set of tools to improve rust experience with nvim
+    - Set its options up using a custom config file 
+    
+- [crates](https://github.com/Saecki/crates.nvim)
+    - Helps managing rust packages and crates dependencies 
+    - Customized to automatically show package versions in cargo files 
+    
+## Language Server Protocol
+All these configurations are set in a dedicated file, **lspconfig.ls**, placed 
+in a configs folder, to keep things clean. In order to load these configurations 
+as well as NvChad standard ones, the following must be added in plugins.lua:
+```lua
+  {
+  "neovim/nvim-lspconfig",
+    config= function ()
+      require "plugins.configs.lspconfig"
+      require "custom.configs.lspconfig"
+    end,
+  },
+
+```
+One this is done, write your lspconfigs in the configs/lspconfig.lua file creating 
+an entry in the lspconfig variable (wow how many lspconfigs here) for each LSP 
+server.
+
+- [gopls](https://pkg.go.dev/golang.org/x/tools/gopls)
+    - The official gopls language server for Go 
+    - Set up thanks to [this](https://youtu.be/i04sSQjd-qo) video
+    - Needs to be installed either using Mason or go install. Make sure to have
+    the relevant binary path in PATH 
+
+- [rust-analyzer](https://rust-analyzer.github.io/)
+    - Rust LSP 
+    - Set up thanks to [this](https://youtu.be/mh_EJhH49Ms) video 
+    - Set up via rust-tools in a dedicate file in configs. 
+
+## Formatters 
+Set up thanks to [null-ls](https://github.com/jose-elias-alvarez/null-ls.nvim),
+a plugin made to bridge the gap between Nvim and LSPs. Configurations for null-ls 
+are contained in a dedicate file in configs, **null-ls.lua**.
+
+- [gofumpt](https://github.com/mvdan/gofumpt), [goimports-reviser](https://github.com/incu6us/goimports-reviser), [golines](https://github.com/segmentio/golines)
+    - Formatters for golang
+    - Make sure to install them, either via Mason or go install, and have 
+    the relevant binaries path in PATH 
+    - Configuration in null-ls allows for format on save in relevant files 
+
+- [rustfmt](https://github.com/rust-lang/rustfmt)
+    - Formatter for rust 
+    - Make sure to have rust installed, as long as RUSTC\_HOME and CARGO\_HOME 
+    environment variables set and rust binaries in PATH 
+    - Configured via rust official nvim plugin, complete with format on save 
+
 
