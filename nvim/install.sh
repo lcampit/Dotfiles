@@ -1,2 +1,12 @@
 #!/usr/bin/env sh
 
+set -e # Stops the script if any part of it fails
+
+echo "Installing NvChad"
+git clone https://github.com/NvChad/NvChad "{$HOME}/.config/nvim" --depth 1
+
+echo "Linking custom config into NvChad"
+
+ln -sfr "${DOTFILES_LOCATION}/nim/custom" "{$HOME}/.config/nvim"
+
+echo "Done, run nvim. Do not load any sample config, run :Lazy Sync and :MasonInstallAll to install plugins, lsps, formatters and so on"
