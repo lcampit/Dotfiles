@@ -148,7 +148,7 @@ as well as NvChad standard ones, the following must be added in plugins.lua:
   },
 
 ```
-One this is done, write your lspconfigs in the configs/lspconfig.lua file creating 
+Once this is done, write your lspconfigs in the configs/lspconfig.lua file creating 
 an entry in the lspconfig variable (wow how many lspconfigs here) for each LSP 
 server.
 
