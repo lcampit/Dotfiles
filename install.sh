@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-set -e
+set -e # Stops the script if any part in it fails
 
 ###
 # Installation of packages, configurations, and dotfiles.
@@ -14,3 +14,4 @@ export DOTFILES_LOCATION;
 ./bin/dotfiles install starship
 ./bin/dotfiles install vim
 ./bin/dotfiles install tmux
+./bin/dotfiles install nvim
