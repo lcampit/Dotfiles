@@ -27,9 +27,11 @@ similar repos, but that is the one that I stumbled across first.
 
 The following is a list of tools and references for each configuration file included
 
-- ### [vim](https://github.com/vim/vim)
-    - Vi Improved, the terminal based text editor
-- ### [tmux](https://github.com/tmux/tmux)
-    - A terminal multiplexer, allows for multiple terminal running in a single window
-- ### [starship](https://github.com/starship/starship)
-    - A customizable shell prompt 
+### [vim](https://github.com/vim/vim)
+- Vi Improved, the terminal based text editor
+### [tmux](https://github.com/tmux/tmux)
+- A terminal multiplexer, allows for multiple terminal running in a single window
+### [starship](https://github.com/starship/starship)
+- A customizable shell prompt 
+### [NeoVim](https://github.com/neovim/neovim)
+- A hyperextensible Vim-based text editor
