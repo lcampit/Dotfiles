@@ -78,6 +78,7 @@ Set up in chadrc.lua:
 Set up in init.lua:
 - vertical column on the 80th character 
 - relative numbers 
+- always leave the last 20 lines available when scrolling
 
 ## Misc keymaps 
 Set up in mappings.lua:
