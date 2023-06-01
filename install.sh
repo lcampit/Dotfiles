@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-set -e
+set -e # Stops the script if any part in it fails
 
 ###
 # Installation of packages, configurations, and dotfiles.
