@@ -2,23 +2,34 @@
 
 Dotfiles collection used to configure my own development environment
 
-
 ## Installation
 
+**Warning:** Feel free to give these dotfiles a try. However, I advise you to 
+fork this repository first and look around. Get a feel of what it will set up 
+for you and remove things you don’t want or need. 
+Don’t blindly use my settings unless you know what that entails. Use at your own risk!
+
+
+
+### Using Git and the bootstrap script
 Installs all configuration files
 ```shell
 git clone https://github.com/Leo-Campo/dotfiles
 ./install.sh
 ```
 
-## Notes
+You are of course free to install just a subset of these, in that case either use each tool own install script
+located in its folder (environment variables may be needed) or move the configuration file to your 
+home folder (as that isthe common installation method for these files).
+
+### Notes
 
 This repo is built to support **vscode dev containers dotfiles management**, providing a central install
 script and different configurations for each tool.
 
-You are of course free to install just a subset of these, in that case either use its own install script
-located in its folder (environment variables may be needed) or move the configuration file to your 
-home folder (as that isthe common installation method for these files).
+## Fonts
+My terminal currently uses the [Jetbrains Mono](https://www.jetbrains.com/lp/mono/)
+font, made for developers with a bunch of useful features and symbols.
 
 ## Included files and references
 
@@ -35,3 +46,5 @@ The following is a list of tools and references for each configuration file incl
 - A customizable shell prompt 
 ### [NeoVim](https://github.com/neovim/neovim)
 - A hyperextensible Vim-based text editor
+
+
