@@ -1,0 +1,6 @@
+#!/bin/sh
+alias bat=batcat
+alias ls='ls --color'
+alias vim='nvim'
+alias clipboard='xclip -sel clip'
+alias cat=bat
