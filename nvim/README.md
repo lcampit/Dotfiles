@@ -102,8 +102,7 @@ Set up in mappings.lua:
 
 - [Mason](https://github.com/williamboman/mason.nvim)
     - Easily manage LSP, Linters, Formatters and Debuggers installation 
-    - Override its configurations in plugins.lua, ensure installed gopls and 
-    rust-analyzer
+    - Override its configurations in plugins.lua
 
 - [DAP](https://github.com/mfussenegger/nvim-dap)
     - Adds debugging feature to nvim 
@@ -114,6 +113,14 @@ Set up in mappings.lua:
     - Customized with its own keymaps
     - Requires [Delve](https://github.com/go-delve/delve/tree/master/Documentation/installation) to be installed and present in PATH. 
     Make sure to have go and go bin folders in your PATH 
+
+- [DAP-Python](https://github.com/mfussenegger/nvim-dap-python)
+    - DAP plugint to work with python 
+    - Ensure that [debugpy](https://github.com/microsoft/debugpy) is installed, either with pip, npm or mason
+
+- [DAP-UI](https://github.com/rcarriga/nvim-dap-ui)
+    - Nice UI to work with debugging 
+    - Configured to automatically open and close on debug operations 
 
 - [Gopher](https://github.com/olexsmir/gopher.nvim)
     - A minimalistic Go plugin with a couple of utility commands
@@ -162,7 +169,12 @@ server.
 - [rust-analyzer](https://rust-analyzer.github.io/)
     - Rust LSP 
     - Set up thanks to [this](https://youtu.be/mh_EJhH49Ms) video 
-    - Set up via rust-tools in a dedicate file in configs. 
+    - Set up via rust-tools in a dedicate file in configs.
+
+- [pyright](https://github.com/microsoft/pyright)
+    - Python LSP
+    - set up thanks to [this](https://youtu.be/4BnVeOUeZxc) video
+    - Needs to be installed with mason or pip or npm, ensure its binary is in PATH 
 
 ## Formatters 
 Set up thanks to [null-ls](https://github.com/jose-elias-alvarez/null-ls.nvim),
@@ -180,5 +192,11 @@ are contained in a dedicate file in configs, **null-ls.lua**.
     - Make sure to have rust installed, as long as RUSTC\_HOME and CARGO\_HOME 
     environment variables set and rust binaries in PATH 
     - Configured via rust official nvim plugin, complete with format on save 
+    
+- [mypy](https://github.com/python/mypy), [ruff](https://github.com/charliermarsh/ruff), [black](https://github.com/psf/black)
+    - Formatters and diagnostics tools for python
+    - Make sure to install them either via mason, npm or pip and have their 
+    binaries in PATH 
+    - Configured to run formatting files on save
 
 
