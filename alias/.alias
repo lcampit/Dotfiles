@@ -4,3 +4,5 @@ alias ls='ls --color'
 alias vim='nvim'
 alias clipboard='xclip -sel clip'
 alias cat=bat
+alias cdd="cd $DOTFILES_LOCATION"
+alias cdp="cd $PROJECTS_LOCATION"
