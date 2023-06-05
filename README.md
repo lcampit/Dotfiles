@@ -31,7 +31,7 @@ script and different configurations for each tool.
 My terminal currently uses the [Jetbrains Mono](https://www.jetbrains.com/lp/mono/)
 font, made for developers with a bunch of useful features and symbols.
 
-## Included files and references
+## Included tools and references
 
 This repo takes inspiration from [this](https://github.com/benmatselby/dotfiles) fellow developer dotfiles repo. I know there are probably thousands of 
 similar repos, but that is the one that I stumbled across first.
@@ -46,5 +46,9 @@ The following is a list of tools and references for each configuration file incl
 - A customizable shell prompt 
 ### [NeoVim](https://github.com/neovim/neovim)
 - A hyperextensible Vim-based text editor
+### [Bat](https://github.com/sharkdp/bat)
+- A cat clone with wings 
+### [Delta](https://github.com/dandavison/delta)
+- A syntax-highlighting pager for git, diff, and grep output
 
 
