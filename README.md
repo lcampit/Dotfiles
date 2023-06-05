@@ -20,7 +20,7 @@ git clone https://github.com/Leo-Campo/dotfiles
 
 You are of course free to install just a subset of these, in that case either use each tool own install script
 located in its folder (environment variables may be needed) or move the configuration file to your 
-home folder (as that isthe common installation method for these files).
+home folder (as that is the common installation method for these files).
 
 ### Notes
 
