@@ -37,6 +37,7 @@ local plugins = {
 				"prettierd",
 				"eslint_d",
 				"stylua",
+				"tailwindcss-language-server",
 			},
 		},
 	},
