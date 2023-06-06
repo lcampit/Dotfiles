@@ -4,6 +4,11 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 local lspconfig = require("lspconfig")
 local util = require("lspconfig/util")
 
+-- lsp diagnostics configurations
+vim.diagnostic.config({
+	virtual_text = false,
+})
+
 lspconfig.gopls.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
