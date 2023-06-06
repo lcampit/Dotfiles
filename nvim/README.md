@@ -157,9 +157,12 @@ Set up in mappings.lua:
     environment variables set
 
 - [rust-tools](https://github.com/simrat39/rust-tools.nvim)
+
   - Set of tools to improve rust experience with nvim
   - Set its options up using a custom config file
+
 - [crates](https://github.com/Saecki/crates.nvim)
+
   - Helps managing rust packages and crates dependencies
   - Customized to automatically show package versions in cargo files
 
@@ -198,9 +201,14 @@ server.
   - Set up via rust-tools in a dedicate file in configs.
 
 - [pyright](https://github.com/microsoft/pyright)
+
   - Python LSP
   - set up thanks to [this](https://youtu.be/4BnVeOUeZxc) video
   - Needs to be installed with mason or pip or npm, ensure its binary is in PATH
+
+- [typescript-language-server](https://github.com/typescript-language-server/typescript-language-server), [tailwindcss](https://github.com/tailwindlabs/tailwindcss-intellisense/tree/master/packages/tailwindcss-language-server)
+
+  - LSPs to work in typescript, React, Angular and Web Development stuff
 
 ## Formatters
 
@@ -216,15 +224,24 @@ are contained in a dedicate file in configs, **null-ls.lua**.
   - Configuration in null-ls allows for format on save in relevant files
 
 - [rustfmt](https://github.com/rust-lang/rustfmt)
+
   - Formatter for rust
   - Make sure to have rust installed, as long as RUSTC_HOME and CARGO_HOME
     environment variables set and rust binaries in PATH
   - Configured via rust official nvim plugin, complete with format on save
+
 - [mypy](https://github.com/python/mypy), [ruff](https://github.com/charliermarsh/ruff), [black](https://github.com/psf/black)
+
   - Formatters and diagnostics tools for python
   - Make sure to install them either via mason, npm or pip and have their
     binaries in PATH
   - Configured to run formatting files on save
+
+- [prettier](https://github.com/prettier/prettier), [prettierd](https://github.com/fsouza/prettierd), [eslint_d](https://github.com/mantoni/eslint_d.js/)
+
+  - Formatters and linter for Web Development stuff
+  - Make sure to install them via Mason or npm and have them in PATH
+  - Configured to run formatting on save
 
 ## Diagnostics
 
