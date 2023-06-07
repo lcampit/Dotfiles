@@ -1,8 +1,9 @@
 #!/bin/sh
-alias bat=batcat
 alias ls='ls --color'
 alias vim='nvim'
 alias clipboard='xclip -sel clip'
-alias cat=bat
 alias cdd="cd $DOTFILES_LOCATION"
 alias cdp="cd $PROJECTS_LOCATION"
+alias cat=bat
+alias ls="exa"
+alias terminaltheme='bash -c  "$(wget -qO- https://git.io/vQgMr)"'
