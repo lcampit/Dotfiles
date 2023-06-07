@@ -15,6 +15,9 @@ echo "installing packages"
 cargo install sccache exa bat starship
 
 echo "setting up cargo configuration"
-ln -sf $DOTFILES_LOCATION/rust/config.toml $CARGO_HOME/config.toml
+ln -sf $DOTFILES_LOCATION/rust-tools/config.toml $CARGO_HOME/config.toml
+
+echo "setting up starship configuration"
+ln -sf "$DOTFILES_LOCATION/rust-tools/starship.toml" "$HOME/.config/starship.toml"
 
 echo "done"

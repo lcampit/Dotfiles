@@ -25,3 +25,6 @@ to use it when compiling, or set the relevant option in your .cargo/config.toml 
 
 ### [ripgrep](https://github.com/behnam/rust-ripgrep)
 - A new, faster alternative to grep
+
+### [starship](https://starship.rs/)
+- A blazing fast customizable prompt
