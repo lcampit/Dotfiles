@@ -17,7 +17,7 @@ to use it when compiling, or set the relevant option in your .cargo/config.toml 
 ### [exa](https://github.com/ogham/exa)
 - A replacement for the venerable file listing command ls 
 
-### [Bat](https://github.com/sharkdp/bat)
+### [bat](https://github.com/sharkdp/bat)
 - A cat clone with wings 
 
 ### [zellij](https://github.com/zellij-org/zellij)
