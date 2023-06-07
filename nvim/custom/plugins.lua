@@ -135,5 +135,18 @@ local plugins = {
 			table.insert(M.sources, { name = "crates" })
 		end,
 	},
+	{
+		"glepnir/lspsaga.nvim",
+		event = "LspAttach",
+		config = function()
+			require("lspsaga").setup({})
+			require("core.utils").load_mappings("lspsaga")
+		end,
+		dependencies = {
+			{ "nvim-tree/nvim-web-devicons" },
+			{ "nvim-treesitter/nvim-treesitter" },
+			{ "neovim/nvim-lspconfig" },
+		},
+	},
 }
 return plugins

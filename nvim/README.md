@@ -166,6 +166,12 @@ Set up in mappings.lua:
   - Helps managing rust packages and crates dependencies
   - Customized to automatically show package versions in cargo files
 
+- [lspsaga](https://github.com/nvimdev/lspsaga.nvim)
+
+  - Provides a set of tools and commands for LSP related action, with a fast ui
+  - There is a plethora of mappings defined for this plugin, loaded when the plugin is loaded too
+  - Make sure to run `:TSInstall markdown markdown_inline` to make UI render properly
+
 ## Language Server Protocol
 
 All these configurations are set in a dedicated file, **lspconfig.ls**, placed
