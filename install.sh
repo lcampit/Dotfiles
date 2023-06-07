@@ -15,3 +15,4 @@ export DOTFILES_LOCATION;
 ./bin/dotfiles install vim
 ./bin/dotfiles install tmux
 ./bin/dotfiles install nvim
+./bin/dotfiles install rust
