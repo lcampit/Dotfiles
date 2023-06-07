@@ -12,7 +12,7 @@ then
 fi
 
 echo "installing packages"
-cargo install sccache exa bat starship
+cargo install sccache exa bat starship bob-nvim
 
 echo "setting up cargo configuration"
 ln -sf $DOTFILES_LOCATION/rust-tools/config.toml $CARGO_HOME/config.toml

@@ -28,3 +28,6 @@ to use it when compiling, or set the relevant option in your .cargo/config.toml 
 
 ### [starship](https://starship.rs/)
 - A blazing fast customizable prompt
+
+### [bob-nvim](https://github.com/MordechaiHadad/bob)
+- A Nvim version manager tool 
