@@ -8,3 +8,4 @@ alias cat=bat
 alias ls="exa"
 alias terminaltheme='bash -c  "$(wget -qO- https://git.io/vQgMr)"'
 alias grep=rg
+alias zshrc="cd;nvim .zshrc"
