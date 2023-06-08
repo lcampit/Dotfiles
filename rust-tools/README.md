@@ -31,3 +31,27 @@ to use it when compiling, or set the relevant option in your .cargo/config.toml 
 
 ### [bob-nvim](https://github.com/MordechaiHadad/bob)
 - A Nvim version manager tool 
+
+### [mprocs](https://github.com/pvolok/mprocs)
+- A tool to keep long running processes under control in a unified window
+
+### [gitui](https://github.com/extrawurst/gitui)
+- A blazing fast terminal based git ui 
+- This folder contains configurations for gitui that will be placed in `$HOME/.config/gitui/`
+
+### [ncspot](https://github.com/hrkfdn/ncspot)
+- A terminal based Spotify client
+    - Some libs may be needed for this to work. If installation fails, install 
+    missing dependencies using your package manager. In my case, I needed to run 
+    `apt-get install libxcb-xfixes0-dev libxcb-shape0-dev`
+- This folder contains configurations for ncspot that will be placed in `$HOME/.config/ncspot/`
+
+### [porsmo](https://github.com/ColorCookie-dev/porsmo)
+- A terminal based pomodoro timer
+    - I did stumble across an error with the alsa library when installing this 
+    the first time. If you encounter the same issue, install this library using 
+    your package manager. For Linux: `apt-get install librust-alsa-sys-dev`
+
+### [rtx](https://github.com/jdxcode/rtx)
+- A polyglot runtime manager 
+
