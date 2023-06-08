@@ -2,7 +2,7 @@
 format = '$all'
 scan_timeout = 30
 command_timeout = 700
-add_newline = true
+add_newline = false
 
 [aws]
 format = 'on [$symbol($profile )(\($region\) )(\[$duration\])]($style)'
