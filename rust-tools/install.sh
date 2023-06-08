@@ -24,7 +24,7 @@ echo "setting up cargo configuration"
 ln -sf $DOTFILES_LOCATION/rust-tools/config.toml $CARGO_HOME/config.toml
 
 echo "installing other tools"
-cargo install exa bat starship bob-nvim zellij mprocs gitui porsmo
+cargo install exa bat starship bob-nvim zellij mprocs gitui porsmo wiki-tui
 
 echo "setting up starship configuration"
 ln -sf "$DOTFILES_LOCATION/rust-tools/starship.toml" "$HOME/.config/starship.toml"
