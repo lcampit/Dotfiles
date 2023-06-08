@@ -81,6 +81,7 @@ Everithing needed will be listed here.
 Set up in chadrc.lua:
 
 - Theme : catpuccin
+- Statusline theme: vscode_colored, separator: block
 
 Set up in init.lua:
 
