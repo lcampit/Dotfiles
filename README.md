@@ -46,8 +46,6 @@ The following is a list of tools and references for each configuration file incl
 - A customizable shell prompt 
 ### [NeoVim](https://github.com/neovim/neovim)
 - A hyperextensible Vim-based text editor
-### [Bat](https://github.com/sharkdp/bat)
-- A cat clone with wings 
 ### [Delta](https://github.com/dandavison/delta)
 - A syntax-highlighting pager for git, diff, and grep output
 
