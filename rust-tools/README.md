@@ -45,6 +45,7 @@ to use it when compiling, or set the relevant option in your .cargo/config.toml 
     missing dependencies using your package manager. In my case, I needed to run 
     `apt-get install libxcb-xfixes0-dev libxcb-shape0-dev`
 - This folder contains configurations for ncspot that will be placed in `$HOME/.config/ncspot/`
+    - Themes can be browsed [here](https://github.com/hrkfdn/ncspot/pull/40)
 
 ### [porsmo](https://github.com/ColorCookie-dev/porsmo)
 - A terminal based pomodoro timer
@@ -55,3 +56,5 @@ to use it when compiling, or set the relevant option in your .cargo/config.toml 
 ### [rtx](https://github.com/jdxcode/rtx)
 - A polyglot runtime manager 
 
+### [wikitui](https://builditluc.github.io/wiki-tui/0.7/)
+- A simple and easy to use Wikipedia Text User Interface
