@@ -16,6 +16,7 @@ to use it when compiling, or set the relevant option in your .cargo/config.toml 
 
 ### [exa](https://github.com/ogham/exa)
 - A replacement for the venerable file listing command ls 
+ - Another neat replacement may be [lsd](https://github.com/lsd-rs/lsd)
 
 ### [bat](https://github.com/sharkdp/bat)
 - A cat clone with wings 
