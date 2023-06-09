@@ -59,3 +59,6 @@ to use it when compiling, or set the relevant option in your .cargo/config.toml 
 
 ### [wikitui](https://builditluc.github.io/wiki-tui/0.7/)
 - A simple and easy to use Wikipedia Text User Interface
+
+### [fd](https://github.com/sharkdp/fd)
+- An alternative to the standard find cli command 

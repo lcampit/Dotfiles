@@ -84,6 +84,23 @@ local plugins = {
 		end,
 	},
 	{
+		"jose-elias-alvarez/typescript.nvim",
+		ft = { "typescript", "typescriptreact" },
+		config = function()
+			require("typescript").setup({
+				disable_commands = false, -- prevent the plugin from creating Vim commands
+				debug = false, -- enable debug logging for commands
+				go_to_source_definition = {
+					fallback = true, -- fall back to standard LSP definition on failure
+				},
+				server = {
+					filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+					cmd = { "typescript-language-server", "--stdio" },
+				},
+			})
+		end,
+	},
+	{
 		"olexsmir/gopher.nvim",
 		ft = "go",
 		config = function(_, opts)
