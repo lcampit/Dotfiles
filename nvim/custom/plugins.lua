@@ -33,7 +33,6 @@ local plugins = {
 				"black",
 				"debugpy",
 				"typescript-language-server",
-				"eslint_d",
 				"stylua",
 				"tailwindcss-language-server",
 				"angular-language-server",
