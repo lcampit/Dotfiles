@@ -9,9 +9,9 @@ local opts = {
 		null_ls.builtins.diagnostics.mypy,
 		null_ls.builtins.diagnostics.ruff,
 		null_ls.builtins.formatting.black,
-		null_ls.builtins.formatting.prettierd,
 		null_ls.builtins.formatting.stylua,
-		null_ls.builtins.formatting.eslint_d,
+		null_ls.builtins.diagnostics.deno_lint,
+		null_ls.builtins.formatting.deno_fmt,
 	},
 	on_attach = function(client, bufnr)
 		if client.supports_method("textDocument/formatting") then

@@ -36,3 +36,8 @@ lspconfig.tailwindcss.setup({
 	on_attach = on_attach,
 	filetypes = { "css", "scss" },
 })
+
+lspconfig.angularls.setup({
+	filetypes = { "typescript", "html", "typescriptreact", "typescript.tsx" },
+	root_dir = util.root_pattern("angular.json"),
+})
