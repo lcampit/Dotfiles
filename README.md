@@ -48,5 +48,6 @@ The following is a list of tools and references for each configuration file incl
 - A hyperextensible Vim-based text editor
 ### [Delta](https://github.com/dandavison/delta)
 - A syntax-highlighting pager for git, diff, and grep output
-
+### [Rust Tools](https://github.com/Leo-Campo/Dotfiles/tree/main/rust-tools#readme)
+- List of Rust Tools to enhance productivity and streamline Rust development workflow
 
