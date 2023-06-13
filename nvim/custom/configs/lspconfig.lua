@@ -1,6 +1,9 @@
 local on_attach = require("plugins.configs.lspconfig").on_attach
 local capabilities = require("plugins.configs.lspconfig").capabilities
 
+-- Enables snippet support for certain lsps (html)
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 local lspconfig = require("lspconfig")
 local util = require("lspconfig/util")
 
@@ -35,16 +38,9 @@ lspconfig.pyright.setup({
 lspconfig.tailwindcss.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
-	filetypes = { "css", "scss" },
 })
 
 lspconfig.html.setup({
 	on_attach = on_attach,
-	settings = {
-		css = {
-			lint = {
-				validProperties = {},
-			},
-		},
-	},
+	capabilities = capabilities,
 })
