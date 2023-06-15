@@ -122,4 +122,54 @@ M.lspsaga = {
 		["K"] = { "<cmd>Lspsaga hover_doc<CR>", "Open documentation in hover" },
 	},
 }
+
+-- Keymaps for Git
+M.git = {
+	plugin = true,
+	n = {
+		["<leader>gB"] = { "<cmd>GitBlame<CR>", "Open git blame window" },
+		["<leader>gd"] = {
+			function()
+				require("git.diff").open()
+			end,
+			"Open diff view",
+		},
+		["<leader>gD"] = {
+			function()
+				require("git.diff").close()
+			end,
+			"Close diff view",
+		},
+		["<leader>gn"] = {
+			function()
+				require("git.browse").create_pull_request()
+			end,
+			"Create pull request to master branch",
+		},
+		["<leader>gp"] = {
+			function()
+				require("git.browse").pull_request()
+			end,
+			"Open pull requests for current branch",
+		},
+		["<leader>go"] = {
+			function()
+				require("git.browse").open()
+			end,
+			"Open current file on remote repo",
+		},
+		["<leader>gr"] = {
+			function()
+				require("git.revert").open(false)
+			end,
+			"Revert to specific commit",
+		},
+		["<leader>gR"] = {
+			function()
+				require("git.revert").open(true)
+			end,
+			"Revert current file to specific commit",
+		},
+	},
+}
 return M
