@@ -16,3 +16,4 @@ export DOTFILES_LOCATION;
 ./bin/dotfiles install tmux
 ./bin/dotfiles install nvim
 ./bin/dotfiles install rust-tools
+./bin/dotfiles install wezterm
