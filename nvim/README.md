@@ -173,6 +173,13 @@ Set up in mappings.lua:
   - There is a plethora of mappings defined for this plugin, loaded when the plugin is loaded too
   - Make sure to run `:TSInstall markdown markdown_inline` to make UI render properly
 
+- [lspkind](https://github.com/onsails/lspkind.nvim)
+
+  - Enables vscode-like pictograms on lsp suggestions
+
+- [nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag)
+  - Allows for html and the like tags to be automatically closed
+
 ## Language Server Protocol
 
 All these configurations are set in a dedicated file, **lspconfig.ls**, placed

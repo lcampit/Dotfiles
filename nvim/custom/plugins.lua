@@ -164,5 +164,107 @@ local plugins = {
 			{ "neovim/nvim-lspconfig" },
 		},
 	},
+	{
+		"onsails/lspkind.nvim",
+		event = "LspAttach",
+		dependencies = {
+			{ "neovim/nvim-lspconfig" },
+		},
+		config = function()
+			require("lspkind").init({
+				-- enables text annotations
+				--
+				-- default: true
+				mode = "symbol",
+
+				-- default symbol map
+				-- can be either 'default' (requires nerd-fonts font) or
+				-- 'codicons' for codicon preset (requires vscode-codicons font)
+				--
+				-- default: 'default'
+				preset = "codicons",
+
+				-- override preset symbols
+				--
+				-- default: {}
+				symbol_map = {
+					Text = "",
+					Method = "",
+					Function = "",
+					Constructor = "",
+					Field = "ﰠ",
+					Variable = "",
+					Class = "ﴯ",
+					Interface = "",
+					Module = "",
+					Property = "ﰠ",
+					Unit = "塞",
+					Value = "",
+					Enum = "",
+					Keyword = "",
+					Snippet = "",
+					Color = "",
+					File = "",
+					Reference = "",
+					Folder = "",
+					EnumMember = "",
+					Constant = "",
+					Struct = "פּ",
+					Event = "",
+					Operator = "",
+					TypeParameter = "",
+				},
+			})
+		end,
+	},
+	{
+		"windwp/nvim-ts-autotag",
+		ft = {
+			"html",
+			"javascript",
+			"typescript",
+			"javascriptreact",
+			"typescriptreact",
+			"svelte",
+			"vue",
+			"tsx",
+			"jsx",
+			"rescript",
+			"xml",
+			"php",
+			"markdown",
+			"astro",
+			"glimmer",
+			"handlebars",
+			"hbs",
+		},
+		config = function()
+			require("nvim-ts-autotag").setup()
+		end,
+	},
+	{
+		"dinhhuy258/git.nvim",
+		cmd = "Git",
+		ft = { "gitcommit", "diff" },
+		init = function()
+			-- load git.nvim only when a git file is opened
+			vim.api.nvim_create_autocmd({ "BufRead" }, {
+				group = vim.api.nvim_create_augroup("GitNvimLazyLoad", { clear = true }),
+				callback = function()
+					vim.fn.system("git -C " .. '"' .. vim.fn.expand("%:p:h") .. '"' .. " rev-parse")
+					if vim.v.shell_error == 0 then
+						vim.api.nvim_del_augroup_by_name("GitNvimLazyLoad")
+						vim.schedule(function()
+							require("lazy").load({ plugins = { "git.nvim" } })
+						end)
+					end
+				end,
+			})
+		end,
+		config = function()
+			require("custom.configs.git")
+			require("core.utils").load_mappings("git")
+		end,
+	},
 }
 return plugins
