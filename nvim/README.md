@@ -183,6 +183,8 @@ Set up in mappings.lua:
 - [zoxide](https://github.com/nanotee/zoxide.vim)
   - Enables usage of the [zoxide](https://github.com/ajeetdsouza/zoxide) cd replacement directly inside Nvim
 
+- [fzf](https://github.com/junegunn/fzf/blob/master/README-VIM.md)
+  - Enables usage of fzf inside Neovim and by other plugins, such as zoxide or telescope
 
 ## Language Server Protocol
 
