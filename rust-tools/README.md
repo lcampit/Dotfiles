@@ -62,3 +62,6 @@ to use it when compiling, or set the relevant option in your .cargo/config.toml 
 
 ### [fd](https://github.com/sharkdp/fd)
 - An alternative to the standard find cli command 
+
+### [zoxide](https://github.com/ajeetdsouza/zoxide)
+- An alternative to the standard cd command

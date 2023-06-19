@@ -266,5 +266,9 @@ local plugins = {
 			require("core.utils").load_mappings("git")
 		end,
 	},
+	{
+		"nanotee/zoxide.vim",
+		cmd = "Z",
+	},
 }
 return plugins
