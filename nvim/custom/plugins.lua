@@ -1,7 +1,19 @@
 local plugins = {
 	{
-		"christoomey/vim-tmux-navigator",
+		"alexghergh/nvim-tmux-navigation",
 		lazy = false,
+		config = function()
+			require("nvim-tmux-navigation").setup({
+				disable_when_zoomed = true, -- defaults to false
+				keybindings = {
+					left = "<C-h>",
+					down = "<C-j>",
+					up = "<C-k>",
+					right = "<C-l>",
+					last_active = "<C-\\>",
+				},
+			})
+		end,
 	},
 	{
 		"rcarriga/nvim-dap-ui",
@@ -273,6 +285,16 @@ local plugins = {
 	{
 		"junegunn/fzf",
 		cmd = "FZF",
+	},
+	{
+		"kylechui/nvim-surround",
+		version = "*", -- Use for stability; omit to use `main` branch for the latest features
+		event = "VeryLazy",
+		config = function()
+			require("nvim-surround").setup({
+				-- Configuration here, or leave empty to use defaults
+			})
+		end,
 	},
 }
 return plugins
