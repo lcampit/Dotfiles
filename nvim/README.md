@@ -180,6 +180,12 @@ Set up in mappings.lua:
 - [nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag)
   - Allows for html and the like tags to be automatically closed
 
+- [zoxide](https://github.com/nanotee/zoxide.vim)
+  - Enables usage of the [zoxide](https://github.com/ajeetdsouza/zoxide) cd replacement directly inside Nvim
+
+- [fzf](https://github.com/junegunn/fzf/blob/master/README-VIM.md)
+  - Enables usage of fzf inside Neovim and by other plugins, such as zoxide or telescope
+
 ## Language Server Protocol
 
 All these configurations are set in a dedicated file, **lspconfig.ls**, placed

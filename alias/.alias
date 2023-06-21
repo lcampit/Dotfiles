@@ -9,3 +9,5 @@ alias ls="exa"
 alias terminaltheme='bash -c  "$(wget -qO- https://git.io/vQgMr)"'
 alias grep=rg
 alias zshrc="nvim $HOME/.zshrc"
+alias t='python3 ~/t/t.py --task-dir ~/.tasks --delete-if-empty --list tasks'
+alias cd='z'

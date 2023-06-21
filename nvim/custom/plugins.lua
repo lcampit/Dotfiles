@@ -266,5 +266,13 @@ local plugins = {
 			require("core.utils").load_mappings("git")
 		end,
 	},
+	{
+		"nanotee/zoxide.vim",
+		cmd = "Z",
+	},
+	{
+		"junegunn/fzf",
+		cmd = "FZF",
+	},
 }
 return plugins
