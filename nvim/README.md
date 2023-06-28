@@ -199,6 +199,15 @@ Set up in mappings.lua:
     such as parenthesis, quotes, etc.
   - Defines new vim motion that integrates with vim standard ones effortlessly
 
+- [hardtime.nvim](https://github.com/m4xshen/hardtime.nvim)
+  - Helps establishing good command workflow and habit in nvim
+  - Blocks repetive movements and suggests more efficient ones to improve nvim
+    usage
+
+- [flash](https://github.com/folke/flash.nvim)
+  - Allows for code navigation using search labels, enhanced character motions
+    and Treesitter integration.
+
 ## Language Server Protocol
 
 All these configurations are set in a dedicated file, **lspconfig.ls**, placed
