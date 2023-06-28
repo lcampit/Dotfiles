@@ -1,4 +1,4 @@
-docal plugins = {
+local plugins = {
 	{
 		"alexghergh/nvim-tmux-navigation",
 		lazy = false,
