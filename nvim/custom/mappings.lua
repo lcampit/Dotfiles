@@ -1,11 +1,12 @@
 local M = {}
--- Keymaps for vim-tmux navigation
+-- Keymaps for nvim-tmux navigation
 M.general = {
 	n = {
-		["<C-h>"] = { "<cmd> TmuxNavigateLeft<CR>", "Move to window left" },
-		["<C-l>"] = { "<cmd> TmuxNavigateRight<CR>", "Move to window right" },
-		["<C-j>"] = { "<cmd> TmuxNavigateDown<CR>", "Move to window down" },
-		["<C-k>"] = { "<cmd> TmuxNavigateUp<CR>", "Move to window up" },
+		["<C-h>"] = { "<cmd> NvimTmuxNavigateLeft <CR>", "Move to window left" },
+		["<C-l>"] = { "<cmd> NvimTmuxNavigateRight <CR>", "Move to window right" },
+		["<C-j>"] = { "<cmd> NvimTmuxNavigateDown <CR>", "Move to window down" },
+		["<C-k>"] = { "<cmd> NvimTmuxNavigateUp <CR>", "Move to window up" },
+		["<C-\\>"] = { "<cmd> NvimTmuxNavigateLastActive <CR>", "Move to previous window" },
 		["<C-u>"] = { "<C-u>zz", "Jump half a page up" },
 		["<C-d>"] = { "<C-d>zz", "Jump half a page down" },
 	},

@@ -1,7 +1,19 @@
 local plugins = {
 	{
-		"christoomey/vim-tmux-navigator",
+		"alexghergh/nvim-tmux-navigation",
 		lazy = false,
+		config = function()
+			require("nvim-tmux-navigation").setup({
+				disable_when_zoomed = true, -- defaults to false
+				keybindings = {
+					left = "<C-h>",
+					down = "<C-j>",
+					up = "<C-k>",
+					right = "<C-l>",
+					last_active = "<C-\\>",
+				},
+			})
+		end,
 	},
 	{
 		"rcarriga/nvim-dap-ui",
@@ -273,6 +285,59 @@ local plugins = {
 	{
 		"junegunn/fzf",
 		cmd = "FZF",
+	},
+	{
+		"kylechui/nvim-surround",
+		version = "*", -- Use for stability; omit to use `main` branch for the latest features
+		event = "VeryLazy",
+		config = function()
+			require("nvim-surround").setup({
+				-- Configuration here, or leave empty to use defaults
+			})
+		end,
+	},
+	{
+		"folke/flash.nvim",
+		event = "VeryLazy",
+		opts = {},
+		keys = {
+			{
+				"s",
+				mode = { "n", "x", "o" },
+				function()
+					-- default options: exact mode, multi window, all directions, with a backdrop
+					require("flash").jump()
+				end,
+				desc = "Flash",
+			},
+			{
+				"S",
+				mode = { "n", "o", "x" },
+				function()
+					-- show labeled treesitter nodes around the cursor
+					require("flash").treesitter()
+				end,
+				desc = "Flash Treesitter",
+			},
+			{
+				"r",
+				mode = "o",
+				function()
+					-- jump to a remote location to execute the operator
+					require("flash").remote()
+				end,
+				desc = "Remote Flash",
+			},
+			{
+				"R",
+				mode = { "n", "o", "x" },
+				function()
+					-- show labeled treesitter nodes around the search matches
+					require("flash").treesitter_search()
+				end,
+				desc = "Treesitter Search",
+			},
+		},
 	},
 }
 return plugins
