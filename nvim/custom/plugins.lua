@@ -300,6 +300,7 @@ local plugins = {
 		"m4xshen/hardtime.nvim",
 		event = "VeryLazy",
 		opts = {},
+		enable = false,
 	},
 	{
 		"folke/flash.nvim",
