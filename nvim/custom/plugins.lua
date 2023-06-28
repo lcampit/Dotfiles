@@ -1,4 +1,4 @@
-local plugins = {
+docal plugins = {
 	{
 		"alexghergh/nvim-tmux-navigation",
 		lazy = false,
@@ -295,12 +295,6 @@ local plugins = {
 				-- Configuration here, or leave empty to use defaults
 			})
 		end,
-	},
-	{
-		"m4xshen/hardtime.nvim",
-		event = "VeryLazy",
-		opts = {},
-		enable = false,
 	},
 	{
 		"folke/flash.nvim",
