@@ -21,10 +21,10 @@ echo "installing sccache first to use it in next installations"
 cargo install sccache 
 
 echo "setting up cargo configuration"
-ln -sf $DOTFILES_LOCATION/rust-tools/config.toml $CARGO_HOME/config.toml
+ln -sf $DOTFILES_LOCATION/rust-tools/config.toml $HOME/.cargo/config.toml
 
 echo "installing other tools"
-cargo install exa bat starship bob-nvim zellij mprocs gitui porsmo wiki-tui fd-find zoxide
+cargo install exa bat starship bob-nvim zellij mprocs gitui porsmo wiki-tui fd-find zoxide rtx-cli
 
 echo "setting up starship configuration"
 ln -sf "$DOTFILES_LOCATION/rust-tools/starship.toml" "$HOME/.config/starship.toml"
