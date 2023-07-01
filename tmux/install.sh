@@ -2,10 +2,10 @@
 
 set -e # Stops the script if any part in it fails
 
-ln -sf "$DOTFILES_LOCATION/tmux/tmux.conf" "$HOME/.tmux.conf"
-mkdir "$HOME/.tmux/plugins/tpm"
+mkdir -p "$HOME/.config/tmux/plugins/tpm"
+ln -sf "$DOTFILES_LOCATION/tmux/tmux.conf" "$HOME/.config/tmux/tmux.conf"
 
 echo "Installing TPM"
-git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
+git clone https://github.com/tmux-plugins/tpm "$HOME/.config/tmux/plugins/tpm"
 
 echo "Done, open tmux and press CTRL I to install plugins"
