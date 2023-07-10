@@ -16,6 +16,9 @@ local plugins = {
 		end,
 	},
 	{
+		"nvim-lua/plenary.nvim",
+	},
+	{
 		"rcarriga/nvim-dap-ui",
 		dependencies = "mfussenegger/nvim-dap",
 		config = function()
@@ -97,6 +100,7 @@ local plugins = {
 	{
 		"jose-elias-alvarez/typescript.nvim",
 		ft = { "typescript", "typescriptreact" },
+		enabled = false,
 		config = function()
 			require("typescript").setup({
 				disable_commands = false, -- prevent the plugin from creating Vim commands
@@ -303,7 +307,7 @@ local plugins = {
 		opts = {},
 		keys = {
 			{
-				"s",
+				"ss",
 				mode = { "n", "x", "o" },
 				function()
 					-- default options: exact mode, multi window, all directions, with a backdrop
@@ -312,7 +316,7 @@ local plugins = {
 				desc = "Flash",
 			},
 			{
-				"S",
+				"SS",
 				mode = { "n", "o", "x" },
 				function()
 					-- show labeled treesitter nodes around the cursor
@@ -349,9 +353,17 @@ local plugins = {
 			require("mini.align").setup()
 			require("mini.basics").setup()
 			require("mini.bracketed").setup()
-			require("mini.bbufremove").setup()
+			require("mini.bufremove").setup()
 			require("mini.jump").setup()
 			require("mini.surround").setup()
+		end,
+	},
+	{
+		"pmizio/typescript-tools.nvim",
+		event = "LspAttach",
+		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+		config = function(_, opts)
+			require("typescript-tools").setup(opts)
 		end,
 	},
 }
