@@ -48,10 +48,10 @@ The base config follows this structure:
         └── init.lua
 ```
 
-All files but the custom folder are tracked in the NvChad repository and should
-not be modified. They _will_ change and be updated as NvChad gets updated. These
-files contain the standard configuration for everything NvChad comes with, such
-as the features listed above.
+All files except for the custom folder are tracked in the NvChad repository and
+should not be modified. They _will_ change and be updated as NvChad gets
+updated. These files contain the standard configuration for everything NvChad
+comes with, such as the features listed above.
 
 The custom folder, however, is our free country. Here the real tweaking happens.
 Files in the custom folder are organized as follows:
@@ -61,7 +61,7 @@ Files in the custom folder are organized as follows:
   own configurations;
 - **init.lua** contains basic settings for nvim that have nothing to do with
   NvChad or plugins. Things like relative numbers are set here;
-- **mappings.lua** contains yuor keymap configurations. In order to make those
+- **mappings.lua** contains yuor keymap configurations. To make those
   configurations blend with NvChad support to keymaps (which is amazing if you
   want them to stick, thanks to cheatsheet and which-key) you have to set them
   in a specific way, which will be discussed in its own section;
@@ -120,6 +120,12 @@ Set up in mappings.lua:
 
   - Easily manage LSP, Linters, Formatters and Debuggers installation
   - Override its configurations in plugins.lua
+
+- [Mason-lspconfig](https://github.com/williamboman/mason-lspconfig.nvim)
+
+  - Allows for automatic setup and installation of lsp setup by lspconfig
+  - Bridges the gap between Mason (lsp installation) and lspconfig (lsp
+    configuration)
 
 - [DAP](https://github.com/mfussenegger/nvim-dap)
 
@@ -184,7 +190,7 @@ Set up in mappings.lua:
   - Enables vscode-like pictograms on lsp suggestions
 
 - [nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag)
-  - Allows for html and the like tags to be automatically closed
+  - Allows for html tags and such to be automatically closed
 
 - [zoxide](https://github.com/nanotee/zoxide.vim)
   - Enables usage of the [zoxide](https://github.com/ajeetdsouza/zoxide) cd
@@ -208,11 +214,23 @@ Set up in mappings.lua:
   - Allows for code navigation using search labels, enhanced character motions
     and Treesitter integration.
 
+- [plenary](https://github.com/nvim-lua/plenary.nvim)
+  - Library used by other plugins for any asynchrounous operation
+
+- [typescript-tools.nvim](https://github.com/pmizio/typescript-tools.nvim)
+  - Set of tools and lsp functions to work with typescript
+
+- [mini.nvim](https://github.com/echasnovski/mini.nvim)
+  - Set of mini nvim plugins aimed at improving core functionalities with the
+    minimal effort
+  - Among all plugins, the one installed are now _ai_, _align_, _basics_,
+    _bracketed_, _bufremove_, _jump_ and _surround_
+
 ## Language Server Protocol
 
 All these configurations are set in a dedicated file, **lspconfig.ls**, placed
-in a configs folder, to keep things clean. In order to load these configurations
-as well as NvChad standard ones, the following must be added in plugins.lua:
+in a configs folder, to keep things clean. To load these configurations as well
+as NvChad standard ones, the following must be added in plugins.lua:
 
 ```lua
 {
@@ -247,10 +265,37 @@ each LSP server.
   - set up thanks to [this](https://youtu.be/4BnVeOUeZxc) video
   - Needs to be installed with mason or pip or npm, ensure its binary is in PATH
 
-- [typescript-language-server](https://github.com/typescript-language-server/typescript-language-server),
-  [tailwindcss](https://github.com/tailwindlabs/tailwindcss-intellisense/tree/master/packages/tailwindcss-language-server)
+- [tssserver](https://github.com/typescript-language-server/typescript-language-server),
+  [angularls](https://github.com/tailwindlabs/tailwindcss-intellisense/tree/master/packages/tailwindcss-language-server),
+  [cssls](https://github.com/hrsh7th/vscode-langservers-extracted),
+  [emmet-ls](https://github.com/aca/emmet-ls),
+  [html](https://github.com/hrsh7th/vscode-langservers-extracted),
 
+  - Installed and setup thanks to
+    [this](https://github.com/fedepujol/nvim/tree/lua-config) dotfile repo
   - LSPs to work in typescript, React, Angular and Web Development stuff
+
+- [lua_ls](https://github.com/luals/lua-language-server)
+  - Support for the Lua programming language
+
+- [jsonls](https://github.com/hrsh7th/vscode-langservers-extracted)
+  - Support for everything json related
+  - Requires [schemastore](https://github.com/b0o/SchemaStore.nvim) to be
+    installed to access an enourmous amazing collection of standard json
+    templates
+
+- [marksman](https://github.com/artempyanykh/marksman),
+  [prosemd_lsp](https://github.com/kitten/prosemd-lsp)
+  - LSPs for Markdown
+
+- [nil_ls](https://github.com/oxalica/nil)
+  - LSP for Nix Expression Language
+
+- [vimls](https://github.com/iamcco/vim-language-server)
+  - LSP for VimScript
+
+- [yamlls](https://github.com/redhat-developer/yaml-language-server)
+  - YAML language server
 
 ## Formatters
 
