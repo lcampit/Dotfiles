@@ -202,12 +202,12 @@ require("lspconfig").nil_ls.setup({
 -- })
 
 -- TSServer LSP
--- require("lspconfig").tsserver.setup({
--- 	capabilities = capabilities,
--- 	init_options = {
--- 		hostInfo = "neovim",
--- 	},
--- })
+require("lspconfig").tsserver.setup({
+  capabilities = capabilities,
+  init_options = {
+    hostInfo = "neovim",
+  },
+})
 
 -- Rust LSP
 -- require("lspconfig").rust_analyzer.setup({

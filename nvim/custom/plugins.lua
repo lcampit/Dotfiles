@@ -290,6 +290,7 @@ local plugins = {
   {
     "pmizio/typescript-tools.nvim",
     event = "LspAttach",
+    enabled = false,
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
     config = function(_, opts)
       require("typescript-tools").setup(opts)
