@@ -288,6 +288,7 @@ local plugins = {
 	},
 	{
 		"kylechui/nvim-surround",
+		enabled = false,
 		version = "*", -- Use for stability; omit to use `main` branch for the latest features
 		event = "VeryLazy",
 		config = function()
@@ -338,6 +339,20 @@ local plugins = {
 				desc = "Treesitter Search",
 			},
 		},
+	},
+	{
+		"echasnovski/mini.nvim",
+		event = "VeryLazy",
+		version = false,
+		config = function()
+			require("mini.ai").setup()
+			require("mini.align").setup()
+			require("mini.basics").setup()
+			require("mini.bracketed").setup()
+			require("mini.bbufremove").setup()
+			require("mini.jump").setup()
+			require("mini.surround").setup()
+		end,
 	},
 }
 return plugins
