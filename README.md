@@ -10,25 +10,21 @@ for you and remove things you don’t want or need.
 Don’t blindly use my settings unless you know what that entails. Use at your own risk!
 
 
-
 ### Using Git and the bootstrap script
-Installs all configuration files
+The repo provides a central install script that can be used to install single configurations 
+of all of them at once. This script is written using the [bashly](https://bashly.dannyb.co/) framework,
+an amazing tool that allows for robust and standardized bash scripts
+
+To install my configuration simply clone the repo, cd into it and use the script
 ```shell
-git clone https://github.com/Leo-Campo/dotfiles
-./install.sh
+git clone https://github.com/Leo-Campo/Dotfiles && cd Dotfiles
+./lcdot install <name of configuration>
 ```
 
-You are of course free to install just a subset of these, in that case either use each tool own install script
-located in its folder (environment variables may be needed) or move the configuration file to your 
-home folder (as that is the common installation method for these files).
-
-### Notes
-
-This repo is built to support **vscode dev containers dotfiles management**, providing a central install
-script and different configurations for each tool.
+The installation script comes with a standard help message to fully understand its options and usage
 
 ## Fonts
-My terminal currently uses the [Jetbrains Mono](https://www.jetbrains.com/lp/mono/)
+My terminal uses the [Jetbrains Mono](https://www.jetbrains.com/lp/mono/)
 font, made for developers with a bunch of useful features and symbols.
 
 ## Included tools and references
