@@ -1,0 +1,28 @@
+name: lcdot
+help: Helper script to set up my own dotfile environment
+version: 0.1.0
+
+environment_variables:
+- name: LCDOT_BACKUP
+  help: path to save backups before installing
+  default: ~/lcdot_backup
+
+commands:
+- name: install
+  alias: i
+  help: install a configuration
+
+  args:
+  - name: name
+    required: true
+    allowed: [all, nvim, gitconfig, rust-tools, tmux, vim, wezterm]
+    help: name of the configuration to install
+
+  flags:
+  - long: --backup
+    short: -b
+    help: Backup existing configurations
+
+  examples:
+  - lcdot install tmux
+  - lcdot install nvim -f
