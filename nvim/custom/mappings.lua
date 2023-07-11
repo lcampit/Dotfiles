@@ -28,6 +28,10 @@ M.dap = {
       end,
       "Open debugging sidebar",
     },
+    ["<leader>dr"] = {
+      "<cmd> DapContinue <CR>",
+      "Start or continue the debugger",
+    },
   },
 }
 

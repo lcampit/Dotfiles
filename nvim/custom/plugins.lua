@@ -22,7 +22,19 @@ local plugins = {
     "b0o/schemastore.nvim",
   },
   {
+    "jay-babu/mason-nvim-dap.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "williamboman/mason.nvim",
+      "mfussenegger/nvim-dap",
+    },
+    opts = {
+      handlers = {},
+    },
+  },
+  {
     "rcarriga/nvim-dap-ui",
+    event = "VeryLazy",
     dependencies = "mfussenegger/nvim-dap",
     config = function()
       local dap = require("dap")
@@ -41,12 +53,15 @@ local plugins = {
   },
   {
     "williamboman/mason.nvim",
+    event = "VeryLazy",
     opts = {
       ensure_installed = {
         "stylua",
         "debugpy",
         "black",
         "mypy",
+        "clang-format",
+        "codelldb",
       },
     },
     config = function()
@@ -101,7 +116,7 @@ local plugins = {
   },
   {
     "jose-elias-alvarez/null-ls.nvim",
-    ft = { "go", "python", "typescript", "lua", "css", "scss", "html" },
+    event = "VeryLazy",
     opts = function()
       return require("custom.configs.null-ls")
     end,

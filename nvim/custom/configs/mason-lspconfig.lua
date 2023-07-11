@@ -18,5 +18,6 @@ require("mason-lspconfig").setup({
     "pyright",
     "ruff_lsp",
     "denols",
+    "clangd",
   },
 })

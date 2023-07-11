@@ -255,3 +255,12 @@ require("lspconfig").yamlls.setup({
     },
   },
 })
+
+-- C / C++ LSP
+require("lspconfig").clangd.setup({
+  capabilities = capabilities,
+  on_attach = function(client, _)
+    client.server_capabilities.signatureHelpProvider = false
+  end,
+  cmd = { "clangd", "--offset-encoding=utf-16" }, -- Added to get rid of this warning https://github.com/jose-elias-alvarez/null-ls.nvim/issues/428
+})
