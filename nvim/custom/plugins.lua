@@ -54,19 +54,7 @@ local plugins = {
   {
     "williamboman/mason.nvim",
     event = "VeryLazy",
-    opts = {
-      ensure_installed = {
-        "stylua",
-        "debugpy",
-        "black",
-        "mypy",
-        "clang-format",
-        "codelldb",
-      },
-    },
-    config = function()
-      require("custom.configs.mason")
-    end,
+    opts = require("custom.configs.mason"),
   },
   {
     "williamboman/mason-lspconfig.nvim",
