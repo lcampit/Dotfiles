@@ -1,0 +1,105 @@
+USE_P10K=false # Flag to set up p10k or starship prompt
+
+if [[ "$USE_P10K" = true ]]; then
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+  if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+  fi
+fi
+
+
+### Added by Zinit's installer
+if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
+    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
+        print -P "%F{33} %F{34}Installation successful.%f%b" || \
+        print -P "%F{160} The clone has failed.%f%b"
+fi
+
+source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+if [[ "$USE_P10K" = true ]]; then
+  zinit ice depth=1; zplugin light romkatv/powerlevel10k
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+  [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+fi
+
+
+# fzf
+if type rg &> /dev/null; then
+  export FZF_DEFAULT_COMMAND='rg --files'
+  export FZF_DEFAULT_OPTS='-m'
+fi
+
+# editor
+export EDITOR=nvim
+export VISUAL=nvim
+
+# adds go to path
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$(go env GOPATH)/bin
+
+# adds rust to path
+export RUSTUP_HOME=$HOME/.rustup
+export CARGO_HOME=$HOME/.cargo
+export PATH=$PATH:$CARGO_HOME/bin
+export PATH=$PATH:$HOME/.local/share/bob/nvim-bin # add bob-nvim versions to path
+
+
+# adds nvim to path
+# export PATH=$PATH:/usr/local/bin/nvim/bin
+
+# adds local/bin to PATH
+export PATH=$PATH:$HOME/.local/bin
+
+# sets tmux and such config dir
+export XDG_CONFIG_HOME=$HOME/.config
+
+# sets folders for projects and dotfiles
+export DOTFILES_LOCATION=$HOME/Dotfiles
+export PROJECTS_LOCATION=$HOME/Desktop/Projects
+
+# plugins
+zinit snippet OMZP::git
+zinit snippet OMZP::sudo
+zinit snippet OMZP::command-not-found
+zinit snippet OMZP::copypath
+zinit snippet OMZP::copyfile
+zinit snippet OMZP::copybuffer
+zinit snippet OMZP::dirhistory
+zinit snippet OMZP::fzf
+
+zinit load zdharma-continuum/history-search-multi-word
+
+zinit light zsh-users/zsh-autosuggestions
+zinit light zdharma-continuum/fast-syntax-highlighting
+
+zinit light zsh-users/zsh-completions
+zinit light chrissicool/zsh-256color
+zinit light Anant-mishra1729/web-search
+zinit light trapd00r/LS_COLORS
+
+# aliases
+source "$HOME/.alias"
+
+# load rtx for zsh 
+eval "$(rtx activate zsh)"
+
+# load zoxide for zsh
+eval "$(zoxide init zsh)"
+
+# Use starship
+if [[ "$USE_P10K" = false ]]; then
+  # Weird workaround to avoid first empty line, but have an empty line after each prompt
+  precmd() {
+    precmd() {
+      echo
+    }
+  }
+  eval "$(starship init zsh)"
+fi
