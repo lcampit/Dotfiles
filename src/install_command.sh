@@ -61,6 +61,10 @@ elif [ $name == "wezterm" ]; then
   echo "Installing wezterm configuration"
   mkdir -p $HOME/.config/wezterm
   ln -sf $DOTFILES_LOCATION/wezterm/wezterm.lua $HOME/.config/wezterm/wezterm.lua
+
+elif [ $name == "zsh" ]; then
+  echo "Installing zsh configuration"
+  ln -sf $DOTFILES_LOCATION/zsh/zshrc $HOME/.zshrc
+  ln -sf $DOTFILES_LOCATION/zsh/zshenv $HOME/.zshenv
+  ln -sf $DOTFILES_LOCATION/alias/.alias $HOME/.alias
 fi
-  
-  

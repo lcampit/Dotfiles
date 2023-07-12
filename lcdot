@@ -218,7 +218,7 @@ lcdot_install_command() {
     echo "setting up cargo configuration"
     ln -sf $DOTFILES_LOCATION/rust-tools/config.toml $HOME/.cargo/config.toml
     echo "installing other tools"
-    cargo install exa bat starship bob-nvim zellij mprocs gitui porsmo wiki-tui fd-find zoxide rtx-cli ncspot
+    cargo install exa bat starship bob-nvim zellij mprocs gitui porsmo wiki-tui fd-find zoxide rtx-cli
     echo "setting up starship configuration"
     ln -sf "$DOTFILES_LOCATION/rust-tools/starship.toml" "$HOME/.config/starship.toml"
     echo "Done"
@@ -238,6 +238,12 @@ lcdot_install_command() {
     echo "Installing wezterm configuration"
     mkdir -p $HOME/.config/wezterm
     ln -sf $DOTFILES_LOCATION/wezterm/wezterm.lua $HOME/.config/wezterm/wezterm.lua
+
+  elif [ $name == "zsh" ]; then
+    echo "Installing zsh configuration"
+    ln -sf $DOTFILES_LOCATION/zsh/zshrc $HOME/.zshrc
+    ln -sf $DOTFILES_LOCATION/zsh/zshenv $HOME/.zshenv
+    ln -sf $DOTFILES_LOCATION/alias/.alias $HOME/.alias
   fi
 
 }
