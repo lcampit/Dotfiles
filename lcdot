@@ -62,7 +62,7 @@ lcdot_usage() {
     # :environment_variable.usage
     printf "  %s\n" "LCDOT_BACKUP"
     printf "    path to save backups before installing\n"
-    printf "    Default: ~/lcdot_backup\n"
+    printf "    Default: $HOME/lcdot_backup\n"
     echo
 
   fi
@@ -639,7 +639,7 @@ parse_requirements() {
 
   # :command.environment_variables_filter
   # :command.environment_variables_default
-  export LCDOT_BACKUP="${LCDOT_BACKUP:-~/lcdot_backup}"
+  export LCDOT_BACKUP="${LCDOT_BACKUP:-$HOME/lcdot_backup}"
 
   # :command.command_filter
   action=${1:-}
@@ -1147,7 +1147,7 @@ initialize() {
   set -e
 
   # :command.environment_variables_default
-  export LCDOT_BACKUP="${LCDOT_BACKUP:-~/lcdot_backup}"
+  export LCDOT_BACKUP="${LCDOT_BACKUP:-$HOME/lcdot_backup}"
 
 }
 

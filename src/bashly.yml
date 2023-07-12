@@ -5,7 +5,7 @@ version: 0.2.0
 environment_variables:
 - name: LCDOT_BACKUP
   help: path to save backups before installing
-  default: ~/lcdot_backup
+  default: $HOME/lcdot_backup
 
 commands:
 - name: nvim

@@ -12,7 +12,7 @@ fi
 # The following lines were added by compinstall
 
 zstyle ':completion:*' completer _complete _ignored
-zstyle ':completion:*' format 'Completion: %d'
+zstyle ':completion:*' format ''
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
 zstyle ':completion:*' matcher-list '+' '+' '+' '+'
