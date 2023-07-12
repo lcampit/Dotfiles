@@ -1,6 +1,6 @@
 name: lcdot
 help: Helper script to set up my own dotfile environment
-version: 0.1.0
+version: 0.2.0
 
 environment_variables:
 - name: LCDOT_BACKUP
@@ -8,21 +8,89 @@ environment_variables:
   default: ~/lcdot_backup
 
 commands:
-- name: install
-  alias: i
-  help: install a configuration
-
-  args:
-  - name: name
-    required: true
-    allowed: [all, nvim, gitconfig, rust-tools, tmux, vim, wezterm]
-    help: name of the configuration to install
+- name: nvim
+  alias: n
+  help: install my own nvim configuration
 
   flags:
   - long: --backup
     short: -b
-    help: Backup existing configurations
+    help: Backup existing configurations in LCDOT_BACKUP/nvim
 
   examples:
-  - lcdot install tmux
-  - lcdot install nvim -f
+  - lcdot nvim -b
+
+- name: gitconfig 
+  alias: git 
+  help: install my own git configuration
+
+  flags:
+    - long: --backup
+      short: -b
+      help: Backup existing configurations in LCDOT_BACKUP/gitconfig
+  
+  examples:
+    - lcodt git -b
+
+- name: rust-tools 
+  alias: rust
+  help: install my most used rust based tools and their configuration
+
+  flags:
+    - long: --backup
+      short: -b
+      help: Backup existing configurations in LCDOT_BACKUP/rust-tools
+
+  examples:
+    - lcodt rust -b
+
+- name: tmux 
+  alias: t 
+  help: install my own tmux configuration
+
+  flags:
+    - long: --backup
+      short: -b
+      help: Backup existing configurations in LCDOT_BACKUP/tmux
+
+  examples:
+    - lcodt tmux -b
+
+- name: vim 
+  alias: v 
+  help: install my own vim configuration
+
+  flags:
+    - long: --backup
+      short: -b
+      help: Backup existing configurations in LCDOT_BACKUP/vim
+
+  examples:
+    - lcodt vim -b
+
+- name: wezterm 
+  alias: w
+  help: install my own wezterm configuration
+
+  flags:
+    - long: --backup
+      short: -b
+      help: Backup existing configurations in LCDOT_BACKUP/wezterm
+      
+  examples:
+    - lcodt w -b
+
+- name: zsh 
+  alias: z 
+  help: install my own zshell configuration
+
+  flags:
+    - long: --backup
+      short: -b
+      help: Backup existing configurations in LCDOT_BACKUP/zsh
+
+  examples:
+    - lcodt z -b
+
+- name: all
+  help: installs all configuration files. Backup option is enabled by default

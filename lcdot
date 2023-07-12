@@ -34,7 +34,14 @@ lcdot_usage() {
   echo
   # :command.usage_commands
   printf "%s\n" "Commands:"
-  printf "  %s   install a configuration\n" "install"
+  printf "  %s   install my own nvim configuration\n" "nvim      "
+  printf "  %s   install my own git configuration\n" "gitconfig "
+  printf "  %s   install my most used rust based tools and their configuration\n" "rust-tools"
+  printf "  %s   install my own tmux configuration\n" "tmux      "
+  printf "  %s   install my own vim configuration\n" "vim       "
+  printf "  %s   install my own wezterm configuration\n" "wezterm   "
+  printf "  %s   install my own zshell configuration\n" "zsh       "
+  printf "  %s   installs all configuration files. Backup option is enabled by default\n" "all       "
   echo
 
   # :command.long_usage
@@ -62,23 +69,23 @@ lcdot_usage() {
 }
 
 # :command.usage
-lcdot_install_usage() {
+lcdot_nvim_usage() {
   if [[ -n $long_usage ]]; then
-    printf "lcdot install - install a configuration\n"
+    printf "lcdot nvim - install my own nvim configuration\n"
     echo
 
   else
-    printf "lcdot install - install a configuration\n"
+    printf "lcdot nvim - install my own nvim configuration\n"
     echo
 
   fi
 
-  printf "Alias: i\n"
+  printf "Alias: n\n"
   echo
 
   printf "%s\n" "Usage:"
-  printf "  lcdot install NAME [OPTIONS]\n"
-  printf "  lcdot install --help | -h\n"
+  printf "  lcdot nvim [OPTIONS]\n"
+  printf "  lcdot nvim --help | -h\n"
   echo
 
   # :command.long_usage
@@ -88,7 +95,7 @@ lcdot_install_usage() {
     # :command.usage_flags
     # :flag.usage
     printf "  %s\n" "--backup, -b"
-    printf "    Backup existing configurations\n"
+    printf "    Backup existing configurations in LCDOT_BACKUP/nvim\n"
     echo
 
     # :command.usage_fixed_flags
@@ -96,19 +103,296 @@ lcdot_install_usage() {
     printf "    Show this help\n"
     echo
 
-    # :command.usage_args
-    printf "%s\n" "Arguments:"
+    # :command.usage_examples
+    printf "%s\n" "Examples:"
+    printf "  lcdot nvim -b\n"
+    echo
 
-    # :argument.usage
-    printf "  %s\n" "NAME"
-    printf "    name of the configuration to install\n"
-    printf "    Allowed: all, nvim, gitconfig, rust-tools, tmux, vim, wezterm\n"
+  fi
+}
+
+# :command.usage
+lcdot_gitconfig_usage() {
+  if [[ -n $long_usage ]]; then
+    printf "lcdot gitconfig - install my own git configuration\n"
+    echo
+
+  else
+    printf "lcdot gitconfig - install my own git configuration\n"
+    echo
+
+  fi
+
+  printf "Alias: git\n"
+  echo
+
+  printf "%s\n" "Usage:"
+  printf "  lcdot gitconfig [OPTIONS]\n"
+  printf "  lcdot gitconfig --help | -h\n"
+  echo
+
+  # :command.long_usage
+  if [[ -n $long_usage ]]; then
+    printf "%s\n" "Options:"
+
+    # :command.usage_flags
+    # :flag.usage
+    printf "  %s\n" "--backup, -b"
+    printf "    Backup existing configurations in LCDOT_BACKUP/gitconfig\n"
+    echo
+
+    # :command.usage_fixed_flags
+    printf "  %s\n" "--help, -h"
+    printf "    Show this help\n"
     echo
 
     # :command.usage_examples
     printf "%s\n" "Examples:"
-    printf "  lcdot install tmux\n"
-    printf "  lcdot install nvim -f\n"
+    printf "  lcodt git -b\n"
+    echo
+
+  fi
+}
+
+# :command.usage
+lcdot_rust_tools_usage() {
+  if [[ -n $long_usage ]]; then
+    printf "lcdot rust-tools - install my most used rust based tools and their configuration\n"
+    echo
+
+  else
+    printf "lcdot rust-tools - install my most used rust based tools and their configuration\n"
+    echo
+
+  fi
+
+  printf "Alias: rust\n"
+  echo
+
+  printf "%s\n" "Usage:"
+  printf "  lcdot rust-tools [OPTIONS]\n"
+  printf "  lcdot rust-tools --help | -h\n"
+  echo
+
+  # :command.long_usage
+  if [[ -n $long_usage ]]; then
+    printf "%s\n" "Options:"
+
+    # :command.usage_flags
+    # :flag.usage
+    printf "  %s\n" "--backup, -b"
+    printf "    Backup existing configurations in LCDOT_BACKUP/rust-tools\n"
+    echo
+
+    # :command.usage_fixed_flags
+    printf "  %s\n" "--help, -h"
+    printf "    Show this help\n"
+    echo
+
+    # :command.usage_examples
+    printf "%s\n" "Examples:"
+    printf "  lcodt rust -b\n"
+    echo
+
+  fi
+}
+
+# :command.usage
+lcdot_tmux_usage() {
+  if [[ -n $long_usage ]]; then
+    printf "lcdot tmux - install my own tmux configuration\n"
+    echo
+
+  else
+    printf "lcdot tmux - install my own tmux configuration\n"
+    echo
+
+  fi
+
+  printf "Alias: t\n"
+  echo
+
+  printf "%s\n" "Usage:"
+  printf "  lcdot tmux [OPTIONS]\n"
+  printf "  lcdot tmux --help | -h\n"
+  echo
+
+  # :command.long_usage
+  if [[ -n $long_usage ]]; then
+    printf "%s\n" "Options:"
+
+    # :command.usage_flags
+    # :flag.usage
+    printf "  %s\n" "--backup, -b"
+    printf "    Backup existing configurations in LCDOT_BACKUP/tmux\n"
+    echo
+
+    # :command.usage_fixed_flags
+    printf "  %s\n" "--help, -h"
+    printf "    Show this help\n"
+    echo
+
+    # :command.usage_examples
+    printf "%s\n" "Examples:"
+    printf "  lcodt tmux -b\n"
+    echo
+
+  fi
+}
+
+# :command.usage
+lcdot_vim_usage() {
+  if [[ -n $long_usage ]]; then
+    printf "lcdot vim - install my own vim configuration\n"
+    echo
+
+  else
+    printf "lcdot vim - install my own vim configuration\n"
+    echo
+
+  fi
+
+  printf "Alias: v\n"
+  echo
+
+  printf "%s\n" "Usage:"
+  printf "  lcdot vim [OPTIONS]\n"
+  printf "  lcdot vim --help | -h\n"
+  echo
+
+  # :command.long_usage
+  if [[ -n $long_usage ]]; then
+    printf "%s\n" "Options:"
+
+    # :command.usage_flags
+    # :flag.usage
+    printf "  %s\n" "--backup, -b"
+    printf "    Backup existing configurations in LCDOT_BACKUP/vim\n"
+    echo
+
+    # :command.usage_fixed_flags
+    printf "  %s\n" "--help, -h"
+    printf "    Show this help\n"
+    echo
+
+    # :command.usage_examples
+    printf "%s\n" "Examples:"
+    printf "  lcodt vim -b\n"
+    echo
+
+  fi
+}
+
+# :command.usage
+lcdot_wezterm_usage() {
+  if [[ -n $long_usage ]]; then
+    printf "lcdot wezterm - install my own wezterm configuration\n"
+    echo
+
+  else
+    printf "lcdot wezterm - install my own wezterm configuration\n"
+    echo
+
+  fi
+
+  printf "Alias: w\n"
+  echo
+
+  printf "%s\n" "Usage:"
+  printf "  lcdot wezterm [OPTIONS]\n"
+  printf "  lcdot wezterm --help | -h\n"
+  echo
+
+  # :command.long_usage
+  if [[ -n $long_usage ]]; then
+    printf "%s\n" "Options:"
+
+    # :command.usage_flags
+    # :flag.usage
+    printf "  %s\n" "--backup, -b"
+    printf "    Backup existing configurations in LCDOT_BACKUP/wezterm\n"
+    echo
+
+    # :command.usage_fixed_flags
+    printf "  %s\n" "--help, -h"
+    printf "    Show this help\n"
+    echo
+
+    # :command.usage_examples
+    printf "%s\n" "Examples:"
+    printf "  lcodt w -b\n"
+    echo
+
+  fi
+}
+
+# :command.usage
+lcdot_zsh_usage() {
+  if [[ -n $long_usage ]]; then
+    printf "lcdot zsh - install my own zshell configuration\n"
+    echo
+
+  else
+    printf "lcdot zsh - install my own zshell configuration\n"
+    echo
+
+  fi
+
+  printf "Alias: z\n"
+  echo
+
+  printf "%s\n" "Usage:"
+  printf "  lcdot zsh [OPTIONS]\n"
+  printf "  lcdot zsh --help | -h\n"
+  echo
+
+  # :command.long_usage
+  if [[ -n $long_usage ]]; then
+    printf "%s\n" "Options:"
+
+    # :command.usage_flags
+    # :flag.usage
+    printf "  %s\n" "--backup, -b"
+    printf "    Backup existing configurations in LCDOT_BACKUP/zsh\n"
+    echo
+
+    # :command.usage_fixed_flags
+    printf "  %s\n" "--help, -h"
+    printf "    Show this help\n"
+    echo
+
+    # :command.usage_examples
+    printf "%s\n" "Examples:"
+    printf "  lcodt z -b\n"
+    echo
+
+  fi
+}
+
+# :command.usage
+lcdot_all_usage() {
+  if [[ -n $long_usage ]]; then
+    printf "lcdot all - installs all configuration files. Backup option is enabled by default\n"
+    echo
+
+  else
+    printf "lcdot all - installs all configuration files. Backup option is enabled by default\n"
+    echo
+
+  fi
+
+  printf "%s\n" "Usage:"
+  printf "  lcdot all\n"
+  printf "  lcdot all --help | -h\n"
+  echo
+
+  # :command.long_usage
+  if [[ -n $long_usage ]]; then
+    printf "%s\n" "Options:"
+
+    # :command.usage_fixed_flags
+    printf "  %s\n" "--help, -h"
+    printf "    Show this help\n"
     echo
 
   fi
@@ -168,29 +452,31 @@ inspect_args() {
 
 # :command.command_functions
 # :command.function
-lcdot_install_command() {
-  # src/install_command.sh
-  name=${args[name]}
+lcdot_nvim_command() {
+  # src/nvim_command.sh
   backup=${args[--backup]}
   DOTFILES_LOCATION=$(pwd)
-  echo "installing $name from $DOTFILES_LOCATION"
+  echo "installing nvim configuration from $DOTFILES_LOCATION"
 
-  if [ $name == "nvim" ]; then
-    echo "Installing NvChad"
-    if [ backup ]; then
-      echo "moving present configuration to $LCDOT_BACKUP/nvim"
-      mkdir -p $LCDOT_BACKUP/nvim
-      mv $HOME/.config/nvim $LCDOT_BACKUP/nvim
-    fi
-    mkdir -p $HOME/.config
-    git clone https://github.com/NvChad/NvChad "$HOME/.config/nvim" --depth 1
-    echo "Linking custom config into NvChad"
-    ln -sfr "$DOTFILES_LOCATION/nvim/custom" "$HOME/.config/nvim/lua"
-    echo "Done, run nvim. Do not load any sample config, run :Lazy Sync and :MasonInstallAll to install plugins, lsps, formatters and so on"
+  mkdir -p $HOME/.config
+  if [ $backup ]; then
+    echo "moving present configuration to $LCDOT_BACKUP/nvim"
+    mkdir -p $LCDOT_BACKUP/nvim
+    mv $HOME/.config/nvim $LCDOT_BACKUP/nvim
+  fi
+  echo "Installing NvChad"
+  git clone https://github.com/NvChad/NvChad "$HOME/.config/nvim" --depth 1
+  echo "Linking custom config into NvChad"
+  ln -sfr "$DOTFILES_LOCATION/nvim/custom" "$HOME/.config/nvim/lua"
+  echo "Done, run nvim. Do not load any sample config, run :Lazy Sync and :MasonInstallAll to install plugins, lsps, formatters and so on"
 
-  elif [ $name == "gitconfig" ]; then
+}
+
+# :command.function
+lcdot_gitconfig_command() {
+  # src/gitconfig_command.sh
     echo "Setting up gitconfig to use delta and other tools"
-    if [ backup ]; then
+    if [ $backup ]; then
 
       echo "moving present gitconfig file to $LCDOT_BACKUP/gitconfig"
       mkdir -p $LCDOT_BACKUP/gitconfig
@@ -203,48 +489,128 @@ lcdot_install_command() {
     ln -sf "$DOTFILES_LOCATION/gitconfig/gitconfig" "$HOME/.gitconfig"
     echo "Done"
 
-  elif [ $name == "rust-tools" ]; then
-    echo "Installing rust cli tools"
-    echo "setting up gitui configuration"
-    mkdir -p $HOME/.config/gitui
-    mkdir -p $HOME/.config/ncspot
-    mkdir -p $HOME/.cargo/
-    ln -sfn "$DOTFILES_LOCATION/rust-tools/gitui/" "$HOME/.config/gitui"
-    echo "setting up ncspot configuration"
-    ln -sfn "$DOTFILES_LOCATION/rust-tools/ncspot/" "$HOME/.config/ncspot"
-    echo "installing sccache first to use it in next installations"
-    cargo install sccache
+}
 
-    echo "setting up cargo configuration"
-    ln -sf $DOTFILES_LOCATION/rust-tools/config.toml $HOME/.cargo/config.toml
-    echo "installing other tools"
-    cargo install exa bat starship bob-nvim zellij mprocs gitui porsmo wiki-tui fd-find zoxide rtx-cli
-    echo "setting up starship configuration"
-    ln -sf "$DOTFILES_LOCATION/rust-tools/starship.toml" "$HOME/.config/starship.toml"
-    echo "Done"
+# :command.function
+lcdot_rust_tools_command() {
+  # src/rust_tools_command.sh
+  backup=${args[--backup]}
+  DOTFILES_LOCATION=$(pwd)
 
-  elif [ $name == "tmux" ]; then
+  echo "Installing rust cli tools and their configuration from $DOTFILES_LOCATION"
+  mkdir -p $HOME/.config/gitui
+  mkdir -p $HOME/.config/ncspot
+  mkdir -p $HOME/.cargo/
 
-    echo "Installing tmux configuration"
+  if [ $backup ]; then
+    echo "Moving previous configurations in $LCDOT_BACKUP/rust-tools"
+    mkdir -p $LCDOT_BACKUP/rust-tools/gitui
+    mkdir -p $LCDOT_BACKUP/rust-tools/ncspot
+    mkdir -p $LCDOT_BACKUP/rust-tools/cargo
+    mkdir -p $LCDOT_BACKUP/rust-tools/starship
 
-    mkdir -p "$HOME/.config/tmux/plugins/tpm"
-    ln -sf "$DOTFILES_LOCATION/tmux/tmux.conf" "$HOME/.config/tmux/tmux.conf"
-    echo "Installing TPM"
-    git clone https://github.com/tmux-plugins/tpm "$HOME/.config/tmux/plugins/tpm"
-    echo "Done, open tmux and press CTRL I to install plugins"
-
-  elif [ $name == "wezterm" ]; then
-
-    echo "Installing wezterm configuration"
-    mkdir -p $HOME/.config/wezterm
-    ln -sf $DOTFILES_LOCATION/wezterm/wezterm.lua $HOME/.config/wezterm/wezterm.lua
-
-  elif [ $name == "zsh" ]; then
-    echo "Installing zsh configuration"
-    ln -sf $DOTFILES_LOCATION/zsh/zshrc $HOME/.zshrc
-    ln -sf $DOTFILES_LOCATION/zsh/zshenv $HOME/.zshenv
-    ln -sf $DOTFILES_LOCATION/alias/.alias $HOME/.alias
+    mv $HOME/.config/gitui $LCDOT_BACKUP/rust-tools/gitui
+    mv $HOME/.config/ncspot $LCDOT_BACKUP/rust-tools/ncspot
+    mv $HOME/.cargo/config.toml $LCDOT_BACKUP/rust-tools/cargo/config.toml
+    mv $HOME/.config/starship.toml $LCDOT_BACKUP/rust-tools/starship/starship.toml
   fi
+
+  echo "setting up gitui configuration"
+  ln -sfn "$DOTFILES_LOCATION/rust-tools/gitui/" "$HOME/.config/gitui"
+
+  echo "setting up ncspot configuration"
+  ln -sfn "$DOTFILES_LOCATION/rust-tools/ncspot/" "$HOME/.config/ncspot"
+
+  echo "installing sccache first to use it in next installations"
+  cargo install sccache
+
+  echo "setting up cargo configuration"
+  ln -sf $DOTFILES_LOCATION/rust-tools/config.toml $HOME/.cargo/config.toml
+
+  echo "installing other tools"
+  cargo install exa bat starship bob-nvim zellij mprocs gitui porsmo wiki-tui fd-find zoxide rtx-cli
+
+  echo "setting up starship configuration"
+  ln -sf "$DOTFILES_LOCATION/rust-tools/starship.toml" "$HOME/.config/starship.toml"
+
+  echo "Done"
+
+}
+
+# :command.function
+lcdot_tmux_command() {
+  # src/tmux_command.sh
+  backup=${args[--backup]}
+  DOTFILES_LOCATION=$(pwd)
+  echo "Installing tmux configuration from $DOTFILES_LOCATION"
+
+  if [ $backup ]; then
+    echo "Moving present configuration in $LCDOT_BACKUP/tmux"
+    mkdir -p $LCDOT_BACKUP/tmux
+    mv $HOME/.config/tmux $LCDOT_BACKUP/tmux
+  fi
+
+  mkdir -p "$HOME/.config/tmux/plugins/tpm"
+  ln -sf "$DOTFILES_LOCATION/tmux/tmux.conf" "$HOME/.config/tmux/tmux.conf"
+  echo "Installing TPM"
+  git clone https://github.com/tmux-plugins/tpm "$HOME/.config/tmux/plugins/tpm"
+  echo "Done, open tmux and press CTRL I to install plugins"
+
+}
+
+# :command.function
+lcdot_vim_command() {
+  # src/vim_command.sh
+  echo "This command is not implemented yet, feel free to open an issue on the GitHub page"
+
+}
+
+# :command.function
+lcdot_wezterm_command() {
+  # src/wezterm_command.sh
+  backup=${args[--backup]}
+  DOTFILES_LOCATION=$(pwd)
+  echo "Installing wezterm configuration from $DOTFILES_LOCATION"
+
+  if [ $backup ]; then
+
+    echo "Moving present configuration to $LCDOT_BACKUP/wezterm"
+    mkdir -p $LCDOT_BACKUP/wezterm
+    mv "$HOME/.config/wezterm" "$LCDOT_BACKUP/wezterm/"
+  fi
+
+  mkdir -p $HOME/.config/wezterm
+  ln -sf $DOTFILES_LOCATION/wezterm/wezterm.lua $HOME/.config/wezterm/wezterm.lua
+  echo "Done"
+
+}
+
+# :command.function
+lcdot_zsh_command() {
+  # src/zsh_command.sh
+  backup=${args[--backup]}
+  DOTFILES_LOCATION=$(pwd)
+  echo "Installing zsh configuration from $DOTFILES_LOCATION"
+  if [ $backup ]; then
+    echo "Moving present configuration to $LCDOT_BACKUP/zsh"
+    mkdir -p $LCDOT_BACKUP/zsh
+    mv $HOME/.zshrc $LCDOT_BACKUP/zsh/zshrc
+    mv $HOME/.zshenv $LCDOT_BACKUP/zsh/zshenv
+    mv $HOME/.alias $LCDOT_BACKUP/zsh/alias
+
+  fi
+  ln -sf $DOTFILES_LOCATION/zsh/zshrc $HOME/.zshrc
+  ln -sf $DOTFILES_LOCATION/zsh/zshenv $HOME/.zshenv
+  ln -sf $DOTFILES_LOCATION/alias/alias $HOME/.alias
+
+  echo "Done"
+
+}
+
+# :command.function
+lcdot_all_command() {
+  # src/all_command.sh
+  echo "This command is not implemented yet, feel free to open an issue on the GitHub page"
 
 }
 
@@ -281,10 +647,59 @@ parse_requirements() {
   case $action in
     -*) ;;
 
-    install | i)
-      action="install"
+    nvim | n)
+      action="nvim"
       shift
-      lcdot_install_parse_requirements "$@"
+      lcdot_nvim_parse_requirements "$@"
+      shift $#
+      ;;
+
+    gitconfig | git)
+      action="gitconfig"
+      shift
+      lcdot_gitconfig_parse_requirements "$@"
+      shift $#
+      ;;
+
+    rust-tools | rust)
+      action="rust-tools"
+      shift
+      lcdot_rust_tools_parse_requirements "$@"
+      shift $#
+      ;;
+
+    tmux | t)
+      action="tmux"
+      shift
+      lcdot_tmux_parse_requirements "$@"
+      shift $#
+      ;;
+
+    vim | v)
+      action="vim"
+      shift
+      lcdot_vim_parse_requirements "$@"
+      shift $#
+      ;;
+
+    wezterm | w)
+      action="wezterm"
+      shift
+      lcdot_wezterm_parse_requirements "$@"
+      shift $#
+      ;;
+
+    zsh | z)
+      action="zsh"
+      shift
+      lcdot_zsh_parse_requirements "$@"
+      shift $#
+      ;;
+
+    all)
+      action="all"
+      shift
+      lcdot_all_parse_requirements "$@"
       shift $#
       ;;
 
@@ -325,13 +740,13 @@ parse_requirements() {
 }
 
 # :command.parse_requirements
-lcdot_install_parse_requirements() {
+lcdot_nvim_parse_requirements() {
   # :command.fixed_flags_filter
   while [[ $# -gt 0 ]]; do
     case "${1:-}" in
       --help | -h)
         long_usage=yes
-        lcdot_install_usage
+        lcdot_nvim_usage
         exit
         ;;
 
@@ -343,7 +758,7 @@ lcdot_install_parse_requirements() {
   done
 
   # :command.command_filter
-  action="install"
+  action="nvim"
 
   # :command.parse_requirements_while
   while [[ $# -gt 0 ]]; do
@@ -365,37 +780,369 @@ lcdot_install_parse_requirements() {
       *)
         # :command.parse_requirements_case
         # :command.parse_requirements_case_simple
-        if [[ -z ${args['name']+x} ]]; then
-
-          args['name']=$1
-          shift
-        else
-          printf "invalid argument: %s\n" "$key" >&2
-          exit 1
-        fi
+        printf "invalid argument: %s\n" "$key" >&2
+        exit 1
 
         ;;
 
     esac
   done
 
-  # :command.required_args_filter
-  if [[ -z ${args['name']+x} ]]; then
-    printf "missing required argument: NAME\nusage: lcdot install NAME [OPTIONS]\n" >&2
-    exit 1
-  fi
+}
 
-  # :command.whitelist_filter
-  if [[ -n ${args['name']} ]] && [[ ! ${args['name']} =~ ^(all|nvim|gitconfig|rust-tools|tmux|vim|wezterm)$ ]]; then
-    printf "%s\n" "name must be one of: all, nvim, gitconfig, rust-tools, tmux, vim, wezterm" >&2
-    exit 1
-  fi
+# :command.parse_requirements
+lcdot_gitconfig_parse_requirements() {
+  # :command.fixed_flags_filter
+  while [[ $# -gt 0 ]]; do
+    case "${1:-}" in
+      --help | -h)
+        long_usage=yes
+        lcdot_gitconfig_usage
+        exit
+        ;;
+
+      *)
+        break
+        ;;
+
+    esac
+  done
+
+  # :command.command_filter
+  action="gitconfig"
+
+  # :command.parse_requirements_while
+  while [[ $# -gt 0 ]]; do
+    key="$1"
+    case "$key" in
+      # :flag.case
+      --backup | -b)
+
+        # :flag.case_no_arg
+        args['--backup']=1
+        shift
+        ;;
+
+      -?*)
+        printf "invalid option: %s\n" "$key" >&2
+        exit 1
+        ;;
+
+      *)
+        # :command.parse_requirements_case
+        # :command.parse_requirements_case_simple
+        printf "invalid argument: %s\n" "$key" >&2
+        exit 1
+
+        ;;
+
+    esac
+  done
+
+}
+
+# :command.parse_requirements
+lcdot_rust_tools_parse_requirements() {
+  # :command.fixed_flags_filter
+  while [[ $# -gt 0 ]]; do
+    case "${1:-}" in
+      --help | -h)
+        long_usage=yes
+        lcdot_rust_tools_usage
+        exit
+        ;;
+
+      *)
+        break
+        ;;
+
+    esac
+  done
+
+  # :command.command_filter
+  action="rust-tools"
+
+  # :command.parse_requirements_while
+  while [[ $# -gt 0 ]]; do
+    key="$1"
+    case "$key" in
+      # :flag.case
+      --backup | -b)
+
+        # :flag.case_no_arg
+        args['--backup']=1
+        shift
+        ;;
+
+      -?*)
+        printf "invalid option: %s\n" "$key" >&2
+        exit 1
+        ;;
+
+      *)
+        # :command.parse_requirements_case
+        # :command.parse_requirements_case_simple
+        printf "invalid argument: %s\n" "$key" >&2
+        exit 1
+
+        ;;
+
+    esac
+  done
+
+}
+
+# :command.parse_requirements
+lcdot_tmux_parse_requirements() {
+  # :command.fixed_flags_filter
+  while [[ $# -gt 0 ]]; do
+    case "${1:-}" in
+      --help | -h)
+        long_usage=yes
+        lcdot_tmux_usage
+        exit
+        ;;
+
+      *)
+        break
+        ;;
+
+    esac
+  done
+
+  # :command.command_filter
+  action="tmux"
+
+  # :command.parse_requirements_while
+  while [[ $# -gt 0 ]]; do
+    key="$1"
+    case "$key" in
+      # :flag.case
+      --backup | -b)
+
+        # :flag.case_no_arg
+        args['--backup']=1
+        shift
+        ;;
+
+      -?*)
+        printf "invalid option: %s\n" "$key" >&2
+        exit 1
+        ;;
+
+      *)
+        # :command.parse_requirements_case
+        # :command.parse_requirements_case_simple
+        printf "invalid argument: %s\n" "$key" >&2
+        exit 1
+
+        ;;
+
+    esac
+  done
+
+}
+
+# :command.parse_requirements
+lcdot_vim_parse_requirements() {
+  # :command.fixed_flags_filter
+  while [[ $# -gt 0 ]]; do
+    case "${1:-}" in
+      --help | -h)
+        long_usage=yes
+        lcdot_vim_usage
+        exit
+        ;;
+
+      *)
+        break
+        ;;
+
+    esac
+  done
+
+  # :command.command_filter
+  action="vim"
+
+  # :command.parse_requirements_while
+  while [[ $# -gt 0 ]]; do
+    key="$1"
+    case "$key" in
+      # :flag.case
+      --backup | -b)
+
+        # :flag.case_no_arg
+        args['--backup']=1
+        shift
+        ;;
+
+      -?*)
+        printf "invalid option: %s\n" "$key" >&2
+        exit 1
+        ;;
+
+      *)
+        # :command.parse_requirements_case
+        # :command.parse_requirements_case_simple
+        printf "invalid argument: %s\n" "$key" >&2
+        exit 1
+
+        ;;
+
+    esac
+  done
+
+}
+
+# :command.parse_requirements
+lcdot_wezterm_parse_requirements() {
+  # :command.fixed_flags_filter
+  while [[ $# -gt 0 ]]; do
+    case "${1:-}" in
+      --help | -h)
+        long_usage=yes
+        lcdot_wezterm_usage
+        exit
+        ;;
+
+      *)
+        break
+        ;;
+
+    esac
+  done
+
+  # :command.command_filter
+  action="wezterm"
+
+  # :command.parse_requirements_while
+  while [[ $# -gt 0 ]]; do
+    key="$1"
+    case "$key" in
+      # :flag.case
+      --backup | -b)
+
+        # :flag.case_no_arg
+        args['--backup']=1
+        shift
+        ;;
+
+      -?*)
+        printf "invalid option: %s\n" "$key" >&2
+        exit 1
+        ;;
+
+      *)
+        # :command.parse_requirements_case
+        # :command.parse_requirements_case_simple
+        printf "invalid argument: %s\n" "$key" >&2
+        exit 1
+
+        ;;
+
+    esac
+  done
+
+}
+
+# :command.parse_requirements
+lcdot_zsh_parse_requirements() {
+  # :command.fixed_flags_filter
+  while [[ $# -gt 0 ]]; do
+    case "${1:-}" in
+      --help | -h)
+        long_usage=yes
+        lcdot_zsh_usage
+        exit
+        ;;
+
+      *)
+        break
+        ;;
+
+    esac
+  done
+
+  # :command.command_filter
+  action="zsh"
+
+  # :command.parse_requirements_while
+  while [[ $# -gt 0 ]]; do
+    key="$1"
+    case "$key" in
+      # :flag.case
+      --backup | -b)
+
+        # :flag.case_no_arg
+        args['--backup']=1
+        shift
+        ;;
+
+      -?*)
+        printf "invalid option: %s\n" "$key" >&2
+        exit 1
+        ;;
+
+      *)
+        # :command.parse_requirements_case
+        # :command.parse_requirements_case_simple
+        printf "invalid argument: %s\n" "$key" >&2
+        exit 1
+
+        ;;
+
+    esac
+  done
+
+}
+
+# :command.parse_requirements
+lcdot_all_parse_requirements() {
+  # :command.fixed_flags_filter
+  while [[ $# -gt 0 ]]; do
+    case "${1:-}" in
+      --help | -h)
+        long_usage=yes
+        lcdot_all_usage
+        exit
+        ;;
+
+      *)
+        break
+        ;;
+
+    esac
+  done
+
+  # :command.command_filter
+  action="all"
+
+  # :command.parse_requirements_while
+  while [[ $# -gt 0 ]]; do
+    key="$1"
+    case "$key" in
+
+      -?*)
+        printf "invalid option: %s\n" "$key" >&2
+        exit 1
+        ;;
+
+      *)
+        # :command.parse_requirements_case
+        # :command.parse_requirements_case_simple
+        printf "invalid argument: %s\n" "$key" >&2
+        exit 1
+
+        ;;
+
+    esac
+  done
 
 }
 
 # :command.initialize
 initialize() {
-  version="0.1.0"
+  version="0.2.0"
   long_usage=''
   set -e
 
@@ -414,7 +1161,14 @@ run() {
   parse_requirements "${input[@]}"
 
   case "$action" in
-    "install") lcdot_install_command ;;
+    "nvim") lcdot_nvim_command ;;
+    "gitconfig") lcdot_gitconfig_command ;;
+    "rust-tools") lcdot_rust_tools_command ;;
+    "tmux") lcdot_tmux_command ;;
+    "vim") lcdot_vim_command ;;
+    "wezterm") lcdot_wezterm_command ;;
+    "zsh") lcdot_zsh_command ;;
+    "all") lcdot_all_command ;;
   esac
 }
 
