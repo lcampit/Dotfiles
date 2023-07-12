@@ -231,6 +231,8 @@ Set up in mappings.lua:
     status bar where space is premium
   - Uses the legacy tag as the plugin is about to get rewritten. Will switch
     back once that happens
+  - Configuration has been taken from [this](https://github.com/fedepujol/nvim)
+    fellow developer dotfile repo
 
 ## Language Server Protocol
 
