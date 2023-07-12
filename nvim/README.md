@@ -226,6 +226,12 @@ Set up in mappings.lua:
   - Among all plugins, the one installed are now _ai_, _align_, _basics_,
     _bracketed_, _bufremove_, _jump_ and _surround_
 
+- [fidget.nvim](https://github.com/j-hui/fidget.nvim)
+  - Shows LSPs loading status in the lower right corner rather than on the
+    status bar where space is premium
+  - Uses the legacy tag as the plugin is about to get rewritten. Will switch
+    back once that happens
+
 ## Language Server Protocol
 
 All these configurations are set in a dedicated file, **lspconfig.ls**, placed

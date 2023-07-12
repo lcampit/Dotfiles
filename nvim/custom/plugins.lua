@@ -299,5 +299,11 @@ local plugins = {
       require("typescript-tools").setup(opts)
     end,
   },
+  {
+    "j-hui/fidget.nvim",
+    requires = { "neovim/nvim-lspconfig" },
+    tag = "legacy",
+    config = true,
+  },
 }
 return plugins
