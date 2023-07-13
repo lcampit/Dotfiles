@@ -69,3 +69,5 @@ included
 ## Screenshots
 
 ![Overview of my setup](/../screenshots/images/OverviewSetup.png?raw=true "Setup Overview")
+Overview of a wezterm windows running zellij with 3 panes: nvim, gitui and a
+shell running starship prompt
