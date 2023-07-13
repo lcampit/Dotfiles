@@ -71,3 +71,8 @@ included
 ![Overview of my setup](/../screenshots/images/OverviewSetup.png?raw=true "Setup Overview")
 Overview of a wezterm windows running zellij with 3 panes: nvim, gitui and a
 shell running starship prompt
+
+![Nvim Overview](/../screenshots/images/NvimOverview.png?raw=true "Nvim overview")
+Overview of my neovim configuration featuring nerdtree, webdevicons, catpuccin
+theme, lsps and much more
+
