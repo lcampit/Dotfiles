@@ -351,3 +351,9 @@ above the line, disabling in-line warning. This configuration is taken from a
 couple of posts online, mainly
 [this](https://levelup.gitconnected.com/a-step-by-step-guide-to-configuring-lsp-in-neovim-for-coding-in-next-js-a052f500da2#429b)
 and [this](https://git.sr.ht/~whynothugo/lsp_lines.nvim)
+
+## Screenshots
+
+![Nvim Overview](/../screenshots/images/NvimOverview.png?raw=true "Nvim overview")
+Overview of my neovim configuration featuring nerdtree, webdevicons, catpuccin
+theme, lsps and much more
