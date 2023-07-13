@@ -65,3 +65,7 @@ included
 
 - List of Rust Tools to enhance productivity and streamline Rust development
   workflow
+
+## Screenshots
+
+![Overview of my setup](/../screenshots/images/OverviewSetup.png?raw=true "Setup Overview")
