@@ -9,6 +9,29 @@ if [[ "$USE_P10K" = true ]]; then
   fi
 fi
 
+# The following lines were added by compinstall
+
+zstyle ':completion:*' completer _complete _ignored
+zstyle ':completion:*' format ''
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
+zstyle ':completion:*' matcher-list '+' '+' '+' '+'
+zstyle ':completion:*' max-errors 5
+zstyle ':completion:*' menu select=3
+zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+zstyle :compinstall filename '/home/lc/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+setopt autocd extendedglob nomatch notify
+unsetopt beep
+bindkey -v
+# End of lines configured by zsh-newuser-install
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
@@ -50,9 +73,11 @@ export CARGO_HOME=$HOME/.cargo
 export PATH=$PATH:$CARGO_HOME/bin
 export PATH=$PATH:$HOME/.local/share/bob/nvim-bin # add bob-nvim versions to path
 
-
 # adds nvim to path
 # export PATH=$PATH:/usr/local/bin/nvim/bin
+
+# Used to start ssh agent on login 
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 # adds local/bin to PATH
 export PATH=$PATH:$HOME/.local/bin

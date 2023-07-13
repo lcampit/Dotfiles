@@ -62,7 +62,7 @@ lcdot_usage() {
     # :environment_variable.usage
     printf "  %s\n" "LCDOT_BACKUP"
     printf "    path to save backups before installing\n"
-    printf "    Default: ~/lcdot_backup\n"
+    printf "    Default: $HOME/lcdot_backup\n"
     echo
 
   fi
@@ -594,9 +594,9 @@ lcdot_zsh_command() {
   if [ $backup ]; then
     echo "Moving present configuration to $LCDOT_BACKUP/zsh"
     mkdir -p $LCDOT_BACKUP/zsh
-    mv $HOME/.zshrc $LCDOT_BACKUP/zsh/zshrc
-    mv $HOME/.zshenv $LCDOT_BACKUP/zsh/zshenv
-    mv $HOME/.alias $LCDOT_BACKUP/zsh/alias
+    [ -f $HOME/.zshrc ] && mv $HOME/.zshrc $LCDOT_BACKUP/zsh/zshrc
+    [ -f $HOME/.zshenv ] && mv $HOME/.zshenv $LCDOT_BACKUP/zsh/zshenv
+    [ -f $HOME/.alias ] && mv $HOME/.alias $LCDOT_BACKUP/zsh/alias
 
   fi
   ln -sf $DOTFILES_LOCATION/zsh/zshrc $HOME/.zshrc
@@ -639,7 +639,7 @@ parse_requirements() {
 
   # :command.environment_variables_filter
   # :command.environment_variables_default
-  export LCDOT_BACKUP="${LCDOT_BACKUP:-~/lcdot_backup}"
+  export LCDOT_BACKUP="${LCDOT_BACKUP:-$HOME/lcdot_backup}"
 
   # :command.command_filter
   action=${1:-}
@@ -1147,7 +1147,7 @@ initialize() {
   set -e
 
   # :command.environment_variables_default
-  export LCDOT_BACKUP="${LCDOT_BACKUP:-~/lcdot_backup}"
+  export LCDOT_BACKUP="${LCDOT_BACKUP:-$HOME/lcdot_backup}"
 
 }
 
