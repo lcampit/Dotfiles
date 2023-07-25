@@ -36,6 +36,6 @@ config.window_background_opacity = 1.0
 config.text_background_opacity = 1.0
 
 -- Load keys from outer file
-config.keys = require("keys.lua")
+-- config.keys = require("keys")
 
 return config
