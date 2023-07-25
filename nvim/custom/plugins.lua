@@ -309,5 +309,20 @@ local plugins = {
 			require("custom.configs.fidget")
 		end,
 	},
+	{
+		"fedepujol/move.nvim",
+		cmd = {
+			"MoveLine",
+			"MoveBlock",
+			"MoveWord",
+			"MoveHChar",
+			"MoveHBlock",
+		},
+	},
+	{
+		"folke/trouble.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		opts = {},
+	},
 }
 return plugins

@@ -234,6 +234,12 @@ Set up in mappings.lua:
   - Configuration has been taken from [this](https://github.com/fedepujol/nvim)
     fellow developer dotfile repo
 
+- [move.nvim](https://github.com/fedepujol/move.nvim)
+  - Enables line and block move similar to vscode
+
+- [trouble.nvim](https://github.com/folke/trouble.nvim)
+  - Fancy lists of lsp diagnostics and errors with its own keybindings
+
 ## Language Server Protocol
 
 All these configurations are set in a dedicated file, **lspconfig.ls**, placed
