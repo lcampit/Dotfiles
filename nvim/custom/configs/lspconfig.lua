@@ -96,6 +96,11 @@ require("lspconfig").bashls.setup({
 -- CSS LSP
 require("lspconfig").cssls.setup({
 	capabilities = capabilities,
+	cmd = {
+		home .. "/.local/share/rtx/installs/node/latest/bin/node",
+		home .. "/.local/share/nvim/mason/bin/vscode-css-language-server",
+		"--stdio",
+	},
 	filetypes = { "css", "scss", "less" },
 	settings = {
 		css = {
@@ -210,6 +215,11 @@ require("lspconfig").nil_ls.setup({
 -- TSServer LSP
 require("lspconfig").tsserver.setup({
 	capabilities = capabilities,
+	cmd = {
+		home .. "/.local/share/rtx/installs/node/latest/bin/node",
+		home .. "/.local/share/nvim/mason/bin/typescript-language-server",
+		"--stdio",
+	},
 	init_options = {
 		hostInfo = "neovim",
 	},
@@ -247,6 +257,11 @@ require("lspconfig").vimls.setup({
 -- Yaml LSP
 require("lspconfig").yamlls.setup({
 	filetypes = { "yml", "yaml" },
+	cmd = {
+		home .. "/.local/share/rtx/installs/node/latest/bin/node",
+		home .. "/.local/share/nvim/mason/bin/yaml-language-server",
+		"--stdio",
+	},
 	root_dir = util.root_pattern({ ".git", vim.fn.getcwd() }),
 	capabilities = capabilities,
 	settings = {
