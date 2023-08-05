@@ -50,6 +50,10 @@ Files inside the plugins directory will be sourced automatically too. They
 all contain specification for plugins installation and configuration. You may 
 put as many files as needed in here.
 
+I'll separate my plugins specs on a per-file basis, merging together plugins referring to the 
+same functionalities, e.g. grouping everything bash lsp related in a single `language_bash.lua` file.
+
+
 ## Installation
 
 The script provided with this repo allows for installation of my nvim configuration with options 
@@ -132,8 +136,7 @@ Allows for html tags and such to be automatically closed
 Enables usage of the [zoxide](https://github.com/ajeetdsouza/zoxide) cd replacement directly inside Nvim
 
 #### [fzf](https://github.com/junegunn/fzf/blob/master/README-VIM.md)
-Enables usage of fzf inside Neovim and by other plugins, such as zoxide or
-    telescope
+Enables usage of fzf inside Neovim and by other plugins, such as zoxide or telescope
 
 #### [move.nvim](https://github.com/fedepujol/move.nvim)
 Enables line and block move similar to vscode
