@@ -1,4 +1,6 @@
 # NVIM - A Lua-Based fork of VIM
+<a href="https://dotfyle.com/Leo-Campo/dotfiles-nvim"><img src="https://dotfyle.com/Leo-Campo/dotfiles-nvim/badges/plugins?style=flat" /></a>
+<a href="https://dotfyle.com/Leo-Campo/dotfiles-nvim"><img src="https://dotfyle.com/Leo-Campo/dotfiles-nvim/badges/plugin-manager?style=flat" /></a>
 
 Neovim is an amazing reiteration on the VIM text editor focusing on modern UI
 and maximum extensibility. [Here](https://github.com/neovim/neovim) you'll find
