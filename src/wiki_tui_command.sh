@@ -1,4 +1,8 @@
-echo "# this file is located in 'src/wiki_tui_command.sh'"
-echo "# code for 'lcdot wiki-tui' goes here"
-echo "# you can edit it freely and regenerate (it will not be overwritten)"
-inspect_args
+install=${args[--install]}
+DOTFILES_LOCATION=$PWD
+if [ "$install" ]; then
+    echo "Installing wiki-tui"
+    cargo install wiki-tui
+fi
+
+echo "There is no configuration to install for wiki-tui, congrats!"
