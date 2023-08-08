@@ -3,94 +3,256 @@ help: Helper script to set up my own dotfile environment
 version: 0.2.0
 
 environment_variables:
-- name: LCDOT_BACKUP
-  help: path to save backups before installing
-  default: $HOME/lcdot_backup
+  - name: LCDOT_BACKUP
+    help: path to save backups before installing
+    default: $HOME/lcdot_backup
+  - name: ARCHBTW
+    help: whether or not installing to a ARCH based distro. Tries to install tools from AUR packages
+    default: false
 
 commands:
-- name: nvim
-  alias: n
-  help: install my own nvim configuration
+  - name: nvim
+    alias: n
+    help: install my own nvim configuration
 
-  flags:
-  - long: --backup
-    short: -b
-    help: Backup existing configurations in LCDOT_BACKUP/nvim
+    flags:
+      - long: --backup
+        short: -b
+        help: Backup existing configurations in LCDOT_BACKUP/nvim
 
-  examples:
-  - lcdot nvim -b
+    examples:
+      - lcdot nvim -b
 
-- name: gitconfig 
-  alias: git 
-  help: install my own git configuration
+  - name: gitconfig
+    alias: git
+    help: install my own git configuration
 
-  flags:
-    - long: --backup
-      short: -b
-      help: Backup existing configurations in LCDOT_BACKUP/gitconfig
-  
-  examples:
-    - lcodt git -b
+    flags:
+      - long: --backup
+        short: -b
+        help: Backup existing configurations in LCDOT_BACKUP/gitconfig
 
-- name: rust-tools 
-  alias: rust
-  help: install my most used rust based tools and their configuration
+    examples:
+      - lcodt git -b
 
-  flags:
-    - long: --backup
-      short: -b
-      help: Backup existing configurations in LCDOT_BACKUP/rust-tools
+  - name: starship
+    help: Install my starship prompt
+    flags:
+      - long: --backup
+        short: -b
+        help: Backup existing configurations in LCDOT_BACKUP/starship
+      - long: --install
+        short: -i
+        help: Install the tool itself as well as its configuration
+    dependencies:
+      rust:
+        command: cargo
+        help: go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust
 
-  examples:
-    - lcodt rust -b
+  - name: delta
+    help: Install the delta diff pager for git
+    flags:
+      - long: --backup
+        short: -b
+        help: Backup existing configurations in LCDOT_BACKUP/delta-git
+    dependencies:
+      rust:
+        command: cargo
+        help: go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust
 
-- name: tmux 
-  alias: t 
-  help: install my own tmux configuration
+  - name: exa
+    help: Install the exa listing tool
+    flags:
+      - long: --backup
+        short: -b
+        help: Backup existing configurations in LCDOT_BACKUP/exa
+    dependencies:
+      rust:
+        command: cargo
+        help: go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust
 
-  flags:
-    - long: --backup
-      short: -b
-      help: Backup existing configurations in LCDOT_BACKUP/tmux
+  - name: bat
+    help: Install the bat cli tool
+    flags:
+      - long: --backup
+        short: -b
+        help: Backup existing configurations in LCDOT_BACKUP/bat
+      - long: --install
+        short: -i
+        help: Install the tool itself as well as its configuration
+    dependencies:
+      rust:
+        command: cargo
+        help: go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust
 
-  examples:
-    - lcodt tmux -b
+  - name: bob-nvim
+    help: Install the bob-nvim cli tool
+    flags:
+      - long: --backup
+        short: -b
+        help: Backup existing configurations in LCDOT_BACKUP/bob-nvim
+    dependencies:
+      rust:
+        command: cargo
+        help: go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust
 
-- name: vim 
-  alias: v 
-  help: install my own vim configuration
+  - name: zellij
+    help: Install the zellij cli tool
+    flags:
+      - long: --backup
+        short: -b
+        help: Backup existing configurations in LCDOT_BACKUP/zellij
+    dependencies:
+      rust:
+        command: cargo
+        help: go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust
 
-  flags:
-    - long: --backup
-      short: -b
-      help: Backup existing configurations in LCDOT_BACKUP/vim
+  - name: mprocs
+    help: Install the mprocs cli tool
+    flags:
+      - long: --backup
+        short: -b
+        help: Backup existing configurations in LCDOT_BACKUP/mprocs
+    dependencies:
+      rust:
+        command: cargo
+        help: go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust
 
-  examples:
-    - lcodt vim -b
+  - name: gitui
+    help: Install the gitui cli tool
+    flags:
+      - long: --backup
+        short: -b
+        help: Backup existing configurations in LCDOT_BACKUP/gitui
+    dependencies:
+      rust:
+        command: cargo
+        help: go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust
 
-- name: wezterm 
-  alias: w
-  help: install my own wezterm configuration
+  - name: lazygit
+    help: Install the lazygit cli tool
+    flags:
+      - long: --backup
+        short: -b
+        help: Backup existing configurations in LCDOT_BACKUP/lazygit
+    dependencies:
+      rust:
+        command: cargo
+        help: go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust
 
-  flags:
-    - long: --backup
-      short: -b
-      help: Backup existing configurations in LCDOT_BACKUP/wezterm
-      
-  examples:
-    - lcodt w -b
+  - name: porsmo
+    help: Install the porsmo cli tool
+    flags:
+      - long: --backup
+        short: -b
+        help: Backup existing configurations in LCDOT_BACKUP/porsmo
+    dependencies:
+      rust:
+        command: cargo
+        help: go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust
 
-- name: zsh 
-  alias: z 
-  help: install my own zshell configuration
+  - name: wiki-tui
+    help: Install the wiki-tui cli tool
+    flags:
+      - long: --backup
+        short: -b
+        help: Backup existing configurations in LCDOT_BACKUP/wiki-tui
+    dependencies:
+      rust:
+        command: cargo
+        help: go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust
 
-  flags:
-    - long: --backup
-      short: -b
-      help: Backup existing configurations in LCDOT_BACKUP/zsh
+  - name: fd-find
+    help: Install the fd-find cli tool
+    flags:
+      - long: --backup
+        short: -b
+        help: Backup existing configurations in LCDOT_BACKUP/fd-find
+    dependencies:
+      rust:
+        command: cargo
+        help: go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust
 
-  examples:
-    - lcodt z -b
+  - name: zoxide
+    help: Install the zoxide cli tool
+    flags:
+      - long: --backup
+        short: -b
+        help: Backup existing configurations in LCDOT_BACKUP/zoxide
+    dependencies:
+      rust:
+        command: cargo
+        help: go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust
 
-- name: all
-  help: installs all configuration files. Backup option is enabled by default
+  - name: rtx-cli
+    help: Install the rtx-cli cli tool
+    flags:
+      - long: --backup
+        short: -b
+        help: Backup existing configurations in LCDOT_BACKUP/rtx-cli
+    dependencies:
+      rust:
+        command: cargo
+        help: go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust
+
+  - name: navi
+    help: Install the navi cli tool
+    flags:
+      - long: --backup
+        short: -b
+        help: Backup existing configurations in LCDOT_BACKUP/navi
+    dependencies:
+      rust:
+        command: cargo
+        help: go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust
+
+  - name: tmux
+    alias: t
+    help: install my own tmux configuration
+
+    flags:
+      - long: --backup
+        short: -b
+        help: Backup existing configurations in LCDOT_BACKUP/tmux
+
+    examples:
+      - lcodt tmux -b
+
+  - name: vim
+    alias: v
+    help: install my own vim configuration
+
+    flags:
+      - long: --backup
+        short: -b
+        help: Backup existing configurations in LCDOT_BACKUP/vim
+
+    examples:
+      - lcodt vim -b
+
+  - name: wezterm
+    alias: w
+    help: install my own wezterm configuration
+
+    flags:
+      - long: --backup
+        short: -b
+        help: Backup existing configurations in LCDOT_BACKUP/wezterm
+
+    examples:
+      - lcodt w -b
+
+  - name: zsh
+    alias: z
+    help: install my own zshell configuration
+
+    flags:
+      - long: --backup
+        short: -b
+        help: Backup existing configurations in LCDOT_BACKUP/zsh
+
+    examples:
+      - lcodt z -b
+
+  - name: all
+    help: installs all configuration files. Backup option is enabled by default
