@@ -348,6 +348,11 @@ lcdot_zellij_usage() {
     printf "    Backup existing configurations in LCDOT_BACKUP/zellij\n"
     echo
 
+    # :flag.usage
+    printf "  %s\n" "--install, -i"
+    printf "    Install the tool itself as well as its configuration\n"
+    echo
+
     # :command.usage_fixed_flags
     printf "  %s\n" "--help, -h"
     printf "    Show this help\n"
@@ -1185,10 +1190,25 @@ lcdot_bob_nvim_command() {
 # :command.function
 lcdot_zellij_command() {
   # src/zellij_command.sh
-  echo "# this file is located in 'src/zellij_command.sh'"
-  echo "# code for 'lcdot zellij' goes here"
-  echo "# you can edit it freely and regenerate (it will not be overwritten)"
-  inspect_args
+  backup=${args[--backup]}
+  install=${args[--install]}
+  DOTFILES_LOCATION=$PWD
+  if [ "$install" ]; then
+      echo "Installing zellij"
+      cargo install zellij --locked
+  fi
+
+  mkdir -p "$HOME"/.config/zellij
+  echo "Installing zellij configuration from $DOTFILES_LOCATION"
+  if [ "$backup" ]; then
+      echo "Moving previous configurations in $LCDOT_BACKUP/zellij"
+      mkdir -p "$LCDOT_BACKUP"/zellij
+
+      mv "$HOME"/.config/zellij/config.kdl "$LCDOT_BACKUP"/zellij/config.kdl
+  fi
+
+  echo "Setting up zellij configuration"
+  ln -sf "$DOTFILES_LOCATION"/zellij/config.kdl "$HOME"/.config/zellij/config.kdl
 
 }
 
@@ -2153,6 +2173,14 @@ lcdot_zellij_parse_requirements() {
 
         # :flag.case_no_arg
         args['--backup']=1
+        shift
+        ;;
+
+      # :flag.case
+      --install | -i)
+
+        # :flag.case_no_arg
+        args['--install']=1
         shift
         ;;
 
