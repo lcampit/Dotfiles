@@ -2,7 +2,7 @@ backup=${args[--backup]}
 install=${args[--install]}
 DOTFILES_LOCATION=$PWD
 if [ "$install" ]; then
-    echo "Installing bat "
+    echo "Installing bat"
 
     if [ "$ARCHBTW"=true ]; then
         echo "Arch based distro detected, installing using pacman"
