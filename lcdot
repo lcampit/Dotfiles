@@ -34,14 +34,29 @@ lcdot_usage() {
   echo
   # :command.usage_commands
   printf "%s\n" "Commands:"
-  printf "  %s   install my own nvim configuration\n" "nvim      "
-  printf "  %s   install my own git configuration\n" "gitconfig "
-  printf "  %s   install my most used rust based tools and their configuration\n" "rust-tools"
-  printf "  %s   install my own tmux configuration\n" "tmux      "
-  printf "  %s   install my own vim configuration\n" "vim       "
-  printf "  %s   install my own wezterm configuration\n" "wezterm   "
-  printf "  %s   install my own zshell configuration\n" "zsh       "
-  printf "  %s   installs all configuration files. Backup option is enabled by default\n" "all       "
+  printf "  %s   install my own nvim configuration\n" "nvim    "
+  printf "  %s   Install my starship prompt\n" "starship"
+  printf "  %s   Install the delta diff pager for git\n" "delta   "
+  printf "  %s   Install the exa listing tool\n" "exa     "
+  printf "  %s   Install the bat cli tool\n" "bat     "
+  printf "  %s   Install the bob-nvim cli tool\n" "bob-nvim"
+  printf "  %s   Install the zellij cli tool\n" "zellij  "
+  printf "  %s   Install the mprocs cli tool\n" "mprocs  "
+  printf "  %s   Install the gitui cli tool\n" "gitui   "
+  printf "  %s   Install the lazygit cli tool\n" "lazygit "
+  printf "  %s   Install the porsmo cli tool\n" "porsmo  "
+  printf "  %s   Install the wiki-tui cli tool\n" "wiki-tui"
+  printf "  %s   Install the fd-find cli tool\n" "fd-find "
+  printf "  %s   Install the zoxide cli tool\n" "zoxide  "
+  printf "  %s   Install the rtx-cli cli tool\n" "rtx-cli "
+  printf "  %s   Install the navi cli tool\n" "navi    "
+  printf "  %s   install my own tmux configuration\n" "tmux    "
+  printf "  %s   Install the ncspot cli tool\n" "ncspot  "
+  printf "  %s   install my own vim configuration\n" "vim     "
+  printf "  %s   install my own wezterm configuration\n" "wezterm "
+  printf "  %s   install my own zshell configuration\n" "zsh     "
+  printf "  %s   Configure cargo package manager to use sccache\n" "sccache "
+  printf "  %s   installs all configuration files. Backup option is enabled by default\n" "all     "
   echo
 
   # :command.long_usage
@@ -63,6 +78,11 @@ lcdot_usage() {
     printf "  %s\n" "LCDOT_BACKUP"
     printf "    path to save backups before installing\n"
     printf "    Default: $HOME/lcdot_backup\n"
+    echo
+
+    # :environment_variable.usage
+    printf "  %s\n" "ARCHBTW"
+    printf "    whether or not installing to a ARCH based distro. Tries to install tools\n    from AUR packages\n"
     echo
 
   fi
@@ -112,23 +132,20 @@ lcdot_nvim_usage() {
 }
 
 # :command.usage
-lcdot_gitconfig_usage() {
+lcdot_starship_usage() {
   if [[ -n $long_usage ]]; then
-    printf "lcdot gitconfig - install my own git configuration\n"
+    printf "lcdot starship - Install my starship prompt\n"
     echo
 
   else
-    printf "lcdot gitconfig - install my own git configuration\n"
+    printf "lcdot starship - Install my starship prompt\n"
     echo
 
   fi
 
-  printf "Alias: git\n"
-  echo
-
   printf "%s\n" "Usage:"
-  printf "  lcdot gitconfig [OPTIONS]\n"
-  printf "  lcdot gitconfig --help | -h\n"
+  printf "  lcdot starship [OPTIONS]\n"
+  printf "  lcdot starship --help | -h\n"
   echo
 
   # :command.long_usage
@@ -138,40 +155,37 @@ lcdot_gitconfig_usage() {
     # :command.usage_flags
     # :flag.usage
     printf "  %s\n" "--backup, -b"
-    printf "    Backup existing configurations in LCDOT_BACKUP/gitconfig\n"
+    printf "    Backup existing configurations in LCDOT_BACKUP/starship\n"
+    echo
+
+    # :flag.usage
+    printf "  %s\n" "--install, -i"
+    printf "    Install the tool itself as well as its configuration\n"
     echo
 
     # :command.usage_fixed_flags
     printf "  %s\n" "--help, -h"
     printf "    Show this help\n"
-    echo
-
-    # :command.usage_examples
-    printf "%s\n" "Examples:"
-    printf "  lcodt git -b\n"
     echo
 
   fi
 }
 
 # :command.usage
-lcdot_rust_tools_usage() {
+lcdot_delta_usage() {
   if [[ -n $long_usage ]]; then
-    printf "lcdot rust-tools - install my most used rust based tools and their configuration\n"
+    printf "lcdot delta - Install the delta diff pager for git\n"
     echo
 
   else
-    printf "lcdot rust-tools - install my most used rust based tools and their configuration\n"
+    printf "lcdot delta - Install the delta diff pager for git\n"
     echo
 
   fi
 
-  printf "Alias: rust\n"
-  echo
-
   printf "%s\n" "Usage:"
-  printf "  lcdot rust-tools [OPTIONS]\n"
-  printf "  lcdot rust-tools --help | -h\n"
+  printf "  lcdot delta [OPTIONS]\n"
+  printf "  lcdot delta --help | -h\n"
   echo
 
   # :command.long_usage
@@ -181,7 +195,7 @@ lcdot_rust_tools_usage() {
     # :command.usage_flags
     # :flag.usage
     printf "  %s\n" "--backup, -b"
-    printf "    Backup existing configurations in LCDOT_BACKUP/rust-tools\n"
+    printf "    Backup existing configurations in LCDOT_BACKUP/delta-git\n"
     echo
 
     # :command.usage_fixed_flags
@@ -189,9 +203,489 @@ lcdot_rust_tools_usage() {
     printf "    Show this help\n"
     echo
 
-    # :command.usage_examples
-    printf "%s\n" "Examples:"
-    printf "  lcodt rust -b\n"
+  fi
+}
+
+# :command.usage
+lcdot_exa_usage() {
+  if [[ -n $long_usage ]]; then
+    printf "lcdot exa - Install the exa listing tool\n"
+    echo
+
+  else
+    printf "lcdot exa - Install the exa listing tool\n"
+    echo
+
+  fi
+
+  printf "%s\n" "Usage:"
+  printf "  lcdot exa [OPTIONS]\n"
+  printf "  lcdot exa --help | -h\n"
+  echo
+
+  # :command.long_usage
+  if [[ -n $long_usage ]]; then
+    printf "%s\n" "Options:"
+
+    # :command.usage_flags
+    # :flag.usage
+    printf "  %s\n" "--install, -i"
+    printf "    Install the tool itself as well as its configuration\n"
+    echo
+
+    # :command.usage_fixed_flags
+    printf "  %s\n" "--help, -h"
+    printf "    Show this help\n"
+    echo
+
+  fi
+}
+
+# :command.usage
+lcdot_bat_usage() {
+  if [[ -n $long_usage ]]; then
+    printf "lcdot bat - Install the bat cli tool\n"
+    echo
+
+  else
+    printf "lcdot bat - Install the bat cli tool\n"
+    echo
+
+  fi
+
+  printf "%s\n" "Usage:"
+  printf "  lcdot bat [OPTIONS]\n"
+  printf "  lcdot bat --help | -h\n"
+  echo
+
+  # :command.long_usage
+  if [[ -n $long_usage ]]; then
+    printf "%s\n" "Options:"
+
+    # :command.usage_flags
+    # :flag.usage
+    printf "  %s\n" "--backup, -b"
+    printf "    Backup existing configurations in LCDOT_BACKUP/bat\n"
+    echo
+
+    # :flag.usage
+    printf "  %s\n" "--install, -i"
+    printf "    Install the tool itself as well as its configuration\n"
+    echo
+
+    # :command.usage_fixed_flags
+    printf "  %s\n" "--help, -h"
+    printf "    Show this help\n"
+    echo
+
+  fi
+}
+
+# :command.usage
+lcdot_bob_nvim_usage() {
+  if [[ -n $long_usage ]]; then
+    printf "lcdot bob-nvim - Install the bob-nvim cli tool\n"
+    echo
+
+  else
+    printf "lcdot bob-nvim - Install the bob-nvim cli tool\n"
+    echo
+
+  fi
+
+  printf "%s\n" "Usage:"
+  printf "  lcdot bob-nvim [OPTIONS]\n"
+  printf "  lcdot bob-nvim --help | -h\n"
+  echo
+
+  # :command.long_usage
+  if [[ -n $long_usage ]]; then
+    printf "%s\n" "Options:"
+
+    # :command.usage_flags
+    # :flag.usage
+    printf "  %s\n" "--backup, -b"
+    printf "    Backup existing configurations in LCDOT_BACKUP/bob-nvim\n"
+    echo
+
+    # :flag.usage
+    printf "  %s\n" "--install, -i"
+    printf "    Install the tool itself as well as its configuration\n"
+    echo
+
+    # :command.usage_fixed_flags
+    printf "  %s\n" "--help, -h"
+    printf "    Show this help\n"
+    echo
+
+  fi
+}
+
+# :command.usage
+lcdot_zellij_usage() {
+  if [[ -n $long_usage ]]; then
+    printf "lcdot zellij - Install the zellij cli tool\n"
+    echo
+
+  else
+    printf "lcdot zellij - Install the zellij cli tool\n"
+    echo
+
+  fi
+
+  printf "%s\n" "Usage:"
+  printf "  lcdot zellij [OPTIONS]\n"
+  printf "  lcdot zellij --help | -h\n"
+  echo
+
+  # :command.long_usage
+  if [[ -n $long_usage ]]; then
+    printf "%s\n" "Options:"
+
+    # :command.usage_flags
+    # :flag.usage
+    printf "  %s\n" "--backup, -b"
+    printf "    Backup existing configurations in LCDOT_BACKUP/zellij\n"
+    echo
+
+    # :flag.usage
+    printf "  %s\n" "--install, -i"
+    printf "    Install the tool itself as well as its configuration\n"
+    echo
+
+    # :command.usage_fixed_flags
+    printf "  %s\n" "--help, -h"
+    printf "    Show this help\n"
+    echo
+
+  fi
+}
+
+# :command.usage
+lcdot_mprocs_usage() {
+  if [[ -n $long_usage ]]; then
+    printf "lcdot mprocs - Install the mprocs cli tool\n"
+    echo
+
+  else
+    printf "lcdot mprocs - Install the mprocs cli tool\n"
+    echo
+
+  fi
+
+  printf "%s\n" "Usage:"
+  printf "  lcdot mprocs [OPTIONS]\n"
+  printf "  lcdot mprocs --help | -h\n"
+  echo
+
+  # :command.long_usage
+  if [[ -n $long_usage ]]; then
+    printf "%s\n" "Options:"
+
+    # :command.usage_flags
+    # :flag.usage
+    printf "  %s\n" "--install, -i"
+    printf "    Install the tool itself as well as its configuration\n"
+    echo
+
+    # :command.usage_fixed_flags
+    printf "  %s\n" "--help, -h"
+    printf "    Show this help\n"
+    echo
+
+  fi
+}
+
+# :command.usage
+lcdot_gitui_usage() {
+  if [[ -n $long_usage ]]; then
+    printf "lcdot gitui - Install the gitui cli tool\n"
+    echo
+
+  else
+    printf "lcdot gitui - Install the gitui cli tool\n"
+    echo
+
+  fi
+
+  printf "%s\n" "Usage:"
+  printf "  lcdot gitui [OPTIONS]\n"
+  printf "  lcdot gitui --help | -h\n"
+  echo
+
+  # :command.long_usage
+  if [[ -n $long_usage ]]; then
+    printf "%s\n" "Options:"
+
+    # :command.usage_flags
+    # :flag.usage
+    printf "  %s\n" "--backup, -b"
+    printf "    Backup existing configurations in LCDOT_BACKUP/gitui\n"
+    echo
+
+    # :flag.usage
+    printf "  %s\n" "--install, -i"
+    printf "    Install the tool itself as well as its configuration\n"
+    echo
+
+    # :command.usage_fixed_flags
+    printf "  %s\n" "--help, -h"
+    printf "    Show this help\n"
+    echo
+
+  fi
+}
+
+# :command.usage
+lcdot_lazygit_usage() {
+  if [[ -n $long_usage ]]; then
+    printf "lcdot lazygit - Install the lazygit cli tool\n"
+    echo
+
+  else
+    printf "lcdot lazygit - Install the lazygit cli tool\n"
+    echo
+
+  fi
+
+  printf "%s\n" "Usage:"
+  printf "  lcdot lazygit [OPTIONS]\n"
+  printf "  lcdot lazygit --help | -h\n"
+  echo
+
+  # :command.long_usage
+  if [[ -n $long_usage ]]; then
+    printf "%s\n" "Options:"
+
+    # :command.usage_flags
+    # :flag.usage
+    printf "  %s\n" "--backup, -b"
+    printf "    Backup existing configurations in LCDOT_BACKUP/lazygit\n"
+    echo
+
+    # :flag.usage
+    printf "  %s\n" "--install, -i"
+    printf "    Install the tool itself as well as its configuration\n"
+    echo
+
+    # :command.usage_fixed_flags
+    printf "  %s\n" "--help, -h"
+    printf "    Show this help\n"
+    echo
+
+  fi
+}
+
+# :command.usage
+lcdot_porsmo_usage() {
+  if [[ -n $long_usage ]]; then
+    printf "lcdot porsmo - Install the porsmo cli tool\n"
+    echo
+
+  else
+    printf "lcdot porsmo - Install the porsmo cli tool\n"
+    echo
+
+  fi
+
+  printf "%s\n" "Usage:"
+  printf "  lcdot porsmo [OPTIONS]\n"
+  printf "  lcdot porsmo --help | -h\n"
+  echo
+
+  # :command.long_usage
+  if [[ -n $long_usage ]]; then
+    printf "%s\n" "Options:"
+
+    # :command.usage_flags
+    # :flag.usage
+    printf "  %s\n" "--install, -i"
+    printf "    Install the tool itself as well as its configuration\n"
+    echo
+
+    # :command.usage_fixed_flags
+    printf "  %s\n" "--help, -h"
+    printf "    Show this help\n"
+    echo
+
+  fi
+}
+
+# :command.usage
+lcdot_wiki_tui_usage() {
+  if [[ -n $long_usage ]]; then
+    printf "lcdot wiki-tui - Install the wiki-tui cli tool\n"
+    echo
+
+  else
+    printf "lcdot wiki-tui - Install the wiki-tui cli tool\n"
+    echo
+
+  fi
+
+  printf "%s\n" "Usage:"
+  printf "  lcdot wiki-tui [OPTIONS]\n"
+  printf "  lcdot wiki-tui --help | -h\n"
+  echo
+
+  # :command.long_usage
+  if [[ -n $long_usage ]]; then
+    printf "%s\n" "Options:"
+
+    # :command.usage_flags
+    # :flag.usage
+    printf "  %s\n" "--install, -i"
+    printf "    Install the tool itself as well as its configuration\n"
+    echo
+
+    # :command.usage_fixed_flags
+    printf "  %s\n" "--help, -h"
+    printf "    Show this help\n"
+    echo
+
+  fi
+}
+
+# :command.usage
+lcdot_fd_find_usage() {
+  if [[ -n $long_usage ]]; then
+    printf "lcdot fd-find - Install the fd-find cli tool\n"
+    echo
+
+  else
+    printf "lcdot fd-find - Install the fd-find cli tool\n"
+    echo
+
+  fi
+
+  printf "%s\n" "Usage:"
+  printf "  lcdot fd-find [OPTIONS]\n"
+  printf "  lcdot fd-find --help | -h\n"
+  echo
+
+  # :command.long_usage
+  if [[ -n $long_usage ]]; then
+    printf "%s\n" "Options:"
+
+    # :command.usage_flags
+    # :flag.usage
+    printf "  %s\n" "--install, -i"
+    printf "    Install the tool itself as well as its configuration\n"
+    echo
+
+    # :command.usage_fixed_flags
+    printf "  %s\n" "--help, -h"
+    printf "    Show this help\n"
+    echo
+
+  fi
+}
+
+# :command.usage
+lcdot_zoxide_usage() {
+  if [[ -n $long_usage ]]; then
+    printf "lcdot zoxide - Install the zoxide cli tool\n"
+    echo
+
+  else
+    printf "lcdot zoxide - Install the zoxide cli tool\n"
+    echo
+
+  fi
+
+  printf "%s\n" "Usage:"
+  printf "  lcdot zoxide [OPTIONS]\n"
+  printf "  lcdot zoxide --help | -h\n"
+  echo
+
+  # :command.long_usage
+  if [[ -n $long_usage ]]; then
+    printf "%s\n" "Options:"
+
+    # :command.usage_flags
+    # :flag.usage
+    printf "  %s\n" "--install, -i"
+    printf "    Install the tool itself as well as its configuration\n"
+    echo
+
+    # :command.usage_fixed_flags
+    printf "  %s\n" "--help, -h"
+    printf "    Show this help\n"
+    echo
+
+  fi
+}
+
+# :command.usage
+lcdot_rtx_cli_usage() {
+  if [[ -n $long_usage ]]; then
+    printf "lcdot rtx-cli - Install the rtx-cli cli tool\n"
+    echo
+
+  else
+    printf "lcdot rtx-cli - Install the rtx-cli cli tool\n"
+    echo
+
+  fi
+
+  printf "%s\n" "Usage:"
+  printf "  lcdot rtx-cli [OPTIONS]\n"
+  printf "  lcdot rtx-cli --help | -h\n"
+  echo
+
+  # :command.long_usage
+  if [[ -n $long_usage ]]; then
+    printf "%s\n" "Options:"
+
+    # :command.usage_flags
+    # :flag.usage
+    printf "  %s\n" "--install, -i"
+    printf "    Install the tool itself as well as its configuration\n"
+    echo
+
+    # :command.usage_fixed_flags
+    printf "  %s\n" "--help, -h"
+    printf "    Show this help\n"
+    echo
+
+  fi
+}
+
+# :command.usage
+lcdot_navi_usage() {
+  if [[ -n $long_usage ]]; then
+    printf "lcdot navi - Install the navi cli tool\n"
+    echo
+
+  else
+    printf "lcdot navi - Install the navi cli tool\n"
+    echo
+
+  fi
+
+  printf "%s\n" "Usage:"
+  printf "  lcdot navi [OPTIONS]\n"
+  printf "  lcdot navi --help | -h\n"
+  echo
+
+  # :command.long_usage
+  if [[ -n $long_usage ]]; then
+    printf "%s\n" "Options:"
+
+    # :command.usage_flags
+    # :flag.usage
+    printf "  %s\n" "--backup, -b"
+    printf "    Backup existing configurations in LCDOT_BACKUP/navi\n"
+    echo
+
+    # :flag.usage
+    printf "  %s\n" "--install, -i"
+    printf "    Install the tool itself as well as its configuration\n"
+    echo
+
+    # :command.usage_fixed_flags
+    printf "  %s\n" "--help, -h"
+    printf "    Show this help\n"
     echo
 
   fi
@@ -235,6 +729,46 @@ lcdot_tmux_usage() {
     # :command.usage_examples
     printf "%s\n" "Examples:"
     printf "  lcodt tmux -b\n"
+    echo
+
+  fi
+}
+
+# :command.usage
+lcdot_ncspot_usage() {
+  if [[ -n $long_usage ]]; then
+    printf "lcdot ncspot - Install the ncspot cli tool\n"
+    echo
+
+  else
+    printf "lcdot ncspot - Install the ncspot cli tool\n"
+    echo
+
+  fi
+
+  printf "%s\n" "Usage:"
+  printf "  lcdot ncspot [OPTIONS]\n"
+  printf "  lcdot ncspot --help | -h\n"
+  echo
+
+  # :command.long_usage
+  if [[ -n $long_usage ]]; then
+    printf "%s\n" "Options:"
+
+    # :command.usage_flags
+    # :flag.usage
+    printf "  %s\n" "--backup, -b"
+    printf "    Backup existing configurations in LCDOT_BACKUP/ncspot\n"
+    echo
+
+    # :flag.usage
+    printf "  %s\n" "--install, -i"
+    printf "    Install the tool itself as well as its configuration\n"
+    echo
+
+    # :command.usage_fixed_flags
+    printf "  %s\n" "--help, -h"
+    printf "    Show this help\n"
     echo
 
   fi
@@ -370,6 +904,46 @@ lcdot_zsh_usage() {
 }
 
 # :command.usage
+lcdot_sccache_usage() {
+  if [[ -n $long_usage ]]; then
+    printf "lcdot sccache - Configure cargo package manager to use sccache\n"
+    echo
+
+  else
+    printf "lcdot sccache - Configure cargo package manager to use sccache\n"
+    echo
+
+  fi
+
+  printf "%s\n" "Usage:"
+  printf "  lcdot sccache [OPTIONS]\n"
+  printf "  lcdot sccache --help | -h\n"
+  echo
+
+  # :command.long_usage
+  if [[ -n $long_usage ]]; then
+    printf "%s\n" "Options:"
+
+    # :command.usage_flags
+    # :flag.usage
+    printf "  %s\n" "--backup, -b"
+    printf "    Backup existing configurations in LCDOT_BACKUP/cargo\n"
+    echo
+
+    # :flag.usage
+    printf "  %s\n" "--install, -i"
+    printf "    Install sccache as well as set up cargo configuration\n"
+    echo
+
+    # :command.usage_fixed_flags
+    printf "  %s\n" "--help, -h"
+    printf "    Show this help\n"
+    echo
+
+  fi
+}
+
+# :command.usage
 lcdot_all_usage() {
   if [[ -n $long_usage ]]; then
     printf "lcdot all - installs all configuration files. Backup option is enabled by default\n"
@@ -471,67 +1045,372 @@ lcdot_nvim_command() {
 }
 
 # :command.function
-lcdot_gitconfig_command() {
-  # src/gitconfig_command.sh
-    echo "Setting up gitconfig to use delta and other tools"
-    if [ $backup ]; then
+lcdot_starship_command() {
+  # src/starship_command.sh
+  backup=${args[--backup]}
+  install=${args[--install]}
+  DOTFILES_LOCATION=$PWD
 
-      echo "moving present gitconfig file to $LCDOT_BACKUP/gitconfig"
-      mkdir -p $LCDOT_BACKUP/gitconfig
-      mv $HOME/
-    fi
-    echo "Installing Delta"
-    cargo install git-delta
-    echo "Linking gitconfig file in home directory"
-    mkdir -p $HOME/.gitconfig
-    ln -sf "$DOTFILES_LOCATION/gitconfig/gitconfig" "$HOME/.gitconfig"
-    echo "Done"
+  if [ "$install" ]; then
+      echo "Installing starship"
+
+      cargo install starship --locked
+  fi
+
+  if [ "$backup" ]; then
+      echo "Moving previous configurations in $LCDOT_BACKUP/starship"
+      mkdir -p "$LCDOT_BACKUP"/starship
+
+      mv "$HOME/.config/starship.toml" "$LCDOT_BACKUP"/starship/starship.toml
+  fi
+
+  echo "Setting up starship configuration from $DOTFILES_LOCATION"
+  ln -sf "$DOTFILES_LOCATION"/starship/starship.toml "$HOME"/.config/starship.toml
+
+  echo "Done"
 
 }
 
 # :command.function
-lcdot_rust_tools_command() {
-  # src/rust_tools_command.sh
+lcdot_delta_command() {
+  # src/delta_command.sh
   backup=${args[--backup]}
-  DOTFILES_LOCATION=$(pwd)
+  install=${args[--install]}
+  DOTFILES_LOCATION=$PWD
+  if [ "$install" ]; then
+      echo "Installing git-delta"
 
-  echo "Installing rust cli tools and their configuration from $DOTFILES_LOCATION"
-  mkdir -p $HOME/.config/gitui
-  mkdir -p $HOME/.config/ncspot
-  mkdir -p $HOME/.cargo/
+      if [ "$ARCHBTW"=true ]; then
+          echo "Arch based distro detected, installing using pacman"
+          sudo pacman -S git-delta
 
-  if [ $backup ]; then
-    echo "Moving previous configurations in $LCDOT_BACKUP/rust-tools"
-    mkdir -p $LCDOT_BACKUP/rust-tools/gitui
-    mkdir -p $LCDOT_BACKUP/rust-tools/ncspot
-    mkdir -p $LCDOT_BACKUP/rust-tools/cargo
-    mkdir -p $LCDOT_BACKUP/rust-tools/starship
+      else
+          echo "Installing bat with cargo"
+          cargo install git-delta
+      fi
+  fi
+  echo "Installing git configuration from $DOTFILES_LOCATION"
 
-    mv $HOME/.config/gitui $LCDOT_BACKUP/rust-tools/gitui
-    mv $HOME/.config/ncspot $LCDOT_BACKUP/rust-tools/ncspot
-    mv $HOME/.cargo/config.toml $LCDOT_BACKUP/rust-tools/cargo/config.toml
-    mv $HOME/.config/starship.toml $LCDOT_BACKUP/rust-tools/starship/starship.toml
+  if [ "$backup" ]; then
+      echo "Moving present gitconfig file to $LCDOT_BACKUP/gitconfig"
+      mkdir -p "$LCDOT_BACKUP"/gitconfig
+      mv "$HOME"/.gitconfig "$LCDOT_BACKUP"/gitconfig/gitconfig.old
+  fi
+  echo "Linking gitconfig file in home directory"
+  ln -sf "$DOTFILES_LOCATION/gitconfig/gitconfig" "$HOME/.gitconfig"
+  echo "Done"
+
+}
+
+# :command.function
+lcdot_exa_command() {
+  # src/exa_command.sh
+  install=${args[--install]}
+  DOTFILES_LOCATION=$PWD
+  if [ "$install" ]; then
+      echo "Installing exa"
+
+      if [ "$ARCHBTW"=true ]; then
+          echo "Arch based distro detected, installing using pacman"
+          sudo pacman -S exa
+
+      else
+          echo "Installing exa with cargo"
+          sudo cargo install exa
+      fi
   fi
 
-  echo "setting up gitui configuration"
-  ln -sfn "$DOTFILES_LOCATION/rust-tools/gitui/" "$HOME/.config/gitui"
+  echo "There is no configuration to install for exa, congrats!"
 
-  echo "setting up ncspot configuration"
-  ln -sfn "$DOTFILES_LOCATION/rust-tools/ncspot/" "$HOME/.config/ncspot"
+}
 
-  echo "installing sccache first to use it in next installations"
-  cargo install sccache
+# :command.function
+lcdot_bat_command() {
+  # src/bat_command.sh
+  backup=${args[--backup]}
+  install=${args[--install]}
+  DOTFILES_LOCATION=$PWD
+  if [ "$install" ]; then
+      echo "Installing bat"
 
-  echo "setting up cargo configuration"
-  ln -sf $DOTFILES_LOCATION/rust-tools/config.toml $HOME/.cargo/config.toml
+      if [ "$ARCHBTW"=true ]; then
+          echo "Arch based distro detected, installing using pacman"
+          sudo pacman -S bat
 
-  echo "installing other tools"
-  cargo install exa bat starship bob-nvim zellij mprocs gitui porsmo wiki-tui fd-find zoxide rtx-cli
+      else
+          echo "Installing bat with apt"
+          sudo apt install bat
+      fi
+  fi
+  echo "Installing bat configuration from $DOTFILES_LOCATION"
+  bat_config_file=$(bat --config-file)
+  mkdir -p "$(dirname "$bat_config_file")"
+  if [ "$backup" ]; then
+      echo "Moving previous configurations in $LCDOT_BACKUP/bat"
+      mkdir -p "$LCDOT_BACKUP"/bat
 
-  echo "setting up starship configuration"
-  ln -sf "$DOTFILES_LOCATION/rust-tools/starship.toml" "$HOME/.config/starship.toml"
+      mv "$bat_config_file" "$LCDOT_BACKUP"/bat/bat.old
+  fi
 
+  echo "Setting up bat configuration"
+  ln -sf "$DOTFILES_LOCATION"/bat/config "$bat_config_file"
+
+}
+
+# :command.function
+lcdot_bob_nvim_command() {
+  # src/bob_nvim_command.sh
+  backup=${args[--backup]}
+  install=${args[--install]}
+  DOTFILES_LOCATION=$PWD
+  if [ "$install" ]; then
+      echo "Installing bob-nvim "
+      cargo install bob-nvim
+  fi
+  echo "Installing bob-nvim configuration from $DOTFILES_LOCATION"
+
+  bob_config_file=$HOME/.config/bob/config.json
+  if [ "$BOB_CONFIG" ]; then
+      bob_config_file=$BOB_CONFIG
+  fi
+
+  mkdir -p "$(dirname "$bob_config_file")"
+
+  if [ "$backup" ]; then
+      echo "Moving previous configurations in $LCDOT_BACKUP/bob-nvim"
+      mkdir -p "$LCDOT_BACKUP"/bob-nvim
+      mv "$bob_config_file" "$LCDOT_BACKUP"/bob-nvim/config.json
+  fi
+
+  echo "Setting up bob-nvim configuration"
+  ln -sf "$DOTFILES_LOCATION"/bob-nvim/config.json "$bob_config_file"
+
+}
+
+# :command.function
+lcdot_zellij_command() {
+  # src/zellij_command.sh
+  backup=${args[--backup]}
+  install=${args[--install]}
+  DOTFILES_LOCATION=$PWD
+  if [ "$install" ]; then
+      echo "Installing zellij"
+      cargo install zellij --locked
+  fi
+
+  mkdir -p "$HOME"/.config/zellij
+  echo "Installing zellij configuration from $DOTFILES_LOCATION"
+  if [ "$backup" ]; then
+      echo "Moving previous configurations in $LCDOT_BACKUP/zellij"
+      mkdir -p "$LCDOT_BACKUP"/zellij
+
+      mv "$HOME"/.config/zellij/config.kdl "$LCDOT_BACKUP"/zellij/config.kdl
+  fi
+
+  echo "Setting up zellij configuration"
+  ln -sf "$DOTFILES_LOCATION"/zellij/config.kdl "$HOME"/.config/zellij/config.kdl
+
+}
+
+# :command.function
+lcdot_mprocs_command() {
+  # src/mprocs_command.sh
+  install=${args[--install]}
+  DOTFILES_LOCATION=$PWD
+  if [ "$install" ]; then
+      echo "Installing mprocs"
+
+      if [ "$ARCHBTW"=true ]; then
+          echo "Arch based distro detected, installing using pacman"
+          sudo pacman -S mprocs
+
+      else
+          echo "Installing lazygit with cargo"
+          cargo install mprocs
+      fi
+  fi
+  echo "There is no configuration to install for mprocs, congrats!"
+
+}
+
+# :command.function
+lcdot_gitui_command() {
+  # src/gitui_command.sh
+  backup=${args[--backup]}
+  install=${args[--install]}
+  DOTFILES_LOCATION=$PWD
+  if [ "$install" ]; then
+      echo "Installing gitui"
+
+      if [ "$ARCHBTW"=true ]; then
+          echo "Arch based distro detected, installing using pacman"
+          sudo pacman -S gitui
+
+      else
+          echo "Installing gitui with cargo"
+          sudo cargo install gitui
+      fi
+  fi
+
+  if [ "$backup" ]; then
+      echo "Moving present gitconfig file to $LCDOT_BACKUP/gitui"
+      mkdir -p "$LCDOT_BACKUP"/gitui
+      mv "$HOME"/.config/gitui/* "$LCDOT_BACKUP"/gitui/
+  fi
+  echo "Setting up gitui configuration"
+  ln -sfn "$DOTFILES_LOCATION/gitui/" "$HOME/.config/gitui"
   echo "Done"
+
+}
+
+# :command.function
+lcdot_lazygit_command() {
+  # src/lazygit_command.sh
+  backup=${args[--backup]}
+  install=${args[--install]}
+  DOTFILES_LOCATION=$PWD
+  if [ "$install" ]; then
+      echo "Installing lazygit"
+
+      if [ "$ARCHBTW"=true ]; then
+          echo "Arch based distro detected, installing using pacman"
+          sudo pacman -S lazygit
+
+      else
+          echo "Installing lazygit with go"
+          go install github.com/jesseduffield/lazygit@latest
+      fi
+  fi
+  echo "Installing lazygit configuration from $DOTFILES_LOCATION"
+  mkdir -p "$HOME"/.config/lazygit
+  if [ "$backup" ]; then
+      echo "Moving previous configurations in $LCDOT_BACKUP/lazygit"
+      mkdir -p "$LCDOT_BACKUP"/lazygit
+
+      mv "$HOME"/.config/lazygit/* "$LCDOT_BACKUP"/lazygit/
+  fi
+
+  echo "Setting up lazygit configuration"
+  ln -sf "$DOTFILES_LOCATION"/lazygit/config.yml "$HOME"/.config/lazygit/config.yml
+
+}
+
+# :command.function
+lcdot_porsmo_command() {
+  # src/porsmo_command.sh
+  install=${args[--install]}
+  DOTFILES_LOCATION=$PWD
+  if [ "$install" ]; then
+      echo "Installing porsmo"
+      cargo install porsmo
+  fi
+
+  echo "There is no configuration to install for porsmo, congrats!"
+
+}
+
+# :command.function
+lcdot_wiki_tui_command() {
+  # src/wiki_tui_command.sh
+  install=${args[--install]}
+  DOTFILES_LOCATION=$PWD
+  if [ "$install" ]; then
+      echo "Installing wiki-tui"
+      cargo install wiki-tui
+  fi
+
+  echo "There is no configuration to install for wiki-tui, congrats!"
+
+}
+
+# :command.function
+lcdot_fd_find_command() {
+  # src/fd_find_command.sh
+  install=${args[--install]}
+  DOTFILES_LOCATION=$PWD
+  if [ "$install" ]; then
+      echo "Installing fd-find"
+
+      if [ "$ARCHBTW"=true ]; then
+          echo "Arch based distro detected, installing using pacman"
+          sudo pacman -S fd
+
+      else
+          echo "Installing exa with cargo"
+          sudo cargo install fd-find
+      fi
+  fi
+
+  echo "There is no configuration to install for fd, congrats!"
+
+}
+
+# :command.function
+lcdot_zoxide_command() {
+  # src/zoxide_command.sh
+  install=${args[--install]}
+  DOTFILES_LOCATION=$PWD
+  if [ "$install" ]; then
+      echo "Installing zoxide"
+
+      if [ "$ARCHBTW"=true ]; then
+          echo "Arch based distro detected, installing using pacman"
+          sudo pacman -S zoxide
+
+      else
+          echo "Installing bat with cargo"
+          cargo install zoxide --locked
+      fi
+  fi
+
+  echo "There is no configuration to install for zoxide, congrats!"
+
+}
+
+# :command.function
+lcdot_rtx_cli_command() {
+  # src/rtx_cli_command.sh
+  install=${args[--install]}
+  DOTFILES_LOCATION=$PWD
+  if [ "$install" ]; then
+      echo "Installing rtx"
+      cargo install rtx-cli
+  fi
+
+  echo "There is no configuration to install for rtx, congrats!"
+
+}
+
+# :command.function
+lcdot_navi_command() {
+  # src/navi_command.sh
+  backup=${args[--backup]}
+  install=${args[--install]}
+  DOTFILES_LOCATION=$PWD
+  if [ "$install" ]; then
+      echo "Installing navi"
+
+      if [ "$ARCHBTW"=true ]; then
+          echo "Arch based distro detected, installing using pacman"
+          sudo pacman -S navi
+
+      else
+          echo "Installing navi with cargo"
+          sudo cargo install navi --locked
+      fi
+  fi
+  echo "Installing navi configuration from $DOTFILES_LOCATION"
+  navi_config_file=$(navi info config-path)
+  mkdir -p "$(dirname "$navi_config_file")"
+  if [ "$backup" ]; then
+      echo "Moving previous configurations in $LCDOT_BACKUP/navi"
+      mkdir -p "$LCDOT_BACKUP"/navi
+
+      mv "$navi_config_file" "$LCDOT_BACKUP"/navi/
+  fi
+
+  echo "Setting up navi configuration"
+  ln -sf "$DOTFILES_LOCATION"/navi/config.yaml "$navi_config_file"
 
 }
 
@@ -553,6 +1432,31 @@ lcdot_tmux_command() {
   echo "Installing TPM"
   git clone https://github.com/tmux-plugins/tpm "$HOME/.config/tmux/plugins/tpm"
   echo "Done, open tmux and press CTRL I to install plugins"
+
+}
+
+# :command.function
+lcdot_ncspot_command() {
+  # src/ncspot_command.sh
+  install=${args[--install]}
+  backup=${args[--backup]}
+  DOTFILES_LOCATION=$PWD
+
+  if [ "$install" ]; then
+      echo "Installing ncspot"
+      cargo install ncspot --locked
+  fi
+
+  if [ "$backup" ]; then
+      echo "Moving previous configurations in $LCDOT_BACKUP/ncspot"
+      mkdir -p "$LCDOT_BACKUP"/rust-tools/ncspot
+
+      mv "$HOME"/.config/ncspot "$LCDOT_BACKUP"/rust-tools/ncspot
+  fi
+
+  echo "Setting up ncspot configuration"
+  ln -sfn "$DOTFILES_LOCATION/ncspot/" "$HOME/.config/ncspot"
+  echo "Done"
 
 }
 
@@ -606,6 +1510,31 @@ lcdot_zsh_command() {
 }
 
 # :command.function
+lcdot_sccache_command() {
+  # src/sccache_command.sh
+  install=${args[--install]}
+  backup=${args[--backup]}
+  DOTFILES_LOCATION=$PWD
+
+  if [ "$install" ]; then
+      echo "Installing sccache"
+      cargo install sccache --locked
+  fi
+
+  if [ "$backup" ]; then
+      echo "Moving previous configuration in $LCDOT_BACKUP/cargo"
+      mkdir -p "$LCDOT_BACKUP"/cargo
+
+      mv "$HOME"/.cargo/config.toml "$LCDOT_BACKUP"/cargo/
+  fi
+
+  echo "Setting up cargo to use sccache"
+  ln -sf "$DOTFILES_LOCATION"/cargo/config.toml "$HOME"/.cargo/config.toml
+  echo "Done"
+
+}
+
+# :command.function
 lcdot_all_command() {
   # src/all_command.sh
   echo "This command is not implemented yet, feel free to open an issue on the GitHub page"
@@ -652,17 +1581,108 @@ parse_requirements() {
       shift $#
       ;;
 
-    gitconfig | git)
-      action="gitconfig"
+    starship)
+      action="starship"
       shift
-      lcdot_gitconfig_parse_requirements "$@"
+      lcdot_starship_parse_requirements "$@"
       shift $#
       ;;
 
-    rust-tools | rust)
-      action="rust-tools"
+    delta)
+      action="delta"
       shift
-      lcdot_rust_tools_parse_requirements "$@"
+      lcdot_delta_parse_requirements "$@"
+      shift $#
+      ;;
+
+    exa)
+      action="exa"
+      shift
+      lcdot_exa_parse_requirements "$@"
+      shift $#
+      ;;
+
+    bat)
+      action="bat"
+      shift
+      lcdot_bat_parse_requirements "$@"
+      shift $#
+      ;;
+
+    bob-nvim)
+      action="bob-nvim"
+      shift
+      lcdot_bob_nvim_parse_requirements "$@"
+      shift $#
+      ;;
+
+    zellij)
+      action="zellij"
+      shift
+      lcdot_zellij_parse_requirements "$@"
+      shift $#
+      ;;
+
+    mprocs)
+      action="mprocs"
+      shift
+      lcdot_mprocs_parse_requirements "$@"
+      shift $#
+      ;;
+
+    gitui)
+      action="gitui"
+      shift
+      lcdot_gitui_parse_requirements "$@"
+      shift $#
+      ;;
+
+    lazygit)
+      action="lazygit"
+      shift
+      lcdot_lazygit_parse_requirements "$@"
+      shift $#
+      ;;
+
+    porsmo)
+      action="porsmo"
+      shift
+      lcdot_porsmo_parse_requirements "$@"
+      shift $#
+      ;;
+
+    wiki-tui)
+      action="wiki-tui"
+      shift
+      lcdot_wiki_tui_parse_requirements "$@"
+      shift $#
+      ;;
+
+    fd-find)
+      action="fd-find"
+      shift
+      lcdot_fd_find_parse_requirements "$@"
+      shift $#
+      ;;
+
+    zoxide)
+      action="zoxide"
+      shift
+      lcdot_zoxide_parse_requirements "$@"
+      shift $#
+      ;;
+
+    rtx-cli)
+      action="rtx-cli"
+      shift
+      lcdot_rtx_cli_parse_requirements "$@"
+      shift $#
+      ;;
+
+    navi)
+      action="navi"
+      shift
+      lcdot_navi_parse_requirements "$@"
       shift $#
       ;;
 
@@ -670,6 +1690,13 @@ parse_requirements() {
       action="tmux"
       shift
       lcdot_tmux_parse_requirements "$@"
+      shift $#
+      ;;
+
+    ncspot)
+      action="ncspot"
+      shift
+      lcdot_ncspot_parse_requirements "$@"
       shift $#
       ;;
 
@@ -691,6 +1718,13 @@ parse_requirements() {
       action="zsh"
       shift
       lcdot_zsh_parse_requirements "$@"
+      shift $#
+      ;;
+
+    sccache)
+      action="sccache"
+      shift
+      lcdot_sccache_parse_requirements "$@"
       shift $#
       ;;
 
@@ -789,13 +1823,13 @@ lcdot_nvim_parse_requirements() {
 }
 
 # :command.parse_requirements
-lcdot_gitconfig_parse_requirements() {
+lcdot_starship_parse_requirements() {
   # :command.fixed_flags_filter
   while [[ $# -gt 0 ]]; do
     case "${1:-}" in
       --help | -h)
         long_usage=yes
-        lcdot_gitconfig_usage
+        lcdot_starship_usage
         exit
         ;;
 
@@ -806,8 +1840,85 @@ lcdot_gitconfig_parse_requirements() {
     esac
   done
 
+  # :command.dependencies_filter
+  if command -v cargo >/dev/null 2>&1; then
+    deps['rust']="$(command -v cargo | head -n1)"
+  else
+    printf "missing dependency: rust\n" >&2
+    printf "%s\n" "go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust" >&2
+    exit 1
+  fi
+
   # :command.command_filter
-  action="gitconfig"
+  action="starship"
+
+  # :command.parse_requirements_while
+  while [[ $# -gt 0 ]]; do
+    key="$1"
+    case "$key" in
+      # :flag.case
+      --backup | -b)
+
+        # :flag.case_no_arg
+        args['--backup']=1
+        shift
+        ;;
+
+      # :flag.case
+      --install | -i)
+
+        # :flag.case_no_arg
+        args['--install']=1
+        shift
+        ;;
+
+      -?*)
+        printf "invalid option: %s\n" "$key" >&2
+        exit 1
+        ;;
+
+      *)
+        # :command.parse_requirements_case
+        # :command.parse_requirements_case_simple
+        printf "invalid argument: %s\n" "$key" >&2
+        exit 1
+
+        ;;
+
+    esac
+  done
+
+}
+
+# :command.parse_requirements
+lcdot_delta_parse_requirements() {
+  # :command.fixed_flags_filter
+  while [[ $# -gt 0 ]]; do
+    case "${1:-}" in
+      --help | -h)
+        long_usage=yes
+        lcdot_delta_usage
+        exit
+        ;;
+
+      *)
+        break
+        ;;
+
+    esac
+  done
+
+  # :command.dependencies_filter
+  if command -v cargo >/dev/null 2>&1; then
+    deps['rust']="$(command -v cargo | head -n1)"
+  else
+    printf "missing dependency: rust\n" >&2
+    printf "%s\n" "go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust" >&2
+    exit 1
+  fi
+
+  # :command.command_filter
+  action="delta"
 
   # :command.parse_requirements_while
   while [[ $# -gt 0 ]]; do
@@ -840,13 +1951,13 @@ lcdot_gitconfig_parse_requirements() {
 }
 
 # :command.parse_requirements
-lcdot_rust_tools_parse_requirements() {
+lcdot_exa_parse_requirements() {
   # :command.fixed_flags_filter
   while [[ $# -gt 0 ]]; do
     case "${1:-}" in
       --help | -h)
         long_usage=yes
-        lcdot_rust_tools_usage
+        lcdot_exa_usage
         exit
         ;;
 
@@ -857,8 +1968,77 @@ lcdot_rust_tools_parse_requirements() {
     esac
   done
 
+  # :command.dependencies_filter
+  if command -v cargo >/dev/null 2>&1; then
+    deps['rust']="$(command -v cargo | head -n1)"
+  else
+    printf "missing dependency: rust\n" >&2
+    printf "%s\n" "go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust" >&2
+    exit 1
+  fi
+
   # :command.command_filter
-  action="rust-tools"
+  action="exa"
+
+  # :command.parse_requirements_while
+  while [[ $# -gt 0 ]]; do
+    key="$1"
+    case "$key" in
+      # :flag.case
+      --install | -i)
+
+        # :flag.case_no_arg
+        args['--install']=1
+        shift
+        ;;
+
+      -?*)
+        printf "invalid option: %s\n" "$key" >&2
+        exit 1
+        ;;
+
+      *)
+        # :command.parse_requirements_case
+        # :command.parse_requirements_case_simple
+        printf "invalid argument: %s\n" "$key" >&2
+        exit 1
+
+        ;;
+
+    esac
+  done
+
+}
+
+# :command.parse_requirements
+lcdot_bat_parse_requirements() {
+  # :command.fixed_flags_filter
+  while [[ $# -gt 0 ]]; do
+    case "${1:-}" in
+      --help | -h)
+        long_usage=yes
+        lcdot_bat_usage
+        exit
+        ;;
+
+      *)
+        break
+        ;;
+
+    esac
+  done
+
+  # :command.dependencies_filter
+  if command -v cargo >/dev/null 2>&1; then
+    deps['rust']="$(command -v cargo | head -n1)"
+  else
+    printf "missing dependency: rust\n" >&2
+    printf "%s\n" "go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust" >&2
+    exit 1
+  fi
+
+  # :command.command_filter
+  action="bat"
 
   # :command.parse_requirements_while
   while [[ $# -gt 0 ]]; do
@@ -869,6 +2049,714 @@ lcdot_rust_tools_parse_requirements() {
 
         # :flag.case_no_arg
         args['--backup']=1
+        shift
+        ;;
+
+      # :flag.case
+      --install | -i)
+
+        # :flag.case_no_arg
+        args['--install']=1
+        shift
+        ;;
+
+      -?*)
+        printf "invalid option: %s\n" "$key" >&2
+        exit 1
+        ;;
+
+      *)
+        # :command.parse_requirements_case
+        # :command.parse_requirements_case_simple
+        printf "invalid argument: %s\n" "$key" >&2
+        exit 1
+
+        ;;
+
+    esac
+  done
+
+}
+
+# :command.parse_requirements
+lcdot_bob_nvim_parse_requirements() {
+  # :command.fixed_flags_filter
+  while [[ $# -gt 0 ]]; do
+    case "${1:-}" in
+      --help | -h)
+        long_usage=yes
+        lcdot_bob_nvim_usage
+        exit
+        ;;
+
+      *)
+        break
+        ;;
+
+    esac
+  done
+
+  # :command.dependencies_filter
+  if command -v cargo >/dev/null 2>&1; then
+    deps['rust']="$(command -v cargo | head -n1)"
+  else
+    printf "missing dependency: rust\n" >&2
+    printf "%s\n" "go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust" >&2
+    exit 1
+  fi
+
+  # :command.command_filter
+  action="bob-nvim"
+
+  # :command.parse_requirements_while
+  while [[ $# -gt 0 ]]; do
+    key="$1"
+    case "$key" in
+      # :flag.case
+      --backup | -b)
+
+        # :flag.case_no_arg
+        args['--backup']=1
+        shift
+        ;;
+
+      # :flag.case
+      --install | -i)
+
+        # :flag.case_no_arg
+        args['--install']=1
+        shift
+        ;;
+
+      -?*)
+        printf "invalid option: %s\n" "$key" >&2
+        exit 1
+        ;;
+
+      *)
+        # :command.parse_requirements_case
+        # :command.parse_requirements_case_simple
+        printf "invalid argument: %s\n" "$key" >&2
+        exit 1
+
+        ;;
+
+    esac
+  done
+
+}
+
+# :command.parse_requirements
+lcdot_zellij_parse_requirements() {
+  # :command.fixed_flags_filter
+  while [[ $# -gt 0 ]]; do
+    case "${1:-}" in
+      --help | -h)
+        long_usage=yes
+        lcdot_zellij_usage
+        exit
+        ;;
+
+      *)
+        break
+        ;;
+
+    esac
+  done
+
+  # :command.dependencies_filter
+  if command -v cargo >/dev/null 2>&1; then
+    deps['rust']="$(command -v cargo | head -n1)"
+  else
+    printf "missing dependency: rust\n" >&2
+    printf "%s\n" "go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust" >&2
+    exit 1
+  fi
+
+  # :command.command_filter
+  action="zellij"
+
+  # :command.parse_requirements_while
+  while [[ $# -gt 0 ]]; do
+    key="$1"
+    case "$key" in
+      # :flag.case
+      --backup | -b)
+
+        # :flag.case_no_arg
+        args['--backup']=1
+        shift
+        ;;
+
+      # :flag.case
+      --install | -i)
+
+        # :flag.case_no_arg
+        args['--install']=1
+        shift
+        ;;
+
+      -?*)
+        printf "invalid option: %s\n" "$key" >&2
+        exit 1
+        ;;
+
+      *)
+        # :command.parse_requirements_case
+        # :command.parse_requirements_case_simple
+        printf "invalid argument: %s\n" "$key" >&2
+        exit 1
+
+        ;;
+
+    esac
+  done
+
+}
+
+# :command.parse_requirements
+lcdot_mprocs_parse_requirements() {
+  # :command.fixed_flags_filter
+  while [[ $# -gt 0 ]]; do
+    case "${1:-}" in
+      --help | -h)
+        long_usage=yes
+        lcdot_mprocs_usage
+        exit
+        ;;
+
+      *)
+        break
+        ;;
+
+    esac
+  done
+
+  # :command.dependencies_filter
+  if command -v cargo >/dev/null 2>&1; then
+    deps['rust']="$(command -v cargo | head -n1)"
+  else
+    printf "missing dependency: rust\n" >&2
+    printf "%s\n" "go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust" >&2
+    exit 1
+  fi
+
+  # :command.command_filter
+  action="mprocs"
+
+  # :command.parse_requirements_while
+  while [[ $# -gt 0 ]]; do
+    key="$1"
+    case "$key" in
+      # :flag.case
+      --install | -i)
+
+        # :flag.case_no_arg
+        args['--install']=1
+        shift
+        ;;
+
+      -?*)
+        printf "invalid option: %s\n" "$key" >&2
+        exit 1
+        ;;
+
+      *)
+        # :command.parse_requirements_case
+        # :command.parse_requirements_case_simple
+        printf "invalid argument: %s\n" "$key" >&2
+        exit 1
+
+        ;;
+
+    esac
+  done
+
+}
+
+# :command.parse_requirements
+lcdot_gitui_parse_requirements() {
+  # :command.fixed_flags_filter
+  while [[ $# -gt 0 ]]; do
+    case "${1:-}" in
+      --help | -h)
+        long_usage=yes
+        lcdot_gitui_usage
+        exit
+        ;;
+
+      *)
+        break
+        ;;
+
+    esac
+  done
+
+  # :command.dependencies_filter
+  if command -v cargo >/dev/null 2>&1; then
+    deps['rust']="$(command -v cargo | head -n1)"
+  else
+    printf "missing dependency: rust\n" >&2
+    printf "%s\n" "go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust" >&2
+    exit 1
+  fi
+
+  # :command.command_filter
+  action="gitui"
+
+  # :command.parse_requirements_while
+  while [[ $# -gt 0 ]]; do
+    key="$1"
+    case "$key" in
+      # :flag.case
+      --backup | -b)
+
+        # :flag.case_no_arg
+        args['--backup']=1
+        shift
+        ;;
+
+      # :flag.case
+      --install | -i)
+
+        # :flag.case_no_arg
+        args['--install']=1
+        shift
+        ;;
+
+      -?*)
+        printf "invalid option: %s\n" "$key" >&2
+        exit 1
+        ;;
+
+      *)
+        # :command.parse_requirements_case
+        # :command.parse_requirements_case_simple
+        printf "invalid argument: %s\n" "$key" >&2
+        exit 1
+
+        ;;
+
+    esac
+  done
+
+}
+
+# :command.parse_requirements
+lcdot_lazygit_parse_requirements() {
+  # :command.fixed_flags_filter
+  while [[ $# -gt 0 ]]; do
+    case "${1:-}" in
+      --help | -h)
+        long_usage=yes
+        lcdot_lazygit_usage
+        exit
+        ;;
+
+      *)
+        break
+        ;;
+
+    esac
+  done
+
+  # :command.dependencies_filter
+  if command -v go >/dev/null 2>&1; then
+    deps['rust']="$(command -v go | head -n1)"
+  else
+    printf "missing dependency: rust\n" >&2
+    printf "%s\n" "go to https://go.dev/doc/install to install go lang, or use managers such as rtx" >&2
+    exit 1
+  fi
+
+  # :command.command_filter
+  action="lazygit"
+
+  # :command.parse_requirements_while
+  while [[ $# -gt 0 ]]; do
+    key="$1"
+    case "$key" in
+      # :flag.case
+      --backup | -b)
+
+        # :flag.case_no_arg
+        args['--backup']=1
+        shift
+        ;;
+
+      # :flag.case
+      --install | -i)
+
+        # :flag.case_no_arg
+        args['--install']=1
+        shift
+        ;;
+
+      -?*)
+        printf "invalid option: %s\n" "$key" >&2
+        exit 1
+        ;;
+
+      *)
+        # :command.parse_requirements_case
+        # :command.parse_requirements_case_simple
+        printf "invalid argument: %s\n" "$key" >&2
+        exit 1
+
+        ;;
+
+    esac
+  done
+
+}
+
+# :command.parse_requirements
+lcdot_porsmo_parse_requirements() {
+  # :command.fixed_flags_filter
+  while [[ $# -gt 0 ]]; do
+    case "${1:-}" in
+      --help | -h)
+        long_usage=yes
+        lcdot_porsmo_usage
+        exit
+        ;;
+
+      *)
+        break
+        ;;
+
+    esac
+  done
+
+  # :command.dependencies_filter
+  if command -v cargo >/dev/null 2>&1; then
+    deps['rust']="$(command -v cargo | head -n1)"
+  else
+    printf "missing dependency: rust\n" >&2
+    printf "%s\n" "go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust" >&2
+    exit 1
+  fi
+
+  # :command.command_filter
+  action="porsmo"
+
+  # :command.parse_requirements_while
+  while [[ $# -gt 0 ]]; do
+    key="$1"
+    case "$key" in
+      # :flag.case
+      --install | -i)
+
+        # :flag.case_no_arg
+        args['--install']=1
+        shift
+        ;;
+
+      -?*)
+        printf "invalid option: %s\n" "$key" >&2
+        exit 1
+        ;;
+
+      *)
+        # :command.parse_requirements_case
+        # :command.parse_requirements_case_simple
+        printf "invalid argument: %s\n" "$key" >&2
+        exit 1
+
+        ;;
+
+    esac
+  done
+
+}
+
+# :command.parse_requirements
+lcdot_wiki_tui_parse_requirements() {
+  # :command.fixed_flags_filter
+  while [[ $# -gt 0 ]]; do
+    case "${1:-}" in
+      --help | -h)
+        long_usage=yes
+        lcdot_wiki_tui_usage
+        exit
+        ;;
+
+      *)
+        break
+        ;;
+
+    esac
+  done
+
+  # :command.dependencies_filter
+  if command -v cargo >/dev/null 2>&1; then
+    deps['rust']="$(command -v cargo | head -n1)"
+  else
+    printf "missing dependency: rust\n" >&2
+    printf "%s\n" "go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust" >&2
+    exit 1
+  fi
+
+  # :command.command_filter
+  action="wiki-tui"
+
+  # :command.parse_requirements_while
+  while [[ $# -gt 0 ]]; do
+    key="$1"
+    case "$key" in
+      # :flag.case
+      --install | -i)
+
+        # :flag.case_no_arg
+        args['--install']=1
+        shift
+        ;;
+
+      -?*)
+        printf "invalid option: %s\n" "$key" >&2
+        exit 1
+        ;;
+
+      *)
+        # :command.parse_requirements_case
+        # :command.parse_requirements_case_simple
+        printf "invalid argument: %s\n" "$key" >&2
+        exit 1
+
+        ;;
+
+    esac
+  done
+
+}
+
+# :command.parse_requirements
+lcdot_fd_find_parse_requirements() {
+  # :command.fixed_flags_filter
+  while [[ $# -gt 0 ]]; do
+    case "${1:-}" in
+      --help | -h)
+        long_usage=yes
+        lcdot_fd_find_usage
+        exit
+        ;;
+
+      *)
+        break
+        ;;
+
+    esac
+  done
+
+  # :command.dependencies_filter
+  if command -v cargo >/dev/null 2>&1; then
+    deps['rust']="$(command -v cargo | head -n1)"
+  else
+    printf "missing dependency: rust\n" >&2
+    printf "%s\n" "go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust" >&2
+    exit 1
+  fi
+
+  # :command.command_filter
+  action="fd-find"
+
+  # :command.parse_requirements_while
+  while [[ $# -gt 0 ]]; do
+    key="$1"
+    case "$key" in
+      # :flag.case
+      --install | -i)
+
+        # :flag.case_no_arg
+        args['--install']=1
+        shift
+        ;;
+
+      -?*)
+        printf "invalid option: %s\n" "$key" >&2
+        exit 1
+        ;;
+
+      *)
+        # :command.parse_requirements_case
+        # :command.parse_requirements_case_simple
+        printf "invalid argument: %s\n" "$key" >&2
+        exit 1
+
+        ;;
+
+    esac
+  done
+
+}
+
+# :command.parse_requirements
+lcdot_zoxide_parse_requirements() {
+  # :command.fixed_flags_filter
+  while [[ $# -gt 0 ]]; do
+    case "${1:-}" in
+      --help | -h)
+        long_usage=yes
+        lcdot_zoxide_usage
+        exit
+        ;;
+
+      *)
+        break
+        ;;
+
+    esac
+  done
+
+  # :command.dependencies_filter
+  if command -v cargo >/dev/null 2>&1; then
+    deps['rust']="$(command -v cargo | head -n1)"
+  else
+    printf "missing dependency: rust\n" >&2
+    printf "%s\n" "go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust" >&2
+    exit 1
+  fi
+
+  # :command.command_filter
+  action="zoxide"
+
+  # :command.parse_requirements_while
+  while [[ $# -gt 0 ]]; do
+    key="$1"
+    case "$key" in
+      # :flag.case
+      --install | -i)
+
+        # :flag.case_no_arg
+        args['--install']=1
+        shift
+        ;;
+
+      -?*)
+        printf "invalid option: %s\n" "$key" >&2
+        exit 1
+        ;;
+
+      *)
+        # :command.parse_requirements_case
+        # :command.parse_requirements_case_simple
+        printf "invalid argument: %s\n" "$key" >&2
+        exit 1
+
+        ;;
+
+    esac
+  done
+
+}
+
+# :command.parse_requirements
+lcdot_rtx_cli_parse_requirements() {
+  # :command.fixed_flags_filter
+  while [[ $# -gt 0 ]]; do
+    case "${1:-}" in
+      --help | -h)
+        long_usage=yes
+        lcdot_rtx_cli_usage
+        exit
+        ;;
+
+      *)
+        break
+        ;;
+
+    esac
+  done
+
+  # :command.dependencies_filter
+  if command -v cargo >/dev/null 2>&1; then
+    deps['rust']="$(command -v cargo | head -n1)"
+  else
+    printf "missing dependency: rust\n" >&2
+    printf "%s\n" "go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust" >&2
+    exit 1
+  fi
+
+  # :command.command_filter
+  action="rtx-cli"
+
+  # :command.parse_requirements_while
+  while [[ $# -gt 0 ]]; do
+    key="$1"
+    case "$key" in
+      # :flag.case
+      --install | -i)
+
+        # :flag.case_no_arg
+        args['--install']=1
+        shift
+        ;;
+
+      -?*)
+        printf "invalid option: %s\n" "$key" >&2
+        exit 1
+        ;;
+
+      *)
+        # :command.parse_requirements_case
+        # :command.parse_requirements_case_simple
+        printf "invalid argument: %s\n" "$key" >&2
+        exit 1
+
+        ;;
+
+    esac
+  done
+
+}
+
+# :command.parse_requirements
+lcdot_navi_parse_requirements() {
+  # :command.fixed_flags_filter
+  while [[ $# -gt 0 ]]; do
+    case "${1:-}" in
+      --help | -h)
+        long_usage=yes
+        lcdot_navi_usage
+        exit
+        ;;
+
+      *)
+        break
+        ;;
+
+    esac
+  done
+
+  # :command.dependencies_filter
+  if command -v cargo >/dev/null 2>&1; then
+    deps['rust']="$(command -v cargo | head -n1)"
+  else
+    printf "missing dependency: rust\n" >&2
+    printf "%s\n" "go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust" >&2
+    exit 1
+  fi
+
+  # :command.command_filter
+  action="navi"
+
+  # :command.parse_requirements_while
+  while [[ $# -gt 0 ]]; do
+    key="$1"
+    case "$key" in
+      # :flag.case
+      --backup | -b)
+
+        # :flag.case_no_arg
+        args['--backup']=1
+        shift
+        ;;
+
+      # :flag.case
+      --install | -i)
+
+        # :flag.case_no_arg
+        args['--install']=1
         shift
         ;;
 
@@ -920,6 +2808,74 @@ lcdot_tmux_parse_requirements() {
 
         # :flag.case_no_arg
         args['--backup']=1
+        shift
+        ;;
+
+      -?*)
+        printf "invalid option: %s\n" "$key" >&2
+        exit 1
+        ;;
+
+      *)
+        # :command.parse_requirements_case
+        # :command.parse_requirements_case_simple
+        printf "invalid argument: %s\n" "$key" >&2
+        exit 1
+
+        ;;
+
+    esac
+  done
+
+}
+
+# :command.parse_requirements
+lcdot_ncspot_parse_requirements() {
+  # :command.fixed_flags_filter
+  while [[ $# -gt 0 ]]; do
+    case "${1:-}" in
+      --help | -h)
+        long_usage=yes
+        lcdot_ncspot_usage
+        exit
+        ;;
+
+      *)
+        break
+        ;;
+
+    esac
+  done
+
+  # :command.dependencies_filter
+  if command -v cargo >/dev/null 2>&1; then
+    deps['rust']="$(command -v cargo | head -n1)"
+  else
+    printf "missing dependency: rust\n" >&2
+    printf "%s\n" "go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust" >&2
+    exit 1
+  fi
+
+  # :command.command_filter
+  action="ncspot"
+
+  # :command.parse_requirements_while
+  while [[ $# -gt 0 ]]; do
+    key="$1"
+    case "$key" in
+      # :flag.case
+      --backup | -b)
+
+        # :flag.case_no_arg
+        args['--backup']=1
+        shift
+        ;;
+
+      # :flag.case
+      --install | -i)
+
+        # :flag.case_no_arg
+        args['--install']=1
         shift
         ;;
 
@@ -1095,6 +3051,74 @@ lcdot_zsh_parse_requirements() {
 }
 
 # :command.parse_requirements
+lcdot_sccache_parse_requirements() {
+  # :command.fixed_flags_filter
+  while [[ $# -gt 0 ]]; do
+    case "${1:-}" in
+      --help | -h)
+        long_usage=yes
+        lcdot_sccache_usage
+        exit
+        ;;
+
+      *)
+        break
+        ;;
+
+    esac
+  done
+
+  # :command.dependencies_filter
+  if command -v cargo >/dev/null 2>&1; then
+    deps['rust']="$(command -v cargo | head -n1)"
+  else
+    printf "missing dependency: rust\n" >&2
+    printf "%s\n" "go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust" >&2
+    exit 1
+  fi
+
+  # :command.command_filter
+  action="sccache"
+
+  # :command.parse_requirements_while
+  while [[ $# -gt 0 ]]; do
+    key="$1"
+    case "$key" in
+      # :flag.case
+      --backup | -b)
+
+        # :flag.case_no_arg
+        args['--backup']=1
+        shift
+        ;;
+
+      # :flag.case
+      --install | -i)
+
+        # :flag.case_no_arg
+        args['--install']=1
+        shift
+        ;;
+
+      -?*)
+        printf "invalid option: %s\n" "$key" >&2
+        exit 1
+        ;;
+
+      *)
+        # :command.parse_requirements_case
+        # :command.parse_requirements_case_simple
+        printf "invalid argument: %s\n" "$key" >&2
+        exit 1
+
+        ;;
+
+    esac
+  done
+
+}
+
+# :command.parse_requirements
 lcdot_all_parse_requirements() {
   # :command.fixed_flags_filter
   while [[ $# -gt 0 ]]; do
@@ -1160,12 +3184,27 @@ run() {
 
   case "$action" in
     "nvim") lcdot_nvim_command ;;
-    "gitconfig") lcdot_gitconfig_command ;;
-    "rust-tools") lcdot_rust_tools_command ;;
+    "starship") lcdot_starship_command ;;
+    "delta") lcdot_delta_command ;;
+    "exa") lcdot_exa_command ;;
+    "bat") lcdot_bat_command ;;
+    "bob-nvim") lcdot_bob_nvim_command ;;
+    "zellij") lcdot_zellij_command ;;
+    "mprocs") lcdot_mprocs_command ;;
+    "gitui") lcdot_gitui_command ;;
+    "lazygit") lcdot_lazygit_command ;;
+    "porsmo") lcdot_porsmo_command ;;
+    "wiki-tui") lcdot_wiki_tui_command ;;
+    "fd-find") lcdot_fd_find_command ;;
+    "zoxide") lcdot_zoxide_command ;;
+    "rtx-cli") lcdot_rtx_cli_command ;;
+    "navi") lcdot_navi_command ;;
     "tmux") lcdot_tmux_command ;;
+    "ncspot") lcdot_ncspot_command ;;
     "vim") lcdot_vim_command ;;
     "wezterm") lcdot_wezterm_command ;;
     "zsh") lcdot_zsh_command ;;
+    "sccache") lcdot_sccache_command ;;
     "all") lcdot_all_command ;;
   esac
 }
