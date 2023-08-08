@@ -51,9 +51,9 @@ commands:
   - name: exa
     help: Install the exa listing tool
     flags:
-      - long: --backup
-        short: -b
-        help: Backup existing configurations in LCDOT_BACKUP/exa
+      - long: --install
+        short: -i
+        help: Install the tool itself as well as its configuration
     dependencies:
       rust:
         command: cargo
@@ -156,9 +156,9 @@ commands:
   - name: fd-find
     help: Install the fd-find cli tool
     flags:
-      - long: --backup
-        short: -b
-        help: Backup existing configurations in LCDOT_BACKUP/fd-find
+      - long: --install
+        short: -i
+        help: Install the tool itself as well as its configuration
     dependencies:
       rust:
         command: cargo
