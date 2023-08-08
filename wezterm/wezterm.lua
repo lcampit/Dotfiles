@@ -6,7 +6,7 @@ if wezterm.config_builder then
 end
 
 config.font = wezterm.font("JetBrainsMono NerdFont")
-config.color_scheme = "Catppuccin Mocha"
+config.color_scheme = "Tokyo Night Storm"
 
 config.window_frame = {
 	active_titlebar_bg = "#333333",

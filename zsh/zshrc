@@ -1,12 +1,12 @@
 USE_P10K=false # Flag to set up p10k or starship prompt
 
 if [[ "$USE_P10K" = true ]]; then
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-  if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-  fi
+    # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+    # Initialization code that may require console input (password prompts, [y/n]
+    # confirmations, etc.) must go above this block; everything else may go below.
+    if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+        source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+    fi
 fi
 
 # The following lines were added by compinstall
@@ -47,19 +47,19 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
 if [[ "$USE_P10K" = true ]]; then
-  zinit ice depth=1; zplugin light romkatv/powerlevel10k
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-  [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+    zinit ice depth=1; zplugin light romkatv/powerlevel10k
+    # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+    [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 fi
 
 
 # fzf
 if type rg &> /dev/null; then
-  export FZF_DEFAULT_COMMAND='rg --files'
-  export FZF_DEFAULT_OPTS='-m'
+    export FZF_DEFAULT_COMMAND='rg --files'
+    export FZF_DEFAULT_OPTS='-m'
 fi
 
-# sources extra file if present 
+# sources extra file if present
 source .zsh_extra 2> /dev/null
 
 # plugins
@@ -82,10 +82,10 @@ zinit light chrissicool/zsh-256color
 zinit light Anant-mishra1729/web-search
 zinit light trapd00r/LS_COLORS
 
-# aliases
-source "$HOME/.alias"
+# sources aliases if present
+source "$HOME/.alias" 2> /dev/null
 
-# load rtx for zsh 
+# load rtx for zsh
 eval "$(rtx activate zsh)"
 
 # load zoxide for zsh
@@ -93,11 +93,11 @@ eval "$(zoxide init zsh)"
 
 # Use starship
 if [[ "$USE_P10K" = false ]]; then
-  # Weird workaround to avoid first empty line, but have an empty line after each prompt
-  precmd() {
+    # Weird workaround to avoid first empty line, but have an empty line after each prompt
     precmd() {
-      echo
+        precmd() {
+            echo
+        }
     }
-  }
-  eval "$(starship init zsh)"
+    eval "$(starship init zsh)"
 fi

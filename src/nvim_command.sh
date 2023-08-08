@@ -9,5 +9,5 @@ if [ $backup ]; then
 	mv $HOME/.config/nvim $LCDOT_BACKUP/nvim
 fi
 echo "Linking custom config"
-ln -sfr "$DOTFILES_LOCATION/nvim/" "$HOME/.config/nvim/"
+ln -sfr "$DOTFILES_LOCATION/nvim" "$HOME/.config/nvim"
 echo "Done, run nvim and :checkhealth"
