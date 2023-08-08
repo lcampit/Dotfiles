@@ -1,2 +1,3 @@
 rust-tools/ncspot/userstate.cbor
 .rtx.toml
+nvim/lazy-lock.json
