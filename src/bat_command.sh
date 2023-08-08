@@ -15,6 +15,7 @@ if [ "$install" ]; then
 fi
 echo "Installing bat configuration from $DOTFILES_LOCATION"
 bat_config_file=$(bat --config-file)
+mkdir -p bat_config_file
 if [ "$backup" ]; then
     echo "Moving previous configurations in $LCDOT_BACKUP/bat"
     mkdir -p "$LCDOT_BACKUP"/bat
