@@ -101,9 +101,9 @@ commands:
   - name: mprocs
     help: Install the mprocs cli tool
     flags:
-      - long: --backup
-        short: -b
-        help: Backup existing configurations in LCDOT_BACKUP/mprocs
+      - long: --install
+        short: -i
+        help: Install the tool itself as well as its configuration
     dependencies:
       rust:
         command: cargo
