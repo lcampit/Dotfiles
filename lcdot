@@ -34,28 +34,27 @@ lcdot_usage() {
   echo
   # :command.usage_commands
   printf "%s\n" "Commands:"
-  printf "  %s   install my own nvim configuration\n" "nvim     "
-  printf "  %s   install my own git configuration\n" "gitconfig"
-  printf "  %s   Install my starship prompt\n" "starship "
-  printf "  %s   Install the delta diff pager for git\n" "delta    "
-  printf "  %s   Install the exa listing tool\n" "exa      "
-  printf "  %s   Install the bat cli tool\n" "bat      "
-  printf "  %s   Install the bob-nvim cli tool\n" "bob-nvim "
-  printf "  %s   Install the zellij cli tool\n" "zellij   "
-  printf "  %s   Install the mprocs cli tool\n" "mprocs   "
-  printf "  %s   Install the gitui cli tool\n" "gitui    "
-  printf "  %s   Install the lazygit cli tool\n" "lazygit  "
-  printf "  %s   Install the porsmo cli tool\n" "porsmo   "
-  printf "  %s   Install the wiki-tui cli tool\n" "wiki-tui "
-  printf "  %s   Install the fd-find cli tool\n" "fd-find  "
-  printf "  %s   Install the zoxide cli tool\n" "zoxide   "
-  printf "  %s   Install the rtx-cli cli tool\n" "rtx-cli  "
-  printf "  %s   Install the navi cli tool\n" "navi     "
-  printf "  %s   install my own tmux configuration\n" "tmux     "
-  printf "  %s   install my own vim configuration\n" "vim      "
-  printf "  %s   install my own wezterm configuration\n" "wezterm  "
-  printf "  %s   install my own zshell configuration\n" "zsh      "
-  printf "  %s   installs all configuration files. Backup option is enabled by default\n" "all      "
+  printf "  %s   install my own nvim configuration\n" "nvim    "
+  printf "  %s   Install my starship prompt\n" "starship"
+  printf "  %s   Install the delta diff pager for git\n" "delta   "
+  printf "  %s   Install the exa listing tool\n" "exa     "
+  printf "  %s   Install the bat cli tool\n" "bat     "
+  printf "  %s   Install the bob-nvim cli tool\n" "bob-nvim"
+  printf "  %s   Install the zellij cli tool\n" "zellij  "
+  printf "  %s   Install the mprocs cli tool\n" "mprocs  "
+  printf "  %s   Install the gitui cli tool\n" "gitui   "
+  printf "  %s   Install the lazygit cli tool\n" "lazygit "
+  printf "  %s   Install the porsmo cli tool\n" "porsmo  "
+  printf "  %s   Install the wiki-tui cli tool\n" "wiki-tui"
+  printf "  %s   Install the fd-find cli tool\n" "fd-find "
+  printf "  %s   Install the zoxide cli tool\n" "zoxide  "
+  printf "  %s   Install the rtx-cli cli tool\n" "rtx-cli "
+  printf "  %s   Install the navi cli tool\n" "navi    "
+  printf "  %s   install my own tmux configuration\n" "tmux    "
+  printf "  %s   install my own vim configuration\n" "vim     "
+  printf "  %s   install my own wezterm configuration\n" "wezterm "
+  printf "  %s   install my own zshell configuration\n" "zsh     "
+  printf "  %s   installs all configuration files. Backup option is enabled by default\n" "all     "
   echo
 
   # :command.long_usage
@@ -125,49 +124,6 @@ lcdot_nvim_usage() {
     # :command.usage_examples
     printf "%s\n" "Examples:"
     printf "  lcdot nvim -b\n"
-    echo
-
-  fi
-}
-
-# :command.usage
-lcdot_gitconfig_usage() {
-  if [[ -n $long_usage ]]; then
-    printf "lcdot gitconfig - install my own git configuration\n"
-    echo
-
-  else
-    printf "lcdot gitconfig - install my own git configuration\n"
-    echo
-
-  fi
-
-  printf "Alias: git\n"
-  echo
-
-  printf "%s\n" "Usage:"
-  printf "  lcdot gitconfig [OPTIONS]\n"
-  printf "  lcdot gitconfig --help | -h\n"
-  echo
-
-  # :command.long_usage
-  if [[ -n $long_usage ]]; then
-    printf "%s\n" "Options:"
-
-    # :command.usage_flags
-    # :flag.usage
-    printf "  %s\n" "--backup, -b"
-    printf "    Backup existing configurations in LCDOT_BACKUP/gitconfig\n"
-    echo
-
-    # :command.usage_fixed_flags
-    printf "  %s\n" "--help, -h"
-    printf "    Show this help\n"
-    echo
-
-    # :command.usage_examples
-    printf "%s\n" "Examples:"
-    printf "  lcodt git -b\n"
     echo
 
   fi
@@ -987,25 +943,6 @@ lcdot_nvim_command() {
 }
 
 # :command.function
-lcdot_gitconfig_command() {
-  # src/gitconfig_command.sh
-    echo "Setting up gitconfig to use delta and other tools"
-    if [ $backup ]; then
-
-      echo "moving present gitconfig file to $LCDOT_BACKUP/gitconfig"
-      mkdir -p $LCDOT_BACKUP/gitconfig
-      mv $HOME/
-    fi
-    echo "Installing Delta"
-    cargo install git-delta
-    echo "Linking gitconfig file in home directory"
-    mkdir -p $HOME/.gitconfig
-    ln -sf "$DOTFILES_LOCATION/gitconfig/gitconfig" "$HOME/.gitconfig"
-    echo "Done"
-
-}
-
-# :command.function
 lcdot_starship_command() {
   # src/starship_command.sh
   backup=${args[--backup]}
@@ -1035,10 +972,31 @@ lcdot_starship_command() {
 # :command.function
 lcdot_delta_command() {
   # src/delta_command.sh
-  echo "# this file is located in 'src/delta_command.sh'"
-  echo "# code for 'lcdot delta' goes here"
-  echo "# you can edit it freely and regenerate (it will not be overwritten)"
-  inspect_args
+  backup=${args[--backup]}
+  install=${args[--install]}
+  DOTFILES_LOCATION=$PWD
+  if [ "$install" ]; then
+      echo "Installing git-delta"
+
+      if [ "$ARCHBTW"=true ]; then
+          echo "Arch based distro detected, installing using pacman"
+          sudo pacman -S git-delta
+
+      else
+          echo "Installing bat with cargo"
+          cargo install git-delta
+      fi
+  fi
+  echo "Installing git configuration from $DOTFILES_LOCATION"
+
+  if [ "$backup" ]; then
+      echo "Moving present gitconfig file to $LCDOT_BACKUP/gitconfig"
+      mkdir -p "$LCDOT_BACKUP"/gitconfig
+      mv "$HOME"/.gitconfig "$LCDOT_BACKUP"/gitconfig/gitconfig.old
+  fi
+  echo "Linking gitconfig file in home directory"
+  ln -sf "$DOTFILES_LOCATION/gitconfig/gitconfig" "$HOME/.gitconfig"
+  echo "Done"
 
 }
 
@@ -1059,7 +1017,7 @@ lcdot_bat_command() {
   install=${args[--install]}
   DOTFILES_LOCATION=$PWD
   if [ "$install" ]; then
-      echo "Installing bat "
+      echo "Installing bat"
 
       if [ "$ARCHBTW"=true ]; then
           echo "Arch based distro detected, installing using pacman"
@@ -1331,13 +1289,6 @@ parse_requirements() {
       shift $#
       ;;
 
-    gitconfig | git)
-      action="gitconfig"
-      shift
-      lcdot_gitconfig_parse_requirements "$@"
-      shift $#
-      ;;
-
     starship)
       action="starship"
       shift
@@ -1534,57 +1485,6 @@ lcdot_nvim_parse_requirements() {
 
   # :command.command_filter
   action="nvim"
-
-  # :command.parse_requirements_while
-  while [[ $# -gt 0 ]]; do
-    key="$1"
-    case "$key" in
-      # :flag.case
-      --backup | -b)
-
-        # :flag.case_no_arg
-        args['--backup']=1
-        shift
-        ;;
-
-      -?*)
-        printf "invalid option: %s\n" "$key" >&2
-        exit 1
-        ;;
-
-      *)
-        # :command.parse_requirements_case
-        # :command.parse_requirements_case_simple
-        printf "invalid argument: %s\n" "$key" >&2
-        exit 1
-
-        ;;
-
-    esac
-  done
-
-}
-
-# :command.parse_requirements
-lcdot_gitconfig_parse_requirements() {
-  # :command.fixed_flags_filter
-  while [[ $# -gt 0 ]]; do
-    case "${1:-}" in
-      --help | -h)
-        long_usage=yes
-        lcdot_gitconfig_usage
-        exit
-        ;;
-
-      *)
-        break
-        ;;
-
-    esac
-  done
-
-  # :command.command_filter
-  action="gitconfig"
 
   # :command.parse_requirements_while
   while [[ $# -gt 0 ]]; do
@@ -2810,7 +2710,6 @@ run() {
 
   case "$action" in
     "nvim") lcdot_nvim_command ;;
-    "gitconfig") lcdot_gitconfig_command ;;
     "starship") lcdot_starship_command ;;
     "delta") lcdot_delta_command ;;
     "exa") lcdot_exa_command ;;

@@ -23,18 +23,6 @@ commands:
     examples:
       - lcdot nvim -b
 
-  - name: gitconfig
-    alias: git
-    help: install my own git configuration
-
-    flags:
-      - long: --backup
-        short: -b
-        help: Backup existing configurations in LCDOT_BACKUP/gitconfig
-
-    examples:
-      - lcodt git -b
-
   - name: starship
     help: Install my starship prompt
     flags:
