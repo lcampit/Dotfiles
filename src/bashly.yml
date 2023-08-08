@@ -268,5 +268,19 @@ commands:
     examples:
       - lcodt z -b
 
+  - name: sccache
+    help: Configure cargo package manager to use sccache
+    flags:
+      - long: --backup
+        short: -b
+        help: Backup existing configurations in LCDOT_BACKUP/cargo
+      - long: --install
+        short: -i
+        help: Install sccache as well as set up cargo configuration
+    dependencies:
+      rust:
+        command: cargo
+        help: go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust
+
   - name: all
     help: installs all configuration files. Backup option is enabled by default
