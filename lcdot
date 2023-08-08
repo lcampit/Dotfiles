@@ -604,8 +604,8 @@ lcdot_zoxide_usage() {
 
     # :command.usage_flags
     # :flag.usage
-    printf "  %s\n" "--backup, -b"
-    printf "    Backup existing configurations in LCDOT_BACKUP/zoxide\n"
+    printf "  %s\n" "--install, -i"
+    printf "    Install the tool itself as well as its configuration\n"
     echo
 
     # :command.usage_fixed_flags
@@ -1348,10 +1348,22 @@ lcdot_fd_find_command() {
 # :command.function
 lcdot_zoxide_command() {
   # src/zoxide_command.sh
-  echo "# this file is located in 'src/zoxide_command.sh'"
-  echo "# code for 'lcdot zoxide' goes here"
-  echo "# you can edit it freely and regenerate (it will not be overwritten)"
-  inspect_args
+  install=${args[--install]}
+  DOTFILES_LOCATION=$PWD
+  if [ "$install" ]; then
+      echo "Installing zoxide"
+
+      if [ "$ARCHBTW"=true ]; then
+          echo "Arch based distro detected, installing using pacman"
+          sudo pacman -S zoxide
+
+      else
+          echo "Installing bat with cargo"
+          cargo install zoxide --locked
+      fi
+  fi
+
+  echo "There is no configuration to install for zoxide, congrats!"
 
 }
 
@@ -2613,10 +2625,10 @@ lcdot_zoxide_parse_requirements() {
     key="$1"
     case "$key" in
       # :flag.case
-      --backup | -b)
+      --install | -i)
 
         # :flag.case_no_arg
-        args['--backup']=1
+        args['--install']=1
         shift
         ;;
 

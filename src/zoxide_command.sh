@@ -1,4 +1,16 @@
-echo "# this file is located in 'src/zoxide_command.sh'"
-echo "# code for 'lcdot zoxide' goes here"
-echo "# you can edit it freely and regenerate (it will not be overwritten)"
-inspect_args
+install=${args[--install]}
+DOTFILES_LOCATION=$PWD
+if [ "$install" ]; then
+    echo "Installing zoxide"
+
+    if [ "$ARCHBTW"=true ]; then
+        echo "Arch based distro detected, installing using pacman"
+        sudo pacman -S zoxide
+
+    else
+        echo "Installing bat with cargo"
+        cargo install zoxide --locked
+    fi
+fi
+
+echo "There is no configuration to install for zoxide, congrats!"
