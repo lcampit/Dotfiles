@@ -184,9 +184,9 @@ commands:
   - name: rtx-cli
     help: Install the rtx-cli cli tool
     flags:
-      - long: --backup
-        short: -b
-        help: Backup existing configurations in LCDOT_BACKUP/rtx-cli
+      - long: --install
+        short: -i
+        help: Install the tool itself as well as its configuration
     dependencies:
       rust:
         command: cargo
