@@ -671,6 +671,11 @@ lcdot_navi_usage() {
     printf "    Backup existing configurations in LCDOT_BACKUP/navi\n"
     echo
 
+    # :flag.usage
+    printf "  %s\n" "--install, -i"
+    printf "    Install the tool itself as well as its configuration\n"
+    echo
+
     # :command.usage_fixed_flags
     printf "  %s\n" "--help, -h"
     printf "    Show this help\n"
@@ -1052,7 +1057,7 @@ lcdot_bat_command() {
   fi
   echo "Installing bat configuration from $DOTFILES_LOCATION"
   bat_config_file=$(bat --config-file)
-  mkdir -p bat_config_file
+  mkdir -p "$(dirname "$bat_config_file")"
   if [ "$backup" ]; then
       echo "Moving previous configurations in $LCDOT_BACKUP/bat"
       mkdir -p "$LCDOT_BACKUP"/bat
@@ -1253,10 +1258,33 @@ lcdot_rtx_cli_command() {
 # :command.function
 lcdot_navi_command() {
   # src/navi_command.sh
-  echo "# this file is located in 'src/navi_command.sh'"
-  echo "# code for 'lcdot navi' goes here"
-  echo "# you can edit it freely and regenerate (it will not be overwritten)"
-  inspect_args
+  backup=${args[--backup]}
+  install=${args[--install]}
+  DOTFILES_LOCATION=$PWD
+  if [ "$install" ]; then
+      echo "Installing navi"
+
+      if [ "$ARCHBTW"=true ]; then
+          echo "Arch based distro detected, installing using pacman"
+          sudo pacman -S navi
+
+      else
+          echo "Installing navi with cargo"
+          sudo cargo install navi --locked
+      fi
+  fi
+  echo "Installing navi configuration from $DOTFILES_LOCATION"
+  navi_config_file=$(navi info config-path)
+  mkdir -p "$(dirname "$navi_config_file")"
+  if [ "$backup" ]; then
+      echo "Moving previous configurations in $LCDOT_BACKUP/navi"
+      mkdir -p "$LCDOT_BACKUP"/navi
+
+      mv "$navi_config_file" "$LCDOT_BACKUP"/navi/
+  fi
+
+  echo "Setting up navi configuration"
+  ln -sf "$DOTFILES_LOCATION"/navi/config.yaml "$navi_config_file"
 
 }
 
@@ -2523,6 +2551,14 @@ lcdot_navi_parse_requirements() {
 
         # :flag.case_no_arg
         args['--backup']=1
+        shift
+        ;;
+
+      # :flag.case
+      --install | -i)
+
+        # :flag.case_no_arg
+        args['--install']=1
         shift
         ;;
 
