@@ -456,6 +456,11 @@ lcdot_lazygit_usage() {
     printf "    Backup existing configurations in LCDOT_BACKUP/lazygit\n"
     echo
 
+    # :flag.usage
+    printf "  %s\n" "--install, -i"
+    printf "    Install the tool itself as well as its configuration\n"
+    echo
+
     # :command.usage_fixed_flags
     printf "  %s\n" "--help, -h"
     printf "    Show this help\n"
@@ -1047,6 +1052,7 @@ lcdot_bat_command() {
   fi
   echo "Installing bat configuration from $DOTFILES_LOCATION"
   bat_config_file=$(bat --config-file)
+  mkdir -p bat_config_file
   if [ "$backup" ]; then
       echo "Moving previous configurations in $LCDOT_BACKUP/bat"
       mkdir -p "$LCDOT_BACKUP"/bat
@@ -1142,10 +1148,32 @@ lcdot_gitui_command() {
 # :command.function
 lcdot_lazygit_command() {
   # src/lazygit_command.sh
-  echo "# this file is located in 'src/lazygit_command.sh'"
-  echo "# code for 'lcdot lazygit' goes here"
-  echo "# you can edit it freely and regenerate (it will not be overwritten)"
-  inspect_args
+  backup=${args[--backup]}
+  install=${args[--install]}
+  DOTFILES_LOCATION=$PWD
+  if [ "$install" ]; then
+      echo "Installing lazygit"
+
+      if [ "$ARCHBTW"=true ]; then
+          echo "Arch based distro detected, installing using pacman"
+          sudo pacman -S lazygit
+
+      else
+          echo "Installing lazygit with go"
+          go install github.com/jesseduffield/lazygit@latest
+      fi
+  fi
+  echo "Installing lazygit configuration from $DOTFILES_LOCATION"
+  mkdir -p "$HOME"/.config/lazygit
+  if [ "$backup" ]; then
+      echo "Moving previous configurations in $LCDOT_BACKUP/lazygit"
+      mkdir -p "$LCDOT_BACKUP"/lazygit
+
+      mv "$HOME"/.config/lazygit/* "$LCDOT_BACKUP"/lazygit/
+  fi
+
+  echo "Setting up lazygit configuration"
+  ln -sf "$DOTFILES_LOCATION"/lazygit/config.yml "$HOME"/.config/lazygit/config.yml
 
 }
 
@@ -2096,11 +2124,11 @@ lcdot_lazygit_parse_requirements() {
   done
 
   # :command.dependencies_filter
-  if command -v cargo >/dev/null 2>&1; then
-    deps['rust']="$(command -v cargo | head -n1)"
+  if command -v go >/dev/null 2>&1; then
+    deps['rust']="$(command -v go | head -n1)"
   else
     printf "missing dependency: rust\n" >&2
-    printf "%s\n" "go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust" >&2
+    printf "%s\n" "go to https://go.dev/doc/install to install go lang, or use managers such as rtx" >&2
     exit 1
   fi
 
@@ -2116,6 +2144,14 @@ lcdot_lazygit_parse_requirements() {
 
         # :flag.case_no_arg
         args['--backup']=1
+        shift
+        ;;
+
+      # :flag.case
+      --install | -i)
+
+        # :flag.case_no_arg
+        args['--install']=1
         shift
         ;;
 

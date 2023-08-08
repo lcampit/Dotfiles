@@ -129,10 +129,13 @@ commands:
       - long: --backup
         short: -b
         help: Backup existing configurations in LCDOT_BACKUP/lazygit
+      - long: --install
+        short: -i
+        help: Install the tool itself as well as its configuration
     dependencies:
       rust:
-        command: cargo
-        help: go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust
+        command: go
+        help: go to https://go.dev/doc/install to install go lang, or use managers such as rtx
 
   - name: porsmo
     help: Install the porsmo cli tool

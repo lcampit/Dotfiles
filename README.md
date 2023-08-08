@@ -81,6 +81,9 @@ A tool to keep long running processes under control in a unified window
 A blazing fast terminal based git ui 
 This folder contains configurations for gitui that will be placed in `$HOME/.config/gitui/`
 
+### [Lazygit](https://github.com/jesseduffield/lazygit#installation)
+Another git client straight from the command line. Used by default in my current lazyvim nvim configuration
+
 ### [Ncspot](https://github.com/hrkfdn/ncspot)
 A terminal based Spotify client
   - Some libs may be needed for this to work. If installation fails, install 
