@@ -227,8 +227,8 @@ lcdot_exa_usage() {
 
     # :command.usage_flags
     # :flag.usage
-    printf "  %s\n" "--backup, -b"
-    printf "    Backup existing configurations in LCDOT_BACKUP/exa\n"
+    printf "  %s\n" "--install, -i"
+    printf "    Install the tool itself as well as its configuration\n"
     echo
 
     # :command.usage_fixed_flags
@@ -416,6 +416,11 @@ lcdot_gitui_usage() {
     printf "    Backup existing configurations in LCDOT_BACKUP/gitui\n"
     echo
 
+    # :flag.usage
+    printf "  %s\n" "--install, -i"
+    printf "    Install the tool itself as well as its configuration\n"
+    echo
+
     # :command.usage_fixed_flags
     printf "  %s\n" "--help, -h"
     printf "    Show this help\n"
@@ -552,8 +557,8 @@ lcdot_fd_find_usage() {
 
     # :command.usage_flags
     # :flag.usage
-    printf "  %s\n" "--backup, -b"
-    printf "    Backup existing configurations in LCDOT_BACKUP/fd-find\n"
+    printf "  %s\n" "--install, -i"
+    printf "    Install the tool itself as well as its configuration\n"
     echo
 
     # :command.usage_fixed_flags
@@ -1003,7 +1008,6 @@ lcdot_delta_command() {
 # :command.function
 lcdot_exa_command() {
   # src/exa_command.sh
-  backup=${args[--backup]}
   install=${args[--install]}
   DOTFILES_LOCATION=$PWD
   if [ "$install" ]; then
@@ -1108,10 +1112,30 @@ lcdot_mprocs_command() {
 # :command.function
 lcdot_gitui_command() {
   # src/gitui_command.sh
-  echo "# this file is located in 'src/gitui_command.sh'"
-  echo "# code for 'lcdot gitui' goes here"
-  echo "# you can edit it freely and regenerate (it will not be overwritten)"
-  inspect_args
+  backup=${args[--backup]}
+  install=${args[--install]}
+  DOTFILES_LOCATION=$PWD
+  if [ "$install" ]; then
+      echo "Installing gitui"
+
+      if [ "$ARCHBTW"=true ]; then
+          echo "Arch based distro detected, installing using pacman"
+          sudo pacman -S gitui
+
+      else
+          echo "Installing gitui with cargo"
+          sudo cargo install gitui
+      fi
+  fi
+
+  if [ "$backup" ]; then
+      echo "Moving present gitconfig file to $LCDOT_BACKUP/gitui"
+      mkdir -p "$LCDOT_BACKUP"/gitui
+      mv "$HOME"/.config/gitui/* "$LCDOT_BACKUP"/gitui/
+  fi
+  echo "Setting up gitui configuration"
+  ln -sfn "$DOTFILES_LOCATION/gitui/" "$HOME/.config/gitui"
+  echo "Done"
 
 }
 
@@ -1148,10 +1172,22 @@ lcdot_wiki_tui_command() {
 # :command.function
 lcdot_fd_find_command() {
   # src/fd_find_command.sh
-  echo "# this file is located in 'src/fd_find_command.sh'"
-  echo "# code for 'lcdot fd-find' goes here"
-  echo "# you can edit it freely and regenerate (it will not be overwritten)"
-  inspect_args
+  install=${args[--install]}
+  DOTFILES_LOCATION=$PWD
+  if [ "$install" ]; then
+      echo "Installing fd-find"
+
+      if [ "$ARCHBTW"=true ]; then
+          echo "Arch based distro detected, installing using pacman"
+          sudo pacman -S fd
+
+      else
+          echo "Installing exa with cargo"
+          sudo cargo install fd-find
+      fi
+  fi
+
+  echo "There is no configuration to install for fd, congrats!"
 
 }
 
@@ -1692,10 +1728,10 @@ lcdot_exa_parse_requirements() {
     key="$1"
     case "$key" in
       # :flag.case
-      --backup | -b)
+      --install | -i)
 
         # :flag.case_no_arg
-        args['--backup']=1
+        args['--install']=1
         shift
         ;;
 
@@ -2015,6 +2051,14 @@ lcdot_gitui_parse_requirements() {
         shift
         ;;
 
+      # :flag.case
+      --install | -i)
+
+        # :flag.case_no_arg
+        args['--install']=1
+        shift
+        ;;
+
       -?*)
         printf "invalid option: %s\n" "$key" >&2
         exit 1
@@ -2248,10 +2292,10 @@ lcdot_fd_find_parse_requirements() {
     key="$1"
     case "$key" in
       # :flag.case
-      --backup | -b)
+      --install | -i)
 
         # :flag.case_no_arg
-        args['--backup']=1
+        args['--install']=1
         shift
         ;;
 
