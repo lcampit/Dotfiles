@@ -92,6 +92,9 @@ eval "$(rtx activate zsh)"
 # load zoxide for zsh
 eval "$(zoxide init zsh)"
 
+# load navi for zsh, launch with ctrl+G
+eval "$(navi widget zsh)"
+
 # Use starship
 if [[ "$USE_P10K" = false ]]; then
     # Weird workaround to avoid first empty line, but have an empty line after each prompt
