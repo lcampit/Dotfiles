@@ -6,11 +6,11 @@ if [ "$install" ]; then
     cargo install zellij --locked
 fi
 
-mkdir -p "$HOME"/.config/zellij
+mkdir -p "$HOME"/.config/zellij/
 echo "Installing zellij configuration from $DOTFILES_LOCATION"
 if [ "$backup" ]; then
     echo "Moving previous configurations in $LCDOT_BACKUP/zellij"
-    mkdir -p "$LCDOT_BACKUP"/zellij
+    mkdir -p "$LCDOT_BACKUP"/zellij/
 
     mv "$HOME"/.config/zellij/config.kdl "$LCDOT_BACKUP"/zellij/config.kdl
 fi
