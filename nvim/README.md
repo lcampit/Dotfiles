@@ -143,3 +143,5 @@ Enables usage of fzf inside Neovim and by other plugins, such as zoxide or teles
 #### [move.nvim](https://github.com/fedepujol/move.nvim)
 Enables line and block move similar to vscode
 
+#### [lsp_lines](https://git.sr.ht/~whynothugo/lsp_lines.nvim)
+Enables virtual text for lsp diagnostics
