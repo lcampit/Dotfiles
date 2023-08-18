@@ -35,6 +35,8 @@ require("lazy").setup({
 		{ import = "lazyvim.plugins.extras.lang.terraform" },
 		{ import = "lazyvim.plugins.extras.lang.tex" },
 		{ import = "lazyvim.plugins.extras.lang.yaml" },
+		-- linter extras
+		{ import = "lazyvim.plugins.extras.linting.eslint" },
 		-- import/override with your plugins
 		{ import = "plugins" },
 	},
