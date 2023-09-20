@@ -1,6 +1,6 @@
 name: lcdot
 help: Helper script to set up my own dotfile environment
-version: 0.2.0
+version: 0.3.0
 
 environment_variables:
   - name: LCDOT_BACKUP

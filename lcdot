@@ -1024,439 +1024,590 @@ inspect_args() {
 
 }
 
+# :command.user_lib
+# src/lib/bat.sh
+install_bat() {
+    local backup=${args[--backup]}
+    local install=${args[--install]}
+    local DOTFILES_LOCATION=$PWD
+    if [ "$install" ]; then
+        echo "Installing bat"
+
+        if [ "$ARCHBTW"=true ]; then
+            echo "Arch based distro detected, installing using pacman"
+            sudo pacman -S bat
+
+        else
+            echo "Installing bat with apt"
+            sudo apt install bat
+        fi
+    fi
+    echo "Installing bat configuration from $DOTFILES_LOCATION"
+    local bat_config_file=$(bat --config-file)
+    mkdir -p "$(dirname "$bat_config_file")"
+    if [ "$backup" ]; then
+        echo "Moving previous configurations in $LCDOT_BACKUP/bat"
+        mkdir -p "$LCDOT_BACKUP"/bat
+
+        mv "$bat_config_file" "$LCDOT_BACKUP"/bat/bat.old
+    fi
+
+    echo "Setting up bat configuration"
+    ln -sf "$DOTFILES_LOCATION"/bat/config "$bat_config_file"
+}
+
+# src/lib/bob.sh
+install_bob() {
+    local backup=${args[--backup]}
+    local install=${args[--install]}
+    local DOTFILES_LOCATION=$PWD
+    if [ "$install" ]; then
+        echo "Installing bob-nvim "
+        cargo install bob-nvim
+    fi
+    echo "Installing bob-nvim configuration from $DOTFILES_LOCATION"
+
+    local bob_config_file=$HOME/.config/bob/config.json
+    if [ "$BOB_CONFIG" ]; then
+        bob_config_file=$BOB_CONFIG
+    fi
+
+    mkdir -p "$(dirname "$bob_config_file")"
+
+    if [ "$backup" ]; then
+        echo "Moving previous configurations in $LCDOT_BACKUP/bob-nvim"
+        mkdir -p "$LCDOT_BACKUP"/bob-nvim
+        mv "$bob_config_file" "$LCDOT_BACKUP"/bob-nvim/config.json
+    fi
+
+    echo "Setting up bob-nvim configuration"
+    ln -sf "$DOTFILES_LOCATION"/bob-nvim/config.json "$bob_config_file"
+}
+
+# src/lib/delta.sh
+install_delta() {
+    backup=${args[--backup]}
+    install=${args[--install]}
+    DOTFILES_LOCATION=$PWD
+    if [ "$install" ]; then
+        echo "Installing git-delta"
+
+        if [ "$ARCHBTW"=true ]; then
+            echo "Arch based distro detected, installing using pacman"
+            sudo pacman -S git-delta
+
+        else
+            echo "Installing bat with cargo"
+            cargo install git-delta
+        fi
+    fi
+    echo "Installing git configuration from $DOTFILES_LOCATION"
+
+    if [ "$backup" ]; then
+        echo "Moving present gitconfig file to $LCDOT_BACKUP/gitconfig"
+        mkdir -p "$LCDOT_BACKUP"/gitconfig
+        mv "$HOME"/.gitconfig "$LCDOT_BACKUP"/gitconfig/gitconfig.old
+    fi
+    echo "Linking gitconfig file in home directory"
+    ln -sf "$DOTFILES_LOCATION/gitconfig/gitconfig" "$HOME/.gitconfig"
+    echo "Done"
+}
+
+# src/lib/exa.sh
+install_exa() {
+    install=${args[--install]}
+    DOTFILES_LOCATION=$PWD
+    if [ "$install" ]; then
+        echo "Installing exa"
+
+        if [ "$ARCHBTW"=true ]; then
+            echo "Arch based distro detected, installing using pacman"
+            sudo pacman -S exa
+
+        else
+            echo "Installing exa with cargo"
+            sudo cargo install exa
+        fi
+    fi
+
+    echo "There is no configuration to install for exa, congrats!"
+}
+
+# src/lib/fd-find.sh
+install_fd() {
+    install=${args[--install]}
+    DOTFILES_LOCATION=$PWD
+    if [ "$install" ]; then
+        echo "Installing fd-find"
+
+        if [ "$ARCHBTW"=true ]; then
+            echo "Arch based distro detected, installing using pacman"
+            sudo pacman -S fd
+
+        else
+            echo "Installing exa with cargo"
+            sudo cargo install fd-find
+        fi
+    fi
+
+    echo "There is no configuration to install for fd, congrats!"
+}
+
+# src/lib/gitui.sh
+install_gitui() {
+    backup=${args[--backup]}
+    install=${args[--install]}
+    DOTFILES_LOCATION=$PWD
+    if [ "$install" ]; then
+        echo "Installing gitui"
+
+        if [ "$ARCHBTW"=true ]; then
+            echo "Arch based distro detected, installing using pacman"
+            sudo pacman -S gitui
+
+        else
+            echo "Installing gitui with cargo"
+            sudo cargo install gitui
+        fi
+    fi
+
+    if [ "$backup" ]; then
+        echo "Moving present gitconfig file to $LCDOT_BACKUP/gitui"
+        mkdir -p "$LCDOT_BACKUP"/gitui
+        mv "$HOME"/.config/gitui/* "$LCDOT_BACKUP"/gitui/
+    fi
+    echo "Setting up gitui configuration"
+    ln -sfn "$DOTFILES_LOCATION/gitui/" "$HOME/.config/gitui"
+    echo "Done"
+}
+
+# src/lib/lazygit.sh
+install_lazygit() {
+    backup=${args[--backup]}
+    install=${args[--install]}
+    DOTFILES_LOCATION=$PWD
+    if [ "$install" ]; then
+        echo "Installing lazygit"
+
+        if [ "$ARCHBTW"=true ]; then
+            echo "Arch based distro detected, installing using pacman"
+            sudo pacman -S lazygit
+
+        else
+            echo "Installing lazygit with go"
+            go install github.com/jesseduffield/lazygit@latest
+        fi
+    fi
+    echo "Installing lazygit configuration from $DOTFILES_LOCATION"
+    mkdir -p "$HOME"/.config/lazygit
+    if [ "$backup" ]; then
+        echo "Moving previous configurations in $LCDOT_BACKUP/lazygit"
+        mkdir -p "$LCDOT_BACKUP"/lazygit
+
+        mv "$HOME"/.config/lazygit/* "$LCDOT_BACKUP"/lazygit/
+    fi
+
+    echo "Setting up lazygit configuration"
+    ln -sf "$DOTFILES_LOCATION"/lazygit/config.yml "$HOME"/.config/lazygit/config.yml
+}
+
+# src/lib/mprocs.sh
+install_mprocs() {
+    install=${args[--install]}
+    DOTFILES_LOCATION=$PWD
+    if [ "$install" ]; then
+        echo "Installing mprocs"
+
+        if [ "$ARCHBTW"=true ]; then
+            echo "Arch based distro detected, installing using pacman"
+            sudo pacman -S mprocs
+
+        else
+            echo "Installing lazygit with cargo"
+            cargo install mprocs
+        fi
+    fi
+    echo "There is no configuration to install for mprocs, congrats!"
+}
+
+# src/lib/navi.sh
+install_navi() {
+    backup=${args[--backup]}
+    install=${args[--install]}
+    DOTFILES_LOCATION=$PWD
+    if [ "$install" ]; then
+        echo "Installing navi"
+
+        if [ "$ARCHBTW"=true ]; then
+            echo "Arch based distro detected, installing using pacman"
+            sudo pacman -S navi
+
+        else
+            echo "Installing navi with cargo"
+            sudo cargo install navi --locked
+        fi
+    fi
+    echo "Installing navi configuration from $DOTFILES_LOCATION"
+    navi_config_file=$(navi info config-path)
+    mkdir -p "$(dirname "$navi_config_file")"
+    if [ "$backup" ]; then
+        echo "Moving previous configurations in $LCDOT_BACKUP/navi"
+        mkdir -p "$LCDOT_BACKUP"/navi
+
+        mv "$navi_config_file" "$LCDOT_BACKUP"/navi/
+    fi
+
+    echo "Setting up navi configuration"
+    ln -sf "$DOTFILES_LOCATION"/navi/config.yaml "$navi_config_file"
+}
+
+# src/lib/ncspot.sh
+install_ncspot() {
+    install=${args[--install]}
+    backup=${args[--backup]}
+    DOTFILES_LOCATION=$PWD
+
+    if [ "$install" ]; then
+        echo "Installing ncspot"
+        cargo install ncspot --locked
+    fi
+
+    if [ "$backup" ]; then
+        echo "Moving previous configurations in $LCDOT_BACKUP/ncspot"
+        mkdir -p "$LCDOT_BACKUP"/rust-tools/ncspot
+
+        mv "$HOME"/.config/ncspot "$LCDOT_BACKUP"/rust-tools/ncspot
+    fi
+
+    echo "Setting up ncspot configuration"
+    ln -sfn "$DOTFILES_LOCATION/ncspot/" "$HOME/.config/ncspot"
+    echo "Done"
+}
+
+# src/lib/nvim.sh
+install_nvim() {
+    backup=${args[--backup]}
+    DOTFILES_LOCATION=$PWD
+    echo "installing nvim configuration from $DOTFILES_LOCATION"
+
+    mkdir -p "$HOME"/.config
+    if [ "$backup" ]; then
+        echo "moving present configuration to $LCDOT_BACKUP/nvim"
+        mkdir -p "$LCDOT_BACKUP"/nvim
+        mv "$HOME"/.config/nvim "$LCDOT_BACKUP"/nvim
+    fi
+    echo "Linking custom config"
+    ln -sfr "$DOTFILES_LOCATION/nvim" "$HOME/.config/nvim"
+    echo "Done, run nvim and :checkhealth"
+}
+
+# src/lib/porsmo.sh
+install_porsmo() {
+    install=${args[--install]}
+    DOTFILES_LOCATION=$PWD
+    if [ "$install" ]; then
+        echo "Installing porsmo"
+        cargo install porsmo
+    fi
+
+    echo "There is no configuration to install for porsmo, congrats!"
+}
+
+# src/lib/rtx.sh
+install_rtx() {
+    install=${args[--install]}
+    DOTFILES_LOCATION=$PWD
+    if [ "$install" ]; then
+        echo "Installing rtx"
+        cargo install rtx-cli
+    fi
+
+    echo "There is no configuration to install for rtx, congrats!"
+}
+
+# src/lib/sccache.sh
+install_sccache() {
+    install=${args[--install]}
+    backup=${args[--backup]}
+    DOTFILES_LOCATION=$PWD
+
+    if [ "$install" ]; then
+        echo "Installing sccache"
+        cargo install sccache --locked
+    fi
+
+    if [ "$backup" ]; then
+        echo "Moving previous configuration in $LCDOT_BACKUP/cargo"
+        mkdir -p "$LCDOT_BACKUP"/cargo
+
+        mv "$HOME"/.cargo/config.toml "$LCDOT_BACKUP"/cargo/
+    fi
+
+    echo "Setting up cargo to use sccache"
+    ln -sf "$DOTFILES_LOCATION"/cargo/config.toml "$HOME"/.cargo/config.toml
+    echo "Done"
+}
+
+# src/lib/starship.sh
+install_starship() {
+    backup=${args[--backup]}
+    install=${args[--install]}
+    DOTFILES_LOCATION=$PWD
+
+    if [ "$install" ]; then
+        echo "Installing starship"
+
+        cargo install starship --locked
+    fi
+
+    if [ "$backup" ]; then
+        echo "Moving previous configurations in $LCDOT_BACKUP/starship"
+        mkdir -p "$LCDOT_BACKUP"/starship
+
+        mv "$HOME/.config/starship.toml" "$LCDOT_BACKUP"/starship/starship.toml
+    fi
+
+    echo "Setting up starship configuration from $DOTFILES_LOCATION"
+    ln -sf "$DOTFILES_LOCATION"/starship/starship.toml "$HOME"/.config/starship.toml
+
+    echo "Done"
+}
+
+# src/lib/tmux.sh
+install_tmux() {
+    backup=${args[--backup]}
+    DOTFILES_LOCATION=$PWD
+    echo "Installing tmux configuration from $DOTFILES_LOCATION"
+
+    if [ "$backup" ]; then
+        echo "Moving present configuration in $LCDOT_BACKUP/tmux"
+        mkdir -p "$LCDOT_BACKUP"/tmux
+        mv "$HOME"/.config/tmux "$LCDOT_BACKUP"/tmux
+    fi
+
+    mkdir -p "$HOME/.config/tmux/plugins/tpm"
+    ln -sf "$DOTFILES_LOCATION/tmux/tmux.conf" "$HOME/.config/tmux/tmux.conf"
+    echo "Installing TPM"
+    git clone https://github.com/tmux-plugins/tpm "$HOME/.config/tmux/plugins/tpm"
+    echo "Done, open tmux and press CTRL I to install plugins"
+}
+
+# src/lib/wezterm.sh
+install_wezterm() {
+    backup=${args[--backup]}
+    DOTFILES_LOCATION=$PWD
+    echo "Installing wezterm configuration from $DOTFILES_LOCATION"
+
+    if [ "$backup" ]; then
+        echo "Moving present configuration to $LCDOT_BACKUP/wezterm"
+        mkdir -p "$LCDOT_BACKUP"/wezterm
+        mv "$HOME/.config/wezterm" "$LCDOT_BACKUP/wezterm/"
+    fi
+
+    mkdir -p "$HOME"/.config/wezterm
+    ln -sf "$DOTFILES_LOCATION"/wezterm/wezterm.lua "$HOME"/.config/wezterm/wezterm.lua
+    echo "Done"
+}
+
+# src/lib/wiki-tui.sh
+install_wikitui() {
+    install=${args[--install]}
+    DOTFILES_LOCATION=$PWD
+    if [ "$install" ]; then
+        echo "Installing wiki-tui"
+        cargo install wiki-tui
+    fi
+
+    echo "There is no configuration to install for wiki-tui, congrats!"
+}
+
+# src/lib/zellij.sh
+install_zellij() {
+    backup=${args[--backup]}
+    install=${args[--install]}
+    DOTFILES_LOCATION=$PWD
+    if [ "$install" ]; then
+        echo "Installing zellij"
+        cargo install zellij --locked
+    fi
+
+    mkdir -p "$HOME"/.config/zellij/
+    echo "Installing zellij configuration from $DOTFILES_LOCATION"
+    if [ "$backup" ]; then
+        echo "Moving previous configurations in $LCDOT_BACKUP/zellij"
+        mkdir -p "$LCDOT_BACKUP"/zellij/
+
+        mv "$HOME"/.config/zellij/config.kdl "$LCDOT_BACKUP"/zellij/config.kdl
+    fi
+
+    echo "Setting up zellij configuration"
+    ln -sf "$DOTFILES_LOCATION"/zellij/config.kdl "$HOME"/.config/zellij/config.kdl
+}
+
+# src/lib/zoxide.sh
+install_zoxide() {
+    install=${args[--install]}
+    DOTFILES_LOCATION=$PWD
+    if [ "$install" ]; then
+        echo "Installing zoxide"
+
+        if [ "$ARCHBTW"=true ]; then
+            echo "Arch based distro detected, installing using pacman"
+            sudo pacman -S zoxide
+
+        else
+            echo "Installing bat with cargo"
+            cargo install zoxide --locked
+        fi
+    fi
+
+    echo "There is no configuration to install for zoxide, congrats!"
+}
+
+# src/lib/zsh.sh
+install_zsh() {
+    backup=${args[--backup]}
+    DOTFILES_LOCATION=$PWD
+    echo "Installing zsh configuration from $DOTFILES_LOCATION"
+    if [ "$backup" ]; then
+        echo "Moving present configuration to $LCDOT_BACKUP/zsh"
+        mkdir -p "$LCDOT_BACKUP"/zsh
+        [ -f "$HOME"/.zshrc ] && mv "$HOME"/.zshrc "$LCDOT_BACKUP"/zsh/zshrc
+        [ -f "$HOME"/.zshenv ] && mv "$HOME"/.zshenv "$LCDOT_BACKUP"/zsh/zshenv
+        [ -f "$HOME"/.alias ] && mv "$HOME"/.alias "$LCDOT_BACKUP"/zsh/alias
+
+    fi
+    ln -sf "$DOTFILES_LOCATION"/zsh/zshrc "$HOME"/.zshrc
+    ln -sf "$DOTFILES_LOCATION"/zsh/zshenv "$HOME"/.zshenv
+    ln -sf "$DOTFILES_LOCATION"/alias/alias "$HOME"/.alias
+
+    echo "Done"
+}
+
 # :command.command_functions
 # :command.function
 lcdot_nvim_command() {
   # src/nvim_command.sh
-  backup=${args[--backup]}
-  DOTFILES_LOCATION=$(pwd)
-  echo "installing nvim configuration from $DOTFILES_LOCATION"
-
-  mkdir -p $HOME/.config
-  if [ $backup ]; then
-  	echo "moving present configuration to $LCDOT_BACKUP/nvim"
-  	mkdir -p $LCDOT_BACKUP/nvim
-  	mv $HOME/.config/nvim $LCDOT_BACKUP/nvim
-  fi
-  echo "Linking custom config"
-  ln -sfr "$DOTFILES_LOCATION/nvim" "$HOME/.config/nvim"
-  echo "Done, run nvim and :checkhealth"
+  install_nvim
 
 }
 
 # :command.function
 lcdot_starship_command() {
   # src/starship_command.sh
-  backup=${args[--backup]}
-  install=${args[--install]}
-  DOTFILES_LOCATION=$PWD
-
-  if [ "$install" ]; then
-      echo "Installing starship"
-
-      cargo install starship --locked
-  fi
-
-  if [ "$backup" ]; then
-      echo "Moving previous configurations in $LCDOT_BACKUP/starship"
-      mkdir -p "$LCDOT_BACKUP"/starship
-
-      mv "$HOME/.config/starship.toml" "$LCDOT_BACKUP"/starship/starship.toml
-  fi
-
-  echo "Setting up starship configuration from $DOTFILES_LOCATION"
-  ln -sf "$DOTFILES_LOCATION"/starship/starship.toml "$HOME"/.config/starship.toml
-
-  echo "Done"
+  install_starship
 
 }
 
 # :command.function
 lcdot_delta_command() {
   # src/delta_command.sh
-  backup=${args[--backup]}
-  install=${args[--install]}
-  DOTFILES_LOCATION=$PWD
-  if [ "$install" ]; then
-      echo "Installing git-delta"
-
-      if [ "$ARCHBTW"=true ]; then
-          echo "Arch based distro detected, installing using pacman"
-          sudo pacman -S git-delta
-
-      else
-          echo "Installing bat with cargo"
-          cargo install git-delta
-      fi
-  fi
-  echo "Installing git configuration from $DOTFILES_LOCATION"
-
-  if [ "$backup" ]; then
-      echo "Moving present gitconfig file to $LCDOT_BACKUP/gitconfig"
-      mkdir -p "$LCDOT_BACKUP"/gitconfig
-      mv "$HOME"/.gitconfig "$LCDOT_BACKUP"/gitconfig/gitconfig.old
-  fi
-  echo "Linking gitconfig file in home directory"
-  ln -sf "$DOTFILES_LOCATION/gitconfig/gitconfig" "$HOME/.gitconfig"
-  echo "Done"
+  install_delta
 
 }
 
 # :command.function
 lcdot_exa_command() {
   # src/exa_command.sh
-  install=${args[--install]}
-  DOTFILES_LOCATION=$PWD
-  if [ "$install" ]; then
-      echo "Installing exa"
-
-      if [ "$ARCHBTW"=true ]; then
-          echo "Arch based distro detected, installing using pacman"
-          sudo pacman -S exa
-
-      else
-          echo "Installing exa with cargo"
-          sudo cargo install exa
-      fi
-  fi
-
-  echo "There is no configuration to install for exa, congrats!"
+  install_exa
 
 }
 
 # :command.function
 lcdot_bat_command() {
   # src/bat_command.sh
-  backup=${args[--backup]}
-  install=${args[--install]}
-  DOTFILES_LOCATION=$PWD
-  if [ "$install" ]; then
-      echo "Installing bat"
-
-      if [ "$ARCHBTW"=true ]; then
-          echo "Arch based distro detected, installing using pacman"
-          sudo pacman -S bat
-
-      else
-          echo "Installing bat with apt"
-          sudo apt install bat
-      fi
-  fi
-  echo "Installing bat configuration from $DOTFILES_LOCATION"
-  bat_config_file=$(bat --config-file)
-  mkdir -p "$(dirname "$bat_config_file")"
-  if [ "$backup" ]; then
-      echo "Moving previous configurations in $LCDOT_BACKUP/bat"
-      mkdir -p "$LCDOT_BACKUP"/bat
-
-      mv "$bat_config_file" "$LCDOT_BACKUP"/bat/bat.old
-  fi
-
-  echo "Setting up bat configuration"
-  ln -sf "$DOTFILES_LOCATION"/bat/config "$bat_config_file"
+  install_bat
 
 }
 
 # :command.function
 lcdot_bob_nvim_command() {
   # src/bob_nvim_command.sh
-  backup=${args[--backup]}
-  install=${args[--install]}
-  DOTFILES_LOCATION=$PWD
-  if [ "$install" ]; then
-      echo "Installing bob-nvim "
-      cargo install bob-nvim
-  fi
-  echo "Installing bob-nvim configuration from $DOTFILES_LOCATION"
-
-  bob_config_file=$HOME/.config/bob/config.json
-  if [ "$BOB_CONFIG" ]; then
-      bob_config_file=$BOB_CONFIG
-  fi
-
-  mkdir -p "$(dirname "$bob_config_file")"
-
-  if [ "$backup" ]; then
-      echo "Moving previous configurations in $LCDOT_BACKUP/bob-nvim"
-      mkdir -p "$LCDOT_BACKUP"/bob-nvim
-      mv "$bob_config_file" "$LCDOT_BACKUP"/bob-nvim/config.json
-  fi
-
-  echo "Setting up bob-nvim configuration"
-  ln -sf "$DOTFILES_LOCATION"/bob-nvim/config.json "$bob_config_file"
+  install_bob
 
 }
 
 # :command.function
 lcdot_zellij_command() {
   # src/zellij_command.sh
-  backup=${args[--backup]}
-  install=${args[--install]}
-  DOTFILES_LOCATION=$PWD
-  if [ "$install" ]; then
-      echo "Installing zellij"
-      cargo install zellij --locked
-  fi
-
-  mkdir -p "$HOME"/.config/zellij/
-  echo "Installing zellij configuration from $DOTFILES_LOCATION"
-  if [ "$backup" ]; then
-      echo "Moving previous configurations in $LCDOT_BACKUP/zellij"
-      mkdir -p "$LCDOT_BACKUP"/zellij/
-
-      mv "$HOME"/.config/zellij/config.kdl "$LCDOT_BACKUP"/zellij/config.kdl
-  fi
-
-  echo "Setting up zellij configuration"
-  ln -sf "$DOTFILES_LOCATION"/zellij/config.kdl "$HOME"/.config/zellij/config.kdl
+  install_zellij
 
 }
 
 # :command.function
 lcdot_mprocs_command() {
   # src/mprocs_command.sh
-  install=${args[--install]}
-  DOTFILES_LOCATION=$PWD
-  if [ "$install" ]; then
-      echo "Installing mprocs"
-
-      if [ "$ARCHBTW"=true ]; then
-          echo "Arch based distro detected, installing using pacman"
-          sudo pacman -S mprocs
-
-      else
-          echo "Installing lazygit with cargo"
-          cargo install mprocs
-      fi
-  fi
-  echo "There is no configuration to install for mprocs, congrats!"
+  install_mprocs
 
 }
 
 # :command.function
 lcdot_gitui_command() {
   # src/gitui_command.sh
-  backup=${args[--backup]}
-  install=${args[--install]}
-  DOTFILES_LOCATION=$PWD
-  if [ "$install" ]; then
-      echo "Installing gitui"
-
-      if [ "$ARCHBTW"=true ]; then
-          echo "Arch based distro detected, installing using pacman"
-          sudo pacman -S gitui
-
-      else
-          echo "Installing gitui with cargo"
-          sudo cargo install gitui
-      fi
-  fi
-
-  if [ "$backup" ]; then
-      echo "Moving present gitconfig file to $LCDOT_BACKUP/gitui"
-      mkdir -p "$LCDOT_BACKUP"/gitui
-      mv "$HOME"/.config/gitui/* "$LCDOT_BACKUP"/gitui/
-  fi
-  echo "Setting up gitui configuration"
-  ln -sfn "$DOTFILES_LOCATION/gitui/" "$HOME/.config/gitui"
-  echo "Done"
+  install_gitui
 
 }
 
 # :command.function
 lcdot_lazygit_command() {
   # src/lazygit_command.sh
-  backup=${args[--backup]}
-  install=${args[--install]}
-  DOTFILES_LOCATION=$PWD
-  if [ "$install" ]; then
-      echo "Installing lazygit"
-
-      if [ "$ARCHBTW"=true ]; then
-          echo "Arch based distro detected, installing using pacman"
-          sudo pacman -S lazygit
-
-      else
-          echo "Installing lazygit with go"
-          go install github.com/jesseduffield/lazygit@latest
-      fi
-  fi
-  echo "Installing lazygit configuration from $DOTFILES_LOCATION"
-  mkdir -p "$HOME"/.config/lazygit
-  if [ "$backup" ]; then
-      echo "Moving previous configurations in $LCDOT_BACKUP/lazygit"
-      mkdir -p "$LCDOT_BACKUP"/lazygit
-
-      mv "$HOME"/.config/lazygit/* "$LCDOT_BACKUP"/lazygit/
-  fi
-
-  echo "Setting up lazygit configuration"
-  ln -sf "$DOTFILES_LOCATION"/lazygit/config.yml "$HOME"/.config/lazygit/config.yml
+  install_lazygit
 
 }
 
 # :command.function
 lcdot_porsmo_command() {
   # src/porsmo_command.sh
-  install=${args[--install]}
-  DOTFILES_LOCATION=$PWD
-  if [ "$install" ]; then
-      echo "Installing porsmo"
-      cargo install porsmo
-  fi
-
-  echo "There is no configuration to install for porsmo, congrats!"
+  install_porsmo
 
 }
 
 # :command.function
 lcdot_wiki_tui_command() {
   # src/wiki_tui_command.sh
-  install=${args[--install]}
-  DOTFILES_LOCATION=$PWD
-  if [ "$install" ]; then
-      echo "Installing wiki-tui"
-      cargo install wiki-tui
-  fi
-
-  echo "There is no configuration to install for wiki-tui, congrats!"
+  install_wikitui
 
 }
 
 # :command.function
 lcdot_fd_find_command() {
   # src/fd_find_command.sh
-  install=${args[--install]}
-  DOTFILES_LOCATION=$PWD
-  if [ "$install" ]; then
-      echo "Installing fd-find"
-
-      if [ "$ARCHBTW"=true ]; then
-          echo "Arch based distro detected, installing using pacman"
-          sudo pacman -S fd
-
-      else
-          echo "Installing exa with cargo"
-          sudo cargo install fd-find
-      fi
-  fi
-
-  echo "There is no configuration to install for fd, congrats!"
+  install_fd
 
 }
 
 # :command.function
 lcdot_zoxide_command() {
   # src/zoxide_command.sh
-  install=${args[--install]}
-  DOTFILES_LOCATION=$PWD
-  if [ "$install" ]; then
-      echo "Installing zoxide"
-
-      if [ "$ARCHBTW"=true ]; then
-          echo "Arch based distro detected, installing using pacman"
-          sudo pacman -S zoxide
-
-      else
-          echo "Installing bat with cargo"
-          cargo install zoxide --locked
-      fi
-  fi
-
-  echo "There is no configuration to install for zoxide, congrats!"
+  install_zoxide
 
 }
 
 # :command.function
 lcdot_rtx_cli_command() {
   # src/rtx_cli_command.sh
-  install=${args[--install]}
-  DOTFILES_LOCATION=$PWD
-  if [ "$install" ]; then
-      echo "Installing rtx"
-      cargo install rtx-cli
-  fi
-
-  echo "There is no configuration to install for rtx, congrats!"
+  install_rtx
 
 }
 
 # :command.function
 lcdot_navi_command() {
   # src/navi_command.sh
-  backup=${args[--backup]}
-  install=${args[--install]}
-  DOTFILES_LOCATION=$PWD
-  if [ "$install" ]; then
-      echo "Installing navi"
-
-      if [ "$ARCHBTW"=true ]; then
-          echo "Arch based distro detected, installing using pacman"
-          sudo pacman -S navi
-
-      else
-          echo "Installing navi with cargo"
-          sudo cargo install navi --locked
-      fi
-  fi
-  echo "Installing navi configuration from $DOTFILES_LOCATION"
-  navi_config_file=$(navi info config-path)
-  mkdir -p "$(dirname "$navi_config_file")"
-  if [ "$backup" ]; then
-      echo "Moving previous configurations in $LCDOT_BACKUP/navi"
-      mkdir -p "$LCDOT_BACKUP"/navi
-
-      mv "$navi_config_file" "$LCDOT_BACKUP"/navi/
-  fi
-
-  echo "Setting up navi configuration"
-  ln -sf "$DOTFILES_LOCATION"/navi/config.yaml "$navi_config_file"
+  install_navi
 
 }
 
 # :command.function
 lcdot_tmux_command() {
   # src/tmux_command.sh
-  backup=${args[--backup]}
-  DOTFILES_LOCATION=$(pwd)
-  echo "Installing tmux configuration from $DOTFILES_LOCATION"
-
-  if [ $backup ]; then
-    echo "Moving present configuration in $LCDOT_BACKUP/tmux"
-    mkdir -p $LCDOT_BACKUP/tmux
-    mv $HOME/.config/tmux $LCDOT_BACKUP/tmux
-  fi
-
-  mkdir -p "$HOME/.config/tmux/plugins/tpm"
-  ln -sf "$DOTFILES_LOCATION/tmux/tmux.conf" "$HOME/.config/tmux/tmux.conf"
-  echo "Installing TPM"
-  git clone https://github.com/tmux-plugins/tpm "$HOME/.config/tmux/plugins/tpm"
-  echo "Done, open tmux and press CTRL I to install plugins"
+  install_tmux
 
 }
 
 # :command.function
 lcdot_ncspot_command() {
   # src/ncspot_command.sh
-  install=${args[--install]}
-  backup=${args[--backup]}
-  DOTFILES_LOCATION=$PWD
-
-  if [ "$install" ]; then
-      echo "Installing ncspot"
-      cargo install ncspot --locked
-  fi
-
-  if [ "$backup" ]; then
-      echo "Moving previous configurations in $LCDOT_BACKUP/ncspot"
-      mkdir -p "$LCDOT_BACKUP"/rust-tools/ncspot
-
-      mv "$HOME"/.config/ncspot "$LCDOT_BACKUP"/rust-tools/ncspot
-  fi
-
-  echo "Setting up ncspot configuration"
-  ln -sfn "$DOTFILES_LOCATION/ncspot/" "$HOME/.config/ncspot"
-  echo "Done"
+  install_ncspot
 
 }
 
@@ -1470,74 +1621,71 @@ lcdot_vim_command() {
 # :command.function
 lcdot_wezterm_command() {
   # src/wezterm_command.sh
-  backup=${args[--backup]}
-  DOTFILES_LOCATION=$(pwd)
-  echo "Installing wezterm configuration from $DOTFILES_LOCATION"
-
-  if [ $backup ]; then
-
-    echo "Moving present configuration to $LCDOT_BACKUP/wezterm"
-    mkdir -p $LCDOT_BACKUP/wezterm
-    mv "$HOME/.config/wezterm" "$LCDOT_BACKUP/wezterm/"
-  fi
-
-  mkdir -p $HOME/.config/wezterm
-  ln -sf $DOTFILES_LOCATION/wezterm/wezterm.lua $HOME/.config/wezterm/wezterm.lua
-  echo "Done"
+  install_wezterm
 
 }
 
 # :command.function
 lcdot_zsh_command() {
   # src/zsh_command.sh
-  backup=${args[--backup]}
-  DOTFILES_LOCATION=$(pwd)
-  echo "Installing zsh configuration from $DOTFILES_LOCATION"
-  if [ $backup ]; then
-    echo "Moving present configuration to $LCDOT_BACKUP/zsh"
-    mkdir -p $LCDOT_BACKUP/zsh
-    [ -f $HOME/.zshrc ] && mv $HOME/.zshrc $LCDOT_BACKUP/zsh/zshrc
-    [ -f $HOME/.zshenv ] && mv $HOME/.zshenv $LCDOT_BACKUP/zsh/zshenv
-    [ -f $HOME/.alias ] && mv $HOME/.alias $LCDOT_BACKUP/zsh/alias
-
-  fi
-  ln -sf $DOTFILES_LOCATION/zsh/zshrc $HOME/.zshrc
-  ln -sf $DOTFILES_LOCATION/zsh/zshenv $HOME/.zshenv
-  ln -sf $DOTFILES_LOCATION/alias/alias $HOME/.alias
-
-  echo "Done"
+  install_zsh
 
 }
 
 # :command.function
 lcdot_sccache_command() {
   # src/sccache_command.sh
-  install=${args[--install]}
-  backup=${args[--backup]}
-  DOTFILES_LOCATION=$PWD
-
-  if [ "$install" ]; then
-      echo "Installing sccache"
-      cargo install sccache --locked
-  fi
-
-  if [ "$backup" ]; then
-      echo "Moving previous configuration in $LCDOT_BACKUP/cargo"
-      mkdir -p "$LCDOT_BACKUP"/cargo
-
-      mv "$HOME"/.cargo/config.toml "$LCDOT_BACKUP"/cargo/
-  fi
-
-  echo "Setting up cargo to use sccache"
-  ln -sf "$DOTFILES_LOCATION"/cargo/config.toml "$HOME"/.cargo/config.toml
-  echo "Done"
+  install_sccache
 
 }
 
 # :command.function
 lcdot_all_command() {
   # src/all_command.sh
-  echo "This command is not implemented yet, feel free to open an issue on the GitHub page"
+  install_all() {
+      echo "Installing sccache first to use for later installations"
+      install_sccache
+
+      install_bob
+
+      install_bat
+
+      install_delta
+
+      install_exa
+
+      install_fd
+
+      install_gitui
+
+      install_lazygit
+
+      install_mprocs
+
+      install_navi
+
+      install_nvim
+
+      install_porsmo
+
+      install_rtx
+
+      install_starship
+
+      # install_tmux
+
+      install_wezterm
+
+      install_wikitui
+
+      install_zellij
+
+      install_zoxide
+
+      install_zsh
+  }
+
+  install_all
 
 }
 
@@ -3164,7 +3312,7 @@ lcdot_all_parse_requirements() {
 
 # :command.initialize
 initialize() {
-  version="0.2.0"
+  version="0.3.0"
   long_usage=''
   set -e
 
