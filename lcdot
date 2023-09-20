@@ -56,7 +56,7 @@ lcdot_usage() {
   printf "  %s   install my own wezterm configuration\n" "wezterm "
   printf "  %s   install my own zshell configuration\n" "zsh     "
   printf "  %s   Configure cargo package manager to use sccache\n" "sccache "
-  printf "  %s   installs all configuration files. Backup option is enabled by default\n" "all     "
+  printf "  %s   installs all configuration files\n" "all     "
   echo
 
   # :command.long_usage
@@ -946,23 +946,34 @@ lcdot_sccache_usage() {
 # :command.usage
 lcdot_all_usage() {
   if [[ -n $long_usage ]]; then
-    printf "lcdot all - installs all configuration files. Backup option is enabled by default\n"
+    printf "lcdot all - installs all configuration files\n"
     echo
 
   else
-    printf "lcdot all - installs all configuration files. Backup option is enabled by default\n"
+    printf "lcdot all - installs all configuration files\n"
     echo
 
   fi
 
   printf "%s\n" "Usage:"
-  printf "  lcdot all\n"
+  printf "  lcdot all [OPTIONS]\n"
   printf "  lcdot all --help | -h\n"
   echo
 
   # :command.long_usage
   if [[ -n $long_usage ]]; then
     printf "%s\n" "Options:"
+
+    # :command.usage_flags
+    # :flag.usage
+    printf "  %s\n" "--backup, -b"
+    printf "    Backup existing configurations for all tools in $LCDOT_BACKUP\n"
+    echo
+
+    # :flag.usage
+    printf "  %s\n" "--install, -i"
+    printf "    Installs all tools as well as setting up their configurations\n"
+    echo
 
     # :command.usage_fixed_flags
     printf "  %s\n" "--help, -h"
@@ -1672,7 +1683,7 @@ lcdot_all_command() {
 
       install_starship
 
-      # install_tmux
+      install_tmux
 
       install_wezterm
 
@@ -3291,6 +3302,21 @@ lcdot_all_parse_requirements() {
   while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
+      # :flag.case
+      --backup | -b)
+
+        # :flag.case_no_arg
+        args['--backup']=1
+        shift
+        ;;
+
+      # :flag.case
+      --install | -i)
+
+        # :flag.case_no_arg
+        args['--install']=1
+        shift
+        ;;
 
       -?*)
         printf "invalid option: %s\n" "$key" >&2

@@ -286,4 +286,13 @@ commands:
         help: go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust
 
   - name: all
-    help: installs all configuration files. Backup option is enabled by default
+    help: installs all configuration files
+    
+    flags:
+      - long: --backup 
+        short : -b
+        help: Backup existing configurations for all tools in $LCDOT_BACKUP
+      
+      - long: --install 
+        short: -i 
+        help: Installs all tools as well as setting up their configurations

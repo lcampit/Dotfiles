@@ -28,7 +28,7 @@ install_all() {
 
     install_starship
 
-    # install_tmux
+    install_tmux
 
     install_wezterm
 
