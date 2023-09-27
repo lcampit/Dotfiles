@@ -12,3 +12,4 @@ alias zshrc="nvim $HOME/.zshrc"
 alias t='python3 ~/t/t.py --task-dir ~/.tasks --delete-if-empty --list tasks'
 alias cd='z'
 alias c='z'
+alias less='delta'
