@@ -285,6 +285,20 @@ commands:
         command: cargo
         help: go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust
 
+  - name: alacritty
+    help: Install my own alacritty configuration
+    flags:
+      - long: --backup
+        short: -b
+        help: Backup existing configurations in LCDOT_BACKUP/alacritty
+      - long: --install
+        short: -i
+        help: Install alacritty as well as set up its configuration
+    dependencies:
+      rust:
+        command: cargo
+        help: go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust
+
   - name: all
     help: installs all configuration files
     

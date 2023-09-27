@@ -25,5 +25,6 @@ install_bat() {
     fi
 
     echo "Setting up bat configuration"
-    ln -sf "$DOTFILES_LOCATION"/bat/config "$bat_config_file"
+    ln -sf "$DOTFILES_LOCATION/bat/config" "$(bat --config-file)"
+    ln -sfn "$DOTFILES_LOCATION/bat/themes/" "$(bat --config-dir)"
 }
