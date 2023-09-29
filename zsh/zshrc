@@ -1,4 +1,5 @@
 USE_P10K=false # Flag to set up p10k or starship prompt
+USE_RG_FOR_FZF=false # Flag to set fzf to use rg or fd
 
 if [[ "$USE_P10K" = true ]]; then
     # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
@@ -55,10 +56,13 @@ fi
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-if type rg &> /dev/null; then
+if [[ "$USE_RG_FOR_FZF" = true ]]; then
     export FZF_DEFAULT_COMMAND='rg --files'
-    export FZF_DEFAULT_OPTS='-m'
+else
+    export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix'
 fi
+export FZF_DEFAULT_OPTS='-m'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # sources extra file if present
 source .zsh_extra 2> /dev/null
