@@ -9,7 +9,7 @@ install_fd() {
             sudo pacman -S fd
 
         else
-            echo "Installing exa with cargo"
+            echo "Installing fd-find with cargo"
             sudo cargo install fd-find
         fi
     fi

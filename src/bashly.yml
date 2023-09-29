@@ -299,6 +299,13 @@ commands:
         command: cargo
         help: go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust
 
+  - name: fzf
+    help: Install fzf aliases
+    flags:
+      - long: --install 
+        short: -i  
+        help: Install fzf as well as set up its aliases
+
   - name: all
     help: installs all configuration files
     

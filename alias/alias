@@ -1,5 +1,4 @@
 #!/bin/sh
-alias ls='ls --color'
 alias vim='nvim'
 alias clipboard='xclip -sel clip'
 alias cdd="cd $DOTFILES_LOCATION"

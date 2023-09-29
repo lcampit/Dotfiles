@@ -83,8 +83,13 @@ zinit light chrissicool/zsh-256color
 zinit light Anant-mishra1729/web-search
 zinit light trapd00r/LS_COLORS
 
+zinit load wfxr/forgit
+
 # sources aliases if present
 source "$HOME/.alias" 2> /dev/null
+
+# sources fzf functions if present
+source "$HOME"/.fzf_alias 2> /dev/null
 
 # load rtx for zsh
 eval "$(rtx activate zsh)"
