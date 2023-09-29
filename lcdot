@@ -57,6 +57,7 @@ lcdot_usage() {
   printf "  %s   install my own zshell configuration\n" "zsh      "
   printf "  %s   Configure cargo package manager to use sccache\n" "sccache  "
   printf "  %s   Install my own alacritty configuration\n" "alacritty"
+  printf "  %s   Install fzf aliases\n" "fzf      "
   printf "  %s   installs all configuration files\n" "all      "
   echo
 
@@ -985,6 +986,41 @@ lcdot_alacritty_usage() {
 }
 
 # :command.usage
+lcdot_fzf_usage() {
+  if [[ -n $long_usage ]]; then
+    printf "lcdot fzf - Install fzf aliases\n"
+    echo
+
+  else
+    printf "lcdot fzf - Install fzf aliases\n"
+    echo
+
+  fi
+
+  printf "%s\n" "Usage:"
+  printf "  lcdot fzf [OPTIONS]\n"
+  printf "  lcdot fzf --help | -h\n"
+  echo
+
+  # :command.long_usage
+  if [[ -n $long_usage ]]; then
+    printf "%s\n" "Options:"
+
+    # :command.usage_flags
+    # :flag.usage
+    printf "  %s\n" "--install, -i"
+    printf "    Install fzf as well as set up its aliases\n"
+    echo
+
+    # :command.usage_fixed_flags
+    printf "  %s\n" "--help, -h"
+    printf "    Show this help\n"
+    echo
+
+  fi
+}
+
+# :command.usage
 lcdot_all_usage() {
   if [[ -n $long_usage ]]; then
     printf "lcdot all - installs all configuration files\n"
@@ -1233,12 +1269,33 @@ install_fd() {
             sudo pacman -S fd
 
         else
-            echo "Installing exa with cargo"
+            echo "Installing fd-find with cargo"
             sudo cargo install fd-find
         fi
     fi
 
     echo "There is no configuration to install for fd, congrats!"
+}
+
+# src/lib/fzf.sh
+install_fzf() {
+    install=${args[--install]}
+    DOTFILES_LOCATION=$PWD
+    if [ "$install" ]; then
+        echo "Installing fzf"
+
+        if [ "$ARCHBTW"=true ]; then
+            echo "Arch based distro detected, installing using pacman"
+            sudo pacman -S fzf
+
+        else
+            echo "To install fzf clone its repo and run the installer script"
+            echo "As of now, fzf installation on non Arch based distros is not supported by this script"
+        fi
+    fi
+
+    echo "Moving fzf aliases in $HOME/.fzf_alias"
+    ln -sf "$DOTFILES_LOCATION"/fzf/fzf_alias "$HOME"/.fzf_alias
 }
 
 # src/lib/gitui.sh
@@ -1735,6 +1792,13 @@ lcdot_alacritty_command() {
 }
 
 # :command.function
+lcdot_fzf_command() {
+  # src/fzf_command.sh
+  install_fzf
+
+}
+
+# :command.function
 lcdot_all_command() {
   # src/all_command.sh
   install_all() {
@@ -1975,6 +2039,13 @@ parse_requirements() {
       action="alacritty"
       shift
       lcdot_alacritty_parse_requirements "$@"
+      shift $#
+      ;;
+
+    fzf)
+      action="fzf"
+      shift
+      lcdot_fzf_parse_requirements "$@"
       shift $#
       ;;
 
@@ -3437,6 +3508,57 @@ lcdot_alacritty_parse_requirements() {
 }
 
 # :command.parse_requirements
+lcdot_fzf_parse_requirements() {
+  # :command.fixed_flags_filter
+  while [[ $# -gt 0 ]]; do
+    case "${1:-}" in
+      --help | -h)
+        long_usage=yes
+        lcdot_fzf_usage
+        exit
+        ;;
+
+      *)
+        break
+        ;;
+
+    esac
+  done
+
+  # :command.command_filter
+  action="fzf"
+
+  # :command.parse_requirements_while
+  while [[ $# -gt 0 ]]; do
+    key="$1"
+    case "$key" in
+      # :flag.case
+      --install | -i)
+
+        # :flag.case_no_arg
+        args['--install']=1
+        shift
+        ;;
+
+      -?*)
+        printf "invalid option: %s\n" "$key" >&2
+        exit 1
+        ;;
+
+      *)
+        # :command.parse_requirements_case
+        # :command.parse_requirements_case_simple
+        printf "invalid argument: %s\n" "$key" >&2
+        exit 1
+
+        ;;
+
+    esac
+  done
+
+}
+
+# :command.parse_requirements
 lcdot_all_parse_requirements() {
   # :command.fixed_flags_filter
   while [[ $# -gt 0 ]]; do
@@ -3539,6 +3661,7 @@ run() {
     "zsh") lcdot_zsh_command ;;
     "sccache") lcdot_sccache_command ;;
     "alacritty") lcdot_alacritty_command ;;
+    "fzf") lcdot_fzf_command ;;
     "all") lcdot_all_command ;;
   esac
 }
