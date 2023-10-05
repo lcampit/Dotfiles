@@ -86,6 +86,7 @@ zinit light zsh-users/zsh-completions
 zinit light chrissicool/zsh-256color
 zinit light Anant-mishra1729/web-search
 zinit light trapd00r/LS_COLORS
+zinit light NullSense/fuzzy-sys
 
 zinit load wfxr/forgit
 export PATH=$PATH:$FORGIT_INSTALL_DIR/bin
