@@ -12,6 +12,7 @@ require("lazy").setup({
 		{ "LazyVim/LazyVim", import = "lazyvim.plugins" },
 		-- import any extras modules here
 		-- coding extras
+		{ import = "lazyvim.plugins.extras.coding.codeium" },
 		-- { import = "lazyvim.plugins.extras.coding.copilot" },
 		-- { import = "lazyvim.plugins.extras.coding.yanky" },
 		-- dap extras
@@ -37,6 +38,8 @@ require("lazy").setup({
 		{ import = "lazyvim.plugins.extras.lang.yaml" },
 		-- linter extras
 		{ import = "lazyvim.plugins.extras.linting.eslint" },
+		{ import = "lazyvim.plugins.extras.util.dot" },
+		{ import = "lazyvim.plugins.extras.util.project" },
 		-- import/override with your plugins
 		{ import = "plugins" },
 	},
