@@ -41,6 +41,8 @@ install_all() {
 	install_zsh
 
 	install_fzf
+
+	install_procs
 }
 
 install_all
