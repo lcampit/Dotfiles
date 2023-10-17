@@ -1,6 +1,6 @@
 name: lcdot
 help: Helper script to set up my own dotfile environment
-version: 0.2.0
+version: 0.3.0
 
 environment_variables:
   - name: LCDOT_BACKUP
@@ -8,7 +8,7 @@ environment_variables:
     default: $HOME/lcdot_backup
   - name: ARCHBTW
     help: whether or not installing to a ARCH based distro. Tries to install tools from AUR packages
-    default: false
+    default: "false"
 
 commands:
   - name: nvim
@@ -34,7 +34,7 @@ commands:
         help: Install the tool itself as well as its configuration
     dependencies:
       rust:
-        command: cargo
+        command: [cargo]
         help: go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust
 
   - name: delta
@@ -45,7 +45,7 @@ commands:
         help: Backup existing configurations in LCDOT_BACKUP/delta-git
     dependencies:
       rust:
-        command: cargo
+        command: [cargo]
         help: go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust
 
   - name: exa
@@ -56,7 +56,7 @@ commands:
         help: Install the tool itself as well as its configuration
     dependencies:
       rust:
-        command: cargo
+        command: [cargo]
         help: go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust
 
   - name: bat
@@ -70,7 +70,7 @@ commands:
         help: Install the tool itself as well as its configuration
     dependencies:
       rust:
-        command: cargo
+        command: [cargo]
         help: go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust
 
   - name: bob-nvim
@@ -84,7 +84,7 @@ commands:
         help: Install the tool itself as well as its configuration
     dependencies:
       rust:
-        command: cargo
+        command: [cargo]
         help: go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust
 
   - name: zellij
@@ -98,7 +98,7 @@ commands:
         help: Install the tool itself as well as its configuration
     dependencies:
       rust:
-        command: cargo
+        command: [cargo]
         help: go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust
 
   - name: mprocs
@@ -109,7 +109,7 @@ commands:
         help: Install the tool itself as well as its configuration
     dependencies:
       rust:
-        command: cargo
+        command: [cargo]
         help: go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust
 
   - name: gitui
@@ -123,7 +123,7 @@ commands:
         help: Install the tool itself as well as its configuration
     dependencies:
       rust:
-        command: cargo
+        command: [cargo]
         help: go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust
 
   - name: lazygit
@@ -137,8 +137,8 @@ commands:
         help: Install the tool itself as well as its configuration
     dependencies:
       rust:
-        command: go
-        help: go to https://go.dev/doc/install to install go lang, or use managers such as rtx
+        command: [go]
+        help: go to https://go.dev/doc/install to install go lang, or use runtime managers such as rtx
 
   - name: porsmo
     help: Install the porsmo cli tool
@@ -148,7 +148,7 @@ commands:
         help: Install the tool itself as well as its configuration
     dependencies:
       rust:
-        command: cargo
+        command: [cargo]
         help: go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust
 
   - name: wiki-tui
@@ -159,7 +159,7 @@ commands:
         help: Install the tool itself as well as its configuration
     dependencies:
       rust:
-        command: cargo
+        command: [cargo]
         help: go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust
 
   - name: fd-find
@@ -170,7 +170,7 @@ commands:
         help: Install the tool itself as well as its configuration
     dependencies:
       rust:
-        command: cargo
+        command: [cargo]
         help: go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust
 
   - name: zoxide
@@ -181,7 +181,7 @@ commands:
         help: Install the tool itself as well as its configuration
     dependencies:
       rust:
-        command: cargo
+        command: [cargo]
         help: go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust
 
   - name: rtx-cli
@@ -192,7 +192,7 @@ commands:
         help: Install the tool itself as well as its configuration
     dependencies:
       rust:
-        command: cargo
+        command: [cargo]
         help: go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust
 
   - name: navi
@@ -206,7 +206,7 @@ commands:
         help: Install the tool itself as well as its configuration
     dependencies:
       rust:
-        command: cargo
+        command: [cargo]
         help: go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust
 
   - name: tmux
@@ -232,7 +232,7 @@ commands:
         help: Install the tool itself as well as its configuration
     dependencies:
       rust:
-        command: cargo
+        command: [cargo]
         help: go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust
 
   - name: vim
@@ -282,8 +282,52 @@ commands:
         help: Install sccache as well as set up cargo configuration
     dependencies:
       rust:
-        command: cargo
+        command: [cargo]
         help: go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust
 
+  - name: alacritty
+    help: Install my own alacritty configuration
+    flags:
+      - long: --backup
+        short: -b
+        help: Backup existing configurations in LCDOT_BACKUP/alacritty
+      - long: --install
+        short: -i
+        help: Install alacritty as well as set up its configuration
+    dependencies:
+      rust:
+        command: [cargo]
+        help: go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust
+
+  - name: fzf
+    help: Install fzf aliases
+    flags:
+      - long: --install
+        short: -i
+        help: Install fzf as well as set up its aliases
+
   - name: all
-    help: installs all configuration files. Backup option is enabled by default
+    help: installs all configuration files
+
+    flags:
+      - long: --backup
+        short: -b
+        help: Backup existing configurations for all tools in $LCDOT_BACKUP
+
+      - long: --install
+        short: -i
+        help: Installs all tools as well as setting up their configurations
+
+  - name: procs
+    help: Install my procs configuration
+    flags:
+      - long: --backup
+        short: -b
+        help: Backup existing configurations in LCDOT_BACKUP/procs
+      - long: --install
+        short: -i
+        help: Install the tool itself as well as its configuration
+    dependencies:
+      rust:
+        command: [cargo]
+        help: go to https://doc.rust-lang.org/cargo/getting-started/installation.html to install cargo and rust

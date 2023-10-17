@@ -4,6 +4,9 @@
 export EDITOR=nvim
 export VISUAL=nvim
 
+# TERM
+export TERM="xterm-256color"
+
 # adds go to path MAY BE USELESS WHEN USING RTX
 # export PATH=$PATH:/usr/local/go/bin
 # export PATH=$PATH:$(go env GOPATH)/bin
@@ -33,3 +36,6 @@ export PROJECTS_LOCATION=$HOME/Desktop/Projects
 
 # adds flutter to path
 export PATH=$PATH:$HOME/flutter/bin
+
+# allows IDEs to follow rtx env
+export PATH="$HOME/.local/share/rtx/shims:$PATH"

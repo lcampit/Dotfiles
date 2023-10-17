@@ -1,4 +1,5 @@
 USE_P10K=false # Flag to set up p10k or starship prompt
+USE_RG_FOR_FZF=false # Flag to set fzf to use rg or fd
 
 if [[ "$USE_P10K" = true ]]; then
     # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
@@ -55,10 +56,13 @@ fi
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-if type rg &> /dev/null; then
+if [[ "$USE_RG_FOR_FZF" = true ]]; then
     export FZF_DEFAULT_COMMAND='rg --files'
-    export FZF_DEFAULT_OPTS='-m'
+else
+    export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix'
 fi
+export FZF_DEFAULT_OPTS='-m'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # sources extra file if present
 source .zsh_extra 2> /dev/null
@@ -82,15 +86,33 @@ zinit light zsh-users/zsh-completions
 zinit light chrissicool/zsh-256color
 zinit light Anant-mishra1729/web-search
 zinit light trapd00r/LS_COLORS
+zinit light NullSense/fuzzy-sys
+
+zinit load wfxr/forgit
+export PATH=$PATH:$FORGIT_INSTALL_DIR/bin
+export FORGIT_FZF_DEFAULT_OPTS="
+--exact
+--border
+--cycle
+--reverse
+--height '80%'
+"
+# source $FORGIT_INSTALL_DIR/completions/git-forgit.zsh
 
 # sources aliases if present
 source "$HOME/.alias" 2> /dev/null
+
+# sources fzf functions if present
+source "$HOME"/.fzf_alias 2> /dev/null
 
 # load rtx for zsh
 eval "$(rtx activate zsh)"
 
 # load zoxide for zsh
 eval "$(zoxide init zsh)"
+
+# load navi for zsh, launch with ctrl+G
+eval "$(navi widget zsh)"
 
 # Use starship
 if [[ "$USE_P10K" = false ]]; then

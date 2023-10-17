@@ -1,5 +1,4 @@
 #!/bin/sh
-alias ls='ls --color'
 alias vim='nvim'
 alias clipboard='xclip -sel clip'
 alias cdd="cd $DOTFILES_LOCATION"
@@ -12,3 +11,5 @@ alias zshrc="nvim $HOME/.zshrc"
 alias t='python3 ~/t/t.py --task-dir ~/.tasks --delete-if-empty --list tasks'
 alias cd='z'
 alias c='z'
+alias less='delta'
+alias dps='docker ps --format "{{ .Names }}\t{{ .Ports }}\t{{ .Status }}"'
