@@ -13,3 +13,4 @@ alias cd='z'
 alias c='z'
 alias less='delta'
 alias dps='docker ps --format "{{ .Names }}\t{{ .Ports }}\t{{ .Status }}"'
+alias tkill="for s in \$(tmux list-sessions | awk '{print \$1}' | rg ':' -r '' | fzf); do tmux kill-session -t \$s; done;"
