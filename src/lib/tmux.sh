@@ -15,6 +15,7 @@ install_tmux() {
 	echo "Installing TPM"
 	git clone https://github.com/tmux-plugins/tpm "$HOME/.config/tmux/plugins/tpm" 2>/dev/null || echo "TPM already installed"
 	echo "Linking tmux attach script"
+	mkdir -p "$HOME/.local/bin"
 	ln -sf "$DOTFILES_LOCATION/tmux/ta" "$HOME/.local/bin/ta"
 	echo "Done, open tmux and press CTRL I to install plugins"
 }

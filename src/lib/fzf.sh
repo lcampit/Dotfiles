@@ -1,19 +1,24 @@
 install_fzf() {
-    install=${args[--install]}
-    DOTFILES_LOCATION=$PWD
-    if [ "$install" ]; then
-        echo "Installing fzf"
+	install=${args[--install]}
+	DOTFILES_LOCATION=$PWD
+	if [ "$install" ]; then
+		echo "Installing fzf"
 
-        if [ "$ARCHBTW"=true ]; then
-            echo "Arch based distro detected, installing using pacman"
-            sudo pacman -S fzf
+		if command -v pacman; then
+			echo "Arch based distro detected, installing using pacman"
+			sudo pacman -S fzf
 
-        else
-            echo "To install fzf clone its repo and run the installer script"
-            echo "As of now, fzf installation on non Arch based distros is not supported by this script"
-        fi
-    fi
+		else
+			if command -v fzf; then
+				echo "fzf is already installed"
+			else
+				echo "Installing from source cloning fzf repo in $HOME/.fzf"
+				git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+				~/.fzf/install
+			fi
+		fi
+	fi
 
-    echo "Moving fzf aliases in $HOME/.fzf_alias"
-    ln -sf "$DOTFILES_LOCATION"/fzf/fzf_alias "$HOME"/.fzf_alias
+	echo "Moving fzf aliases in $HOME/.fzf_alias"
+	ln -sf "$DOTFILES_LOCATION"/fzf/fzf_alias "$HOME"/.fzf_alias
 }
