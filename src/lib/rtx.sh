@@ -1,10 +1,11 @@
 install_rtx() {
-    install=${args[--install]}
-    DOTFILES_LOCATION=$PWD
-    if [ "$install" ]; then
-        echo "Installing rtx"
-        cargo install rtx-cli
-    fi
+	install=${args[--install]}
+	DOTFILES_LOCATION=$PWD
+	if [ "$install" ]; then
+		echo "Installing rtx"
+		cargo install rtx-cli
+	fi
 
-    echo "There is no configuration to install for rtx, congrats!"
+	echo "Installing rtx global configuration"
+	ln -sf "$DOTFILES_LOCATION/rtx/config.toml" "$HOME/.config/rtx/config.toml"
 }
