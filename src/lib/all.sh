@@ -2,8 +2,8 @@ install_all() {
 
 	install_dependencies
 
-	# echo "Installing sccache first to use for later installations"
-	# install_sccache
+	echo "Installing sccache first to use for later installations"
+	install_sccache
 
 	install_bob
 
@@ -49,5 +49,3 @@ install_all() {
 
 	echo "Everything is set up, have fun!"
 }
-
-install_all
