@@ -1,18 +1,18 @@
 install_fd() {
-    install=${args[--install]}
-    DOTFILES_LOCATION=$PWD
-    if [ "$install" ]; then
-        echo "Installing fd-find"
+	install=${args[--install]}
+	DOTFILES_LOCATION=$PWD
+	if [ "$install" ]; then
+		echo "Installing fd-find"
 
-        if [ "$ARCHBTW"=true ]; then
-            echo "Arch based distro detected, installing using pacman"
-            sudo pacman -S fd
+		if command -v pacman; then
+			echo "Arch based distro detected, installing using pacman"
+			sudo pacman -S fd
 
-        else
-            echo "Installing fd-find with cargo"
-            sudo cargo install fd-find
-        fi
-    fi
+		else
+			echo "Installing fd-find with cargo"
+			cargo install fd-find
+		fi
+	fi
 
-    echo "There is no configuration to install for fd, congrats!"
+	echo "There is no configuration to install for fd, congrats!"
 }

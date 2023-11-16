@@ -1,21 +1,13 @@
 install_sccache() {
-    install=${args[--install]}
-    backup=${args[--backup]}
-    DOTFILES_LOCATION=$PWD
+	install=${args[--install]}
+	DOTFILES_LOCATION=$PWD
 
-    if [ "$install" ]; then
-        echo "Installing sccache"
-        cargo install sccache --locked
-    fi
+	if [ "$install" ]; then
+		echo "Installing sccache"
+		cargo install sccache --locked
+	fi
+	echo "Exporting env var to use sccache for further builds"
+	export RUSTC_WRAPPER="$CARGO_HOME/bin/sccache"
 
-    if [ "$backup" ]; then
-        echo "Moving previous configuration in $LCDOT_BACKUP/cargo"
-        mkdir -p "$LCDOT_BACKUP"/cargo
-
-        mv "$HOME"/.cargo/config.toml "$LCDOT_BACKUP"/cargo/
-    fi
-
-    echo "Setting up cargo to use sccache"
-    ln -sf "$DOTFILES_LOCATION"/cargo/config.toml "$HOME"/.cargo/config.toml
-    echo "Done"
+	echo "Done"
 }

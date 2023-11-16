@@ -5,7 +5,7 @@ install_procs() {
 	if [ "$install" ]; then
 		echo "Installing procs"
 
-		if [ "$ARCHBTW"=true ]; then
+		if command -v pacman; then
 			echo "Arch based distro detected, installing using pacman"
 			sudo pacman -S procs
 

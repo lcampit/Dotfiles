@@ -1,4 +1,7 @@
 install_all() {
+
+	install_dependencies
+
 	echo "Installing sccache first to use for later installations"
 	install_sccache
 
@@ -43,6 +46,6 @@ install_all() {
 	install_fzf
 
 	install_procs
-}
 
-install_all
+	echo "Everything is set up, have fun!"
+}
