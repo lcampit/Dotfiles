@@ -1,0 +1,32 @@
+- clean: ["~"]
+
+- defaults:
+    link:
+      relink: true
+      create: true
+
+- link:
+    ~/.config/tmux: tmux
+    ~/.config/alacritty: alacritty
+    ~/.alias: alias/alias
+    ~/.config/bat: bat
+    ~/.config/bob: bob-nvim
+    ~/.fzf_alias: fzf/fzf_alias
+    ~/.gitconfig: gitconfig/gitconfig
+    ~/.config/gitui: gitui
+    ~/.config/kitty: kitty
+    ~/.config/lazygit: lazygit
+    ~/.config/nvim: nvim
+    ~/.config/navi: navi
+    ~/.config/ncspot: ncspot
+    ~/.config/procs: procs
+    ~/.config/rtx/config.toml: rtx/config.toml
+    ~/.config/starship.toml: starship/starship.toml
+    ~/.vimrc: vim/vimrc
+    ~/.config/wezterm: wezterm
+    ~/.config/zellij: zellij
+    ~/.zshrc: zsh/zshrc
+    ~/.zshenv: zsh/zshenv
+
+- shell:
+    - bat cache --build
