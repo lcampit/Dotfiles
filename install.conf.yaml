@@ -1,0 +1,136 @@
+- clean: ["~", "~/.local/bin"]
+
+- omnipkg:
+    - update
+    - upgrade
+    - install:
+        [
+          libssl-dev,
+          libffi-dev,
+          libncurses5-dev,
+          zlib1g,
+          zlib1g-dev,
+          libreadline-dev,
+          libbz2-dev,
+          libsqlite3-dev,
+          make,
+          gcc,
+          unzip,
+          libstdc++6,
+          g++,
+          libyaml-dev,
+          librust-alsa-sys-dev,
+          libxcb-xfixes0-dev,
+          libxcb-shape0-dev,
+          gzip,
+          cmake,
+          { pac: freetype2 },
+          fontconfig,
+          pkg-config,
+          { pac: libxcb },
+          { pac: libxkbcommon },
+          [python3, python],
+          libfreetype6-dev,
+          libfontconfig1-dev,
+          libxcb-xfixes0-dev,
+          libxkbcommon-dev,
+          zsh,
+        ]
+
+- shell:
+    - command: ./.dotbot/scripts/rustup.sh
+      description: install rustup and cargo
+
+    - command: ./.dotbot/scripts/alacritty.sh
+      description: clone alacritty repo and build
+
+    - command: ./.dotbot/scripts/bat.sh
+      description: install bat
+
+    - command: ./.dotbot/scripts/bob.sh
+      description: install bob-nvim
+
+    - command: ./.dotbot/scripts/delta.sh
+      description: install delta diff viewer
+
+    - command: ./.dotbot/scripts/exa.sh
+      description: install exa
+
+    - command: ./.dotbot/scripts/exa.sh
+      description: install exa
+
+    - command: ./.dotbot/scripts/fd.sh
+      description: install fd-find
+
+    - command: ./.dotbot/scripts/gitui.sh
+      description: install gitui
+
+    - command: ./.dotbot/scripts/lazygit.sh
+      description: install lazygit
+
+    - command: ./.dotbot/scripts/mprocs.sh
+      description: install mprocs
+
+    - command: ./.dotbot/scripts/navi.sh
+      description: install navi
+
+    - command: ./.dotbot/scripts/porsmo.sh
+      description: install porsmo
+
+    - command: ./.dotbot/scripts/ncspot.sh
+      description: install ncspot
+
+    - command: ./.dotbot/scripts/procs.sh
+      description: install procs
+
+    - command: ./.dotbot/scripts/rtx.sh
+      description: install rtx
+
+    - command: ./.dotbot/scripts/starship.sh
+      description: install starship prompt
+
+    - command: ./.dotbot/scripts/tmux.sh
+      description: install tmux
+
+    - command: ./.dotbot/scripts/wikitui.sh
+      description: install wiki-tui
+
+    - command: ./.dotbot/scripts/zellij.sh
+      description: install zellij
+
+    - command: ./.dotbot/scripts/zoxide.sh
+      description: install zoxide
+
+- defaults:
+    link:
+      relink: true
+      create: true
+
+- link:
+    ~/.config/tmux/tmux.conf: tmux/tmux.conf
+    ~/.config/tmux/tokyonight_storm.tmux: tmux/tokyonight_storm.tmux
+    ~/.local/bin/ta: bin/ta
+    ~/.config/alacritty: alacritty
+    ~/.alias: alias/alias
+    ~/.config/bat: bat
+    ~/.config/bob: bob-nvim
+    ~/.fzf_alias: fzf/fzf_alias
+    ~/.gitconfig: gitconfig/gitconfig
+    ~/.config/gitui: gitui
+    ~/.config/kitty: kitty
+    ~/.config/lazygit: lazygit
+    ~/.config/nvim: nvim
+    ~/.config/navi: navi
+    ~/.config/ncspot: ncspot
+    ~/.config/procs: procs
+    ~/.config/rtx/config.toml: rtx/config.toml
+    ~/.config/starship.toml: starship/starship.toml
+    ~/.vimrc: vim/vimrc
+    ~/.config/wezterm: wezterm
+    ~/.config/zellij: zellij
+    ~/.zshrc: zsh/zshrc
+    ~/.zshenv: zsh/zshenv
+
+- shell:
+    - bat cache --build
+    - chsh -s $(which zsh)

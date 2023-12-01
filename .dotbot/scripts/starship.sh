@@ -1,0 +1,1 @@
+cargo install starship --locked
