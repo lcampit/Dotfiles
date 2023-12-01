@@ -15,9 +15,6 @@ jobs:
     # See: https://circleci.com/docs/configuration-reference/#steps
     steps:
       - checkout
-      - run:
-          name: "Remove unnecessary files"
-          command: "rm ~/.gitconfig ~/.zshenv"
       - run: 
           name: "Pull submodules"
           command: "git submodule update --init --recursive"
