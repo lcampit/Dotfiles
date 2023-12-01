@@ -10,8 +10,7 @@
 
 - omnipkg:
     - install:
-        [
-          libssl-dev,
+        [ libssl-dev,
           libffi-dev,
           libncurses5-dev,
           zlib1g,
@@ -41,7 +40,8 @@
           libxcb-xfixes0-dev,
           libxkbcommon-dev,
           zsh,
-        ]
+          esktop-file-utils,
+          scdoc ]
 
 - shell:
     - command: ./.dotbot/scripts/rustup.sh
