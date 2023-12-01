@@ -116,7 +116,9 @@
     ~/.config/bat: bat
     ~/.config/bob: bob-nvim
     ~/.fzf_alias: fzf/fzf_alias
-    ~/.gitconfig: gitconfig/gitconfig
+    ~/.gitconfig: 
+        path: gitconfig/gitconfig
+        force: true
     ~/.config/gitui: gitui
     ~/.config/kitty: kitty
     ~/.config/lazygit: lazygit
@@ -130,7 +132,9 @@
     ~/.config/wezterm: wezterm
     ~/.config/zellij: zellij
     ~/.zshrc: zsh/zshrc
-    ~/.zshenv: zsh/zshenv
+    ~/.zshenv: 
+        path: zsh/zshenv
+        force: true
 
 - shell:
     - bat cache --build
