@@ -107,7 +107,8 @@
       create: true
 
 - link:
-    ~/.config/tmux: tmux
+    ~/.config/tmux/tmux.conf: tmux/tmux.conf
+    ~/.config/tmux/tokyonight_storm.tmux: tmux/tokyonight_storm.tmux
     ~/.local/bin/ta: bin/ta
     ~/.config/alacritty: alacritty
     ~/.alias: alias/alias
