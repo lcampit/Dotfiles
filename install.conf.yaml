@@ -1,5 +1,13 @@
 - clean: ["~", "~/.local/bin"]
 
+- defaults:
+    link:
+      relink: true
+      create: true
+    shell:
+      quiet: true
+      stdout: true
+
 - omnipkg:
     - install:
         [
@@ -98,11 +106,6 @@
 
     - command: ./.dotbot/scripts/zoxide.sh
       description: install zoxide
-
-- defaults:
-    link:
-      relink: true
-      create: true
 
 - link:
     ~/.config/tmux/tmux.conf: tmux/tmux.conf
