@@ -5,24 +5,38 @@ version: 2.1
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/configuration-reference/#jobs
 jobs:
-  builds-ubuntu:
+  install-ubuntu:
     # Specify the execution environment. You can specify an image from Docker Hub or use one of our convenience images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/configuration-reference/#executor-job
     machine:
       image: ubuntu-2204:2023.10.1
-    resource_class: medium
+    resource_class: large
     # Add steps to the job
     # See: https://circleci.com/docs/configuration-reference/#steps
     steps:
       - checkout
-      - run: git submodule update --init --recursive
       - run:
-          name: "Installing config"
-          command: "./install"
+          name: "Remove unnecessary files"
+          command: "rm ~/.gitconfig ~/.zshenv"
+      - run: 
+          name: "Pull submodules"
+          command: "git submodule update --init --recursive"
+      - run:
+          name: "Install dependencies"
+          command: "./install --only omnipkg"
+      - run:
+          name: "Run shell scripts"
+          command: "./install --only shell"
+      - run:
+          name: "Link configuration files"
+          command: "./install --only link"
+      - run:
+          name: "Finishing touches"
+          command: "bat cache --build && chsh -s $(which zsh)"
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
 workflows:
-  builds-workflow:
+  install_on_ubuntu:
     jobs:
-      - builds-ubuntu
+      - install-ubuntu
