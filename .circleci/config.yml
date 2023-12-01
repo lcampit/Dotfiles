@@ -5,6 +5,12 @@ version: 2.1
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/configuration-reference/#jobs
 jobs:
+  test-commands:
+     machine:
+      image: ubuntu-2204:2023.10.1
+    resource_class: large
+    steps:
+      - run: "cd . && tic && touch test.txt && cp test.txt copy.txt && desktop-file-install && update-desktop-database && scdoc && gzip text.txt"
   install-ubuntu:
     # Specify the execution environment. You can specify an image from Docker Hub or use one of our convenience images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/configuration-reference/#executor-job
@@ -36,4 +42,4 @@ jobs:
 workflows:
   install_on_ubuntu:
     jobs:
-      - install-ubuntu
+      - test-commands
