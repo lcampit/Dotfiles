@@ -11,7 +11,7 @@ jobs:
       resource_class: large
       steps:
         - run: "sudo apt-get install desktop-file-utils"
-        - run: "cd . && touch test.txt && cp test.txt copy.txt && desktop-file-install && update-desktop-database && scdoc && gzip text.txt"
+        - run: "cd . && touch test.txt && cp test.txt copy.txt && scdoc && gzip text.txt"
   install-ubuntu:
     # Specify the execution environment. You can specify an image from Docker Hub or use one of our convenience images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/configuration-reference/#executor-job
