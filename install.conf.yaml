@@ -41,7 +41,8 @@
           libxkbcommon-dev,
           zsh,
           desktop-file-utils,
-          scdoc ]
+          scdoc,
+          curl ]
 
 - shell:
     - command: ./.dotbot/scripts/rustup.sh
