@@ -22,11 +22,8 @@ jobs:
           name: "Install dependencies"
           command: "./install --only omnipkg"
       - run:
-          name: "Run shell scripts"
-          command: "./.dotbot/scripts/rustup.sh"
-      - run:
           name: "alacritty"
-          command: "./.dotbot/scripts/alacritty.sh"
+          command: "./.dotbot/scripts/fzf.sh"
       - run:
           name: "Link configuration files"
           command: "./install --only link"
