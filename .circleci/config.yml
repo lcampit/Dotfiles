@@ -15,9 +15,6 @@ jobs:
     # See: https://circleci.com/docs/configuration-reference/#steps
     steps:
       - checkout
-      - run:
-          name: "Install common tools"
-          command: "sudo apt-get install desktop-file-utils scdoc"
       - run: 
           name: "Pull submodules"
           command: "git submodule update --init --recursive"
@@ -27,9 +24,6 @@ jobs:
       - run:
           name: "Run shell scripts"
           command: "./.dotbot/scripts/rustup.sh"
-      - run:
-          name: "Which cargo"
-          command: "which cargo"
       - run:
           name: "alacritty"
           command: "./.dotbot/scripts/alacritty.sh"
