@@ -1,8 +1,6 @@
 - clean: ["~", "~/.local/bin"]
 
 - omnipkg:
-    - update
-    - upgrade
     - install:
         [
           libssl-dev,
