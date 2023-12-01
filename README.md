@@ -1,3 +1,5 @@
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/Leo-Campo/Dotfiles/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/Leo-Campo/Dotfiles/tree/main)
+
 # Dotfiles
 
 Dotfiles collection used to configure my own development environment
