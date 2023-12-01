@@ -40,7 +40,7 @@
           libxcb-xfixes0-dev,
           libxkbcommon-dev,
           zsh,
-          esktop-file-utils,
+          desktop-file-utils,
           scdoc ]
 
 - shell:
