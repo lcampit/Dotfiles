@@ -1,5 +1,5 @@
 mkdir -p $HOME/alacritty
-local path=$(pwd)
+prev_path=$(pwd)
 # If repo is already there assume alacritty is already installed
 git clone https://github.com/alacritty/alacritty.git $HOME/alacritty || exit 0
 cd $HOME/alacritty
@@ -19,4 +19,4 @@ scdoc <extra/man/alacritty-msg.1.scd | gzip -c | sudo tee /usr/local/share/man/m
 scdoc <extra/man/alacritty.5.scd | gzip -c | sudo tee /usr/local/share/man/man5/alacritty.5.gz >/dev/null
 scdoc <extra/man/alacritty-bindings.5.scd | gzip -c | sudo tee /usr/local/share/man/man5/alacritty-bindings.5.gz >/dev/null
 
-cd path
+cd prev_path
