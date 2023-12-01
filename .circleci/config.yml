@@ -26,7 +26,7 @@ jobs:
           command: "./install --only omnipkg"
       - run:
           name: "Run shell scripts"
-          command: "./.dotbot/scripts/alacritty.sh"
+          command: "./.dotbot/scripts/rustup.sh && ./.dotbot/scripts/alacritty.sh"
       - run:
           name: "Link configuration files"
           command: "./install --only link"
