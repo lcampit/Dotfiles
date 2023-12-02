@@ -42,7 +42,8 @@
           zsh,
           desktop-file-utils,
           scdoc,
-          curl ]
+          curl,
+          grep ]
 
 - shell:
     - command: ./.dotbot/scripts/rustup.sh
