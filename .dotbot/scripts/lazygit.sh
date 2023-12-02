@@ -4,8 +4,8 @@ if command -v pacman; then
 else
 
 	LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | \grep -Po '"tag_name": "v\K[^"]*')
-	curl -Lo $DOTFILES_LOCATION/lazygit/lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
-	tar xf $DOTFILES_LOCATION/lazygit/lazygit.tar.gz -C $DOTFILES_LOCATION/lazygit/
-	sudo install $DOTFILES_LOCATION/lazygit/lazygit /usr/local/bin
-	rm $DOTFILES_LOCATION/lazygit/lazygit.tar.gz $DOTFILES_LOCATION/lazygit/lazygit
+	curl -Lo $HOME/lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+	tar xf $HOME/lazygit.tar.gz -C $HOME/lazygit/
+	sudo install $HOME/lazygit/lazygit /usr/local/bin
+	rm $HOME/lazygit.tar.gz $HOME/lazygit/lazygit
 fi
