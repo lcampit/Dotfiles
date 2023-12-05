@@ -22,8 +22,8 @@ jobs:
           name: "Install dependencies"
           command: "./install --only omnipkg"
       - run:
-          name: "alacritty"
-          command: "./.dotbot/scripts/tmux.sh"
+          name: "Install tools"
+          command: "./install --only shell"
       - run:
           name: "Link configuration files"
           command: "./install --only link"
