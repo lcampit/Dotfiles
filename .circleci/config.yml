@@ -22,6 +22,9 @@ jobs:
           name: "Install dependencies"
           command: "./install --only omnipkg"
       - run:
+          name: "Install rust"
+          command: "./.dotbot/scripts/rustup.sh"
+      - run:
           name: "Install tools"
           command: "./install --only shell"
       - run:
