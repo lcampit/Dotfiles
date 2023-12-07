@@ -1,9 +1,54 @@
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/Leo-Campo/Dotfiles/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/Leo-Campo/Dotfiles/tree/main)
 
+<!-- TOC --><a name="dotfiles"></a>
 # Dotfiles
 
 Dotfiles collection used to configure my own development environment
 
+## Table of Contents
+- [Dotfiles](#dotfiles)
+   * [Installation](#installation)
+   * [Fonts](#fonts)
+- [Included tools and references](#included-tools-and-references)
+   * [Aliases](#aliases)
+   * [Vim](#vim)
+   * [Tmux](#tmux)
+      + [Tmux Installation](#tmux-installation)
+      + [Config](#config)
+      + [Tmux Plugins](#tmux-plugins)
+      + [Tmux Scripts and Session management](#tmux-scripts-and-session-management)
+   * [Starship](#starship)
+   * [NeoVim](#neovim)
+      + [NeoVim Base Config](#neovim-base-config)
+      + [NeoVim Personal Settings](#neovim-personal-settings)
+      + [NeoVim Misc keymaps](#neovim-misc-keymaps)
+      + [LazyVim extras](#lazyvim-extras)
+   * [Zsh](#zsh)
+   * [Delta](#delta)
+   * [Exa](#exa)
+   * [Bat](#bat)
+   * [Zellij](#zellij)
+   * [Ripgrep](#ripgrep)
+   * [FZF](#fzf)
+   * [Bob-nvim](#bob-nvim)
+   * [Mprocs](#mprocs)
+   * [Gitui](#gitui)
+   * [Lazygit](#lazygit)
+   * [Ncspot](#ncspot)
+   * [Porsmo](#porsmo)
+   * [Rtx](#rtx)
+   * [Wikitui](#wikitui)
+   * [Fd](#fd)
+   * [Zoxide](#zoxide)
+   * [Navi](#navi)
+   * [sccache](#sccache)
+   * [Wezterm](#wezterm)
+   * [Kitty](#kitty)
+   * [Alacritty](#alacritty)
+- [Notes](#notes)
+- [Screenshots](#screenshots)
+
+<!-- TOC --><a name="installation"></a>
 ## Installation
 
 **Warning:** Feel free to give these dotfiles a try. However, I advise you to
@@ -49,11 +94,13 @@ like a faster installation with just the linking step, simply run:
 ./install --only link
 ```
 
+<!-- TOC --><a name="fonts"></a>
 ## Fonts
 
 My terminal uses the [Jetbrains Mono](https://www.jetbrains.com/lp/mono/) font,
 made for developers with a bunch of useful features and symbols.
 
+<!-- TOC --><a name="included-tools-and-references"></a>
 # Included tools and references
 
 This repo takes inspiration from [this](https://github.com/benmatselby/dotfiles)
@@ -63,6 +110,7 @@ repos, but that is the one that I stumbled across first.
 The following is a list of tools and references for each configuration file
 included
 
+<!-- TOC --><a name="aliases"></a>
 ## Aliases
 
 The repo contains a collection of aliases that I have set
@@ -70,6 +118,7 @@ for my current setup. They stem both from dotfiles I find around in the net and
 experience.
 Expect these to change frequently as I adapt to them or adapt them to me.
 
+<!-- TOC --><a name="vim"></a>
 ## [Vim](https://github.com/vim/vim)
 
 Vi Improved, the terminal based text editor. The configuration contains basic
@@ -77,6 +126,7 @@ LSPs functionalities, colorschemes and some other options.
 It has not been updated in a while as I've moved
 to NeoVim.
 
+<!-- TOC --><a name="tmux"></a>
 ## [Tmux](https://github.com/tmux/tmux)
 
 TMUX is handy tool for managing multiple terminal sessions. You can create
@@ -87,6 +137,7 @@ to check the tool in its entirety.
 As other tools, TMUX offers multiple customization options and plugins that will
 be shown here.
 
+<!-- TOC --><a name="tmux-installation"></a>
 ### Tmux Installation
 
 The script provided will link my configuration files in `~/.config/tmux/`.
@@ -97,6 +148,7 @@ Once inside a tmux session, press **prefix + CTRL + I** (for my current configur
 , CTRL + space is set as prefix) to install plugins.
 These plugins will be placed in a plugins directory in `$HOME/.config/tmux` folder.
 
+<!-- TOC --><a name="config"></a>
 ### Config
 
 This configuration started from [this](https://youtu.be/DzNmUNvnB04) video.
@@ -113,6 +165,7 @@ The configuration file contains the following options:
 
 I've then added plugins and configurations to fit my workflow.
 
+<!-- TOC --><a name="tmux-plugins"></a>
 ### Tmux Plugins
 
 All plugins are installed using [TPM](https://github.com/tmux-plugins/tpm)
@@ -138,6 +191,7 @@ All plugins are installed using [TPM](https://github.com/tmux-plugins/tpm)
 - [tmux-tilish](https://github.com/jabirali/tmux-tilish)  
   Sets sensible key mappings to have tmux behave more like a window manager
 
+<!-- TOC --><a name="tmux-scripts-and-session-management"></a>
 ### Tmux Scripts and Session management
 
 My tmux configuration got a major upgrade when stumbling across [this](https://www.reddit.com/r/neovim/comments/17cb1ah/what_is_the_benefit_of_tmux_why_should_i_use_it/) post
@@ -152,6 +206,7 @@ added to your `PATH` during installation.
 
 The `tkill` alias allows to kill tmux sessions with ease.
 
+<!-- TOC --><a name="starship"></a>
 ## [Starship](https://github.com/starship/starship)
 
 Starship is a blazing fast and customizable shell prompt built in Rust.
@@ -165,6 +220,7 @@ My configuration is taken from
 [folke](https://github.com/folke/dot/) dotfile repo, with a couple
 of adjustments.
 
+<!-- TOC --><a name="neovim"></a>
 ## [NeoVim](https://github.com/neovim/neovim)
 
 <a href="https://dotfyle.com/Leo-Campo/dotfiles-nvim"><img src="https://dotfyle.com/Leo-Campo/dotfiles-nvim/badges/plugins?style=flat" /></a>
@@ -179,6 +235,7 @@ Here I'll provide an extensive guide on _what_ I set up on my machine and _how_,
 working both as a guide for those to come and as a way for me to remeber how I
 fixed issues.
 
+<!-- TOC --><a name="neovim-base-config"></a>
 ### NeoVim Base Config
 
 My Neovim journey started from a sample Neovim configuration. There are plently
@@ -226,6 +283,7 @@ put as many files as needed in here.
 I'll separate my plugins specs on a per-file basis, merging together plugins referring to the
 same functionalities, e.g. grouping everything bash lsp related in a single `language_bash.lua` file.
 
+<!-- TOC --><a name="neovim-personal-settings"></a>
 ### NeoVim Personal Settings
 
 - vertical column on the 80th character (I toggle this on and off periodically)
@@ -236,6 +294,7 @@ same functionalities, e.g. grouping everything bash lsp related in a single `lan
   other ones, a little script in options prepend to PATH the path to the latest
   node version (installed with **rtx**)
 
+<!-- TOC --><a name="neovim-misc-keymaps"></a>
 ### NeoVim Misc keymaps
 
 Set up in mappings.lua:
@@ -247,6 +306,7 @@ Set up in mappings.lua:
 ["<C-d>"] = {"<C-d>zz", "Jump half a page down"}
 ```
 
+<!-- TOC --><a name="lazyvim-extras"></a>
 ### LazyVim extras
 
 LazyVim comes with a great number of extras that can be installed with a single line.
@@ -258,34 +318,41 @@ the extent of these features.
 
 The extras installed are all listed in the `lazyvim.json` file.
 
+<!-- TOC --><a name="zsh"></a>
 ## [Zsh](https://www.zsh.org/)
 
 The Z shell
 
+<!-- TOC --><a name="delta"></a>
 ## [Delta](https://github.com/dandavison/delta)
 
 A syntax-highlighting pager for git, diff, and grep output
 The repo contains git specific configurations to use with
 delta and other tools.
 
+<!-- TOC --><a name="exa"></a>
 ## [Exa](https://github.com/ogham/exa)
 
 A replacement for the venerable file listing command ls
 
 - Another neat replacement may be [lsd](https://github.com/lsd-rs/lsd)
 
+<!-- TOC --><a name="bat"></a>
 ## [Bat](https://github.com/sharkdp/bat)
 
 A cat clone with wings
 
+<!-- TOC --><a name="zellij"></a>
 ## [Zellij](https://github.com/zellij-org/zellij)
 
 A workspace manager for developers on the terminal
 
+<!-- TOC --><a name="ripgrep"></a>
 ## [Ripgrep](https://github.com/behnam/rust-ripgrep)
 
 A new, faster alternative to grep
 
+<!-- TOC --><a name="fzf"></a>
 ## [FZF](https://github.com/junegunn/fzf)
 
 A super handy fuzzy finder that, when piped
@@ -294,24 +361,29 @@ This repo contains some aliases to bash functions
 that use fzf.
 It offers multiple integrations with most common tools.
 
+<!-- TOC --><a name="bob-nvim"></a>
 ## [Bob-nvim](https://github.com/MordechaiHadad/bob)
 
 A Nvim version manager tool
 
+<!-- TOC --><a name="mprocs"></a>
 ## [Mprocs](https://github.com/pvolok/mprocs)
 
 A tool to keep long running processes under control in a unified window
 
+<!-- TOC --><a name="gitui"></a>
 ## [Gitui](https://github.com/extrawurst/gitui)
 
 A blazing fast terminal based git ui
 This folder contains configurations for gitui that will be placed in `$HOME/.config/gitui/`
 
+<!-- TOC --><a name="lazygit"></a>
 ## [Lazygit](https://github.com/jesseduffield/lazygit#installation)
 
 Another git client straight from the command line. Used by default in my current
 lazyvim nvim configuration
 
+<!-- TOC --><a name="ncspot"></a>
 ## [Ncspot](https://github.com/hrkfdn/ncspot)
 
 A terminal based Spotify client
@@ -324,6 +396,7 @@ Configurations for ncspot will be placed in `$HOME/.config/ncspot/`
 
 Themes can be browsed [here](https://github.com/hrkfdn/ncspot/pull/40)
 
+<!-- TOC --><a name="porsmo"></a>
 ## [Porsmo](https://github.com/ColorCookie-dev/porsmo)
 
 A terminal based pomodoro timer
@@ -332,26 +405,32 @@ I did stumble across an error with the alsa library when installing this
 the first time. If you encounter the same issue, install this library using
 your package manager. For Linux: `apt-get install librust-alsa-sys-dev`
 
+<!-- TOC --><a name="rtx"></a>
 ## [Rtx](https://github.com/jdxcode/rtx)
 
 A polyglot runtime manager
 
+<!-- TOC --><a name="wikitui"></a>
 ## [Wikitui](https://builditluc.github.io/wiki-tui/0.7/)
 
 A simple and easy to use Wikipedia Text User Interface
 
+<!-- TOC --><a name="fd"></a>
 ## [Fd](https://github.com/sharkdp/fd)
 
 An alternative to the standard find cli command
 
+<!-- TOC --><a name="zoxide"></a>
 ## [Zoxide](https://github.com/ajeetdsouza/zoxide)
 
 An alternative to the standard cd command
 
+<!-- TOC --><a name="navi"></a>
 ## [Navi](https://github.com/denisidoro/navi)
 
 An inline helper for cli commands, hopefully less annoying than its fairy counterpart
 
+<!-- TOC --><a name="sccache"></a>
 ## [sccache](https://github.com/mozilla/sccache)
 
 Allows for faster cargo compilation time by using cached packages, even in cloud.
@@ -360,6 +439,7 @@ Make sure to have it in your PATH and set up RUSTC_WRAPPER envinronment variable
 to use it when compiling, or set the relevant option
 in your .cargo/config.toml file
 
+<!-- TOC --><a name="wezterm"></a>
 ## [Wezterm](https://wezfurlong.org/wezterm/index.html)
 
 An amazing terminal emulator written in Rust
@@ -369,12 +449,14 @@ multiplexer features out of the box, supporting panes, windows and tabs.
 I've tinkered a bit with its configuration taking ideas from
 [this](https://github.com/Aylur/dotfiles/tree/main) fellow developer dotfiles.
 
+<!-- TOC --><a name="kitty"></a>
 ## [Kitty](https://sw.kovidgoyal.net/kitty/)
 
 A fast terminal emulator designed for keyboard power users.
 Follow [this link](https://sw.kovidgoyal.net/kitty/faq/#kitty-is-not-able-to-use-my-favorite-font)
 to fix issues with Kitty and nerd fonts / ligatures.
 
+<!-- TOC --><a name="alacritty"></a>
 ## [Alacritty](https://github.com/alacritty/alacritty)
 
 A cross-platform, OpenGL terminal emulator with
@@ -384,6 +466,7 @@ Configuration provided sets the font used and other sensible options.
 Tokyonight storm theme is included
 to ensure cohesion with my current nvim theme and colors
 
+<!-- TOC --><a name="notes"></a>
 # Notes
 
 There are some tools in this list written in Rust.
@@ -394,6 +477,7 @@ the fastest options in the market,
 therefore I decided to give them a try. As more and more rust video will surely
 flood my home (thanks youtube algorithm), I'm sure that list will be updated.
 
+<!-- TOC --><a name="screenshots"></a>
 # Screenshots
 
 ![Overview of my setup](/../screenshots/images/OverviewSetup.png?raw=true "Setup Overview")
