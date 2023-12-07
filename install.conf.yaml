@@ -4,13 +4,11 @@
     link:
       relink: true
       create: true
-    shell:
-      quiet: true
-      stdout: true
 
 - omnipkg:
     - install:
-        [ libssl-dev,
+        [
+          libssl-dev,
           libffi-dev,
           libncurses5-dev,
           zlib1g,
@@ -43,7 +41,37 @@
           desktop-file-utils,
           scdoc,
           curl,
-          grep ]
+          grep,
+        ]
+
+- link:
+    ~/.config/tmux/tmux.conf: tmux/tmux.conf
+    ~/.config/tmux/tokyonight_storm.tmux: tmux/tokyonight_storm.tmux
+    ~/.local/bin/ta: bin/ta
+    ~/.config/alacritty: alacritty
+    ~/.alias: alias/alias
+    ~/.config/bat: bat
+    ~/.config/bob: bob-nvim
+    ~/.fzf_alias: fzf/fzf_alias
+    ~/.gitconfig:
+      path: gitconfig/gitconfig
+      force: true
+    ~/.config/gitui: gitui
+    ~/.config/kitty: kitty
+    ~/.config/lazygit: lazygit
+    ~/.config/nvim: nvim
+    ~/.config/navi: navi
+    ~/.config/ncspot: ncspot
+    ~/.config/procs: procs
+    ~/.config/rtx/config.toml: rtx/config.toml
+    ~/.config/starship.toml: starship/starship.toml
+    ~/.vimrc: vim/vimrc
+    ~/.config/wezterm: wezterm
+    ~/.config/zellij: zellij
+    ~/.zshrc: zsh/zshrc
+    ~/.zshenv:
+      path: zsh/zshenv
+      force: true
 
 - shell:
     - command: ./.dotbot/scripts/rustup.sh
@@ -64,11 +92,11 @@
     - command: ./.dotbot/scripts/exa.sh
       description: install exa
 
-    - command: ./.dotbot/scripts/exa.sh
-      description: install exa
-
     - command: ./.dotbot/scripts/fd.sh
       description: install fd-find
+
+    - command: ./.dotbot/scripts/fzf.sh
+      description: install fzf
 
     - command: ./.dotbot/scripts/gitui.sh
       description: install gitui
@@ -108,36 +136,3 @@
 
     - command: ./.dotbot/scripts/zoxide.sh
       description: install zoxide
-
-- link:
-    ~/.config/tmux/tmux.conf: tmux/tmux.conf
-    ~/.config/tmux/tokyonight_storm.tmux: tmux/tokyonight_storm.tmux
-    ~/.local/bin/ta: bin/ta
-    ~/.config/alacritty: alacritty
-    ~/.alias: alias/alias
-    ~/.config/bat: bat
-    ~/.config/bob: bob-nvim
-    ~/.fzf_alias: fzf/fzf_alias
-    ~/.gitconfig: 
-        path: gitconfig/gitconfig
-        force: true
-    ~/.config/gitui: gitui
-    ~/.config/kitty: kitty
-    ~/.config/lazygit: lazygit
-    ~/.config/nvim: nvim
-    ~/.config/navi: navi
-    ~/.config/ncspot: ncspot
-    ~/.config/procs: procs
-    ~/.config/rtx/config.toml: rtx/config.toml
-    ~/.config/starship.toml: starship/starship.toml
-    ~/.vimrc: vim/vimrc
-    ~/.config/wezterm: wezterm
-    ~/.config/zellij: zellij
-    ~/.zshrc: zsh/zshrc
-    ~/.zshenv: 
-        path: zsh/zshenv
-        force: true
-
-- shell:
-    - bat cache --build
-    - chsh -s $(which zsh)
