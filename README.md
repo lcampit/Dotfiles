@@ -1,3 +1,5 @@
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/Leo-Campo/Dotfiles/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/Leo-Campo/Dotfiles/tree/main)
+
 # Dotfiles
 
 Dotfiles collection used to configure my own development environment
@@ -11,20 +13,43 @@ unless you know what that entails. Use at your own risk!
 
 ### Installation script
 
-The repo provides a central installation script that can be used to install
-single configurations or all of them at once. This script is written using the
+The repo used to provide a central installation script to install
+single configurations or all of them at once. This script was written using the
 [bashly](https://bashly.dannyb.co/) framework, an amazing tool that allows for
-robust and standardized bash scripts.
+robust and standardized bash scripts. For reference, I kept this paragraph
+here.
 
-To install my configuration simply clone the repo, cd into it and use the script
+As the project evolved, I switched to a dotfile management framework:
+[Dotbot](https://github.com/anishathalye/dotbot).
 
-```shell
+Dotbot is an handy framework with no dependencies that installs as a
+submodule on this repo and provides a central installation script, configured
+using one or more `yaml` files. I suggest giving it a read and include it
+in your own dotfile repo if it tickles your fancies. It also supports plugins
+for multiple use cases.
+
+With dotbot, installation is as simple as:
+
+```bash
 git clone https://github.com/Leo-Campo/Dotfiles && cd Dotfiles
-./lcdot install <tool configuration to install>
+git submodule update --init --recursive # pull submodules
+./install
 ```
 
-The installation script comes with a standard help message to fully understand
-its options and usage.
+This will perform all steps defined in the dotbot configuration file.
+These steps will automatically link dotfiles in their respective location,
+_overwriting existing ones_ (beware), but also perform installations steps for
+all tools needed. It is intended to be a one line full install for new machines
+or images. All dependencies and tools will be installed.
+
+These installation steps are meant to be _idempotent_, therefore should
+perform no operation if dependencies or tools are already installed.
+However, if you'd
+like a faster installation with just the linking step, simply run:
+
+```bash
+./install --only link
+```
 
 ## Fonts
 
@@ -64,7 +89,7 @@ to check the tool in its entirety.
 As other tools, TMUX offers multiple customization options and plugins that will
 be shown here.
 
-#### Installation
+#### Tmux Installation
 
 The script provided will link my configuration files in `~/.config/tmux/`.
 TMUX will automatically source that file on startup. At any moment, press
@@ -172,7 +197,7 @@ the switch for a couple of reasons:
 
 The base config follows this structure:
 
-```
+```shell
 .
 ├── init.lua
 ├── lazy-lock.json
@@ -286,7 +311,8 @@ This folder contains configurations for gitui that will be placed in `$HOME/.con
 
 ### [Lazygit](https://github.com/jesseduffield/lazygit#installation)
 
-Another git client straight from the command line. Used by default in my current lazyvim nvim configuration
+Another git client straight from the command line. Used by default in my current
+lazyvim nvim configuration
 
 ### [Ncspot](https://github.com/hrkfdn/ncspot)
 
