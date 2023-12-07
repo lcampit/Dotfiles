@@ -6,9 +6,6 @@
 Dotfiles collection used to configure my own development environment  
 
 ## Table of Contents
-<details>
-  <summary>Expand</summary>
-
 - [Dotfiles](#dotfiles)
    * [Installation](#installation)
    * [Fonts](#fonts)
@@ -50,8 +47,6 @@ Dotfiles collection used to configure my own development environment
    * [Alacritty](#alacritty)
 - [Notes](#notes)
 - [Screenshots](#screenshots)
-
-</details>
 
 <!-- TOC --><a name="installation"></a>
 ## Installation
