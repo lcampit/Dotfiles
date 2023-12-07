@@ -55,7 +55,6 @@ fi
 
 
 # fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 if [[ "$USE_RG_FOR_FZF" = true ]]; then
     export FZF_DEFAULT_COMMAND='rg --files'
 else
@@ -124,3 +123,5 @@ if [[ "$USE_P10K" = false ]]; then
     }
     eval "$(starship init zsh)"
 fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
