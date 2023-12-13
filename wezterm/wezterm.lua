@@ -1,41 +1,74 @@
+---@type Wezterm
 local wezterm = require("wezterm")
-local config = {}
+local config = wezterm.config_builder()
 
-if wezterm.config_builder then
-	config = wezterm.config_builder()
+wezterm.log_info("reloading")
+
+require("tabs").setup(config)
+require("mouse").setup(config)
+require("links").setup(config)
+require("keys").setup(config)
+
+config.front_end = "WebGpu"
+config.webgpu_power_preference = "HighPerformance"
+-- config.animation_fps = 1
+config.cursor_blink_ease_in = "Constant"
+config.cursor_blink_ease_out = "Constant"
+
+-- Colorscheme
+config.color_scheme_dirs = { wezterm.home_dir }
+config.color_scheme = "tokyonight_storm"
+wezterm.add_to_config_reload_watch_list(config.color_scheme_dirs[1] .. config.color_scheme .. ".toml")
+
+config.underline_thickness = 3
+config.cursor_thickness = 4
+config.underline_position = -6
+
+if wezterm.target_triple:find("windows") then
+	config.default_prog = { "pwsh" }
+	config.window_decorations = "RESIZE|TITLE"
+	wezterm.on("gui-startup", function(cmd)
+		local screen = wezterm.gui.screens().active
+		local tab, pane, window = wezterm.mux.spawn_window(cmd or {})
+		local gui = window:gui_window()
+		local width = 0.7 * screen.width
+		local height = 0.7 * screen.height
+		gui:set_inner_size(width, height)
+		gui:set_position((screen.width - width) / 2, (screen.height - height) / 2)
+	end)
+else
+	config.term = "wezterm"
+	config.window_decorations = "RESIZE"
 end
 
-config.font = wezterm.font("JetBrainsMono NerdFont")
-config.color_scheme = "Tokyo Night Storm"
-
-config.window_frame = {
-	active_titlebar_bg = "#333333",
-	inactive_titlebar_bg = "#333333",
-}
-config.use_fancy_tab_bar = true
-config.default_cursor_style = "SteadyBar"
-
-config.default_prog = { "zsh" }
-config.window_close_confirmation = "NeverPrompt"
-config.hide_tab_bar_if_only_one_tab = true
-
-config.enable_scroll_bar = false
-config.window_padding = {
-	top = "0.5cell",
-	right = "1cell",
-	bottom = "0.5cell",
-	left = "1cell",
-}
-
-config.inactive_pane_hsb = {
-	saturation = 0.9,
-	brightness = 0.8,
+-- Fonts
+config.font_size = 11
+config.font = wezterm.font({ family = "Fira Code" })
+config.bold_brightens_ansi_colors = true
+config.font_rules = {
+	{
+		intensity = "Bold",
+		italic = true,
+		font = wezterm.font({ family = "Maple Mono", weight = "Bold", style = "Italic" }),
+	},
+	{
+		italic = true,
+		intensity = "Half",
+		font = wezterm.font({ family = "Maple Mono", weight = "DemiBold", style = "Italic" }),
+	},
+	{
+		italic = true,
+		intensity = "Normal",
+		font = wezterm.font({ family = "Maple Mono", style = "Italic" }),
+	},
 }
 
-config.window_background_opacity = 1.0
-config.text_background_opacity = 1.0
+-- Cursor
+config.default_cursor_style = "BlinkingBar"
+config.force_reverse_video_cursor = true
+config.window_padding = { left = 0, right = 0, top = 0, bottom = 0 }
+-- window_background_opacity = 0.9,
+-- cell_width = 0.9,
+config.scrollback_lines = 10000
 
--- Load keys from outer file
--- config.keys = require("keys")
-
-return config
+return config --[[@as Wezterm]]
