@@ -6,7 +6,7 @@ node = "18"
 dotnet = "8.0.100"
 awscli = "2.13.3"
 dasel = "2.3.6"
-java = "18"
+java = "21"
 jq = "latest"
 
 [settings]
