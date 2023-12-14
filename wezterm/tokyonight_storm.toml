@@ -55,8 +55,3 @@ intensity = "Bold"
 [colors.tab_bar.new_tab]
 fg_color = "#7aa2f7"
 bg_color = "#24283b"
-
-[metadata]
-aliases = []
-author = "folke"
-name = "tokyonight_storm"
