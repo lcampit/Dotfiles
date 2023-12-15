@@ -40,16 +40,22 @@ This will perform all steps defined in the dotbot configuration file.
 These steps will automatically link dotfiles in their respective location,
 _overwriting existing ones_ (beware), but also perform installations steps for
 all tools needed. It is intended to be a one line full install for new machines
-or images. All dependencies and tools will be installed.
+or images. All dependencies and tools will be installed and it may take
+a while. To simply link my configuratio files, run:
 
-These installation steps are meant to be _idempotent_, therefore should
-perform no operation if dependencies or tools are already installed.
-However, if you'd
+```bash
+./install --except shell
+```
+
+If you'd
 like a faster installation with just the linking step, simply run:
 
 ```bash
 ./install --only link
 ```
+
+These installation steps are meant to be _idempotent_, therefore should
+perform no operation if dependencies or tools are already installed.
 
 ## Fonts
 
