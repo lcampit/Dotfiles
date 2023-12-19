@@ -276,7 +276,7 @@ A syntax-highlighting pager for git, diff, and grep output
 The repo contains git specific configurations to use with
 delta and other tools.
 
-### [Exa](https://github.com/ogham/exa)
+### [Eza](https://github.com/eza-community/eza)
 
 A replacement for the venerable file listing command ls
 

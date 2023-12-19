@@ -89,8 +89,8 @@
     - command: ./.dotbot/scripts/delta.sh
       description: install delta diff viewer
 
-    - command: ./.dotbot/scripts/exa.sh
-      description: install exa
+    - command: ./.dotbot/scripts/eza.sh
+      description: install eza
 
     - command: ./.dotbot/scripts/fd.sh
       description: install fd-find
