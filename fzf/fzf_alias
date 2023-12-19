@@ -1,5 +1,6 @@
 # Functions taken from https://github.com/junegunn/fzf/wiki/Examples
 # Other useful scripts at https://github.com/DanielFGray/fzf-scripts/tree/master
+# also https://github.com/beauwilliams/Dotfiles and https://github.com/beauwilliams/awesome-fzf/tree/master
 
 # Changing Directory
 
@@ -13,7 +14,7 @@ cdf() {
 # fe [FUZZY PATTERN] - Open the selected file with the default editor
 #   - Bypass fuzzy finder if there's only one match (--select-1)
 #   - Exit if there's no match (--exit-0)
-fe() {
+ff() {
   IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
   [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
 }
@@ -118,3 +119,51 @@ function ds() {
 function drm() {
   docker ps -a | sed 1d | fzf -q "$1" --no-sort -m --tac | awk '{ print $1 }' | xargs -r docker rm
 }
+
+# Man without options will use fzf to select a page
+function man() {
+	MAN="/usr/bin/man"
+	if [ -n "$1" ]; then
+		$MAN "$@"
+		return $?
+	else
+		$MAN -k . | fzf --reverse --preview="echo {1,2} | sed 's/ (/./' | sed -E 's/\)\s*$//' | xargs $MAN" | awk '{print $1 "." $2}' | tr -d '()' | xargs -r $MAN
+		return $?
+	fi
+}
+
+## Search list of your aliases and functions
+function falias() {
+    CMD=$(
+        (
+            (alias)
+            (functions | grep "()" | cut -d ' ' -f1 | grep -v "^_" )
+        ) | fzf | cut -d '=' -f1
+    );
+
+    eval $CMD
+}
+
+
+# Search env variables
+function fenv() {
+  local out
+  out=$(env | fzf)
+  echo $(echo $out | cut -d= -f2)
+}
+
+
+# Enhanced Git Status (Open multiple files with tab + diff preview)
+fzf-git-status() {
+    git rev-parse --git-dir > /dev/null 2>&1 || { echo "You are not in a git repository" && return }
+    local selected
+    selected=$(git -c color.status=always status --short |
+        fzf --height 50% "$@" --border -m --ansi --nth 2..,.. \
+        --preview '(git diff --color=always -- {-1} | sed 1,4d; cat {-1}) | head -500' |
+        cut -c4- | sed 's/.* -> //')
+            if [[ $selected ]]; then
+                for prog in $(echo $selected);
+                do; $EDITOR $prog; done;
+            fi
+    }
+
