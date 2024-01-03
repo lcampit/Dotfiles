@@ -119,8 +119,8 @@
     - command: ./.dotbot/scripts/procs.sh
       description: install procs
 
-    - command: ./.dotbot/scripts/rtx.sh
-      description: install rtx
+    - command: ./.dotbot/scripts/mise.sh
+      description: install mise
 
     - command: ./.dotbot/scripts/starship.sh
       description: install starship prompt
