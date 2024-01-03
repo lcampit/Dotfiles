@@ -39,4 +39,4 @@ export PROJECTS_LOCATION=$HOME/Desktop/Projects
 export PATH=$PATH:$HOME/flutter/bin
 
 # allows IDEs to follow rtx env
-export PATH="$HOME/.local/share/rtx/shims:$PATH"
+export PATH="$HOME/.local/share/mise/shims:$PATH"

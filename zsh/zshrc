@@ -105,8 +105,8 @@ source "$HOME/.alias" 2> /dev/null
 # sources fzf functions if present
 source "$HOME"/.fzf_alias 2> /dev/null
 
-# load rtx for zsh
-eval "$(rtx activate zsh)"
+# load mise, ex rtx, for zsh
+eval "$(~/.local/share/mise/bin/mise activate zsh)"
 
 # load zoxide for zsh
 eval "$(zoxide init zsh)"

@@ -1,5 +1,34 @@
 local home_dir = vim.env.HOME
 local java_version = "21"
+
+-- taken from https://github.com/mfussenegger/nvim-jdtls/issues/565
+-- solves running test error with jdtls
+
+local function get_bundles()
+	local mason_reg = require("mason-registry")
+	local function get_adapter_bundle()
+		local pkg = mason_reg.get_package("java-debug-adapter")
+		local pkg_install_path = pkg:get_install_path()
+		local pkg_jar_glob = pkg_install_path .. "/extension/server/com.microsoft.java.debug.plugin-*.jar"
+		local pkg_jar = vim.fn.glob(pkg_jar_glob, 1)
+		return pkg_jar
+	end
+	local function get_vscode_java_test_bundles()
+		local pkg = mason_reg.get_package("java-test")
+		local pkg_install_path = pkg:get_install_path()
+		local pkg_jars_glob = pkg_install_path .. "/extension/server/*.jar"
+		local pkg_jars = vim.fn.glob(pkg_jars_glob, 1)
+		local pkg_jars_list = vim.split(pkg_jars, "\n")
+		return pkg_jars_list
+	end
+	local bundles = {
+		get_adapter_bundle(),
+	}
+	vim.list_extend(bundles, get_vscode_java_test_bundles())
+	-- vim.notify("[JAVA bundles] " .. vim.inspect(bundles))
+	return bundles
+end
+
 return {
 	{
 		"mfussenegger/nvim-jdtls",
@@ -25,7 +54,7 @@ return {
 				-- How to run jdtls. This can be overridden to a full java command-line
 				-- if the Python wrapper script doesn't suffice.
 				cmd = {
-					home_dir .. "/.local/share/rtx/installs/java/" .. java_version .. "/bin/java",
+					home_dir .. "/.local/share/mise/installs/java/" .. java_version .. "/bin/java",
 					"-Declipse.application=org.eclipse.jdt.ls.core.id1",
 					"-Dosgi.bundles.defaultStartLevel=4",
 					"-Declipse.product=org.eclipse.jdt.ls.core.product",

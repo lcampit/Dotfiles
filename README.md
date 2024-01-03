@@ -242,7 +242,7 @@ same functionalities, e.g. grouping everything bash lsp related in a single `lan
 - python, ruby and node host programs set
 - To ensure lsp and mason run with a fixed node version when working with
   other ones, a little script in options prepend to PATH the path to the latest
-  node version (installed with **rtx**)
+  node version (installed with **mise, ex rtx**)
 
 ### Misc keymaps
 
@@ -340,7 +340,7 @@ I did stumble across an error with the alsa library when installing this
 the first time. If you encounter the same issue, install this library using
 your package manager. For Linux: `apt-get install librust-alsa-sys-dev`
 
-### [Rtx](https://github.com/jdxcode/rtx)
+### [Mise](https://github.com/jdx/mise)
 
 A polyglot runtime manager
 

@@ -63,7 +63,7 @@
     ~/.config/navi: navi
     ~/.config/ncspot: ncspot
     ~/.config/procs: procs
-    ~/.config/rtx/config.toml: rtx/config.toml
+    ~/.config/mise/config.toml: mise/config.toml
     ~/.config/starship.toml: starship/starship.toml
     ~/.vimrc: vim/vimrc
     ~/.config/wezterm: wezterm
