@@ -10,6 +10,3 @@ java = "21"
 jq = "latest"
 deploy1 = "latest"
 yarn = "1.22.19"
-
-[plugins]
-deploy1 = "https://github.com/Leo-Campo/rtx-deploy1-plugin"
