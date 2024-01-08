@@ -1,0 +1,2 @@
+trusted_config_paths = ["~/Desktop/Projects/"]
+experimental = true
