@@ -37,20 +37,17 @@ git clone https://github.com/Leo-Campo/Dotfiles && cd Dotfiles
 
 This will perform all steps defined in the dotbot configuration file.
 These steps will automatically link dotfiles in their respective location,
-_overwriting existing ones_ (beware), but also perform installations steps for
+_overwriting existing ones_ (beware).
+
+With dotbot, it is possible to create multiple configuration files. The repo
+contains a `full-install.conf.yaml` file that links all configuration files and
+but also perform installations steps for
 all tools needed. It is intended to be a one line full install for new machines
 or images. All dependencies and tools will be installed and it may take
-a while. To simply link my configuratio files, run:
+a while. To perform this kind of installation run:
 
 ```bash
-./install --except shell
-```
-
-If you'd
-like a faster installation with just the linking step, simply run:
-
-```bash
-./install --only link
+./install -c full-install.conf.yaml
 ```
 
 These installation steps are meant to be _idempotent_, therefore should
