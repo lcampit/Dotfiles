@@ -8,4 +8,6 @@ missing dependencies using your package manager. In my case, I needed to run
 
 Configurations for ncspot will be placed in `$HOME/.config/ncspot/`
 
-Themes can be browsed [here](https://github.com/hrkfdn/ncspot/pull/40)
+Themes can be browsed [here](https://github.com/hrkfdn/ncspot/pull/40),
+I'm using Folke's _tokyonight_ theme and
+nerd fonts.
