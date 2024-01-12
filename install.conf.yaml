@@ -25,7 +25,6 @@
     ~/.config/ncspot: ncspot
     ~/.config/procs: procs
     ~/.config/mise/config.toml: mise/config.toml
-    ~/.config/mise/settings.toml: mise/settings.toml
     ~/.config/starship.toml: starship/starship.toml
     ~/.vimrc: vim/vimrc
     ~/.config/wezterm: wezterm
