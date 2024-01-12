@@ -48,7 +48,7 @@ They are organized as follows:
 
 - **autocmds** stores autocommands other than
   the default ones to allow for
-  automatic execution and features such as format and save
+  automatic execution and features such as format on save
 - **keymaps** stores hotkeys that will be added to which-key
 - **lazy** stores lazy package manager options and extras
 - **options** stores vim configurations such as relative numbers and options
