@@ -32,3 +32,4 @@
     ~/.zshrc: zsh/zshrc
     ~/.zshenv:
       path: zsh/zshenv
+    ~/.config/btop: btop
