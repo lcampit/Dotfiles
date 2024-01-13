@@ -83,6 +83,12 @@ Set up in mappings.lua:
 ["<C-d>"] = {"<C-d>zz", "Jump half a page down"}
 ```
 
+- Common keybindings:
+
+```lua
+["<C-a>"] = {"gg<S-v>G", "Select all"}
+```
+
 ### LazyVim extras
 
 LazyVim comes with a great number of extras that can be installed with a single line.
