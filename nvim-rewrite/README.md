@@ -50,3 +50,22 @@ Typescript, HTML, CSS/Tailwind, Docker, Yaml, Sql, Json, Java.
 
 This file will grow over time to contain all keymaps, plugins and
 feature I pack my own personal NVIM with.
+
+## Options
+
+The following is a list of options I set:
+
+- Relative and current line absolute numbers enabled.
+  [Statuscol](https://github.com/luukvbaal/statuscol.nvim) and
+  the `statuscolumn` plugin may interesting to look at too.
+
+## Plugins
+
+Here I'll describe the plugins I installed
+in my personal NVIM config.
+| Plugin | Feature | Notes |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Tokyonight](https://github.com/folke/tokyonight.nvim) | Colorscheme | Using the _storm_ variant
+| [WhichKey](https://github.com/folke/which-key.nvim) | Keymaps reminder |
+| [TreeSitter](https://github.com/nvim-treesitter/nvim-treesitter) | Syntax highlighting |
+| [Telescope](https://github.com/nvim-telescope/telescope.nvim) | UI Selector |
