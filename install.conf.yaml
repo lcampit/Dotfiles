@@ -34,3 +34,4 @@
       path: zsh/zshenv
     ~/.config/btop: btop
     ~/.config/nvim-rewrite: nvim-rewrite
+    ~/.config/ripgrep/ripgreprc: ripgrep/ripgreprc
