@@ -20,3 +20,4 @@ require("config.options")
 
 -- let the magic happen
 require("lazy").setup("plugins")
+

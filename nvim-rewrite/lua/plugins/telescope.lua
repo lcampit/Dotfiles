@@ -26,6 +26,11 @@ return {
 				"<cmd> Telescope live_grep <CR>",
 				desc = "Find via grep",
 			},
+      {
+      "<leader>fr",
+      "<cmd> Telescope oldfiles <CR>",
+      desc = "Find recent files",
+      },
 		},
 		config = function()
 			require("telescope").load_extension("fzf")
