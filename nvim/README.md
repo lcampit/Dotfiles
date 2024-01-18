@@ -67,7 +67,6 @@ lsp related in a single `language_bash.lua` file.
 - vertical column on the 80th character (I toggle this on and off periodically)
 - relative numbers
 - always leave the last 20 lines available when scrolling
-- python, ruby and node host programs set
 - To ensure lsp and mason run with a fixed node version when working with
   other ones, a little script in options prepend to PATH the path to the latest
   node version (installed with **mise, ex rtx**)
