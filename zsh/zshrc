@@ -88,6 +88,9 @@ zinit light Anant-mishra1729/web-search
 zinit light trapd00r/LS_COLORS
 zinit light NullSense/fuzzy-sys
 
+zinit ice depth=1
+zinit light jeffreytse/zsh-vi-mode
+
 zinit load wfxr/forgit
 export PATH=$PATH:$FORGIT_INSTALL_DIR/bin
 export FORGIT_FZF_DEFAULT_OPTS="
