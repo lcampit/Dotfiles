@@ -73,6 +73,7 @@
       path: zsh/zshenv
       force: true
     ~/.config/btop: btop
+    ~/.config/broot: broot
 
 - shell:
     - command: ./.dotbot/scripts/rustup.sh
