@@ -2,7 +2,7 @@
 
 # editor
 export EDITOR=$HOME/.local/share/bob/nvim-bin/nvim
-export VISUAL=$HOME/.local/share/bob/nvim-bin/nvi
+export VISUAL=$HOME/.local/share/bob/nvim-bin/nvim
 
 # TERM
 export TERM="xterm-256color"
