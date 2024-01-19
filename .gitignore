@@ -3,3 +3,4 @@ ncspot/userstate.cbor
 nvim/lazy-lock.json
 lazygit/state.yml
 *.log
+broot/launcher
