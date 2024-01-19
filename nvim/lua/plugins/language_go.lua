@@ -1,21 +1,12 @@
 return {
 	{
-		"stevearc/conform.nvim",
-		optional = true,
-		opts = {
-			formatters_by_ft = {
-				go = { "gofmt" },
-			},
-		},
-	},
-	{
 		"neovim/nvim-lspconfig",
 		opts = {
 			servers = {
 				gopls = {
 					settings = {
 						gopls = {
-							gofumpt = false,
+							gofumpt = true,
 							codelenses = {
 								gc_details = false,
 								generate = true,
