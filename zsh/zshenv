@@ -1,8 +1,8 @@
 . "$HOME/.cargo/env"
 
 # editor
-export EDITOR=nvim
-export VISUAL=nvim
+export EDITOR=$HOME/.local/share/bob/nvim-bin/nvim
+export VISUAL=$HOME/.local/share/bob/nvim-bin/nvi
 
 # TERM
 export TERM="xterm-256color"
