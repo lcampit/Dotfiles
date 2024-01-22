@@ -74,6 +74,7 @@
       force: true
     ~/.config/btop: btop
     ~/.config/broot: broot
+    ~/.config/jrnl: jrnl
 
 - shell:
     - command: ./.dotbot/scripts/rustup.sh
