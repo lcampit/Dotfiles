@@ -64,7 +64,7 @@ export FZF_DEFAULT_OPTS='-m'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # sources extra file if present
-source .zsh_extra 2> /dev/null
+source "$HOME/.zsh_extra" 2> /dev/null
 
 # plugins
 zinit light Aloxaf/fzf-tab
