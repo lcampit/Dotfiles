@@ -7,7 +7,7 @@
 
 [aws]
 symbol = " "
-format = 'on [$symbol($profile )(\($region\))]($style)'
+format = 'on [$symbol($profile )(\($region\)) ]($style)'
 
 [package]
 disabled = true
