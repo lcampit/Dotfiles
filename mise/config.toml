@@ -10,3 +10,6 @@ java = "21"
 jq = "latest"
 deploy1 = "latest"
 yarn = "1.22.19"
+
+[settings]
+experimental = true
