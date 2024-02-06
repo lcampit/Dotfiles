@@ -1,17 +1,31 @@
-[![CircleCI](https://dl.circleci.com/status-badge/img/gh/Leo-Campo/Dotfiles/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/Leo-Campo/Dotfiles/tree/main)
 
-# Dotfiles
+<h1 align="center">DOTFILES</h1>
+<p align="center">
+    <em>Dotfiles collection used to configure my own development environment</em>
+</p>
+<p align="center">
+  <a href="https://dl.circleci.com/status-badge/redirect/gh/Leo-Campo/Dotfiles/tree/main">
+    <img src="https://dl.circleci.com/status-badge/img/gh/Leo-Campo/Dotfiles/tree/main.svg?style=svg">
+  </a>
+</p>
 
-Dotfiles collection used to configure my own development environment
+---
 
-## Installation
+## 🔗 Quick Links
+> - [🚀 Installation](#-installation)
+> - [🧩 Fonts](#-fonts)
+> - [🌆 Screenshots](#-screenshots)
+> - [🛠 Notes](#-notes)
+> - [🤝 Contributing](#-contributing)
+
+---
+
+## 🚀 Installation
 
 **Warning:** Feel free to give these dotfiles a try. However, I advise you to
 fork this repository first and look around. Get a feel of what it will set up
 for you and remove things you don’t want or need. Don’t blindly use my settings
 unless you know what that entails. Use at your own risk!
-
-### Installation script
 
 The repo used to provide a central installation script to install
 single configurations or all of them at once. This script was written using the
@@ -53,7 +67,7 @@ a while. To perform this kind of installation run:
 These installation steps are meant to be _idempotent_, therefore should
 perform no operation if dependencies or tools are already installed.
 
-## Fonts
+## 🧩 Fonts
 
 My terminal uses the [Jetbrains Mono](https://www.jetbrains.com/lp/mono/) font,
 made for developers with a bunch of useful features and symbols.
@@ -66,7 +80,7 @@ repos, but that is the one that I stumbled across first.
 
 The repo contains a dedicated folder and README file for any tool that I use on my machines.
 
-## Notes
+## 🛠 Notes
 
 There are some tools in this list written in Rust.
 I stumbled across [this video](https://youtu.be/dFkGNe4oaKk)
@@ -76,7 +90,7 @@ the fastest options in the market,
 therefore I decided to give them a try. As more and more rust video will surely
 flood my home (thanks youtube algorithm), I'm sure that list will be updated.
 
-## Screenshots
+## 🌆 Screenshots
 
 ![Overview of my setup](/../screenshots/images/OverviewSetup.png?raw=true "Setup Overview")
 Overview of an alacritty window running tmux with 3 panes: nvim, lazygit and a
@@ -85,3 +99,8 @@ shell running starship prompt
 ![Nvim Overview](/../screenshots/images/NvimOverview.png?raw=true "Nvim overview")
 Overview of my neovim configuration featuring nerdtree, webdevicons, tokyonight storm
 theme, lsps and much more
+
+## 🤝 Contributing
+Feel free to contribute in any way shape or form you may think of: open issues
+for bugs you may encounter using my configuration, suggests new tools or different settings
+and more!
