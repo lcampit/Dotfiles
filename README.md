@@ -5,8 +5,9 @@
 </p>
 <p align="center">
   <a href="https://dl.circleci.com/status-badge/redirect/gh/Leo-Campo/Dotfiles/tree/main">
-    <img src="https://dl.circleci.com/status-badge/img/gh/Leo-Campo/Dotfiles/tree/main.svg?style=svg">
+    <img src="https://dl.circleci.com/status-badge/img/gh/Leo-Campo/Dotfiles/tree/main.svg?style=shield" alt="CI results">
   </a>
+    <img src="https://img.shields.io/github/commit-activity/t/Leo-Campo/Dotfiles?style=flat" alt="github commits">
 </p>
 
 ---
