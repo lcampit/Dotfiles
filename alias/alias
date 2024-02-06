@@ -4,7 +4,7 @@ alias clipboard='xclip -sel clip'
 alias cdd="cd $DOTFILES_LOCATION"
 alias cdp="cd $PROJECTS_LOCATION"
 alias cat=bat
-alias ls="exa"
+alias ls="eza"
 alias terminaltheme='bash -c  "$(wget -qO- https://git.io/vQgMr)"'
 alias grep=rg
 alias zshrc="nvim $HOME/.zshrc"
@@ -18,3 +18,6 @@ alias pid="ps -aux | grep -v grep | grep -v rg | grep "
 alias clock="tty-clock -tcs -C 3"
 alias p='nvim `fzf --preview="bat --color always {}"`'
 alias technews="curl us.getnews.tech" # also hn (haxor-news) can be used to fetch tech news on terminal
+alias ll='eza --long --header --group-directories-first --git --group --all'
+alias lg='lazygit'
+alias lzd='lazydocker'

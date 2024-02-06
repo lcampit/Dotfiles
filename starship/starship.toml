@@ -1,7 +1,18 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
 # Replace the "❯" symbol in the prompt with "➜"
 [character] # The name of the module we are configuring is "character"
 #symbol = "➜"     # The "symbol" segment is being set to "➜"
 # use_symbol_for_status = true  # Show "✖" when the command failed
+
+[aws]
+symbol = " "
+format = 'on [$symbol($profile )(\($region\)) ]($style)'
+
+[package]
+disabled = true
+symbol = "󰏗 "
+
 
 [custom.shell]
 command = "echo $STARSHIP_SHELL"               # shows output of command
@@ -38,8 +49,6 @@ symbol = " "
 [git_metrics]
 disabled = false
 
-[aws]
-symbol = "  "
 
 [buf]
 symbol = " "
@@ -151,8 +160,6 @@ Ubuntu = " "
 Unknown = " "
 Windows = "󰍲 "
 
-[package]
-symbol = "󰏗 "
 
 [pijul_channel]
 symbol = "🪺 "
