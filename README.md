@@ -1,55 +1,27 @@
-[![CircleCI](https://dl.circleci.com/status-badge/img/gh/Leo-Campo/Dotfiles/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/Leo-Campo/Dotfiles/tree/main)
+<h1 align="center">DOTFILES</h1>
+<p align="center">
+    <em>Dotfiles collection used to configure my own development environment</em>
+</p>
+<p align="center">
+  <a href="https://dl.circleci.com/status-badge/redirect/gh/Leo-Campo/Dotfiles/tree/main">
+    <img src="https://dl.circleci.com/status-badge/img/gh/Leo-Campo/Dotfiles/tree/main.svg?style=shield" alt="CI results">
+  </a>
+    <img src="https://img.shields.io/github/commit-activity/t/Leo-Campo/Dotfiles?style=flat" alt="github commits">
+</p>
 
-<!-- TOC --><a name="dotfiles"></a>
-# Dotfiles
+---
 
-Dotfiles collection used to configure my own development environment  
+## 🔗 Quick Links
 
-## Table of Contents
-- [Dotfiles](#dotfiles)
-   * [Installation](#installation)
-   * [Fonts](#fonts)
-- [Included tools and references](#included-tools-and-references)
-   * [Aliases](#aliases)
-   * [Vim](#vim)
-   * [Tmux](#tmux)
-      + [Tmux Installation](#tmux-installation)
-      + [Config](#config)
-      + [Tmux Plugins](#tmux-plugins)
-      + [Tmux Scripts and Session management](#tmux-scripts-and-session-management)
-   * [Starship](#starship)
-   * [NeoVim](#neovim)
-      + [NeoVim Base Config](#neovim-base-config)
-      + [NeoVim Personal Settings](#neovim-personal-settings)
-      + [NeoVim Misc keymaps](#neovim-misc-keymaps)
-      + [LazyVim extras](#lazyvim-extras)
-   * [Zsh](#zsh)
-   * [Delta](#delta)
-   * [Exa](#exa)
-   * [Bat](#bat)
-   * [Zellij](#zellij)
-   * [Ripgrep](#ripgrep)
-   * [FZF](#fzf)
-   * [Bob-nvim](#bob-nvim)
-   * [Mprocs](#mprocs)
-   * [Gitui](#gitui)
-   * [Lazygit](#lazygit)
-   * [Ncspot](#ncspot)
-   * [Porsmo](#porsmo)
-   * [Rtx](#rtx)
-   * [Wikitui](#wikitui)
-   * [Fd](#fd)
-   * [Zoxide](#zoxide)
-   * [Navi](#navi)
-   * [sccache](#sccache)
-   * [Wezterm](#wezterm)
-   * [Kitty](#kitty)
-   * [Alacritty](#alacritty)
-- [Notes](#notes)
-- [Screenshots](#screenshots)
+> - [🚀 Installation](#-installation)
+> - [🧩 Fonts](#-fonts)
+> - [🌆 Screenshots](#-screenshots)
+> - [🛠 Notes](#-notes)
+> - [🤝 Contributing](#-contributing)
 
-<!-- TOC --><a name="installation"></a>
-## Installation
+---
+
+## 🚀 Installation
 
 **Warning:** Feel free to give these dotfiles a try. However, I advise you to
 fork this repository first and look around. Get a feel of what it will set up
@@ -96,13 +68,12 @@ a while. To perform this kind of installation run:
 These installation steps are meant to be _idempotent_, therefore should
 perform no operation if dependencies or tools are already installed.
 
-## Fonts
+## 🧩 Fonts
 
 My terminal uses the [Jetbrains Mono](https://www.jetbrains.com/lp/mono/) font,
 made for developers with a bunch of useful features and symbols.
 
-<!-- TOC --><a name="included-tools-and-references"></a>
-# Included tools and references
+## Included tools and references
 
 This repo takes inspiration from [this](https://github.com/benmatselby/dotfiles)
 fellow developer dotfiles repo. I know there are probably thousands of similar
@@ -110,8 +81,7 @@ repos, but that is the one that I stumbled across first.
 
 The repo contains a dedicated folder and README file for any tool that I use on my machines.
 
-<!-- TOC --><a name="notes"></a>
-# Notes
+## 🛠 Notes
 
 There are some tools in this list written in Rust.
 I stumbled across [this video](https://youtu.be/dFkGNe4oaKk)
@@ -121,8 +91,7 @@ the fastest options in the market,
 therefore I decided to give them a try. As more and more rust video will surely
 flood my home (thanks youtube algorithm), I'm sure that list will be updated.
 
-<!-- TOC --><a name="screenshots"></a>
-# Screenshots
+## 🌆 Screenshots
 
 ![Overview of my setup](/../screenshots/images/OverviewSetup.png?raw=true "Setup Overview")
 Overview of an alacritty window running tmux with 3 panes: nvim, lazygit and a
@@ -131,3 +100,9 @@ shell running starship prompt
 ![Nvim Overview](/../screenshots/images/NvimOverview.png?raw=true "Nvim overview")
 Overview of my neovim configuration featuring nerdtree, webdevicons, tokyonight storm
 theme, lsps and much more
+
+## 🤝 Contributing
+
+Feel free to contribute in any way shape or form you may think of: open issues
+for bugs you may encounter using my configuration, suggests new tools or different settings
+and more!
