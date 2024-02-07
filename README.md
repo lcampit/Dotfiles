@@ -1,17 +1,60 @@
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/Leo-Campo/Dotfiles/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/Leo-Campo/Dotfiles/tree/main)
 
+<!-- TOC --><a name="dotfiles"></a>
 # Dotfiles
 
-Dotfiles collection used to configure my own development environment
+Dotfiles collection used to configure my own development environment  
 
+## Table of Contents
+- [Dotfiles](#dotfiles)
+   * [Installation](#installation)
+   * [Fonts](#fonts)
+- [Included tools and references](#included-tools-and-references)
+   * [Aliases](#aliases)
+   * [Vim](#vim)
+   * [Tmux](#tmux)
+      + [Tmux Installation](#tmux-installation)
+      + [Config](#config)
+      + [Tmux Plugins](#tmux-plugins)
+      + [Tmux Scripts and Session management](#tmux-scripts-and-session-management)
+   * [Starship](#starship)
+   * [NeoVim](#neovim)
+      + [NeoVim Base Config](#neovim-base-config)
+      + [NeoVim Personal Settings](#neovim-personal-settings)
+      + [NeoVim Misc keymaps](#neovim-misc-keymaps)
+      + [LazyVim extras](#lazyvim-extras)
+   * [Zsh](#zsh)
+   * [Delta](#delta)
+   * [Exa](#exa)
+   * [Bat](#bat)
+   * [Zellij](#zellij)
+   * [Ripgrep](#ripgrep)
+   * [FZF](#fzf)
+   * [Bob-nvim](#bob-nvim)
+   * [Mprocs](#mprocs)
+   * [Gitui](#gitui)
+   * [Lazygit](#lazygit)
+   * [Ncspot](#ncspot)
+   * [Porsmo](#porsmo)
+   * [Rtx](#rtx)
+   * [Wikitui](#wikitui)
+   * [Fd](#fd)
+   * [Zoxide](#zoxide)
+   * [Navi](#navi)
+   * [sccache](#sccache)
+   * [Wezterm](#wezterm)
+   * [Kitty](#kitty)
+   * [Alacritty](#alacritty)
+- [Notes](#notes)
+- [Screenshots](#screenshots)
+
+<!-- TOC --><a name="installation"></a>
 ## Installation
 
 **Warning:** Feel free to give these dotfiles a try. However, I advise you to
 fork this repository first and look around. Get a feel of what it will set up
 for you and remove things you don’t want or need. Don’t blindly use my settings
 unless you know what that entails. Use at your own risk!
-
-### Installation script
 
 The repo used to provide a central installation script to install
 single configurations or all of them at once. This script was written using the
@@ -58,7 +101,8 @@ perform no operation if dependencies or tools are already installed.
 My terminal uses the [Jetbrains Mono](https://www.jetbrains.com/lp/mono/) font,
 made for developers with a bunch of useful features and symbols.
 
-## Included tools and references
+<!-- TOC --><a name="included-tools-and-references"></a>
+# Included tools and references
 
 This repo takes inspiration from [this](https://github.com/benmatselby/dotfiles)
 fellow developer dotfiles repo. I know there are probably thousands of similar
@@ -66,7 +110,8 @@ repos, but that is the one that I stumbled across first.
 
 The repo contains a dedicated folder and README file for any tool that I use on my machines.
 
-## Notes
+<!-- TOC --><a name="notes"></a>
+# Notes
 
 There are some tools in this list written in Rust.
 I stumbled across [this video](https://youtu.be/dFkGNe4oaKk)
@@ -76,7 +121,8 @@ the fastest options in the market,
 therefore I decided to give them a try. As more and more rust video will surely
 flood my home (thanks youtube algorithm), I'm sure that list will be updated.
 
-## Screenshots
+<!-- TOC --><a name="screenshots"></a>
+# Screenshots
 
 ![Overview of my setup](/../screenshots/images/OverviewSetup.png?raw=true "Setup Overview")
 Overview of an alacritty window running tmux with 3 panes: nvim, lazygit and a
