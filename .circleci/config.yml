@@ -30,9 +30,6 @@ jobs:
       - run:
           name: "Link configuration files"
           command: "./install --only link"
-      - run:
-          name: "Finishing touches"
-          command: "bat cache --build && chsh -s $(which zsh)"
 
   linking-ubuntu:
     machine:

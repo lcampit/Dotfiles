@@ -29,7 +29,9 @@
     ~/.vimrc: vim/vimrc
     ~/.config/wezterm: wezterm
     ~/.config/zellij: zellij
-    ~/.zshrc: zsh/zshrc
+    ~/.zshrc: 
+      path: zsh/zshrc
+      force: true
     ~/.zshenv:
       path: zsh/zshenv
     ~/.config/btop: btop
