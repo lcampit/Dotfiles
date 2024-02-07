@@ -30,9 +30,17 @@ return {
 		opts = function(_, opts)
 			vim.list_extend(opts.ensure_installed, {
 				"bash-language-server",
-				"beautysh",
 				"shellharden",
 			})
 		end,
+	},
+	{
+		"stevearc/conform.nvim",
+		dependencies = { "mason.nvim" },
+		opts = {
+			formatters_by_ft = {
+				sh = { "shfmt", "shellharden" },
+			},
+		},
 	},
 }
