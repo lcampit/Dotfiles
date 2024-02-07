@@ -14,10 +14,10 @@ vim.opt.rtp:prepend(lazypath)
 
 -- set leader key before loading lazy
 vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 
 -- load options
 require("config.options")
 
 -- let the magic happen
 require("lazy").setup("plugins")
-
