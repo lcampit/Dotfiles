@@ -38,8 +38,5 @@ export PROJECTS_LOCATION=$HOME/Desktop/Projects
 # adds flutter to path
 export PATH=$PATH:$HOME/flutter/bin
 
-# allows IDEs to follow rtx env
-export PATH="$HOME/.local/share/mise/shims:$PATH"
-
 # set up ripgrep configuration file 
 export RIPGREP_CONFIG_PATH=$HOME/.config/ripgrep/ripgreprc
