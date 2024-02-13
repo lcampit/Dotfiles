@@ -21,3 +21,4 @@ alias technews="curl us.getnews.tech" # also hn (haxor-news) can be used to fetc
 alias ll='eza --long --header --group-directories-first --git --group --all'
 alias lg='lazygit'
 alias lzd='lazydocker'
+alias v='nvim'
