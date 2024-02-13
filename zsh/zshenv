@@ -40,3 +40,6 @@ export PATH=$PATH:$HOME/flutter/bin
 
 # set up ripgrep configuration file 
 export RIPGREP_CONFIG_PATH=$HOME/.config/ripgrep/ripgreprc
+
+# set up second brain vault 
+export SECOND_BRAIN_PATH=$HOME/second-brain
