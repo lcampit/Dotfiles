@@ -12,6 +12,9 @@ require("lazy").setup({
 		{ "LazyVim/LazyVim", import = "lazyvim.plugins" },
 		-- import any extras modules here
 		{ import = "plugins" },
+		{ import = "plugins/lsp" },
+		{ import = "plugins/test" },
+		{ import = "plugins/notes" },
 		-- Custom additon of the lazyrc extras, which must be loaded last
 		{ import = "plugins.extras.lazyrc" },
 	},
