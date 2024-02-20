@@ -64,10 +64,11 @@ export FZF_DEFAULT_OPTS='-m'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # sources extra file if present
-source .zsh_extra 2> /dev/null
+source "$HOME/.zsh_extra" 2> /dev/null
 
 # plugins
-zinit snippet OMZP::git
+zinit light Aloxaf/fzf-tab
+# zinit snippet OMZP::git
 zinit snippet OMZP::sudo
 zinit snippet OMZP::command-not-found
 zinit snippet OMZP::copypath
@@ -87,6 +88,9 @@ zinit light Anant-mishra1729/web-search
 zinit light trapd00r/LS_COLORS
 zinit light NullSense/fuzzy-sys
 
+zinit ice depth=1
+zinit light jeffreytse/zsh-vi-mode
+
 zinit load wfxr/forgit
 export PATH=$PATH:$FORGIT_INSTALL_DIR/bin
 export FORGIT_FZF_DEFAULT_OPTS="
@@ -104,14 +108,17 @@ source "$HOME/.alias" 2> /dev/null
 # sources fzf functions if present
 source "$HOME"/.fzf_alias 2> /dev/null
 
-# load rtx for zsh
-eval "$(rtx activate zsh)"
+# load mise, ex rtx, for zsh
+eval "$(~/.local/share/mise/bin/mise activate zsh --shims)"
 
 # load zoxide for zsh
 eval "$(zoxide init zsh)"
 
 # load navi for zsh, launch with ctrl+G
 eval "$(navi widget zsh)"
+
+# load broot shell function
+source /home/leonardo.campitelli/.config/broot/launcher/bash/br
 
 # Use starship
 if [[ "$USE_P10K" = false ]]; then

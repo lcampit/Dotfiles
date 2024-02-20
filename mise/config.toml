@@ -1,14 +1,16 @@
 [tools]
 ruby = "3.2.2"
-python = "3.10"
+python = "3.12"
 go = "1.21"
 node = "18"
 dotnet = "8.0.100"
 awscli = "2.13.3"
 dasel = "2.3.6"
-java = "18"
+java = "21"
 jq = "latest"
+deploy1 = "latest"
+yarn = "1.22.19"
+act = "latest"
 
 [settings]
-trusted_config_paths = ["~/Desktop/Projects/"]
 experimental = true

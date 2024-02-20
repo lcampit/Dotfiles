@@ -17,6 +17,15 @@ return {
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter-textobjects",
 		},
+
+		opts = function(_, opts)
+			vim.list_extend(opts.ensure_installed, {
+				"bash",
+				"graphql",
+				"kdl",
+				"proto",
+			})
+		end,
 	},
 	{
 		"nvim-treesitter/nvim-treesitter-textobjects",

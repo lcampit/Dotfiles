@@ -1,0 +1,13 @@
+{
+  "lspconfig": {
+    "lua_ls": {
+      "Lua.workspace.library": [
+        "/home/leonardo.campitelli/Dotfiles/wezterm/wezterm-types/wezterm.lua",
+        "/home/leonardo.campitelli/Dotfiles/wezterm/wezterm-types/color.lua",
+        "/home/leonardo.campitelli/Dotfiles/wezterm/term-types/localprocessinginfo.lua",
+        "/home/leonardo.campitelli/Dotfiles/wezterm/term-types/werzterm-nf.lua",
+        "/home/leonardo.campitelli/Dotfiles/wezterm/term-types/mux.lua"
+      ]
+    }
+  }
+}
