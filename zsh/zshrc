@@ -109,6 +109,7 @@ source "$HOME/.alias" 2> /dev/null
 source "$HOME"/.fzf_alias 2> /dev/null
 
 # load mise, ex rtx, for zsh
+eval "$(~/.local/share/mise/bin/mise activate zsh)"
 eval "$(~/.local/share/mise/bin/mise activate zsh --shims)"
 
 # load zoxide for zsh
