@@ -4,10 +4,12 @@ local config = wezterm.config_builder()
 
 wezterm.log_info("reloading")
 
-require("tabs").setup(config)
-require("mouse").setup(config)
-require("links").setup(config)
-require("keys").setup(config)
+-- tabs
+config.use_fancy_tab_bar = false
+config.tab_bar_at_bottom = true
+config.hide_tab_bar_if_only_one_tab = true
+config.tab_max_width = 32
+config.unzoom_on_switch_pane = true
 
 config.front_end = "WebGpu"
 config.webgpu_power_preference = "HighPerformance"
@@ -16,9 +18,7 @@ config.cursor_blink_ease_in = "Constant"
 config.cursor_blink_ease_out = "Constant"
 
 -- Colorscheme
-config.color_scheme_dirs = { wezterm.home_dir }
-config.color_scheme = "tokyonight_storm"
-wezterm.add_to_config_reload_watch_list(config.color_scheme_dirs[1] .. config.color_scheme .. ".toml")
+config.color_scheme = "Catppuccin Mocha" -- or Macchiato, Frappe, Latte
 
 config.underline_thickness = 3
 config.cursor_thickness = 4
@@ -56,5 +56,8 @@ config.window_padding = { left = 5, right = 5, top = 0, bottom = 0 }
 -- window_background_opacity = 0.9,
 -- cell_width = 0.9,
 config.scrollback_lines = 10000
+
+-- keys
+require("keys")
 
 return config --[[@as Wezterm]]
