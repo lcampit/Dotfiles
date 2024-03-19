@@ -29,7 +29,7 @@
     ~/.vimrc: vim/vimrc
     ~/.config/wezterm: wezterm
     ~/.config/zellij: zellij
-    ~/.zshrc: 
+    ~/.zshrc:
       path: zsh/zshrc
       force: true
     ~/.zshenv:
@@ -38,3 +38,4 @@
     ~/.config/ripgrep/ripgreprc: ripgrep/ripgreprc
     ~/.config/broot: broot
     ~/.config/jrnl: jrnl
+    ~/.config/k9s: k9s
