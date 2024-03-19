@@ -9,6 +9,8 @@ return {
 				"graphql-language-service-cli",
 				"buf-language-server",
 				"protolint",
+				"shfmt",
+				"shellharden",
 			})
 		end,
 	},
