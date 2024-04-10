@@ -1,13 +1,13 @@
 -- Options are automatically loaded before lazy.nvim startup
 
 -- allows Lsps, formatters and linters to use the latest mise handled SDKs
-vim.env.NEOVIM_NODE_VERSION = "latest"
-if vim.env.NEOVIM_NODE_VERSION then
-	local node_dir = vim.env.HOME .. "/.local/share/mise/installs/node/" .. vim.env.NEOVIM_NODE_VERSION .. "/bin"
-	if vim.fn.isdirectory(node_dir) then
-		vim.env.PATH = node_dir .. ":" .. vim.env.PATH
-	end
-end
+-- vim.env.NEOVIM_NODE_VERSION = "latest"
+-- if vim.env.NEOVIM_NODE_VERSION then
+-- 	local node_dir = vim.env.HOME .. "/.local/share/mise/installs/node/" .. vim.env.NEOVIM_NODE_VERSION .. "/bin"
+-- 	if vim.fn.isdirectory(node_dir) then
+-- 		vim.env.PATH = node_dir .. ":" .. vim.env.PATH
+-- 	end
+-- end
 
 vim.env.JAVA_SDK_VERSION = "latest"
 if vim.env.JAVA_SDK_VERSION then
