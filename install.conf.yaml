@@ -17,6 +17,7 @@
     ~/.fzf_alias: fzf/fzf_alias
     ~/.gitconfig:
       path: gitconfig/gitconfig
+    ~/.config/git/ignore: gitconfig/ignore
     ~/.config/gitui: gitui
     ~/.config/kitty: kitty
     ~/.config/lazygit: lazygit
