@@ -1,16 +1,24 @@
 [tools]
 ruby = "3.2.2"
 python = "3.12"
-go = "1.21"
+go = "1.22"
 node = "18"
 dotnet = "8.0.100"
 awscli = "2.13.3"
 dasel = "2.3.6"
 java = "21"
 jq = "latest"
-deploy1 = "latest"
 yarn = "1.22.19"
 act = "latest"
+"npm:lerna" = "3.20"
+"go:gotest.tools/gotestsum" = "v1.11.0"
+"go:github.com/spf13/cobra-cli" = "latest"
+argocd = "2.7.1"
+yq = "4.41"
+watchexec = "latest"
+"go:github.com/moveaxlab/deploy1" = "latest"
+docker-compose-v1 = "latest"
+loki-logcli = "latest"
 
 [settings]
 experimental = true
