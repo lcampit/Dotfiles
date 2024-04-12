@@ -19,6 +19,7 @@ watchexec = "latest"
 "go:github.com/moveaxlab/deploy1" = "latest"
 docker-compose-v1 = "latest"
 loki-logcli = "latest"
+"go:github.com/lcampit/ThoughtSync" = "v1.1.3"
 
 [settings]
 experimental = true
