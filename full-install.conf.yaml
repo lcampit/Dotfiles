@@ -60,7 +60,6 @@
     ~/.config/kitty: kitty
     ~/.config/lazygit: lazygit
     ~/.config/nvim: nvim
-    ~/.config/navi: navi
     ~/.config/ncspot: ncspot
     ~/.config/procs: procs
     ~/.config/mise/config.toml: mise/config.toml
@@ -73,7 +72,6 @@
       path: zsh/zshenv
       force: true
     ~/.config/btop: btop
-    ~/.config/broot: broot
     ~/.config/jrnl: jrnl
 
 - shell:
@@ -109,9 +107,6 @@
 
     - command: ./.dotbot/scripts/mprocs.sh
       description: install mprocs
-
-    - command: ./.dotbot/scripts/navi.sh
-      description: install navi
 
     - command: ./.dotbot/scripts/porsmo.sh
       description: install porsmo
