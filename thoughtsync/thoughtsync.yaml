@@ -1,0 +1,11 @@
+vault:
+  path: /home/leonardo.campitelli/second-brain
+
+journal:
+  directory: journal
+  format: "YYYY-MM-DD"
+
+git:
+  enable: true
+  remote: true
+  ssh: true

@@ -72,7 +72,7 @@
       path: zsh/zshenv
       force: true
     ~/.config/btop: btop
-    ~/.config/jrnl: jrnl
+    ~/.config/thoughtsync: thoughtsync
 
 - shell:
     - command: ./.dotbot/scripts/rustup.sh
