@@ -1,4 +1,3 @@
-
 <h1 align="center">DOTFILES</h1>
 <p align="center">
     <em>Dotfiles collection used to configure my own development environment</em>
@@ -13,6 +12,7 @@
 ---
 
 ## 🔗 Quick Links
+
 > - [🚀 Installation](#-installation)
 > - [🧩 Fonts](#-fonts)
 > - [🌆 Screenshots](#-screenshots)
@@ -73,7 +73,8 @@ perform no operation if dependencies or tools are already installed.
 My terminal uses the [Jetbrains Mono](https://www.jetbrains.com/lp/mono/) font,
 made for developers with a bunch of useful features and symbols.
 
-<!-- TOC --><a name="included-tools-and-references"></a>
+<a name="included-tools-and-references"></a>
+
 # Included tools and references
 
 This repo takes inspiration from [this](https://github.com/benmatselby/dotfiles)
@@ -83,7 +84,6 @@ repos, but that is the one that I stumbled across first.
 The repo contains a dedicated folder and README file for any tool that I use on my machines.
 
 ## 🛠 Notes
-
 
 There are some tools in this list written in Rust.
 I stumbled across [this video](https://youtu.be/dFkGNe4oaKk)
@@ -104,6 +104,7 @@ Overview of my neovim configuration featuring nerdtree, webdevicons, tokyonight 
 theme, lsps and much more
 
 ## 🤝 Contributing
+
 Feel free to contribute in any way shape or form you may think of: open issues
 for bugs you may encounter using my configuration, suggests new tools or different settings
 and more!
