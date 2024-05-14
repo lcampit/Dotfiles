@@ -20,7 +20,7 @@ alias p='nvim `fzf --preview="bat --color always {}"`'
 alias technews="curl us.getnews.tech" # also hn (haxor-news) can be used to fetch tech news on terminal
 alias ll='eza --long --header --group-directories-first --git --group --all'
 alias lg='lazygit'
-alias lzd='lazydocker'
+alias ldo='lazydocker'
 alias v='nvim'
 alias n='nvim'
 alias ts='ThoughtSync'
