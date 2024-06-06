@@ -1,18 +1,18 @@
-
-<h1 align="center">DOTFILES</h1>
 <p align="center">
+    <img src="./media/dotfiles.png" alt="Dotfiles Logo" width="500" /> <br/>
     <em>Dotfiles collection used to configure my own development environment</em>
 </p>
 <p align="center">
-  <a href="https://dl.circleci.com/status-badge/redirect/gh/Leo-Campo/Dotfiles/tree/main">
-    <img src="https://dl.circleci.com/status-badge/img/gh/Leo-Campo/Dotfiles/tree/main.svg?style=shield" alt="CI results">
+  <a href="https://dl.circleci.com/status-badge/redirect/gh/lcampit/Dotfiles/tree/main">
+    <img src="https://dl.circleci.com/status-badge/img/gh/lcampit/Dotfiles/tree/main.svg?style=shield" alt="CI results">
   </a>
-    <img src="https://img.shields.io/github/commit-activity/t/Leo-Campo/Dotfiles?style=flat" alt="github commits">
+    <img src="https://img.shields.io/github/commit-activity/t/lcampit/Dotfiles?style=flat" alt="github commits">
 </p>
 
 ---
 
 ## 🔗 Quick Links
+
 > - [🚀 Installation](#-installation)
 > - [🧩 Fonts](#-fonts)
 > - [🌆 Screenshots](#-screenshots)
@@ -46,7 +46,7 @@ for multiple use cases.
 With dotbot, installation is as simple as:
 
 ```bash
-git clone https://github.com/Leo-Campo/Dotfiles && cd Dotfiles
+git clone https://github.com/lcampit/Dotfiles && cd Dotfiles
 ./install
 ```
 
@@ -74,6 +74,7 @@ My terminal uses the [Jetbrains Mono](https://www.jetbrains.com/lp/mono/) font,
 made for developers with a bunch of useful features and symbols.
 
 <!-- TOC --><a name="included-tools-and-references"></a>
+
 # Included tools and references
 
 This repo takes inspiration from [this](https://github.com/benmatselby/dotfiles)
@@ -83,7 +84,6 @@ repos, but that is the one that I stumbled across first.
 The repo contains a dedicated folder and README file for any tool that I use on my machines.
 
 ## 🛠 Notes
-
 
 There are some tools in this list written in Rust.
 I stumbled across [this video](https://youtu.be/dFkGNe4oaKk)
@@ -104,6 +104,7 @@ Overview of my neovim configuration featuring nerdtree, webdevicons, tokyonight 
 theme, lsps and much more
 
 ## 🤝 Contributing
+
 Feel free to contribute in any way shape or form you may think of: open issues
 for bugs you may encounter using my configuration, suggests new tools or different settings
 and more!
