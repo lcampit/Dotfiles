@@ -1,13 +1,14 @@
 
 <h1 align="center">DOTFILES</h1>
 <p align="center">
+    <img src="./media/dotfiles.png" alt="Dotfiles Logo" width="500" /> <br/>
     <em>Dotfiles collection used to configure my own development environment</em>
 </p>
 <p align="center">
-  <a href="https://dl.circleci.com/status-badge/redirect/gh/Leo-Campo/Dotfiles/tree/main">
-    <img src="https://dl.circleci.com/status-badge/img/gh/Leo-Campo/Dotfiles/tree/main.svg?style=shield" alt="CI results">
+  <a href="https://dl.circleci.com/status-badge/redirect/gh/lcampit/Dotfiles/tree/main">
+    <img src="https://dl.circleci.com/status-badge/img/gh/lcampit/Dotfiles/tree/main.svg?style=shield" alt="CI results">
   </a>
-    <img src="https://img.shields.io/github/commit-activity/t/Leo-Campo/Dotfiles?style=flat" alt="github commits">
+    <img src="https://img.shields.io/github/commit-activity/t/lcampit/Dotfiles?style=flat" alt="github commits">
 </p>
 
 ---
@@ -46,7 +47,7 @@ for multiple use cases.
 With dotbot, installation is as simple as:
 
 ```bash
-git clone https://github.com/Leo-Campo/Dotfiles && cd Dotfiles
+git clone https://github.com/lcampit/Dotfiles && cd Dotfiles
 ./install
 ```
 
