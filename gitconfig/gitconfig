@@ -52,3 +52,7 @@
 
 [include]
     path = .gitconfig_extra
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = true
