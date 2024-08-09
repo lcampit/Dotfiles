@@ -220,6 +220,7 @@ keybinding:
     bulkMenu: b
 os:
   editPreset: "nvim"
+  edit: "nvim {{filename}}"
 disableStartupPopups: false
 customCommands:
   - key: "b"
