@@ -9,4 +9,5 @@ journal:
     format: YYYY-MM-DD
 vault:
     extension: .md
+    inbox: inbox
     path: /home/leonardo.campitelli/second-brain
