@@ -1,4 +1,4 @@
-. "$HOME/.cargo/env"
+[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 
 # editor
 export EDITOR=$HOME/.local/share/bob/nvim-bin/nvim
@@ -20,6 +20,9 @@ export RUSTC_WRAPPER=$CARGO_HOME/bin/sccache
 
 # adds nvim to path USELESS WITH BOB_NVIM
 # export PATH=$PATH:/usr/local/bin/nvim/bin
+
+# add bob installed nvim to PATH 
+export PATH=$HOME/.local/share/bob/nvim-bin:$PATH
 
 # Used to start ssh agent on login
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
