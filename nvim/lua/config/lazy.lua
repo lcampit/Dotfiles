@@ -13,7 +13,6 @@ require("lazy").setup({
 		-- import any extras modules here
 		{ import = "plugins" },
 		{ import = "plugins/lsp" },
-		{ import = "plugins/test" },
 		{ import = "plugins/notes" },
 	},
 	defaults = {
