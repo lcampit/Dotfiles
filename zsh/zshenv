@@ -42,3 +42,6 @@ export RIPGREP_CONFIG_PATH=$HOME/.config/ripgrep/ripgreprc
 
 # set up second brain vault
 export SECOND_BRAIN_PATH=$HOME/second-brain
+
+# set up krew plugin manager for kubenertes
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
