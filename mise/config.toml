@@ -1,9 +1,7 @@
 [tools]
-ruby = "3.2.2"
 python = "3.12"
 go = "latest"
 node = "16"
-dotnet = "8.0.100"
 awscli = "2.13.3"
 dasel = "2.3.6"
 java = "17"
@@ -15,14 +13,13 @@ act = "latest"
 "go:github.com/spf13/cobra-cli" = "latest"
 argocd = "2.7.1"
 yq = "4.41"
-watchexec = "latest"
 "go:github.com/moveaxlab/deploy1" = "latest"
 docker-compose-v1 = "latest"
 loki-logcli = "latest"
-"go:github.com/lcampit/ThoughtSync" = "latest"
 "go:github.com/ankitpokhrel/jira-cli/cmd/jira" = "latest"
 lua = "latest"
-gradle = "8.0.1"
+"go:github.com/jesseduffield/lazygit" = "latest"
+"go:github.com/lcampit/ThoughtSync" = "v1.4.1"
 
 [settings]
 experimental = true
