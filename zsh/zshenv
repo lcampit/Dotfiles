@@ -15,13 +15,11 @@ export GOPATH=/home/leonardo.campitelli/.local/share/mise/installs/go
 export RUSTUP_HOME=$HOME/.rustup
 export CARGO_HOME=$HOME/.cargo
 export PATH=$PATH:$CARGO_HOME/bin
-export PATH=$PATH:$HOME/.local/share/bob/nvim-bin # add bob-nvim versions to path
-export RUSTC_WRAPPER=$CARGO_HOME/bin/sccache
 
 # adds nvim to path USELESS WITH BOB_NVIM
 # export PATH=$PATH:/usr/local/bin/nvim/bin
 
-# add bob installed nvim to PATH 
+# add bob installed nvim to PATH
 export PATH=$HOME/.local/share/bob/nvim-bin:$PATH
 
 # Used to start ssh agent on login
