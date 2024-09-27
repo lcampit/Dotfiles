@@ -1,26 +1,26 @@
-. "$HOME/.cargo/env"
+[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 
 # editor
-export EDITOR=nvim
-export VISUAL=nvim
+export EDITOR=$HOME/.local/share/bob/nvim-bin/nvim
+export VISUAL=$HOME/.local/share/bob/nvim-bin/nvim
 
 # TERM
 export TERM="xterm-256color"
 
-# adds go to path MAY BE USELESS WHEN USING RTX
 # export PATH=$PATH:/usr/local/go/bin
 # export PATH=$PATH:$(go env GOPATH)/bin
-# export GOPATH=$(go env GOPATH)
+export GOPATH=/home/leonardo.campitelli/.local/share/mise/installs/go
 
 # adds rust to path
 export RUSTUP_HOME=$HOME/.rustup
 export CARGO_HOME=$HOME/.cargo
 export PATH=$PATH:$CARGO_HOME/bin
-export PATH=$PATH:$HOME/.local/share/bob/nvim-bin # add bob-nvim versions to path
-export RUSTC_WRAPPER=$CARGO_HOME/bin/sccache
 
 # adds nvim to path USELESS WITH BOB_NVIM
 # export PATH=$PATH:/usr/local/bin/nvim/bin
+
+# add bob installed nvim to PATH
+export PATH=$HOME/.local/share/bob/nvim-bin:$PATH
 
 # Used to start ssh agent on login
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
@@ -38,8 +38,11 @@ export PROJECTS_LOCATION=$HOME/Desktop/Projects
 # adds flutter to path
 export PATH=$PATH:$HOME/flutter/bin
 
-# allows IDEs to follow rtx env
-export PATH="$HOME/.local/share/mise/shims:$PATH"
-
-# set up ripgrep configuration file 
+# set up ripgrep configuration file
 export RIPGREP_CONFIG_PATH=$HOME/.config/ripgrep/ripgreprc
+
+# set up second brain vault
+export SECOND_BRAIN_PATH=$HOME/second-brain
+
+# set up krew plugin manager for kubenertes
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"

@@ -50,46 +50,83 @@ They are organized as follows:
   the default ones to allow for
   automatic execution and features such as format on save
 - **keymaps** stores hotkeys that will be added to which-key
-- **lazy** stores lazy package manager options and extras
+- **lazy** stores lazy package manager options
 - **options** stores vim configurations such as relative numbers and options
 
 Files inside the plugins directory will be sourced automatically too. They
 all contain specification for plugins installation and configuration. You may
 put as many files as needed in here.
 
-I'll separate my plugins specs on a per-file basis, merging together
-plugins referring to the
-same functionalities, e.g. grouping everything bash
-lsp related in a single `language_bash.lua` file.
+Plugins specs are separated into different directories based
+on their scope. In the `lsp` folder, you will find everything
+related to language features: Lsps, mason configurations, formatters,
+linters, etc.
 
-## Personal Settings
+## Options
 
-- vertical column on the 80th character (I toggle this on and off periodically)
-- relative numbers
-- always leave the last 20 lines available when scrolling
-- python, ruby and node host programs set
-- To ensure lsp and mason run with a fixed node version when working with
-  other ones, a little script in options prepend to PATH the path to the latest
-  node version (installed with **mise, ex rtx**)
+Most of the options I set are considered sensible defaults and are widely used
+around the web. They are all set in the `options.lua` file, sourced
+during startup.
+
+Some other more fine tuned options, such as folding or statuscolumn, are taken
+here and there from the web, mainly from the amazing work of
+[LazyVim](https://www.lazyvim.org). I kept all lazyvim options
+explicitly set, so that I may look at what happens in my nvim configuration.
 
 ## Misc keymaps
 
-Set up in mappings.lua:
+The `keymaps.lua` file sets up keymaps for my personal editor.
+These keymaps are considered
+to be standard ones active as soon as the editor starts. Plugin-specific keymaps
+will be defined in the plugin spec itself.
 
-- As suggested by [ThePrimeagen](https://youtube.com/@ThePrimeagen):
+Keymaps included in this file are:
 
-```lua
-["<C-u>"] = {"<C-u>zz", "Jump half a page up"}
-["<C-d>"] = {"<C-d>zz", "Jump half a page down"}
-```
+- better moving up and down when reaching the end or start of a file
+- window movement and resizing
+- move lines up and down
+- move among buffers
+- clear search highlights with `esc`
+- clear screen and redraw
+- make `n` always search forward and `N` always search backward (taken from
+  [this](https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n) amazing guide)
+- Ctrl+S to save file in any mode, Ctrl+a to select the whole file
+- Improve indentation using `<` and `>`
+- Invoke the lazy or mason package managers
+- Invoke formatters on demand
+- Create new file
+- Open location and quickfix list
+- Toggle options
+- Move to next/previous errors or diagnostics
+- Open lazygit
+- Open a floating terminal window
+- Window management
+- Tab management
+- Automatically center the cursor when jumping with Ctrl+u/d,
+  as suggested by [ThePrimeagen](https://youtube.com/@ThePrimeagen):
 
-- Common keybindings:
+A keymap I may play with is KeyWordPrg. Normally, it is used to search Man pages
+for anything you have under the cursor in that moment. However, it may be reused
+to search the internet or different documentation sites based on the language used.
 
-```lua
-["<C-a>"] = {"gg<S-v>G", "Select all"}
-```
+## Autocommands
 
-### LazyVim extras
+LazyVim comes with a plethora of auto commands to perform actions
+automatically when certain events occur.
+I've explicitly written these commands in the `autocmds.lua` file to
+keep under control what is set and change it rapidly.
+The commands included are:
+
+- Reload file when it changes from other sources
+- Highlight yanked text
+- Resize splits
+- Open a file on the last location it was opened
+- Close certain windows with just `q`
+- Enable spellcheck where spelling is important (markdown, git commits, etc)
+- Enable conceal but not for json files
+- Auto create directories when creating a file
+
+## LazyVim extras
 
 LazyVim comes with a great number of extras that can be installed with a single line.
 These extras come with plugins and configurations for a number of task,
@@ -99,3 +136,6 @@ section to see
 the extent of these features.
 
 The extras installed are all listed in the `lazyvim.json` file.
+All plugins and configuration of these extras can be modified
+in the local configuration, allowing for sensible default and
+fine-tuned experience at the same time.

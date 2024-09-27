@@ -55,12 +55,11 @@
     ~/.fzf_alias: fzf/fzf_alias
     ~/.gitconfig:
       path: gitconfig/gitconfig
-      force: true
+    ~/.config/git/ignore: gitconfig/ignore
     ~/.config/gitui: gitui
     ~/.config/kitty: kitty
     ~/.config/lazygit: lazygit
     ~/.config/nvim: nvim
-    ~/.config/navi: navi
     ~/.config/ncspot: ncspot
     ~/.config/procs: procs
     ~/.config/mise/config.toml: mise/config.toml
@@ -68,11 +67,15 @@
     ~/.vimrc: vim/vimrc
     ~/.config/wezterm: wezterm
     ~/.config/zellij: zellij
-    ~/.zshrc: zsh/zshrc
+    ~/.zshrc:
+      path: zsh/zshrc
+      force: true
     ~/.zshenv:
       path: zsh/zshenv
-      force: true
     ~/.config/btop: btop
+    ~/.config/ripgrep/ripgreprc: ripgrep/ripgreprc
+    ~/.config/k9s: k9s
+    ~/.config/thoughtsync: thoughtsync
 
 - shell:
     - command: ./.dotbot/scripts/rustup.sh
@@ -107,9 +110,6 @@
 
     - command: ./.dotbot/scripts/mprocs.sh
       description: install mprocs
-
-    - command: ./.dotbot/scripts/navi.sh
-      description: install navi
 
     - command: ./.dotbot/scripts/porsmo.sh
       description: install porsmo

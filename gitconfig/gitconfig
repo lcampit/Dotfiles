@@ -1,6 +1,6 @@
 [core]
     pager = delta
-	hooksPath = .git/hooks
+    hooksPath = .git/hooks
 
 [interactive]
     diffFilter = delta --color-only
@@ -52,3 +52,5 @@
 
 [include]
     path = .gitconfig_extra
+[push]
+	autoSetupRemote = true

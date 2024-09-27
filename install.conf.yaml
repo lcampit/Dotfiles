@@ -17,11 +17,11 @@
     ~/.fzf_alias: fzf/fzf_alias
     ~/.gitconfig:
       path: gitconfig/gitconfig
+    ~/.config/git/ignore: gitconfig/ignore
     ~/.config/gitui: gitui
     ~/.config/kitty: kitty
     ~/.config/lazygit: lazygit
     ~/.config/nvim: nvim
-    ~/.config/navi: navi
     ~/.config/ncspot: ncspot
     ~/.config/procs: procs
     ~/.config/mise/config.toml: mise/config.toml
@@ -29,7 +29,7 @@
     ~/.vimrc: vim/vimrc
     ~/.config/wezterm: wezterm
     ~/.config/zellij: zellij
-    ~/.zshrc: 
+    ~/.zshrc:
       path: zsh/zshrc
       force: true
     ~/.zshenv:
@@ -37,3 +37,6 @@
     ~/.config/btop: btop
     ~/.config/nvim-rewrite: nvim-rewrite
     ~/.config/ripgrep/ripgreprc: ripgrep/ripgreprc
+    ~/.config/k9s: k9s
+    ~/.config/thoughtsync: thoughtsync
+    ~/.config/systemd/user/ssh-agent.service: user-services/ssh-agent.service

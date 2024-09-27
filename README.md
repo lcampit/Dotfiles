@@ -73,7 +73,9 @@ perform no operation if dependencies or tools are already installed.
 My terminal uses the [Jetbrains Mono](https://www.jetbrains.com/lp/mono/) font,
 made for developers with a bunch of useful features and symbols.
 
-## Included tools and references
+<a name="included-tools-and-references"></a>
+
+# Included tools and references
 
 This repo takes inspiration from [this](https://github.com/benmatselby/dotfiles)
 fellow developer dotfiles repo. I know there are probably thousands of similar

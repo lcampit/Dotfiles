@@ -20,7 +20,10 @@ These plugins will be placed in a plugins directory in `$HOME/.config/tmux` fold
 
 ## Config
 
-This configuration started from [this](https://youtu.be/DzNmUNvnB04) video.
+This configuration started from [this](https://youtu.be/DzNmUNvnB04) video and
+it received a major overhaul after watching
+[this](https://www.youtube.com/watch?v=GH3kpsbbERo&pp=ugMICgJpdBABGAHKBQ5kZXZvcHMgdG9vbGJvYw%3D%3)
+video.
 The configuration file contains the following options:
 
 - Terminal colors
@@ -41,7 +44,7 @@ All plugins are installed using [TPM](https://github.com/tmux-plugins/tpm)
 - [tmux-sensible](https://github.com/tmux-plugins/tmux-sensible)  
   Adds a couple of key mappings and options that every tmux user should agree on
 
-- [tokyonight storm](https://github.com/folke/tokyonight.nvim)  
+- [catppuccin](https://github.com/catppuccin/tmux)  
   Theme for tmux
 
 - [tmux-yank](https://github.com/tmux-plugins/tmux-yank)  
@@ -53,11 +56,23 @@ All plugins are installed using [TPM](https://github.com/tmux-plugins/tpm)
 - [tmux-continuum](https://github.com/tmux-plugins/tmux-continuum)  
   Periodically saves tmux sessions and state to be restored with resurrect
 
-- [tmux-prefix-highlight](https://github.com/tmux-plugins/tmux-prefix-highlight)  
-  Highlights on the status bar when the prefix key is pressed
-
 - [tmux-tilish](https://github.com/jabirali/tmux-tilish)  
   Sets sensible key mappings to have tmux behave more like a window manager
+
+- [tmux-prefix-highlight](https://github.com/tmux-plugins/tmux-prefix-highlight)
+  Shows on the status bar whether the tmux
+  prefix key has been pressed
+
+- [tmux-fzf](https://github.com/sainnhe/tmux-fzf)
+  Uses fzf to manage tmux windows, panes and much more
+  Currently bound to `<prefix> + F`
+
+- [tmux-fzf-url](https://github.com/wfxr/tmux-fzf-url)
+  Uses fzf to show recently shown urls and automatically
+  open them in the browser
+
+- [tmux-sessionx](https://github.com/omerxx/tmux-sessionx)
+  A fancy tmux session manager
 
 ## Scripts and Session management
 
@@ -73,3 +88,6 @@ Such script, contained in the repo `bin` folder, will be linked and
 added to your `PATH` during installation.
 
 The `tkill` alias allows to kill tmux sessions with ease.
+
+These scripts are still included, but I'm moving
+to use a more modern tmux manager instead.
