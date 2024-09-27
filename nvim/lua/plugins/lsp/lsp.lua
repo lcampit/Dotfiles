@@ -7,10 +7,10 @@ return {
 				"bash-language-server",
 				"shellharden",
 				"graphql-language-service-cli",
-				"buf-language-server",
 				"protolint",
 				"shfmt",
 				"shellharden",
+				"pbls",
 			})
 		end,
 	},
@@ -39,10 +39,10 @@ return {
 					},
 				},
 				graphql = {},
-				bufls = {},
 				clangd = {
 					filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
 				},
+				pbls = {},
 			},
 		},
 	},

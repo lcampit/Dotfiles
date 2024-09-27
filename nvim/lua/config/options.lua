@@ -17,6 +17,9 @@ if vim.env.JAVA_SDK_VERSION then
 	end
 end
 
+-- -- Prepend mise shims to PATH
+-- vim.env.PATH = vim.env.HOME .. "/.local/share/mise/shims:" .. vim.env.PATH
+--
 -- super duper regex to have w move to only interesting words
 -- taken from https://www.reddit.com/r/neovim/comments/181bsu8/my_take_on_a_word_movement/
 local pattern = [[\v['"({[< ]@<=(\w)|^(\w)|([]'"\>)}]\.)@<=(\w)|(['"])@<=([][(){}.,;])(['"])]]
