@@ -1,6 +1,5 @@
 [tools]
 python = "3.12"
-go = "latest"
 node = "16"
 awscli = "2.13.3"
 dasel = "2.3.6"
@@ -20,6 +19,7 @@ loki-logcli = "latest"
 lua = "latest"
 "go:github.com/jesseduffield/lazygit" = "latest"
 "go:github.com/lcampit/ThoughtSync" = "v1.4.1"
+go = "1.22"
 
 [settings]
 experimental = true
