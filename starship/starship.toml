@@ -1,54 +1,80 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
-# Replace the "❯" symbol in the prompt with "➜"
 [character] # The name of the module we are configuring is "character"
-#symbol = "➜"     # The "symbol" segment is being set to "➜"
-# use_symbol_for_status = true  # Show "✖" when the command failed
+success_symbol = "[➜](green)" # The "symbol" segment is being set to "➜"
+error_symbol = "[➜](red)"
+
+[directory]
+read_only = "󰌾"
+truncate_to_repo = false
+format = '[\[$path\]]($style)[$read_only]($read_only_style) '
+style = "cyan"
+truncation_length = 2
+
+[git_branch]
+style = "purple"
+format = '[\[$symbol$branch(:$remote_branch)\]]($style) '
+
+[git_state]
+style = "yellow"
+
+[git_commit]
+style = "green"
+
+[git_status]
+untracked = '[ $count](yellow) '
+staged = '[ $count](green) '
+stashed = "[ ](cyan) "
+deleted = '[ $count](red) '
+modified = '[ $count](blue) '
+behind = '[ ](purple) '
+ahead = '[ ](purple) '
+format = '([$all_status$ahead_behind]($style))'
+
+[git_metrics]
+disabled = false
+added_style = "green"
+deleted_style = "red"
 
 [aws]
 symbol = " "
-format = 'on [$symbol($profile )(\($region\)) ]($style)'
+format = '[\[$symbol($profile )(\($region\))\]]($style) '
+style = "yellow"
+
+[golang]
+symbol = " "
+format = "[$symbol($version )]($style)"
+style = "cyan dimmed"
+
+[java]
+symbol = " "
+format = "[$symbol($version )]($style)"
+style = "red dimmed"
+
+[nodejs]
+symbol = " "
+format = "[$symbol($version )]($style)"
+style = "green dimmed"
+
+[python]
+symbol = " "
+format = "[$symbol($version )]($style)"
+style = "yellow dimmed"
 
 [package]
 disabled = true
 symbol = "󰏗 "
 
-
-[custom.shell]
-command = "echo $STARSHIP_SHELL"               # shows output of command
-when = """ test "$STARSHIP_SHELL" != "zsh" """
-style = "dimmed blue"
-format = "[$output]($style)"
-shell = ["bash"]
-
-[custom.neovim]
-command = 'bob ls | rg Used | awk "{print \$2}"' # shows output of command
-detect_folders = ["lua"]
-style = "green"
-format = "[ $output ]($style)"
-shell = ["bash"]
-
-
-[git_status]
-untracked = '[ $count](bold yellow) '
-staged = '[ $count](bold green) '
-stashed = "[ ](cyan) "
-deleted = '[ $count](bold red) '
-modified = '[ $count](bold blue) '
-behind = '[ ](bold purple) '
-ahead = '[ ](bold purple) '
-format = '([$all_status$ahead_behind]($style))'
+[cmd_duration]
+style = "yellow"
 
 [[battery.display]]
 threshold = 50
 
 [lua]
+disabled = true
 detect_folders = []
 symbol = " "
-
-[git_metrics]
-disabled = false
-
 
 [buf]
 symbol = " "
@@ -62,9 +88,6 @@ symbol = " "
 [dart]
 symbol = " "
 
-[directory]
-read_only = " 󰌾"
-
 [docker_context]
 symbol = " "
 disabled = true
@@ -77,12 +100,6 @@ symbol = " "
 
 [fossil_branch]
 symbol = " "
-
-[git_branch]
-symbol = " "
-
-[golang]
-symbol = " "
 
 [guix_shell]
 symbol = " "
@@ -99,9 +116,6 @@ symbol = " "
 [hostname]
 ssh_symbol = " "
 
-[java]
-symbol = " "
-
 [julia]
 symbol = " "
 
@@ -116,9 +130,6 @@ symbol = "󰆥 "
 
 [nix_shell]
 symbol = " "
-
-[nodejs]
-symbol = " "
 
 [os.symbols]
 Alpaquita = " "
@@ -161,12 +172,8 @@ Ubuntu = " "
 Unknown = " "
 Windows = "󰍲 "
 
-
 [pijul_channel]
 symbol = "🪺 "
-
-[python]
-symbol = " "
 
 [rlang]
 symbol = "󰟔 "
