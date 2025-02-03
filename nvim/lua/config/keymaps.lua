@@ -1,5 +1,5 @@
-vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Jump half page [U]p" })
-vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Jump half page [D]own" })
+-- vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Jump half page [U]p" })
+-- vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Jump half page [D]own" })
 -- vim.keymap.set("n", "<C-a>", "gg<S-v>G", { desc = "Select [A]ll" })
 local map = vim.keymap.set
 
