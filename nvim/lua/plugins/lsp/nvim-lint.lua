@@ -3,7 +3,6 @@ return {
 	opts = {
 		linters_by_ft = {
 			protobuf = { "protolint" },
-			sh = { "shfmt", "shellharden" },
 		},
 	},
 }

@@ -7,8 +7,10 @@ return {
 				"bash-language-server",
 				"shellharden",
 				"graphql-language-service-cli",
-				"buf-language-server",
 				"protolint",
+				"shfmt",
+				"shellharden",
+				"pbls",
 			})
 		end,
 	},
@@ -19,8 +21,8 @@ return {
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
 		},
-		opt = {
-			server = {
+		opts = {
+			servers = {
 				bashls = {
 					cmd_env = {
 						GLOB_PATTERN = "*@(.sh|.inc|.bash|.zsh|.command)",
@@ -37,7 +39,10 @@ return {
 					},
 				},
 				graphql = {},
-				bufls = {},
+				clangd = {
+					filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
+				},
+				pbls = {},
 			},
 		},
 	},

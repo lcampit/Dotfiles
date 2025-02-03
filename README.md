@@ -1,3 +1,4 @@
+<h1 align="center">DOTFILES</h1>
 <p align="center">
     <img src="./media/dotfiles.png" alt="Dotfiles Logo" width="500" /> <br/>
     <em>Dotfiles collection used to configure my own development environment</em>
@@ -73,7 +74,7 @@ perform no operation if dependencies or tools are already installed.
 My terminal uses the [Jetbrains Mono](https://www.jetbrains.com/lp/mono/) font,
 made for developers with a bunch of useful features and symbols.
 
-<!-- TOC --><a name="included-tools-and-references"></a>
+<a name="included-tools-and-references"></a>
 
 # Included tools and references
 

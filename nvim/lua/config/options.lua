@@ -1,13 +1,25 @@
 -- Options are automatically loaded before lazy.nvim startup
 
-vim.env.NEOVIM_NODE_VERSION = "latest"
-if vim.env.NEOVIM_NODE_VERSION then
-	local node_dir = vim.env.HOME .. "/.local/share/mise/installs/node/" .. vim.env.NEOVIM_NODE_VERSION .. "/bin"
-	if vim.fn.isdirectory(node_dir) then
-		vim.env.PATH = node_dir .. ":" .. vim.env.PATH
+-- allows Lsps, formatters and linters to use the latest mise handled SDKs
+-- vim.env.NEOVIM_NODE_VERSION = "latest"
+-- if vim.env.NEOVIM_NODE_VERSION then
+-- 	local node_dir = vim.env.HOME .. "/.local/share/mise/installs/node/" .. vim.env.NEOVIM_NODE_VERSION .. "/bin"
+-- 	if vim.fn.isdirectory(node_dir) then
+-- 		vim.env.PATH = node_dir .. ":" .. vim.env.PATH
+-- 	end
+-- end
+
+vim.env.JAVA_SDK_VERSION = "latest"
+if vim.env.JAVA_SDK_VERSION then
+	local java_dir = vim.env.HOME .. "/.local/share/mise/installs/java/" .. vim.env.JAVA_SDK_VERSION
+	if vim.fn.isdirectory(java_dir) then
+		vim.env.JAVA_HOME = java_dir
 	end
 end
 
+-- -- Prepend mise shims to PATH
+-- vim.env.PATH = vim.env.HOME .. "/.local/share/mise/shims:" .. vim.env.PATH
+--
 -- super duper regex to have w move to only interesting words
 -- taken from https://www.reddit.com/r/neovim/comments/181bsu8/my_take_on_a_word_movement/
 local pattern = [[\v['"({[< ]@<=(\w)|^(\w)|([]'"\>)}]\.)@<=(\w)|(['"])@<=([][(){}.,;])(['"])]]
@@ -92,19 +104,8 @@ end
 vim.opt.foldlevel = 99
 vim.opt.foldtext = "v:lua.require'lazyvim.util'.ui.foldtext()"
 
-if vim.fn.has("nvim-0.9.0") == 1 then
-	vim.opt.statuscolumn = [[%!v:lua.require'lazyvim.util'.ui.statuscolumn()]]
-end
-
--- HACK: causes freezes on <= 0.9, so only enable on >= 0.10 for now
-if vim.fn.has("nvim-0.10") == 1 then
-	vim.opt.foldmethod = "expr"
-	vim.opt.foldexpr = "v:lua.require'lazyvim.util'.ui.foldexpr()"
-else
-	vim.opt.foldmethod = "indent"
-end
-
-vim.o.formatexpr = "v:lua.require'lazyvim.util'.format.formatexpr()"
-
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0
+
+-- If no prettier config file is found, the formatter will not be used
+vim.g.lazyvim_prettier_needs_config = false
