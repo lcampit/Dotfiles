@@ -53,13 +53,11 @@ made for developers with a bunch of useful features and symbols.
 
 <a name="included-tools-and-references"></a>
 
-# Included tools and references
+# References
 
 This repo takes inspiration from [this](https://github.com/benmatselby/dotfiles)
 fellow developer dotfiles repo. I know there are probably thousands of similar
 repos, but that is the one that I stumbled across first.
-
-The repo contains a dedicated folder and README file for any tool that I use on my machines.
 
 ## 🛠 Notes
 
