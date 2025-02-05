@@ -38,36 +38,13 @@ here.
 As the project evolved, I switched to a dotfile management framework:
 [Dotbot](https://github.com/anishathalye/dotbot).
 
-Dotbot is an handy framework with no dependencies that installs as a
-submodule on this repo and provides a central installation script, configured
-using one or more `yaml` files. I suggest giving it a read and include it
-in your own dotfile repo if it tickles your fancies. It also supports plugins
-for multiple use cases.
-
-With dotbot, installation is as simple as:
-
-```bash
-git clone https://github.com/lcampit/Dotfiles && cd Dotfiles
-./install
-```
-
-This will perform all steps defined in the dotbot configuration file.
-These steps will automatically link dotfiles in their respective location,
-_overwriting existing ones_ (beware).
-
-With dotbot, it is possible to create multiple configuration files. The repo
-contains a `full-install.conf.yaml` file that links all configuration files and
-but also perform installations steps for
-all tools needed. It is intended to be a one line full install for new machines
-or images. All dependencies and tools will be installed and it may take
-a while. To perform this kind of installation run:
-
-```bash
-./install -c full-install.conf.yaml
-```
-
-These installation steps are meant to be _idempotent_, therefore should
-perform no operation if dependencies or tools are already installed.
+As time progressed, dotbot proved to be harder to maintain and I decided to
+switch to _stow_.
+Each directory in this repository is a package. To install a package (i.e. nvim, zsh, etc)
+simply run
+`bash
+stow <package-name>
+`
 
 ## 🧩 Fonts
 
