@@ -9,7 +9,7 @@ export TERM="xterm-256color"
 
 # export PATH=$PATH:/usr/local/go/bin
 # export PATH=$PATH:$(go env GOPATH)/bin
-export GOPATH=/home/leonardo.campitelli/.local/share/mise/installs/go
+export GOPATH=$HOME/.local/share/mise/installs/go
 
 # adds rust to path
 export RUSTUP_HOME=$HOME/.rustup
