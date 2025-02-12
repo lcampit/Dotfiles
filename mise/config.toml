@@ -13,7 +13,6 @@ act = "latest"
 argocd = "2.7.1"
 yq = "4.41"
 "go:github.com/moveaxlab/deploy1" = "latest"
-docker-compose-v1 = "latest"
 "go:github.com/ankitpokhrel/jira-cli/cmd/jira" = "latest"
 lua = "latest"
 "go:github.com/jesseduffield/lazygit" = "latest"
@@ -25,4 +24,4 @@ kubectl = "1.29"
 
 [settings]
 experimental = true
-trusted_config_paths = ["/home/leonardo.campitelli/Projects/"]
+trusted_config_paths = ["/home/leonardo.campitelli/"]
