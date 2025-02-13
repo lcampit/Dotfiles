@@ -40,8 +40,9 @@ As the project evolved, I switched to a dotfile management framework:
 
 As time progressed, dotbot proved to be harder to maintain and I decided to
 switch to _stow_.
-Each directory in this repository is a package. To install a package (i.e. nvim, zsh, etc)
-simply run
+Tools and configurations are grouped in _packages_, i.e. cli for everything related
+to cli tools, editor for editors, etc.
+To install a package simply run
 `bash
 stow <package-name>
 `
