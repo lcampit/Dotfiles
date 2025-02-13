@@ -2,3 +2,4 @@
 *state.yml
 *.log
 *lazy-lock.json
+*nvim.version
