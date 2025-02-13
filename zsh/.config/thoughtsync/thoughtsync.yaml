@@ -1,5 +1,5 @@
 git:
-    commit-message: 'thoughtsync: Synced with git'
+    commit-message: "thoughtsync: Synced with git"
     enable: "true"
     remote: true
     remote-name: origin
@@ -10,4 +10,3 @@ journal:
 vault:
     extension: .md
     inbox: inbox
-    path: /home/leonardo.campitelli/second-brain
