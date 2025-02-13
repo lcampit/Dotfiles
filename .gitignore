@@ -1,5 +1,5 @@
-ncspot/userstate.cbor
-.rtx.toml
-nvim/lazy-lock.json
-lazygit/state.yml
+*userstate.cbor
+*state.yml
 *.log
+*lazy-lock.json
+*nvim.version

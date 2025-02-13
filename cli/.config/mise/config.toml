@@ -1,0 +1,28 @@
+[tools]
+python = "3.12"
+node = "16"
+java = "17"
+jq = "latest"
+yq = "4.41"
+lua = "latest"
+go = "1.22"
+rust = "latest"
+"go:github.com/jesseduffield/lazygit" = "latest"
+"go:github.com/lcampit/ThoughtSync" = "v1.5.1"
+"go:github.com/jesseduffield/lazydocker" = "latest"
+cargo-binstall = "latest"
+"cargo:starship" = "latest"
+"cargo:eza" = "latest"
+"cargo:bat" = "latest"
+"cargo:bob-nvim" = "latest"
+"cargo:zoxide" = "latest"
+"cargo:ripgrep" = "latest"
+"cargo:git-delta" = "latest"
+"cargo:porsmo" = "latest"
+
+[settings]
+experimental = true
+trusted_config_paths = ["/home/leonardo.campitelli/Projects/"]
+
+[settings.cargo]
+binstall = true

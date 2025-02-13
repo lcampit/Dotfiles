@@ -38,36 +38,14 @@ here.
 As the project evolved, I switched to a dotfile management framework:
 [Dotbot](https://github.com/anishathalye/dotbot).
 
-Dotbot is an handy framework with no dependencies that installs as a
-submodule on this repo and provides a central installation script, configured
-using one or more `yaml` files. I suggest giving it a read and include it
-in your own dotfile repo if it tickles your fancies. It also supports plugins
-for multiple use cases.
-
-With dotbot, installation is as simple as:
-
-```bash
-git clone https://github.com/lcampit/Dotfiles && cd Dotfiles
-./install
-```
-
-This will perform all steps defined in the dotbot configuration file.
-These steps will automatically link dotfiles in their respective location,
-_overwriting existing ones_ (beware).
-
-With dotbot, it is possible to create multiple configuration files. The repo
-contains a `full-install.conf.yaml` file that links all configuration files and
-but also perform installations steps for
-all tools needed. It is intended to be a one line full install for new machines
-or images. All dependencies and tools will be installed and it may take
-a while. To perform this kind of installation run:
-
-```bash
-./install -c full-install.conf.yaml
-```
-
-These installation steps are meant to be _idempotent_, therefore should
-perform no operation if dependencies or tools are already installed.
+As time progressed, dotbot proved to be harder to maintain and I decided to
+switch to _stow_.
+Tools and configurations are grouped in _packages_, i.e. cli for everything related
+to cli tools, editor for editors, etc.
+To install a package simply run
+`bash
+stow <package-name>
+`
 
 ## 🧩 Fonts
 
@@ -76,13 +54,11 @@ made for developers with a bunch of useful features and symbols.
 
 <a name="included-tools-and-references"></a>
 
-# Included tools and references
+# References
 
 This repo takes inspiration from [this](https://github.com/benmatselby/dotfiles)
 fellow developer dotfiles repo. I know there are probably thousands of similar
 repos, but that is the one that I stumbled across first.
-
-The repo contains a dedicated folder and README file for any tool that I use on my machines.
 
 ## 🛠 Notes
 
