@@ -14,8 +14,6 @@
   "on-click-middle": "",
   "on-click-right": "",
   "on-update": "",
-  "on-scroll-up": "~/.config/hypr/scripts/Brightness.sh --inc",
-  "on-scroll-down": "~/.config/hypr/scripts/Brightness.sh --dec",
   "smooth-scrolling-threshold": 1,
 },
   
@@ -41,7 +39,6 @@
   "format-icons": ["", "", "", "", ""],
   "format-time": "{H}h {M}min",
   "tooltip": true,
-  "on-click-middle": "~/.config/hypr/scripts/ChangeBlur.sh",
   "on-click-right": "sh -c '(sleep 0.5s; wlogout --protocol layer-shell)' & disown",
 },
   
@@ -270,30 +267,15 @@
                  ]
 },
   
-"custom/cycle_wall":{
-  "format":" ",
-  "on-click": "~/.config/hypr/scripts/WallpaperSelect.sh",
-  "on-click-right": "~/.config/hypr/scripts/Wallpaper.sh swww",
-  "on-click-middle": "~/.config/hypr/scripts/WaybarStyles.sh",
-  "tooltip": true,
-  "tooltip-format": "Change wallpaper or style"
-},
-  
 "custom/keybindings": {
   "format":"",
   "tooltip": false,
   "on-click": "~/.config/hypr/scripts/Help.sh",
 },
-
-"custom/light_dark": {
-  "format": "",
-  "on-click": "~/.config/hypr/scripts/DarkLight.sh",
-  "tooltip": false,
-},
   
 "custom/lock": {
   "format": "",
-  "on-click": "~/.config/hypr/scripts/LockScreen.sh",
+  "on-click": "hyprlock",
   "tooltip": false,
 },
 
@@ -301,16 +283,12 @@
   "format": "",
   "tooltip": false,
   "on-click": "$HOME/.config/hypr/scripts/Wofi.sh",
-  "on-click-right": "$HOME/.config/hypr/scripts/ChangeLayoutMenu.sh",
-  "on-click-middle": "~/.config/hypr/scripts/Wallpaper.sh swaybg",
- 
 },
   
 "custom/power": {
   "format": "  ",
   "tooltip": false,
   "on-click": "sh -c '(sleep 0.5s; wlogout --protocol layer-shell)' & disown",
-  "on-click-right": "~/.config/hypr/scripts/ChangeBlur.sh"
 },
 
 "custom/updater":{
@@ -318,8 +296,7 @@
   "exec": "checkupdates | wc -l",
   "exec-if": "[[ $(checkupdates | wc -l) ]]",
   "interval": 15,
-  "on-click": "foot -T update paru -Syu || yay -Syu && notify-send 'The system has been updated'",
-  "on-click-right": "~/.config/hypr/scripts/WallpaperSwitch.sh",
+  "on-click": "kitty -T update paru -Syu || yay -Syu && notify-send 'The system has been updated'",
 },
 
 "custom/weather": {
@@ -328,8 +305,6 @@
   "format-alt-click": "click",
   "interval": 3600,
   "return-type": "json",
-  "exec": "~/.config/hypr/scripts/weather.sh",
-  //"exec": "~/.config/hypr/scripts/weather.py",
   "exec-if": "ping wttr.in -c1",
   "tooltip" : true,
 },
