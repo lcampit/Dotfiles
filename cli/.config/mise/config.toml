@@ -4,7 +4,6 @@ node = "16"
 java = "17"
 jq = "latest"
 yq = "4.41"
-lua = "latest"
 go = "1.22"
 rust = "latest"
 "go:github.com/jesseduffield/lazygit" = "latest"
@@ -19,6 +18,7 @@ cargo-binstall = "latest"
 "cargo:ripgrep" = "latest"
 "cargo:git-delta" = "latest"
 "cargo:porsmo" = "latest"
+"cargo:fd-find" = "latest"
 
 [settings]
 experimental = true
