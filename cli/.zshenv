@@ -33,7 +33,7 @@ export XDG_CONFIG_HOME=$HOME/.config
 
 # sets folders for projects and dotfiles
 export DOTFILES_LOCATION=$HOME/Dotfiles
-export PROJECTS_LOCATION=$HOME/Desktop/Projects
+export PROJECTS_LOCATION=$HOME/Projects
 
 # adds flutter to path
 export PATH=$PATH:$HOME/flutter/bin
