@@ -3,3 +3,4 @@
 *.log
 *lazy-lock.json
 *nvim.version
+*lazyvim.json
