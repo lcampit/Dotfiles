@@ -43,9 +43,7 @@ switch to _stow_.
 Tools and configurations are grouped in _packages_, i.e. cli for everything related
 to cli tools, editor for editors, etc.
 To install a package simply run
-`bash
-stow <package-name>
-`
+`stow <package-name>`
 
 ## 🧩 Fonts
 
