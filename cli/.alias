@@ -29,3 +29,4 @@ alias enable-commit-sign='git config commit.gpgsign true && echo "please run git
 alias disable-commit-sign='git config commit.gpgsign false && git config --unset user.signingkey'
 alias k="kubectl"
 alias y="yazi"
+alias fm="fzf-make"
