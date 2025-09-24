@@ -1,7 +1,7 @@
 -- ensure plugins are loaded in order: mason, mason-lspconfig, lspconfig
 return {
 	{
-		"williamboman/mason.nvim",
+		"mason-org/mason.nvim",
 		opts = function(_, opts)
 			vim.list_extend(opts.ensure_installed, {
 				"bash-language-server",
@@ -14,12 +14,12 @@ return {
 			})
 		end,
 	},
-	{ "williamboman/mason-lspconfig.nvim" },
+	{ "mason-org/mason-lspconfig.nvim" },
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
-			"williamboman/mason.nvim",
-			"williamboman/mason-lspconfig.nvim",
+			"mason-org/mason.nvim",
+			"mason-org/mason-lspconfig.nvim",
 		},
 		opts = {
 			servers = {
