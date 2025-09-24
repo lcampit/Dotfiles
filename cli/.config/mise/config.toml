@@ -1,10 +1,9 @@
 [tools]
-python = "3.12"
-node = "16"
-java = "17"
+python = "latest"
+node = "24"
 jq = "latest"
-yq = "4.41"
-go = "1.22"
+yq = "4.47"
+go = "1.25"
 rust = "latest"
 "go:github.com/jesseduffield/lazygit" = "latest"
 "go:github.com/lcampit/ThoughtSync" = "v1.5.1"
@@ -17,12 +16,20 @@ cargo-binstall = "latest"
 "cargo:zoxide" = "latest"
 "cargo:ripgrep" = "latest"
 "cargo:git-delta" = "latest"
-"cargo:porsmo" = "latest"
 "cargo:fd-find" = "latest"
+fzf = "latest"
+helm = "latest"
+oc = "latest"
+"go:github.com/melkeydev/go-blueprint" = "latest"
+"go:github.com/rs/curlie" = "latest"
+"pipx:posting" = "latest"
+"go:github.com/control-theory/gonzo/cmd/gonzo" = "latest"
+"cargo:fzf-make" = "latest"
+gh = "latest"
 
 [settings]
 experimental = true
-trusted_config_paths = ["/home/leonardo.campitelli/Projects/"]
+trusted_config_paths = ["/home/leonardo.campitelli/projects/"]
 
 [settings.cargo]
 binstall = true
