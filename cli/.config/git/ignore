@@ -1,0 +1,9 @@
+.lazyrc
+.prettierrc.toml
+.lazy.lua
+
+# Java LSP files 
+.classpath
+.factorypath
+.project
+.settings
