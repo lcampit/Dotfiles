@@ -26,6 +26,10 @@ oc = "latest"
 "go:github.com/control-theory/gonzo/cmd/gonzo" = "latest"
 "cargo:fzf-make" = "latest"
 gh = "latest"
+uv = "latest"
+"aqua:sxyazi/yazi" = "latest"
+"go:github.com/unkn0wn-root/resterm/cmd/resterm" = "latest"
+"cargo:scooter" = "latest"
 
 [settings]
 experimental = true
