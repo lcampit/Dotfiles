@@ -27,9 +27,9 @@ oc = "latest"
 gh = "latest"
 "cargo:tmmpr" = "latest"
 "aqua:yazi" = "latest"
-"cargo:scooter" = "latest"
 "cargo:fltn" = "latest"
 "github:anomalyco/opencode" = "latest"
+"go:github.com/unkn0wn-root/resterm/cmd/resterm" = "latest"
 
 [settings]
 experimental = true
