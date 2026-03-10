@@ -1,6 +1,5 @@
 [tools]
 python = "latest"
-node = "24"
 jq = "latest"
 yq = "4.47"
 go = "1.25"
@@ -26,6 +25,11 @@ oc = "latest"
 "go:github.com/control-theory/gonzo/cmd/gonzo" = "latest"
 "cargo:fzf-make" = "latest"
 gh = "latest"
+"cargo:tmmpr" = "latest"
+"aqua:yazi" = "latest"
+"cargo:scooter" = "latest"
+"cargo:fltn" = "latest"
+"github:anomalyco/opencode" = "latest"
 
 [settings]
 experimental = true
