@@ -30,6 +30,8 @@ gh = "latest"
 "cargo:fltn" = "latest"
 "github:anomalyco/opencode" = "latest"
 "go:github.com/unkn0wn-root/resterm/cmd/resterm" = "latest"
+"github:jonas-grgt/ktea" = "latest"
+"github:harveyrandall/bsky-cli" = "latest"
 
 [settings]
 experimental = true
