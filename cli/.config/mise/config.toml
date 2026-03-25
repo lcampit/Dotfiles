@@ -32,6 +32,13 @@ gh = "latest"
 "go:github.com/unkn0wn-root/resterm/cmd/resterm" = "latest"
 "github:jonas-grgt/ktea" = "latest"
 "github:harveyrandall/bsky-cli" = "latest"
+"go:github.com/f1bonacc1/process-compose" = "latest"
+"go:github.com/vektra/mockery/v3" = "v3.7.0"
+"github:kopecmaciej/vi-mongo" = "latest"
+"go:github.com/jorgerojas26/lazysql" = "latest"
+"github:antoniorodr/lexy" = "latest"
+"github:vifm/vifm" = "latest"
+"github:jonas/tig" = "latest"
 
 [settings]
 experimental = true
