@@ -39,7 +39,6 @@ gh = "latest"
 "github:kopecmaciej/vi-mongo" = "latest"
 "go:github.com/jorgerojas26/lazysql" = "latest"
 "github:antoniorodr/lexy" = "latest"
-"github:vifm/vifm" = "latest"
 node = "latest"
 
 [settings]
