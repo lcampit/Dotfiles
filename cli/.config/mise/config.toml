@@ -30,6 +30,8 @@ uv = "latest"
 "aqua:sxyazi/yazi" = "latest"
 "go:github.com/unkn0wn-root/resterm/cmd/resterm" = "latest"
 "cargo:scooter" = "latest"
+"cargo:tmmpr" = "latest"
+"cargo:worktrunk" = "latest"
 
 [settings]
 experimental = true
