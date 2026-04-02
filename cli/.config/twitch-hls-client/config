@@ -1,0 +1,11 @@
+# General
+quality=best
+
+# Player
+player=mpv
+player-args=- --profile=low-latency --title=[channel]
+quiet=true
+no-kill=false
+
+# HLS
+servers=https://lb-eu.cdn-perfprod.com/live/[channel],https://lb-eu2.cdn-perfprod.com/live/[channel],https://lb-eu3.cdn-perfprod.com/live/[channel],https://lb-eu4.cdn-perfprod.com/live/[channel],https://lb-eu5.cdn-perfprod.com/live/[channel]
