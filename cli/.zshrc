@@ -38,6 +38,8 @@ zinit snippet OMZP::kubectx
 zinit snippet OMZP::command-not-found
 
 # Load completions
+# mise completion
+mise completion zsh > "$HOME"/.local/share/zinit/completions/_mise
 autoload -Uz compinit && compinit
 
 # Following zinit docs recommendations
@@ -65,6 +67,13 @@ source "$HOME/.alias" 2> /dev/null
 # sources fzf functions if present
 source "$HOME"/.fzf_alias 2> /dev/null
 
+# opencode
+export PATH=/home/lc/.opencode/bin:$PATH
+
+# load mise, ex rtx, for zsh
+# Keep this last to have mise programs appear first in PATH
+eval "$(~/.local/bin/mise activate zsh)"
+# eval "$(~/.local/bin/mise activate zsh --shims)"
 
 # load zoxide for zsh
 eval "$(zoxide init zsh)"
@@ -82,13 +91,5 @@ eval "$(starship init zsh)"
 export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# opencode
-export PATH=/home/lc/.opencode/bin:$PATH
-
-# load mise, ex rtx, for zsh
-# Keep this last to have mise programs appear first in PATH
-eval "$(~/.local/bin/mise activate zsh)"
-# eval "$(~/.local/bin/mise activate zsh --shims)"
 
 if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
