@@ -44,6 +44,10 @@ opencode = "latest"
 
 "go:github.com/lcampit/ThoughtSync" = "v1.5.1"
 "cargo:fzf-make" = "latest"
+"github:ClementTsang/bottom" = "latest"
+"github:muesli/duf" = "latest"
+"github:ouch-org/ouch" = "latest"
+"cargo:twitch-hls-client" = "latest"
 
 [settings]
 experimental = true
