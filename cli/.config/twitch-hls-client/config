@@ -3,7 +3,7 @@ quality=best
 
 # Player
 player=mpv
-player-args=- --profile=low-latency --title=[channel]
+# player-args=- --profile=low-latency --title=[channel]
 quiet=true
 no-kill=false
 

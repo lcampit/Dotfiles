@@ -30,3 +30,4 @@ alias disable-commit-sign='git config commit.gpgsign false && git config --unset
 alias k="kubectl"
 alias y="yazi"
 alias fm="fzf-make"
+alias twitch="twitch-hls-client"
