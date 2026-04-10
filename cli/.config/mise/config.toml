@@ -48,6 +48,9 @@ opencode = "latest"
 "github:muesli/duf" = "latest"
 "github:ouch-org/ouch" = "latest"
 "cargo:twitch-hls-client" = "latest"
+atuin = "latest"
+bat = "latest"
+ripgrep = "latest"
 
 [settings]
 experimental = true

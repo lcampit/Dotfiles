@@ -78,6 +78,9 @@ eval "$(~/.local/bin/mise activate zsh)"
 # load zoxide for zsh
 eval "$(zoxide init zsh)"
 
+# load atuin for zsh
+eval "$(atuin init zsh)"
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/fzf-git.sh/fzf-git.sh ] && source ~/fzf-git.sh/fzf-git.sh
 eval "$(fzf --zsh)"
