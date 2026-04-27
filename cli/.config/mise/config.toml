@@ -22,6 +22,9 @@ usage = "latest"
 gh = "latest"
 yazi = "latest"
 opencode = "latest"
+atuin = "latest"
+bat = "latest"
+ripgrep = "latest"
 
 "github:control-theory/gonzo" = "latest"
 "github:jonas-grgt/ktea" = "latest"
@@ -41,20 +44,16 @@ opencode = "latest"
 "github:jorgerojas26/lazysql" = "latest"
 "github:rgwood/systemctl-tui" = "latest"
 "github:unkn0wn-root/resterm" = "latest"
-
-"go:github.com/lcampit/ThoughtSync" = "v1.5.1"
-"cargo:fzf-make" = "latest"
 "github:ClementTsang/bottom" = "latest"
 "github:muesli/duf" = "latest"
 "github:ouch-org/ouch" = "latest"
 "cargo:twitch-hls-client" = "latest"
-atuin = "latest"
-bat = "latest"
-ripgrep = "latest"
+
+"go:github.com/lcampit/ThoughtSync" = "v1.5.1"
 
 [settings]
 experimental = true
-trusted_config_paths = ["/home/leonardo.campitelli/projects/"]
+trusted_config_paths = ["/home/lc/projects/"]
 
 [settings.cargo]
 binstall = true
