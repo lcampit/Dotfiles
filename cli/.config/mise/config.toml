@@ -50,6 +50,7 @@ ripgrep = "latest"
 "cargo:twitch-hls-client" = "latest"
 
 "go:github.com/lcampit/ThoughtSync" = "v1.5.1"
+"github:programmersd21/kairo" = "latest"
 
 [settings]
 experimental = true

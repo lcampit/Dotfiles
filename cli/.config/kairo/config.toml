@@ -1,0 +1,61 @@
+[app]
+theme = 'catppuccin'
+vim_mode = true
+show_help = true
+rainbow = false
+gemini_api_key = ''
+ai_model = 'gemini-3.1-flash-lite-preview'
+mcp_enabled = false
+
+[theme]
+bg = ''
+fg = ''
+muted = ''
+border = ''
+accent = ''
+good = ''
+warn = ''
+bad = ''
+overlay = ''
+
+[storage]
+path = '/home/lc/.config/kairo/kairo.db'
+
+[sync]
+enabled = false
+repo_path = '/home/lc/.config/kairo/tasks-sync'
+remote = 'origin'
+branch = 'main'
+strategy = 'ours'
+auto_push = true
+
+[plugins]
+enabled = true
+dir = '/home/lc/.config/kairo/plugins'
+
+[keymap]
+palette = 'ctrl+p'
+task_search = '/'
+new_task = 'n'
+edit_task = 'e'
+delete_task = 'd'
+open_task = 'enter'
+back = 'esc'
+quit = 'q'
+view_inbox = '1'
+view_today = '2'
+view_upcoming = '3'
+view_completed = '4'
+view_tag = 'f'
+view_priority = '5'
+cycle_theme = 't'
+open_plugin_dir = 'ctrl+g'
+manage_plugins = 'p'
+toggle_strike = 'z'
+help = '?'
+issues = 'i'
+discussions = 'u'
+changelog = 'c'
+settings = 'ctrl+s'
+import_export = 'x'
+ai_panel_toggle = 'ctrl+a'
