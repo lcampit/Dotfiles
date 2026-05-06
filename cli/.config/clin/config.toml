@@ -1,0 +1,16 @@
+# Custom vault storage path (default: ~/.local/share/clin)
+storage_path = "$SECOND_BRAIN_PATH"
+
+# External editor command (e.g. "nvim", "code", "nano")
+external_editor = "nvim"
+external_editor_enabled = true
+
+# Show the preview pane by default
+preview_enabled = true
+
+# Show the markdown preview panel in the editor by default
+markdown_preview_enabled = false
+
+# How node labels are displayed in the graph view
+# Options: "selected" (default), "neighbors", "all"
+graph_label_mode = "selected"

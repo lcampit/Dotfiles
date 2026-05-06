@@ -51,6 +51,7 @@ ripgrep = "latest"
 
 "go:github.com/lcampit/ThoughtSync" = "v1.5.1"
 "github:programmersd21/kairo" = "latest"
+"github:reekta92/clin-rs" = "latest"
 
 [settings]
 experimental = true
