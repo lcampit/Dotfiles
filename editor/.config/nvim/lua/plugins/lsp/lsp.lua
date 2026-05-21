@@ -10,7 +10,7 @@ return {
 				"protolint",
 				"shfmt",
 				"shellharden",
-				"pbls",
+				"buf",
 			})
 		end,
 	},
@@ -42,7 +42,7 @@ return {
 				clangd = {
 					filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
 				},
-				pbls = {},
+				buf = {},
 			},
 		},
 	},
