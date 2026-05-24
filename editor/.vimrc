@@ -1,8 +1,6 @@
 " Map escape to jj
 imap jj <esc>
 
-" Syntax highlighting
-syntax on
 
 " Set FZF Default to Ripgrep (must install ripgrep)
 let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --no-ignore-vcs'

@@ -31,6 +31,9 @@ return {
 					single_file_support = true,
 				},
 				gopls = {
+					init_options = {
+						semanticTokens = true,
+					},
 					settings = {
 						gopls = {
 							gofumpt = false,
