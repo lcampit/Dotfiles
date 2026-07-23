@@ -1,32 +1,33 @@
 [core]
-    pager = delta
-    hooksPath = .git/hooks
+  pager = delta
+  hooksPath = .git/hooks
+  excludesFile = ~/.gitignore
 
 [interactive]
-    diffFilter = delta --color-only
+  diffFilter = delta --color-only
 
 [delta]
 	features = catppuccin-mocha
 
 [merge]
-    conflictstyle = diff3
+  conflictstyle = diff3
 
 [diff]
-    colorMoved = default
+  colorMoved = default
 
 [color]
-    ui = true
+  ui = true
 
 [alias]
-    st = status -sb
-    co = checkout
-    c = commit --short
-    ci = commit --short
-    p = push
-    l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --decorate --date=short
+  st = status -sb
+  co = checkout
+  c = commit --short
+  ci = commit --short
+  p = push
+  l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --decorate --date=short
 
 [include]
-    path = .gitconfig_extra
+  path = .gitconfig_extra
 	path = .config/delta/themes/catppuccin.gitconfig
 
 [push]
@@ -34,3 +35,9 @@
 
 [init]
 	defaultBranch = main
+[credential "https://github.com"]
+	helper = 
+	helper = !/home/lcampite/.local/share/mise/installs/gh/2.80.0/gh_2.80.0_linux_amd64/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/home/lcampite/.local/share/mise/installs/gh/2.80.0/gh_2.80.0_linux_amd64/bin/gh auth git-credential
