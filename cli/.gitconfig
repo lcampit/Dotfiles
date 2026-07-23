@@ -35,9 +35,3 @@
 
 [init]
 	defaultBranch = main
-[credential "https://github.com"]
-	helper = 
-	helper = !/home/lcampite/.local/share/mise/installs/gh/2.80.0/gh_2.80.0_linux_amd64/bin/gh auth git-credential
-[credential "https://gist.github.com"]
-	helper = 
-	helper = !/home/lcampite/.local/share/mise/installs/gh/2.80.0/gh_2.80.0_linux_amd64/bin/gh auth git-credential
