@@ -1,6 +1,6 @@
 [tools]
 python = "latest"
-go = "1.25"
+go = "latest"
 rust = "latest"
 node = "latest"
 cargo-binstall = "latest"
@@ -52,6 +52,7 @@ ripgrep = "latest"
 "go:github.com/lcampit/ThoughtSync" = "v1.5.1"
 "github:programmersd21/kairo" = "latest"
 "github:reekta92/clin-rs" = "latest"
+"cargo:tree-sitter-cli" = "latest"
 
 [settings]
 experimental = true
