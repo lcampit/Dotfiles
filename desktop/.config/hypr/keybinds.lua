@@ -128,6 +128,18 @@ hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl s 10%-"), { lock
 hl.bind("XF86Display", hl.dsp.exec_cmd(scriptsDir .. "screenshot.sh --now"))
 hl.bind("SHIFT + XF86Display", hl.dsp.exec_cmd(scriptsDir .. "screenshot.sh --area"))
 
+-- Move window with Super + LMB drag
+hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
+
+-- Resize window with Super + RMB drag
+hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
+
+-- Move next window on top and make it active
+hl.bind("ALT + Tab", function()
+	hl.dispatch(hl.dsp.window.cycle_next()) -- Change focus to another window
+	hl.dispatch(hl.dsp.window.bring_to_top()) -- Bring it to the top
+end)
+
 -- Resize using Vim Keys and Arrows
 local factor = 5
 local left = { x = -10 * factor, y = 0, relative = true }
