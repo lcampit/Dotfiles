@@ -2,7 +2,7 @@
 
 # if archinstall is not run, make sure to install the following:
 #   pipewire for audio
-#   dolphin for file manager
+#   thunar for file manager
 #   grim for taking screenshots
 #   qt5wayland and qt6wayland for theming
 #   slurp to allow cursor to select with drag and drop

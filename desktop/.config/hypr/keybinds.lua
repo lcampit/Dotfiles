@@ -26,8 +26,10 @@ hl.config({
 })
 
 -- frequently used programs
-local terminal = "ghostty"
+local terminal = "ghostty --gtk-single-instance=true"
 local browser = "brave"
+local fileManager = "thunar"
+local appLauncher = "wofi"
 
 -- have GUI apps opened from the terminal swallow the terminal window
 hl.config({
@@ -44,6 +46,15 @@ hl.bind(mainMod .. " + W", hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + SHIFT + CTRL + L", hl.dsp.exec_cmd("hyprlock"))
 hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("wlogout"))
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(scriptsDir .. "clip-manager.sh"))
+hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
+hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(scriptsDir .. "wofi.sh"))
+hl.bind(mainMod .. " + SHIFT + D", hl.dsp.exec_cmd(scriptsDir .. "wofi-big.sh"))
+
+hl.window_rule({
+	name = "floating file manager",
+	match = { class = fileManager },
+	float = true,
+})
 
 hl.bind("SUPER + Space", function()
 	hl.dispatch(hl.dsp.window.float({ action = "toggle" }))
@@ -59,6 +70,7 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("blueman-applet")
 	hl.exec_cmd("nm-applet --indicator")
 	hl.exec_cmd("wl-paste --watch cliphist store ")
+	hl.exec_cmd("ghostty --gtk-single-instance=true --quit-after-last-window-closed=false --initial-window=false")
 	hl.exec_cmd("hyprpaper")
 	hl.exec_cmd(
 		"waybar --bar main-bar --log-level error --config ~/.config/hypr/waybar/config --style ~/.config/hypr/waybar/style.css"
