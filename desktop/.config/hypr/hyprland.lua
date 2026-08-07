@@ -1,9 +1,10 @@
-require("env")
-require("keybinds")
-require("themes")
-require("monitors")
-require("windowrules")
-require("animations")
+require("configs.env")
+require("configs.inputs")
+require("configs.keybinds")
+require("configs.themes")
+require("configs.monitors")
+require("configs.windowrules")
+require("configs.animations")
 
 -- General options
 hl.config({
