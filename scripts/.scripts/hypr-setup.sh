@@ -18,6 +18,7 @@
 #   install xdg-user-dirs to handle commmonly used dirs
 #   install hyprpolkitagent for a GUI that apps use to request elevated privileges
 #   install networkmanager and network-manager-applet to handle wifi
+#   install cliphist as clipboard manager
 
 # install yay
 # install hyprpaper, hyperlock and ashell / waybar

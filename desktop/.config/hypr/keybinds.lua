@@ -1,7 +1,9 @@
 -- super key
 local mainMod = "SUPER"
 
--- Keyboard Options
+local scriptsDir = "~/.config/hypr/scripts/"
+
+-- Keyboard and touchpad options
 hl.config({
 	input = {
 		kb_layout = "us",
@@ -21,29 +23,19 @@ hl.config({
 		workspace_swipe_distance = 400,
 		workspace_swipe_invert = true,
 	},
-	decoration = {
-		rounding = 6,
-	},
-})
-
--- Blur waybar
-hl.layer_rule({
-	match = { namespace = "waybar" },
-	blur = true,
-	ignore_alpha = 0.4,
 })
 
 -- frequently used programs
 local terminal = "ghostty"
+local browser = "brave"
 
 -- have GUI apps opened from the terminal swallow the terminal window
 hl.config({
 	misc = {
 		enable_swallow = true,
-		swallow_regex = "^(" .. terminal .. ")$",
+		swallow_regex = "^" .. terminal .. "$",
 	},
 })
-local browser = "brave"
 
 hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("hyprctl reload"))
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
@@ -51,6 +43,7 @@ hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + SHIFT + CTRL + L", hl.dsp.exec_cmd("hyprlock"))
 hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("wlogout"))
+hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(scriptsDir .. "clip-manager.sh"))
 
 hl.bind("SUPER + Space", function()
 	hl.dispatch(hl.dsp.window.float({ action = "toggle" }))
@@ -61,7 +54,7 @@ hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "fullscreen", actio
 hl.on("hyprland.start", function()
 	hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
 	hl.exec_cmd("systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
-	hl.exec_cmd("~/.config/hypr/scripts/restore-portal-conflicts.sh")
+	hl.exec_cmd(scriptsDir .. "restore-portal-conflicts.sh")
 	hl.exec_cmd("systemctl --user start hyprpolkitagent")
 	hl.exec_cmd("blueman-applet")
 	hl.exec_cmd("nm-applet --indicator")
@@ -86,7 +79,6 @@ hl.bind(mainMod .. " + SHIFT + bracketleft", hl.dsp.window.move({ workspace = -1
 hl.bind(mainMod .. " + CTRL + bracketleft", hl.dsp.window.move({ workspace = -1, follow = true }))
 hl.bind(mainMod .. " + SHIFT + bracketright", hl.dsp.window.move({ workspace = "+1", follow = false }))
 hl.bind(mainMod .. " + CTRL + bracketright", hl.dsp.window.move({ workspace = "+1", follow = true }))
-
 hl.bind(mainMod .. " + period", hl.dsp.focus({ workspace = "e+1" }))
 hl.bind(mainMod .. " + comma", hl.dsp.focus({ workspace = "e-1" }))
 
@@ -111,18 +103,18 @@ hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("pamixer --allow-boost --set-lim
 hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("pamixer --allow-boost --set-limit 200 -d 5"), { repeating = true })
 
 -- Toggle Audio Mute
-hl.bind("XF86AudioMute", hl.dsp.exec_cmd("~/.config/hypr/scripts/toggle-mute.sh"))
+hl.bind("XF86AudioMute", hl.dsp.exec_cmd(scriptsDir .. "toggle-mute.sh"))
 
 -- Toggle Mic Mute
-hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("~/.config/hypr/scripts/toggle-mic.sh"))
+hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd(scriptsDir .. "toggle-mic.sh"))
 
 -- Handle brightness with laptop keys
 hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl s +10%"), { locked = true, repeating = true })
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl s 10%-"), { locked = true, repeating = true })
 
 -- Make screenshots with laptop key (F7)
-hl.bind("XF86Display", hl.dsp.exec_cmd("~/.config/hypr/scripts/screenshot.sh --now"))
-hl.bind("SHIFT + XF86Display", hl.dsp.exec_cmd("~/.config/hypr/scripts/screenshot.sh --area"))
+hl.bind("XF86Display", hl.dsp.exec_cmd(scriptsDir .. "screenshot.sh --now"))
+hl.bind("SHIFT + XF86Display", hl.dsp.exec_cmd(scriptsDir .. "screenshot.sh --area"))
 
 -- Resize using Vim Keys and Arrows
 local factor = 5

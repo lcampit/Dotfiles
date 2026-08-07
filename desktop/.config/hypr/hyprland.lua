@@ -25,5 +25,6 @@ hl.config({
 		disable_splash_rendering = true,
 		mouse_move_enables_dpms = true,
 		vrr = 3,
+		font_family = "JetBrains Mono",
 	},
 })
