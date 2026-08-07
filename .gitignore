@@ -4,6 +4,7 @@
 *lazy-lock.json
 *nvim.version
 *lazyvim.json
+*kairo.db
 
 # Tmux plugins 
 cli/.config/tmux/plugins
