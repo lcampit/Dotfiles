@@ -3,7 +3,6 @@
 # if archinstall is not run, make sure to install the following:
 #   pipewire for audio
 #   dolphin for file manager
-#   polkit-kde-agent for authentication processes
 #   grim for taking screenshots
 #   qt5wayland and qt6wayland
 #   slurp to allow cursor to select with drag and drop
@@ -13,8 +12,12 @@
 #   sddm as login manager (including the first boot login screen)
 #   mako as notification deamon
 #   pamixer, pavucontrol for audio controls from the system bar
-#   bluez, bluetui for bluetooth controls
+#   bluez, bluez-utils, blueman, blueman-applet, bluetui for bluetooth controls
 #   opensnitch for firewall
+#   brightnessctl to handle monitor brightness
+#   install xdg-user-dirs to handle commmonly used dirs
+#   install hyprpolkitagent for a GUI that apps use to request elevated privileges
+#   install networkmanager and network-manager-applet to handle wifi
 
 # install yay
 # install hyprpaper, hyperlock and ashell / waybar
