@@ -1,3 +1,4 @@
+require("env")
 require("keybinds")
 require("themes")
 require("monitors")
@@ -8,8 +9,8 @@ require("animations")
 hl.config({
 	general = {
 		layout = "master",
-		border_size = 4,
-		gaps_in = 8,
+		border_size = 0,
+		gaps_in = 3,
 		gaps_out = 4,
 		resize_on_border = true,
 	},

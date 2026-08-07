@@ -4,7 +4,7 @@
 #   pipewire for audio
 #   dolphin for file manager
 #   grim for taking screenshots
-#   qt5wayland and qt6wayland
+#   qt5wayland and qt6wayland for theming
 #   slurp to allow cursor to select with drag and drop
 #   uwsm as helper layer to let you setup wayland using different scripts
 #   wofi as app launcher
