@@ -2,7 +2,7 @@
 
 # if archinstall is not run, make sure to install the following:
 #   pipewire for audio
-#   thunar for file manager
+#   dolphin for file manager
 #   grim for taking screenshots
 #   qt5wayland and qt6wayland for theming
 #   slurp to allow cursor to select with drag and drop
@@ -19,6 +19,10 @@
 #   install hyprpolkitagent for a GUI that apps use to request elevated privileges
 #   install networkmanager and network-manager-applet to handle wifi
 #   install cliphist as clipboard manager
+#   install the following for theming catppuccin-gtk-theme-git kvantum kvantum-theme-catppuccin-git qt6ct-kde breeze qqc2-breeze-style
+#   install icons yay -S papirus-icon-theme papirus-folders-catppuccin-git
+#   install libadwaita-without-adwaita-git
+#   install wayle-bin for the status bar
 
 # install yay
 # install hyprpaper, hyperlock and ashell / waybar

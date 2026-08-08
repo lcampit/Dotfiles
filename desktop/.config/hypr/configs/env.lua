@@ -12,3 +12,7 @@ hl.env("CLUTTER_BACKEND", "wayland")
 hl.env("XDG_CURRENT_DESKTOP", "Hyprland")
 hl.env("XDG_SESSION_DESKTOP", "Hyprland")
 hl.env("XDG_SESSION_TYPE", "wayland")
+
+-- Theme selection
+hl.env("GTK_THEME", "Catppuccin-Mocha")
+hl.env("XDG_ICON_THEME", "Papirus-Dark")

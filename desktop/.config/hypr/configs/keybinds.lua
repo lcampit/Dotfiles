@@ -6,7 +6,7 @@ local scriptsDir = "~/.config/hypr/scripts/"
 -- frequently used programs
 local terminal = "ghostty --gtk-single-instance=true"
 local browser = "brave"
-local fileManager = "thunar"
+local fileManager = "dolphin"
 
 -- have GUI apps opened from the terminal swallow the terminal window
 hl.config({

@@ -13,9 +13,9 @@
   "margin-top": 6,
   "modules-left": [
     "custom/menu",
-    "wlr/workspaces",
+    "hyprland/workspaces"
     // "custom/updater",
-    "hyprland/window"
+    // "hyprland/window"
   ],
   "modules-center": [
     "clock"
